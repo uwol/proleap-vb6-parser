@@ -23,7 +23,7 @@ grammar VisualBasic6;
 
 options
 {
-  language = Java;
+	language = Java;
 }
 
 
@@ -207,9 +207,10 @@ doLoopStmt :
 endStmt : END;
 
 enumerationStmt: 
-    (visibility WS)? ENUM WS ambiguousIdentifier NEWLINE+ 
-    (enumerationStmt_Constant)* 
-    END_ENUM;
+	(visibility WS)? ENUM WS ambiguousIdentifier NEWLINE+ 
+	(enumerationStmt_Constant)* 
+	END_ENUM
+;
 
 enumerationStmt_Constant : ambiguousIdentifier (WS? EQ WS? valueStmt)? NEWLINE+;
 
@@ -224,15 +225,16 @@ exitStmt : EXIT_DO | EXIT_FOR | EXIT_FUNCTION | EXIT_PROPERTY | EXIT_SUB;
 filecopyStmt : FILECOPY WS valueStmt WS? ',' WS? valueStmt;
 
 forEachStmt : 
-    FOR WS EACH WS ambiguousIdentifier typeHint? WS IN WS valueStmt NEWLINE+ 
-    (block NEWLINE+)?
-    NEXT (WS ambiguousIdentifier)?
+	FOR WS EACH WS ambiguousIdentifier typeHint? WS IN WS valueStmt NEWLINE+ 
+	(block NEWLINE+)?
+	NEXT (WS ambiguousIdentifier)?
 ;
 
 forNextStmt : 
-    FOR WS ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? valueStmt WS TO WS valueStmt (WS STEP WS valueStmt)? NEWLINE+ 
-    (block NEWLINE+)? 
-    NEXT (WS ambiguousIdentifier)?; 
+	FOR WS ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? valueStmt WS TO WS valueStmt (WS STEP WS valueStmt)? NEWLINE+ 
+	(block NEWLINE+)? 
+	NEXT (WS ambiguousIdentifier)?
+; 
 
 functionStmt :
 	(visibility WS)? (STATIC WS)? FUNCTION WS ambiguousIdentifier (WS? argList)? (WS asTypeClause)? NEWLINE+
@@ -252,19 +254,20 @@ ifThenElseStmt :
 ;
 
 ifBlockStmt : 
-    IF WS ifConditionStmt WS THEN NEWLINE+ 
-    (block NEWLINE+)?
+	IF WS ifConditionStmt WS THEN NEWLINE+ 
+	(block NEWLINE+)?
 ;
 
 ifConditionStmt : valueStmt;
 
 ifElseIfBlockStmt : 
-    ELSEIF WS ifConditionStmt WS THEN NEWLINE+ 
-    (block NEWLINE+)?;
+	ELSEIF WS ifConditionStmt WS THEN NEWLINE+ 
+	(block NEWLINE+)?
+;
 
 ifElseBlockStmt : 
-    ELSE NEWLINE+ 
-    (block NEWLINE+)?
+	ELSE NEWLINE+ 
+	(block NEWLINE+)?
 ;
 
 implementsStmt : IMPLEMENTS WS ambiguousIdentifier;
@@ -287,9 +290,9 @@ inlineStmt :
 	| getStmt
 	| goSubStmt
 	| goToStmt
-    | ifThenElseStmt
-    | implicitCallStmt_NoValue_Inline
-    | implicitCallStmt_Value_Inline
+	| ifThenElseStmt
+	| implicitCallStmt_NoValue_Inline
+	| implicitCallStmt_Value_Inline
 	| inputStmt
 	| killStmt
 	| letStmt
@@ -346,18 +349,18 @@ lsetStmt : LSET WS implicitCallStmt_Value WS? EQ WS? valueStmt;
 macroIfThenElseStmt : macroIfBlockStmt macroElseIfBlockStmt* macroElseBlockStmt? MACRO_END_IF;
 
 macroIfBlockStmt : 
-    MACRO_IF WS ifConditionStmt WS THEN NEWLINE+ 
-    (moduleBody NEWLINE+)?
+	MACRO_IF WS ifConditionStmt WS THEN NEWLINE+ 
+	(moduleBody NEWLINE+)?
 ;
 
 macroElseIfBlockStmt : 
-    MACRO_ELSEIF WS ifConditionStmt WS THEN NEWLINE+ 
-    (moduleBody NEWLINE+)?
+	MACRO_ELSEIF WS ifConditionStmt WS THEN NEWLINE+ 
+	(moduleBody NEWLINE+)?
 ;
 
 macroElseBlockStmt : 
-    MACRO_ELSE NEWLINE+ 
-    (moduleBody NEWLINE+)?
+	MACRO_ELSE NEWLINE+ 
+	(moduleBody NEWLINE+)?
 ;
 
 midStmt : MID WS? LPAREN WS? argsCall WS? RPAREN;
@@ -476,9 +479,9 @@ subStmt :
 timeStmt : TIME WS? EQ WS? valueStmt;
 
 typeStmt : 
-    (visibility WS)? TYPE WS ambiguousIdentifier NEWLINE+ 
-    (typeStmt_Element)*
-    END_TYPE
+	(visibility WS)? TYPE WS ambiguousIdentifier NEWLINE+ 
+	(typeStmt_Element)*
+	END_TYPE
 ;
 
 typeStmt_Element : ambiguousIdentifier (WS? LPAREN (WS? subscripts)? WS? RPAREN)? (WS asTypeClause)? NEWLINE+;
@@ -495,7 +498,7 @@ valueStmt :
 	| NEW WS valueStmt # vsNew
 	| implicitCallStmt_Value # vsValueCalls
 	| typeOfStmt # vsTypeOf
-    | LPAREN WS? valueStmt (WS? ',' WS? valueStmt)* RPAREN # vsStruct
+	| LPAREN WS? valueStmt (WS? ',' WS? valueStmt)* RPAREN # vsStruct
 	| implicitCallStmt_Value WS? ASSIGN WS? valueStmt # vsAssign
 	| valueStmt WS? PLUS WS? valueStmt # vsAdd
 	| PLUS WS? valueStmt # vsPlus
@@ -646,8 +649,8 @@ subscript : (valueStmt WS TO WS)? valueStmt;
 // atomic rules ----------------------------------
 
 ambiguousIdentifier : 
-    (IDENTIFIER | ambiguousKeyword)+
-    | L_SQUARE_BRACKET (IDENTIFIER | ambiguousKeyword)+ R_SQUARE_BRACKET
+	(IDENTIFIER | ambiguousKeyword)+
+	| L_SQUARE_BRACKET (IDENTIFIER | ambiguousKeyword)+ R_SQUARE_BRACKET
 ;
 
 asTypeClause : AS WS (NEW WS)? type (WS fieldLength)?;
@@ -680,27 +683,27 @@ visibility : PRIVATE | PUBLIC | FRIEND | GLOBAL;
 
 // ambiguous keywords
 ambiguousKeyword : 
-    ACCESS | ADDRESSOF | ALIAS | AND | ATTRIBUTE | APPACTIVATE | APPEND | AS |
-    BEEP | BEGIN | BINARY | BOOLEAN | BYVAL | BYREF | BYTE | 
-    CALL | CASE | CLASS | CLOSE | CHDIR | CHDRIVE | COLLECTION | CONST | 
-    DATE | DECLARE | DEFBOOL | DEFBYTE | DEFCUR | DEFDBL | DEFDATE | DEFDEC | DEFINT | DEFLNG | DEFOBJ | DEFSNG | DEFSTR | DEFVAR | DELETESETTING | DIM | DO | DOUBLE | 
-    EACH | ELSE | ELSEIF | END | ENUM | EQV | ERASE | ERROR | EVENT | 
-    FALSE | FILECOPY | FRIEND | FOR | FUNCTION | 
-    GET | GLOBAL | GOSUB | GOTO | 
-    IF | IMP | IMPLEMENTS | IN | INPUT | IS | INTEGER |
-    KILL | 
-    LOAD | LOCK | LONG | LOOP | LEN | LET | LIB | LIKE | LSET |
-    ME | MID | MKDIR | MOD | 
-    NAME | NEXT | NEW | NOT | NOTHING | NULL | 
-    ON | OPEN | OPTIONAL | OR | OUTPUT | 
-    PARAMARRAY | PRESERVE | PRINT | PRIVATE | PUBLIC | PUT |
-    RANDOM | RANDOMIZE | RAISEEVENT | READ | REDIM | REM | RESET | RESUME | RETURN | RMDIR | RSET |
-    SAVEPICTURE | SAVESETTING | SEEK | SELECT | SENDKEYS | SET | SETATTR | SHARED | SINGLE | SPC | STATIC | STEP | STOP | STRING | SUB | 
-    TAB | TEXT | THEN | TIME | TO | TRUE | TYPE | TYPEOF | 
-    UNLOAD | UNLOCK | UNTIL | 
-    VARIANT | VERSION | 
-    WEND | WHILE | WIDTH | WITH | WITHEVENTS | WRITE |
-    XOR
+	ACCESS | ADDRESSOF | ALIAS | AND | ATTRIBUTE | APPACTIVATE | APPEND | AS |
+	BEEP | BEGIN | BINARY | BOOLEAN | BYVAL | BYREF | BYTE | 
+	CALL | CASE | CLASS | CLOSE | CHDIR | CHDRIVE | COLLECTION | CONST | 
+	DATE | DECLARE | DEFBOOL | DEFBYTE | DEFCUR | DEFDBL | DEFDATE | DEFDEC | DEFINT | DEFLNG | DEFOBJ | DEFSNG | DEFSTR | DEFVAR | DELETESETTING | DIM | DO | DOUBLE | 
+	EACH | ELSE | ELSEIF | END | ENUM | EQV | ERASE | ERROR | EVENT | 
+	FALSE | FILECOPY | FRIEND | FOR | FUNCTION | 
+	GET | GLOBAL | GOSUB | GOTO | 
+	IF | IMP | IMPLEMENTS | IN | INPUT | IS | INTEGER |
+	KILL | 
+	LOAD | LOCK | LONG | LOOP | LEN | LET | LIB | LIKE | LSET |
+	ME | MID | MKDIR | MOD | 
+	NAME | NEXT | NEW | NOT | NOTHING | NULL | 
+	ON | OPEN | OPTIONAL | OR | OUTPUT | 
+	PARAMARRAY | PRESERVE | PRINT | PRIVATE | PUBLIC | PUT |
+	RANDOM | RANDOMIZE | RAISEEVENT | READ | REDIM | REM | RESET | RESUME | RETURN | RMDIR | RSET |
+	SAVEPICTURE | SAVESETTING | SEEK | SELECT | SENDKEYS | SET | SETATTR | SHARED | SINGLE | SPC | STATIC | STEP | STOP | STRING | SUB | 
+	TAB | TEXT | THEN | TIME | TO | TRUE | TYPE | TYPEOF | 
+	UNLOAD | UNLOCK | UNTIL | 
+	VARIANT | VERSION | 
+	WEND | WHILE | WIDTH | WITH | WITHEVENTS | WRITE |
+	XOR
 ;
 
 
