@@ -161,7 +161,7 @@ blockStmt :
 
 // statements ----------------------------------
 
-appactivateStmt : APPACTIVATE WS valueStmt (',' WS* valueStmt)?;
+appactivateStmt : APPACTIVATE WS valueStmt (WS? ',' WS? valueStmt)?;
 
 beepStmt : BEEP;
 
