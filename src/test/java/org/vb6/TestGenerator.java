@@ -58,6 +58,9 @@ public class TestGenerator {
 			final PrintWriter pWriter = new PrintWriter(new FileWriter(
 					outputFile));
 
+			final String vb6InputFileName = vb6InputFile.getPath().replace(
+					"\\", "/");
+
 			pWriter.write("package " + packageName + ";\n");
 			pWriter.write("\n");
 			pWriter.write("import java.io.File;\n");
@@ -76,7 +79,7 @@ public class TestGenerator {
 			pWriter.write("	@Test\n");
 			pWriter.write("	public void test() throws Exception {\n");
 			pWriter.write("		final File inputFile = new File(\""
-					+ vb6InputFile.getPath() + "\");\n");
+					+ vb6InputFileName + "\");\n");
 			pWriter.write("\n");
 			pWriter.write("		final InputStream inputStream = new FileInputStream(inputFile);\n");
 			pWriter.write("		final VisualBasic6Lexer lexer = new VisualBasic6Lexer(new ANTLRInputStream(inputStream));\n");
