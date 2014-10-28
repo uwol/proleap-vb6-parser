@@ -61,7 +61,7 @@ moduleOption :
 ;
 
 moduleBody : 
-    moduleBodyElement (NEWLINE+ moduleBodyElement)*
+	moduleBodyElement (NEWLINE+ moduleBodyElement)*
 ;
 
 moduleBodyElement : 
@@ -83,7 +83,7 @@ moduleBodyElement :
 
 moduleBlock : block;
 
-attributeStmt : ATTRIBUTE WS implicitCallStmt_Value WS? EQ WS? literal (WS? ',' WS? literal)*;
+attributeStmt : ATTRIBUTE WS implicitCallStmt_Value_InStmt WS? EQ WS? literal (WS? ',' WS? literal)*;
 
 block : blockStmt (NEWLINE+ WS? blockStmt)*;
 
@@ -336,7 +336,7 @@ inputStmt : INPUT WS valueStmt (WS? ',' WS? valueStmt)+;
 
 killStmt : KILL WS valueStmt;
 
-letStmt : (LET WS)? implicitCallStmt_Value WS? (EQ | PLUS_EQ | MINUS_EQ) WS? valueStmt;
+letStmt : (LET WS)? implicitCallStmt_Value_InStmt WS? (EQ | PLUS_EQ | MINUS_EQ) WS? valueStmt;
 
 lineInputStmt : LINE_INPUT WS valueStmt WS? ',' WS? valueStmt;
 
@@ -344,7 +344,7 @@ loadStmt : LOAD WS valueStmt;
 
 lockStmt : LOCK WS valueStmt (WS? ',' WS? valueStmt (WS TO WS valueStmt)?)?;
 
-lsetStmt : LSET WS implicitCallStmt_Value WS? EQ WS? valueStmt;
+lsetStmt : LSET WS implicitCallStmt_Value_InStmt WS? EQ WS? valueStmt;
 
 macroIfThenElseStmt : macroIfBlockStmt macroElseIfBlockStmt* macroElseBlockStmt? MACRO_END_IF;
 
@@ -431,7 +431,7 @@ returnStmt : RETURN;
 
 rmdirStmt : RMDIR WS valueStmt;
 
-rsetStmt : RSET WS implicitCallStmt_Value WS? EQ WS? valueStmt;
+rsetStmt : RSET WS implicitCallStmt_Value_InStmt WS? EQ WS? valueStmt;
 
 savepictureStmt : SAVEPICTURE WS valueStmt WS? ',' WS? valueStmt;
 
@@ -466,7 +466,7 @@ sendkeysStmt : SENDKEYS WS valueStmt (WS? ',' WS? valueStmt)?;
 
 setattrStmt : SETATTR WS valueStmt WS? ',' WS? valueStmt;
 
-setStmt : SET WS implicitCallStmt_Value WS? EQ WS? valueStmt;
+setStmt : SET WS implicitCallStmt_Value_InStmt WS? EQ WS? valueStmt;
 
 stopStmt : STOP;
 
@@ -496,10 +496,10 @@ valueStmt :
 	literal # vsLiteral
 	| midStmt # vsMid
 	| NEW WS valueStmt # vsNew
-	| implicitCallStmt_Value # vsValueCalls
+	| implicitCallStmt_Value_InStmt # vsValueCalls
 	| typeOfStmt # vsTypeOf
 	| LPAREN WS? valueStmt (WS? ',' WS? valueStmt)* RPAREN # vsStruct
-	| implicitCallStmt_Value WS? ASSIGN WS? valueStmt # vsAssign
+	| implicitCallStmt_Value_InStmt WS? ASSIGN WS? valueStmt # vsAssign
 	| valueStmt WS? PLUS WS? valueStmt # vsAdd
 	| PLUS WS? valueStmt # vsPlus
 	| ADDRESSOF WS valueStmt # vsAddressOf
@@ -541,7 +541,7 @@ whileWendStmt :
 widthStmt : WIDTH WS valueStmt WS? ',' WS? valueStmt;
 
 withStmt : 
-	WITH WS implicitCallStmt_Value NEWLINE+ 
+	WITH WS implicitCallStmt_Value_InStmt NEWLINE+ 
 	(block NEWLINE+)? 
 	END_WITH
 ;
@@ -559,9 +559,11 @@ implicitCallStmt_NoValue_Block : implicitCallStmt_NoValue;
 
 implicitCallStmt_NoValue_Inline : implicitCallStmt_NoValue;
 
-implicitCallStmt_Value_Block : implicitCallStmt_Value;
+implicitCallStmt_Value_Block : implicitCallStmt_Value_Procedural;
 
-implicitCallStmt_Value_Inline : implicitCallStmt_Value;
+implicitCallStmt_Value_Inline : implicitCallStmt_Value_Procedural;
+
+implicitCallStmt_Value_InStmt : implicitCallStmt_Value;
  
 
 // complex call statements ----------------------------------
@@ -601,6 +603,15 @@ iCS_V_FunctionOrArrayCall : functionOrArrayCallStmt dictionaryCallStmt?;
 iCS_V_MembersCall : (variableCallStmt | functionOrArrayCallStmt)? memberCall_Value+ dictionaryCallStmt?;
 
 iCS_V_DictionaryCall : dictionaryCallStmt;
+
+implicitCallStmt_Value_Procedural :
+	iCS_V_P_FunctionCall
+	| iCS_V_P_MembersCall
+;
+
+iCS_V_P_FunctionCall : functionOrArrayCallStmt dictionaryCallStmt?;
+
+iCS_V_P_MembersCall : (variableCallStmt | functionOrArrayCallStmt)? memberCall_Value* memberFunctionOrArrayCallStmt dictionaryCallStmt?;
 
 memberCall_Value : propertyCallStmt | memberFunctionOrArrayCallStmt;
 
