@@ -360,7 +360,7 @@ randomizeStmt : RANDOMIZE (WS valueStmt)?;
 
 redimStmt : REDIM WS (PRESERVE WS)? redimSubStmt (WS?',' WS? redimSubStmt)*;
 
-redimSubStmt : ambiguousIdentifier WS? LPAREN WS? subscripts WS? RPAREN (WS asTypeClause)?;
+redimSubStmt : implicitCallStmt_InStmt WS? LPAREN WS? subscripts WS? RPAREN (WS asTypeClause)?;
 
 resetStmt : RESET;
 
@@ -495,9 +495,9 @@ explicitCallStmt :
 	| eCS_MemberProcedureCall 
 ;
 
-eCS_ProcedureCall : CALL WS ambiguousIdentifier WS? LPAREN WS? (argsCall WS?)? RPAREN;
+eCS_ProcedureCall : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? (argsCall WS?)? RPAREN)?;
 
-eCS_MemberProcedureCall : CALL WS variableCallStmt? memberPropertyCallStmt* '.' ambiguousIdentifier WS? LPAREN WS? (argsCall WS?)? RPAREN;
+eCS_MemberProcedureCall : CALL WS variableCallStmt? memberPropertyCallStmt* '.' ambiguousIdentifier typeHint? (WS? LPAREN WS? (argsCall WS?)? RPAREN)?;
 
 
 implicitCallStmt_InBlock :
@@ -546,9 +546,9 @@ memberCall_Value : memberPropertyCallStmt | memberFunctionOrArrayCallStmt;
 
 // atomic call statements ----------------------------------
 
-variableCallStmt : ambiguousIdentifier (WS? typeHint)?;
+variableCallStmt : ambiguousIdentifier typeHint?;
 
-dictionaryCallStmt : '!' ambiguousIdentifier;
+dictionaryCallStmt : '!' ambiguousIdentifier typeHint?;
 
 functionOrArrayCallStmt : (ambiguousIdentifier | baseType) typeHint? WS? LPAREN WS? (argsCall WS?)? RPAREN;
 

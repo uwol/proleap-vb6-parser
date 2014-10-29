@@ -28,15 +28,8 @@ import org.apache.commons.io.FilenameUtils;
 
 public class TestGenerator {
 
-	final static File gplInputDirectory = new File(
-			"src/test/resources/org/vb6/gpl/statements/");
-	final static File gplOutputDirectory = new File(
-			"src/test/java/org/vb6/gpl/statements/");
-
-	final static File msdnInputDirectory = new File(
-			"src/test/resources/org/vb6/msdn/statements/");
-	final static File msdnOutputDirectory = new File(
-			"src/test/java/org/vb6/msdn/statements/");
+	final static File inputDirectory = new File("src/test/resources/org/vb6");
+	final static File outputDirectory = new File("src/test/java/org/vb6");
 
 	public static String firstToUpper(final String str) {
 		return Character.toUpperCase(str.charAt(0)) + str.substring(1);
@@ -64,15 +57,10 @@ public class TestGenerator {
 			pWriter.write("package " + packageName + ";\n");
 			pWriter.write("\n");
 			pWriter.write("import java.io.File;\n");
-			pWriter.write("import java.io.FileInputStream;\n");
-			pWriter.write("import java.io.InputStream;\n");
 			pWriter.write("\n");
-			pWriter.write("import org.antlr.v4.runtime.ANTLRInputStream;\n");
-			pWriter.write("import org.antlr.v4.runtime.CommonTokenStream;\n");
 			pWriter.write("import org.junit.Test;\n");
-			pWriter.write("import org.vb6.ThrowingErrorListener;\n");
-			pWriter.write("import org.vb6.VisualBasic6Lexer;\n");
-			pWriter.write("import org.vb6.VisualBasic6Parser;\n");
+			pWriter.write("import org.vb6.runner.VbParseTestRunner;\n");
+			pWriter.write("import org.vb6.runner.impl.VbParseTestRunnerImpl;\n");
 			pWriter.write("\n");
 			pWriter.write("public class " + inputFilename + "Test {\n");
 			pWriter.write("\n");
@@ -80,20 +68,8 @@ public class TestGenerator {
 			pWriter.write("	public void test() throws Exception {\n");
 			pWriter.write("		final File inputFile = new File(\""
 					+ vb6InputFileName + "\");\n");
-			pWriter.write("\n");
-			pWriter.write("		final InputStream inputStream = new FileInputStream(inputFile);\n");
-			pWriter.write("		final VisualBasic6Lexer lexer = new VisualBasic6Lexer(new ANTLRInputStream(inputStream));\n");
-			pWriter.write("\n");
-			pWriter.write("		lexer.removeErrorListeners();\n");
-			pWriter.write("		lexer.addErrorListener(ThrowingErrorListener.INSTANCE);\n");
-			pWriter.write("\n");
-			pWriter.write("		final CommonTokenStream tokens = new CommonTokenStream(lexer);\n");
-			pWriter.write("		final VisualBasic6Parser parser = new VisualBasic6Parser(tokens);\n");
-			pWriter.write("\n");
-			pWriter.write("		parser.removeErrorListeners();\n");
-			pWriter.write("		parser.addErrorListener(ThrowingErrorListener.INSTANCE);\n");
-			pWriter.write("\n");
-			pWriter.write("		parser.startRule();\n");
+			pWriter.write("		final VbParseTestRunner runner = new VbParseTestRunnerImpl();\n");
+			pWriter.write("		runner.parseFile(inputFile);\n");
 			pWriter.write("	}\n");
 			pWriter.write("}");
 
@@ -105,17 +81,58 @@ public class TestGenerator {
 	public static void generateTestClasses(final File inputDirectory,
 			final File outputDirectory, final String packageName)
 			throws IOException {
+		final String outputDirectoryPath = outputDirectory.getPath();
+
 		if (inputDirectory.isDirectory()) {
-			for (final File inputFile : inputDirectory.listFiles()) {
-				generateTestClass(inputFile, outputDirectory, packageName);
+			// for each of the files in the directory
+			for (final File inputDirectoryFile : inputDirectory.listFiles()) {
+				// if the file is a VB6 relevant file
+				if (isClazzModule(inputDirectoryFile)
+						|| isStandardModule(inputDirectoryFile)) {
+					generateTestClass(inputDirectoryFile, outputDirectory,
+							packageName);
+				}
+				// else, if the file is a directory
+				else if (inputDirectoryFile.isDirectory()) {
+					final File subInputDirectory = inputDirectoryFile;
+					final String subInputDirectoryName = subInputDirectory
+							.getName();
+
+					if (!".".equals(subInputDirectoryName)
+							&& !"..".equals(subInputDirectoryName)) {
+						/*
+						 * determine the output directory, where test classes
+						 * should be placed
+						 */
+						final File subOutputDirectory = new File(
+								outputDirectoryPath + "/"
+										+ subInputDirectoryName);
+
+						// determine the package name of test classes
+						final String subPackageName = packageName + "."
+								+ subInputDirectoryName;
+
+						generateTestClasses(subInputDirectory,
+								subOutputDirectory, subPackageName);
+					}
+				}
 			}
 		}
 	}
 
+	private static boolean isClazzModule(final File inputFile) {
+		final String extension = FilenameUtils
+				.getExtension(inputFile.getName());
+		return "cls".equals(extension);
+	}
+
+	private static boolean isStandardModule(final File inputFile) {
+		final String extension = FilenameUtils
+				.getExtension(inputFile.getName());
+		return "bas".equals(extension);
+	}
+
 	public static void main(final String[] args) throws IOException {
-		generateTestClasses(msdnInputDirectory, msdnOutputDirectory,
-				"org.vb6.msdn.statements");
-		generateTestClasses(gplInputDirectory, gplOutputDirectory,
-				"org.vb6.gpl.statements");
+		generateTestClasses(inputDirectory, outputDirectory, "org.vb6");
 	}
 }
