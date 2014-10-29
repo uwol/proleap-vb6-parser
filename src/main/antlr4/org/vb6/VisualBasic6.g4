@@ -678,7 +678,7 @@ DIM : D I M;
 DO : D O;
 DOUBLE : D O U B L E;
 EACH : E A C H;
-ELSE : E L  S E;
+ELSE : E L S E;
 ELSEIF : E L S E I F;
 END_ENUM : E N D ' ' E N U M;
 END_FUNCTION : E N D ' ' F U N C T I O N;
