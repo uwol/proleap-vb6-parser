@@ -83,7 +83,7 @@ moduleBodyElement :
 
 moduleBlock : block;
 
-attributeStmt : ATTRIBUTE WS implicitCallStmt_Value_InStmt WS? EQ WS? literal (WS? ',' WS? literal)*;
+attributeStmt : ATTRIBUTE WS implicitCallStmt_InStmt WS? EQ WS? literal (WS? ',' WS? literal)*;
 
 block : blockStmt (NEWLINE+ WS? blockStmt)*;
 
@@ -103,7 +103,7 @@ blockStmt :
 	| eraseStmt
 	| errorStmt
 	| exitStmt
-	| explicitCallStmt_Block
+	| explicitCallStmt
 	| filecopyStmt
 	| forEachStmt
 	| forNextStmt
@@ -112,8 +112,7 @@ blockStmt :
 	| goToStmt
 	| ifThenElseStmt
 	| implementsStmt
-	| implicitCallStmt_NoValue_Block
-	| implicitCallStmt_Value_Block
+	| implicitCallStmt_InBlock
 	| inputStmt
 	| killStmt
 	| letStmt
@@ -249,7 +248,7 @@ goSubStmt : GOSUB WS valueStmt;
 goToStmt : GOTO WS valueStmt;
 
 ifThenElseStmt : 
-	IF WS ifConditionStmt WS THEN WS inlineStmt (WS ELSE WS inlineStmt)? # inlineIfThenElse
+	IF WS ifConditionStmt WS THEN WS blockStmt (WS ELSE WS blockStmt)? # inlineIfThenElse
 	| ifBlockStmt ifElseIfBlockStmt* ifElseBlockStmt? END_IF # blockIfThenElse
 ;
 
@@ -272,71 +271,11 @@ ifElseBlockStmt :
 
 implementsStmt : IMPLEMENTS WS ambiguousIdentifier;
 
-inlineStmt :
-	appactivateStmt
-	| beepStmt
-	| chdirStmt
-	| chdriveStmt
-	| closeStmt
-	| dateStmt
-	| deftypeStmt
-	| deleteSettingStmt
-	| endStmt
-	| eraseStmt
-	| errorStmt
-	| exitStmt
-	| explicitCallStmt_Inline
-	| filecopyStmt
-	| getStmt
-	| goSubStmt
-	| goToStmt
-	| ifThenElseStmt
-	| implicitCallStmt_NoValue_Inline
-	| implicitCallStmt_Value_Inline
-	| inputStmt
-	| killStmt
-	| letStmt
-	| lineInputStmt
-	| loadStmt
-	| lockStmt
-	| lsetStmt
-	| midStmt
-	| mkdirStmt
-	| nameStmt
-	| onErrorStmt
-	| onGoToStmt
-	| onGoSubStmt
-	| openStmt
-	| printStmt
-	| putStmt
-	| raiseEventStmt
-	| randomizeStmt
-	| redimStmt
-	| resetStmt
-	| resumeStmt
-	| returnStmt
-	| rmdirStmt
-	| rsetStmt
-	| savepictureStmt
-	| saveSettingStmt
-	| seekStmt
-	| sendkeysStmt
-	| setattrStmt
-	| setStmt
-	| stopStmt
-	| timeStmt
-	| unloadStmt
-	| unlockStmt
-	| variableStmt
-	| widthStmt
-	| writeStmt
-;
-
 inputStmt : INPUT WS valueStmt (WS? ',' WS? valueStmt)+;
 
 killStmt : KILL WS valueStmt;
 
-letStmt : (LET WS)? implicitCallStmt_Value_InStmt WS? (EQ | PLUS_EQ | MINUS_EQ) WS? valueStmt;
+letStmt : (LET WS)? implicitCallStmt_InStmt WS? (EQ | PLUS_EQ | MINUS_EQ) WS? valueStmt;
 
 lineInputStmt : LINE_INPUT WS valueStmt WS? ',' WS? valueStmt;
 
@@ -344,7 +283,7 @@ loadStmt : LOAD WS valueStmt;
 
 lockStmt : LOCK WS valueStmt (WS? ',' WS? valueStmt (WS TO WS valueStmt)?)?;
 
-lsetStmt : LSET WS implicitCallStmt_Value_InStmt WS? EQ WS? valueStmt;
+lsetStmt : LSET WS implicitCallStmt_InStmt WS? EQ WS? valueStmt;
 
 macroIfThenElseStmt : macroIfBlockStmt macroElseIfBlockStmt* macroElseBlockStmt? MACRO_END_IF;
 
@@ -431,7 +370,7 @@ returnStmt : RETURN;
 
 rmdirStmt : RMDIR WS valueStmt;
 
-rsetStmt : RSET WS implicitCallStmt_Value_InStmt WS? EQ WS? valueStmt;
+rsetStmt : RSET WS implicitCallStmt_InStmt WS? EQ WS? valueStmt;
 
 savepictureStmt : SAVEPICTURE WS valueStmt WS? ',' WS? valueStmt;
 
@@ -466,7 +405,7 @@ sendkeysStmt : SENDKEYS WS valueStmt (WS? ',' WS? valueStmt)?;
 
 setattrStmt : SETATTR WS valueStmt WS? ',' WS? valueStmt;
 
-setStmt : SET WS implicitCallStmt_Value_InStmt WS? EQ WS? valueStmt;
+setStmt : SET WS implicitCallStmt_InStmt WS? EQ WS? valueStmt;
 
 stopStmt : STOP;
 
@@ -496,10 +435,10 @@ valueStmt :
 	literal # vsLiteral
 	| midStmt # vsMid
 	| NEW WS valueStmt # vsNew
-	| implicitCallStmt_Value_InStmt # vsValueCalls
+	| implicitCallStmt_InStmt # vsValueCalls
 	| typeOfStmt # vsTypeOf
 	| LPAREN WS? valueStmt (WS? ',' WS? valueStmt)* RPAREN # vsStruct
-	| implicitCallStmt_Value_InStmt WS? ASSIGN WS? valueStmt # vsAssign
+	| implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt # vsAssign
 	| valueStmt WS? PLUS WS? valueStmt # vsAdd
 	| PLUS WS? valueStmt # vsPlus
 	| ADDRESSOF WS valueStmt # vsAddressOf
@@ -541,7 +480,7 @@ whileWendStmt :
 widthStmt : WIDTH WS valueStmt WS? ',' WS? valueStmt;
 
 withStmt : 
-	WITH WS implicitCallStmt_Value_InStmt NEWLINE+ 
+	WITH WS implicitCallStmt_InStmt NEWLINE+ 
 	(block NEWLINE+)? 
 	END_WITH
 ;
@@ -549,94 +488,69 @@ withStmt :
 writeStmt : WRITE WS valueStmt WS? ',' (WS? outputList)?;
 
 
-// contextualized complex call statements -------------------
-
-explicitCallStmt_Block : explicitCallStmt;
-
-explicitCallStmt_Inline : explicitCallStmt;
-
-implicitCallStmt_NoValue_Block : implicitCallStmt_NoValue;
-
-implicitCallStmt_NoValue_Inline : implicitCallStmt_NoValue;
-
-implicitCallStmt_Value_Block : implicitCallStmt_Value_Procedural;
-
-implicitCallStmt_Value_Inline : implicitCallStmt_Value_Procedural;
-
-implicitCallStmt_Value_InStmt : implicitCallStmt_Value;
- 
-
 // complex call statements ----------------------------------
 
 explicitCallStmt : 
-	eCS_SubCall 
-	| eCS_FunctionOrArrayCall 
-	| eCS_MemberSubCall 
-	| eCS_MemberFunctionCall
+	eCS_ProcedureCall 
+	| eCS_MemberProcedureCall 
 ;
 
-eCS_SubCall : CALL WS subCallStmt_ExplicitCall;
+eCS_ProcedureCall : CALL WS ambiguousIdentifier WS? LPAREN WS? (argsCall WS?)? RPAREN;
 
-eCS_FunctionOrArrayCall : CALL WS functionOrArrayCallStmt;
+eCS_MemberProcedureCall : CALL WS variableCallStmt? memberPropertyCallStmt* '.' ambiguousIdentifier WS? LPAREN WS? (argsCall WS?)? RPAREN;
 
-eCS_MemberSubCall : CALL WS variableCallStmt? propertyCallStmt* memberSubCallStmt_ExplicitCall;
 
-eCS_MemberFunctionCall : CALL WS variableCallStmt? propertyCallStmt* memberFunctionOrArrayCallStmt;
-
-implicitCallStmt_NoValue :
-	subCallStmt_ImplicitCall
-	| implicitCallStmt_Value+ memberSubCallStmt_ImplicitCall
-	| memberSubCallStmt_ImplicitCall
+implicitCallStmt_InBlock :
+	iCS_B_SubCall
+	| iCS_B_FunctionCall
+	| iCS_B_MemberSubCall
+	| iCS_B_MemberFunctionCall
 ;
 
-implicitCallStmt_Value :
-	iCS_V_VariableCall
-	| iCS_V_FunctionOrArrayCall
-	| iCS_V_MembersCall
-	| iCS_V_DictionaryCall
+// certainIdentifier instead of ambiguousIdentifier for preventing ambiguity with statement keywords 
+iCS_B_SubCall : certainIdentifier (WS argsCall)?;
+
+iCS_B_FunctionCall : functionOrArrayCallStmt dictionaryCallStmt?;
+
+iCS_B_MemberSubCall : implicitCallStmt_InStmt* memberSubCallStmt;
+
+iCS_B_MemberFunctionCall : implicitCallStmt_InStmt* memberFunctionOrArrayCallStmt dictionaryCallStmt?;
+
+
+implicitCallStmt_InStmt :
+	iCS_S_VariableCall
+	| iCS_S_FunctionOrArrayCall
+	| iCS_S_DictionaryCall
+	| iCS_S_MembersCall
 ;
 
-iCS_V_VariableCall : variableCallStmt dictionaryCallStmt?;
+iCS_S_VariableCall : variableCallStmt dictionaryCallStmt?;
 
-iCS_V_FunctionOrArrayCall : functionOrArrayCallStmt dictionaryCallStmt?;
+iCS_S_FunctionOrArrayCall : functionOrArrayCallStmt dictionaryCallStmt?;
 
-iCS_V_MembersCall : (variableCallStmt | functionOrArrayCallStmt)? memberCall_Value+ dictionaryCallStmt?;
+iCS_S_DictionaryCall : dictionaryCallStmt;
 
-iCS_V_DictionaryCall : dictionaryCallStmt;
+iCS_S_MembersCall : (variableCallStmt | functionOrArrayCallStmt)? memberCall_Value+ dictionaryCallStmt?;
 
-implicitCallStmt_Value_Procedural :
-	iCS_V_P_FunctionCall
-	| iCS_V_P_MembersCall
-;
 
-iCS_V_P_FunctionCall : functionOrArrayCallStmt dictionaryCallStmt?;
+// member call statements ----------------------------------
 
-iCS_V_P_MembersCall : (variableCallStmt | functionOrArrayCallStmt)? memberCall_Value* memberFunctionOrArrayCallStmt dictionaryCallStmt?;
+memberPropertyCallStmt : '.' ambiguousIdentifier;
 
-memberCall_Value : propertyCallStmt | memberFunctionOrArrayCallStmt;
+memberFunctionOrArrayCallStmt : '.' functionOrArrayCallStmt;
+
+memberSubCallStmt : '.' ambiguousIdentifier (WS argsCall)?;
+
+memberCall_Value : memberPropertyCallStmt | memberFunctionOrArrayCallStmt;
 
 
 // atomic call statements ----------------------------------
 
 variableCallStmt : ambiguousIdentifier (WS? typeHint)?;
 
-propertyCallStmt : '.' ambiguousIdentifier;
-
 dictionaryCallStmt : '!' ambiguousIdentifier;
 
-
-memberFunctionOrArrayCallStmt : '.' functionOrArrayCallStmt;
-
 functionOrArrayCallStmt : (ambiguousIdentifier | baseType) typeHint? WS? LPAREN WS? (argsCall WS?)? RPAREN;
-
-
-memberSubCallStmt_ExplicitCall : '.' ambiguousIdentifier WS? LPAREN WS? (argsCall WS?)? RPAREN;
-
-memberSubCallStmt_ImplicitCall : '.' ambiguousIdentifier (WS argsCall)?;
-
-subCallStmt_ExplicitCall : ambiguousIdentifier WS? LPAREN WS? (argsCall WS?)? RPAREN;
-
-subCallStmt_ImplicitCall : certainIdentifier (WS argsCall)?;
 
 
 argsCall : (argCall? WS? (',' | ';') WS?)* argCall (WS? (',' | ';') WS? argCall?)*;
