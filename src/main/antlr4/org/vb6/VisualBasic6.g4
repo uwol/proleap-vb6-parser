@@ -27,8 +27,8 @@
 * Characteristics:
 *
 * 1. This grammar is line-based and takes into account whitespace, so that
-*    member calls (e.g. "A.B") are distinguished from WITH object calls 
-*    (e.g. "A .B").
+*    member calls (e.g. "A.B") are distinguished from contextual object calls 
+*    in WITH statements (e.g. "A .B").
 *
 * 2. Keywords can be used as identifiers depending on the context, enabling
 *    e.g. "A.Type", but not "Type.B".
@@ -36,7 +36,7 @@
 *
 * Known limitations:
 *
-* 1. Preprocessor statements (#if, #else, ...) may not interfere with regular
+* 1. Preprocessor statements (#if, #else, ...) must not interfere with regular
 *    statements.
 *
 * 2. Comments are skipped.
