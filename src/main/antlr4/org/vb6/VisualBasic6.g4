@@ -18,15 +18,16 @@
 /*
 * Visual Basic 6.0 Grammar for ANTLR4, Version 1.0 
 *
-* This is an approximate grammar for Visual Basic 6.0, 
-* derived from the Visual Basic 6.0 language reference 
+* This is an approximate grammar for Visual Basic 6.0, derived 
+* from the Visual Basic 6.0 language reference 
 * http://msdn.microsoft.com/en-us/library/aa338033%28v=vs.60%29.aspx 
-* and tested against several VB6 code repositories.
+* and tested against MSDN VB6 statement examples as well as several Visual 
+* Basic 6.0 code repositories.
 *
 * Characteristics:
 *
 * 1. This grammar is line-based and takes into account whitespace, so that
-*    member calls (e.g. "A.B") are distinguished from With-Object-Calls 
+*    member calls (e.g. "A.B") are distinguished from WITH object calls 
 *    (e.g. "A .B").
 *
 * 2. Keywords can be used as identifiers depending on the context, enabling
