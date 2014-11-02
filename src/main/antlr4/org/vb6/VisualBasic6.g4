@@ -1,22 +1,49 @@
 /*
-Copyright (C) 2014 Ulrich Wolffgang <u.wol@wwu.de>
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program. If not, see <http://www.gnu.org/licenses/>.
+* Copyright (C) 2014 Ulrich Wolffgang <u.wol@wwu.de>
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+* 
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
 /*
-* VB6 language reference: http://msdn.microsoft.com/en-us/library/aa338033%28v=vs.60%29.aspx
+* Visual Basic 6.0 Grammar for ANTLR4, Version 1.0 
+*
+* This is an approximate grammar for Visual Basic 6.0, 
+* derived from the Visual Basic 6.0 language reference 
+* http://msdn.microsoft.com/en-us/library/aa338033%28v=vs.60%29.aspx 
+* and tested against several VB6 code repositories.
+*
+* Characteristics:
+*
+* 1. This grammar is line-based and takes into account whitespace, so that
+*    member calls (e.g. "A.B") are distinguished from With-Object-Calls 
+*    (e.g. "A .B").
+*
+* 2. Keywords can be used as identifiers depending on the context, enabling
+*    e.g. "A.Type", but not "Type.B".
+*
+*
+* Known limitations:
+*
+* 1. Preprocessor statements (#if, #else, ...) may not interfere with regular
+*    statements.
+*
+* 2. Comments are skipped.
+*
+*
+* Change log:
+*
+* v1.0 Initial revision
 */
 
 grammar VisualBasic6;
