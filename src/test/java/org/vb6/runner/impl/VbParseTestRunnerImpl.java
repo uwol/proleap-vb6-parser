@@ -27,12 +27,20 @@ import java.io.InputStream;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.vb6.ThrowingErrorListener;
 import org.vb6.VisualBasic6Lexer;
 import org.vb6.VisualBasic6Parser;
 import org.vb6.runner.VbParseTestRunner;
 
+/**
+ * VB6 parse runner for JUnit tests.
+ */
 public class VbParseTestRunnerImpl implements VbParseTestRunner {
+
+	private final static Logger LOG = LogManager
+			.getLogger(VbParseTestRunnerImpl.class);
 
 	private boolean isClazzModule(final File inputFile) {
 		final String extension = FilenameUtils
@@ -58,9 +66,9 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 	@Override
 	public void parseFile(final File inputFile) throws IOException {
 		if (!isClazzModule(inputFile) && !isStandardModule(inputFile)) {
-			System.out.println("Ignoring " + inputFile.getName());
+			LOG.info("Ignoring {}.", inputFile.getName());
 		} else {
-			System.out.println("Parsing " + inputFile.getName());
+			LOG.info("Parsing {}.", inputFile.getName());
 
 			final InputStream inputStream = new FileInputStream(inputFile);
 			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(

@@ -25,11 +25,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class TestGenerator {
 
-	final static File inputDirectory = new File("src/test/resources/org/vb6");
-	final static File outputDirectory = new File("src/test/java/org/vb6");
+	private final static File inputDirectory = new File(
+			"src/test/resources/org/vb6");
+
+	private final static Logger LOG = LogManager.getLogger(TestGenerator.class);
+
+	private final static File outputDirectory = new File(
+			"src/test/java/org/vb6");
 
 	public static String firstToUpper(final String str) {
 		return Character.toUpperCase(str.charAt(0)) + str.substring(1);
@@ -45,7 +52,7 @@ public class TestGenerator {
 			final File outputFile = new File(outputDirectory + "/"
 					+ inputFilename + "Test.java");
 
-			System.out.println("Creating " + outputFile);
+			LOG.info("Creating {}.", outputFile);
 			outputFile.createNewFile();
 
 			final PrintWriter pWriter = new PrintWriter(new FileWriter(
