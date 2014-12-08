@@ -408,8 +408,7 @@ seekStmt : SEEK WS valueStmt WS? ',' WS? valueStmt;
 
 selectCaseStmt : 
 	SELECT WS CASE WS valueStmt NEWLINE+ 
-	sC_Case* 
-	sC_CaseElse?
+	sC_Case*
 	WS? END_SELECT
 ;
 
@@ -418,15 +417,12 @@ sC_Case :
 	(block NEWLINE+)?
 ;
 
+// ELSE first, so that it is not interpreted as a variable call
 sC_Cond : 
-	IS WS? comparisonOperator WS? valueStmt # caseCondIs
+	ELSE # caseCondElse
+	| IS WS? comparisonOperator WS? valueStmt # caseCondIs
 	| valueStmt (WS? ',' WS? valueStmt)* # caseCondValue
 	| INTEGERLITERAL WS TO WS valueStmt (WS? ',' WS? valueStmt)* # caseCondTo
-;
-
-sC_CaseElse : 
-	CASE WS ELSE WS? (':'? NEWLINE* | NEWLINE+)  
-	(block NEWLINE+)?
 ;
 
 sendkeysStmt : SENDKEYS WS valueStmt (WS? ',' WS? valueStmt)?;

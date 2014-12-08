@@ -22,4 +22,15 @@ Select Case Percent
 	Case 76 To 100
 	Case Else
 		Beep
-End Select 
+End Select
+
+Select Case Grade
+	Case "A"
+		Beep
+	Case Else
+		Beep
+	Case "B"
+		Beep
+	Case Else
+		Beep
+End Select
