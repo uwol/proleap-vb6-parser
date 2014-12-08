@@ -463,7 +463,7 @@ valueStmt :
 	literal # vsLiteral
 	| midStmt # vsMid
 	| NEW WS valueStmt # vsNew
-	| implicitCallStmt_InStmt # vsValueCalls
+	| implicitCallStmt_InStmt # vsICS
 	| typeOfStmt # vsTypeOf
 	| LPAREN WS? valueStmt (WS? ',' WS? valueStmt)* RPAREN # vsStruct
 	| implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt # vsAssign
