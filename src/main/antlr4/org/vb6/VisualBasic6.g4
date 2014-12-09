@@ -82,10 +82,10 @@ moduleAttributes : (attributeStmt NEWLINE+)+;
 moduleOptions : (moduleOption NEWLINE+)+;
 
 moduleOption : 
-	OPTION_BASE WS INTEGERLITERAL # optionBaseStmt
-	| OPTION_COMPARE WS (BINARY | TEXT) # optionCompareStmt
-	| OPTION_EXPLICIT # optionExplicitStmt
-	| OPTION_PRIVATE_MODULE # optionPrivateModuleStmt
+	OPTION_BASE WS INTEGERLITERAL 			# optionBaseStmt
+	| OPTION_COMPARE WS (BINARY | TEXT) 	# optionCompareStmt
+	| OPTION_EXPLICIT 						# optionExplicitStmt
+	| OPTION_PRIVATE_MODULE 				# optionPrivateModuleStmt
 ;
 
 moduleBody : 
@@ -276,8 +276,8 @@ goSubStmt : GOSUB WS valueStmt;
 goToStmt : GOTO WS valueStmt;
 
 ifThenElseStmt : 
-	IF WS ifConditionStmt WS THEN WS blockStmt (WS ELSE WS blockStmt)? # inlineIfThenElse
-	| ifBlockStmt ifElseIfBlockStmt* ifElseBlockStmt? END_IF # blockIfThenElse
+	IF WS ifConditionStmt WS THEN WS blockStmt (WS ELSE WS blockStmt)?	# inlineIfThenElse
+	| ifBlockStmt ifElseIfBlockStmt* ifElseBlockStmt? END_IF			# blockIfThenElse
 ;
 
 ifBlockStmt : 
@@ -419,10 +419,10 @@ sC_Case :
 
 // ELSE first, so that it is not interpreted as a variable call
 sC_Cond : 
-	ELSE # caseCondElse
-	| IS WS? comparisonOperator WS? valueStmt # caseCondIs
-	| valueStmt (WS? ',' WS? valueStmt)* # caseCondValue
-	| INTEGERLITERAL WS TO WS valueStmt (WS? ',' WS? valueStmt)* # caseCondTo
+	ELSE 															# caseCondElse
+	| IS WS? comparisonOperator WS? valueStmt 						# caseCondIs
+	| valueStmt (WS? ',' WS? valueStmt)* 							# caseCondValue
+	| INTEGERLITERAL WS TO WS valueStmt (WS? ',' WS? valueStmt)* 	# caseCondTo
 ;
 
 sendkeysStmt : SENDKEYS WS valueStmt (WS? ',' WS? valueStmt)?;
@@ -455,38 +455,42 @@ unloadStmt : UNLOAD WS valueStmt;
 
 unlockStmt : UNLOCK WS valueStmt (WS? ',' WS? valueStmt (WS TO WS valueStmt)?)?;
 
+// operator precedence is represented by rule order
 valueStmt : 
-	literal # vsLiteral
-	| midStmt # vsMid
-	| NEW WS valueStmt # vsNew
-	| implicitCallStmt_InStmt # vsICS
-	| typeOfStmt # vsTypeOf
-	| LPAREN WS? valueStmt (WS? ',' WS? valueStmt)* RPAREN # vsStruct
-	| implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt # vsAssign
-	| valueStmt WS? PLUS WS? valueStmt # vsAdd
-	| PLUS WS? valueStmt # vsPlus
-	| ADDRESSOF WS valueStmt # vsAddressOf
-	| valueStmt WS AMPERSAND WS valueStmt # vsAmp
-	| valueStmt WS AND WS valueStmt # vsAnd
-	| valueStmt WS? LT WS? valueStmt # vsLt
-	| valueStmt WS? LEQ WS? valueStmt # vsLeq
-	| valueStmt WS? GT WS? valueStmt # vsGt
-	| valueStmt WS? GEQ WS? valueStmt # vsGeq
-	| valueStmt WS? EQ WS? valueStmt # vsEq
-	| valueStmt WS? NEQ WS? valueStmt # vsNeq
-	| valueStmt WS? DIV WS? valueStmt # vsDiv
-	| valueStmt WS EQV WS valueStmt # vsEqv
-	| valueStmt WS IMP WS valueStmt # vsImp
-	| valueStmt WS IS WS valueStmt # vsIs
-	| valueStmt WS LIKE WS valueStmt # vsLike
-	| valueStmt WS? MINUS WS? valueStmt # vsMinus
-	| MINUS WS? valueStmt # vsNegation
-	| valueStmt WS? MOD WS? valueStmt # vsMod
-	| valueStmt WS? MULT WS? valueStmt # vsMult
-	| NOT WS valueStmt # vsNot
-	| valueStmt WS? OR WS? valueStmt # vsOr
-	| valueStmt WS? POW WS? valueStmt # vsPow
-	| valueStmt WS? XOR WS? valueStmt # vsXor
+	literal 												# vsLiteral
+	| implicitCallStmt_InStmt 								# vsICS
+	| LPAREN WS? valueStmt (WS? ',' WS? valueStmt)* RPAREN 	# vsStruct
+	| NEW WS valueStmt 										# vsNew
+	| typeOfStmt 											# vsTypeOf
+	| midStmt 												# vsMid
+	| ADDRESSOF WS valueStmt 								# vsAddressOf
+	| implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt 		# vsAssign
+
+	| valueStmt WS IS WS valueStmt 							# vsIs
+	| valueStmt WS LIKE WS valueStmt 						# vsLike
+	| valueStmt WS? GEQ WS? valueStmt 						# vsGeq
+	| valueStmt WS? LEQ WS? valueStmt 						# vsLeq
+	| valueStmt WS? GT WS? valueStmt 						# vsGt
+	| valueStmt WS? LT WS? valueStmt 						# vsLt
+	| valueStmt WS? NEQ WS? valueStmt 						# vsNeq
+	| valueStmt WS? EQ WS? valueStmt 						# vsEq
+
+	| valueStmt WS AMPERSAND WS valueStmt 					# vsAmp
+	| MINUS WS? valueStmt 									# vsNegation
+	| PLUS WS? valueStmt 									# vsPlus
+	| valueStmt WS? PLUS WS? valueStmt 						# vsAdd
+	| valueStmt WS? MOD WS? valueStmt 						# vsMod
+	| valueStmt WS? DIV WS? valueStmt 						# vsDiv
+	| valueStmt WS? MULT WS? valueStmt 						# vsMult
+	| valueStmt WS? MINUS WS? valueStmt 					# vsMinus
+	| valueStmt WS? POW WS? valueStmt 						# vsPow
+
+	| valueStmt WS IMP WS valueStmt 						# vsImp
+	| valueStmt WS EQV WS valueStmt 						# vsEqv
+	| valueStmt WS? XOR WS? valueStmt 						# vsXor
+	| valueStmt WS? OR WS? valueStmt 						# vsOr
+	| valueStmt WS AND WS valueStmt 						# vsAnd
+	| NOT WS valueStmt 										# vsNot
 ;
 
 variableStmt : (DIM | STATIC | visibility) WS (WITHEVENTS WS)? variableListStmt;
