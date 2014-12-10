@@ -540,9 +540,9 @@ iCS_B_SubCall : certainIdentifier (WS argsCall)?;
 
 iCS_B_FunctionCall : functionOrArrayCallStmt dictionaryCallStmt?;
 
-iCS_B_MemberSubCall : implicitCallStmt_InStmt* memberSubCallStmt;
+iCS_B_MemberSubCall : implicitCallStmt_InStmt? memberSubCallStmt;
 
-iCS_B_MemberFunctionCall : implicitCallStmt_InStmt* memberFunctionOrArrayCallStmt dictionaryCallStmt?;
+iCS_B_MemberFunctionCall : implicitCallStmt_InStmt? memberFunctionOrArrayCallStmt dictionaryCallStmt?;
 
 
 implicitCallStmt_InStmt :
