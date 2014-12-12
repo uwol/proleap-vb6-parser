@@ -44,6 +44,10 @@
 *
 * Change log:
 *
+* v1.1 
+*	- precedence of operators and of ELSE in select statements
+*	- optimized member calls
+*
 * v1.0 Initial revision
 */
 
