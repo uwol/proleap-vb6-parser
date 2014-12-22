@@ -12,4 +12,4 @@ LineLabel2:
 End Function
 
 
-SomeFunction()
+SomeFunction

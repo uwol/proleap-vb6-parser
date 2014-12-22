@@ -44,6 +44,9 @@
 *
 * Change log:
 *
+* v1.2-SNAPSHOT
+*	- refined call statements
+*
 * v1.1 
 *	- precedence of operators and of ELSE in select statements
 *	- optimized member calls
@@ -527,67 +530,51 @@ explicitCallStmt :
 	| eCS_MemberProcedureCall 
 ;
 
-eCS_ProcedureCall : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? (argsCall WS?)? RPAREN)?;
+// parantheses are required in case of args -> empty parantheses are removed
+eCS_ProcedureCall : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)?;
 
-eCS_MemberProcedureCall : CALL WS variableCallStmt? memberPropertyCallStmt* '.' ambiguousIdentifier typeHint? (WS? LPAREN WS? (argsCall WS?)? RPAREN)?;
+// parantheses are required in case of args -> empty parantheses are removed
+eCS_MemberProcedureCall : CALL WS implicitCallStmt_InStmt? '.' ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)?;
 
 
 implicitCallStmt_InBlock :
-	iCS_B_SubCall
-	| iCS_B_FunctionCall
-	| iCS_B_MemberSubCall
-	| iCS_B_MemberFunctionCall
+	iCS_B_ProcedureCall
+	| iCS_B_MemberProcedureCall
 ;
 
+// parantheses are forbidden in case of args
+// variables cannot be called in blocks
 // certainIdentifier instead of ambiguousIdentifier for preventing ambiguity with statement keywords 
-iCS_B_SubCall : certainIdentifier (WS argsCall)?;
+iCS_B_ProcedureCall : certainIdentifier (WS argsCall)?;
 
-iCS_B_FunctionCall : functionOrArrayCallStmt dictionaryCallStmt?;
-
-iCS_B_MemberSubCall : implicitCallStmt_InStmt? memberSubCallStmt;
-
-iCS_B_MemberFunctionCall : implicitCallStmt_InStmt? memberFunctionOrArrayCallStmt dictionaryCallStmt?;
+iCS_B_MemberProcedureCall : implicitCallStmt_InStmt? '.' ambiguousIdentifier typeHint? (WS argsCall)? dictionaryCallStmt?;
 
 
 implicitCallStmt_InStmt :
-	iCS_S_VariableCall
-	| iCS_S_FunctionOrArrayCall
-	| iCS_S_DictionaryCall
+	iCS_S_VariableOrProcedureCall
+	| iCS_S_ProcedureOrArrayCall
 	| iCS_S_MembersCall
+	| iCS_S_DictionaryCall
 ;
 
-iCS_S_VariableCall : variableCallStmt dictionaryCallStmt?;
+iCS_S_VariableOrProcedureCall : ambiguousIdentifier typeHint? dictionaryCallStmt?;
 
-iCS_S_FunctionOrArrayCall : functionOrArrayCallStmt dictionaryCallStmt?;
+iCS_S_ProcedureOrArrayCall : (ambiguousIdentifier | baseType) typeHint? WS? LPAREN WS? (argsCall WS?)? RPAREN dictionaryCallStmt?;
+
+iCS_S_MembersCall : (iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall)? iCS_S_MemberCall+ dictionaryCallStmt?;
+
+iCS_S_MemberCall : '.' (iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall);
 
 iCS_S_DictionaryCall : dictionaryCallStmt;
-
-iCS_S_MembersCall : (variableCallStmt | functionOrArrayCallStmt)? memberCall_Value+ dictionaryCallStmt?;
-
-
-// member call statements ----------------------------------
-
-memberPropertyCallStmt : '.' ambiguousIdentifier;
-
-memberFunctionOrArrayCallStmt : '.' functionOrArrayCallStmt;
-
-memberSubCallStmt : '.' ambiguousIdentifier (WS argsCall)?;
-
-memberCall_Value : memberPropertyCallStmt | memberFunctionOrArrayCallStmt;
 
 
 // atomic call statements ----------------------------------
 
-variableCallStmt : ambiguousIdentifier typeHint?;
-
-dictionaryCallStmt : '!' ambiguousIdentifier typeHint?;
-
-functionOrArrayCallStmt : (ambiguousIdentifier | baseType) typeHint? WS? LPAREN WS? (argsCall WS?)? RPAREN;
-
-
 argsCall : (argCall? WS? (',' | ';') WS?)* argCall (WS? (',' | ';') WS? argCall?)*;
 
 argCall : ((BYVAL | BYREF | PARAMARRAY) WS)? valueStmt;
+
+dictionaryCallStmt : '!' ambiguousIdentifier typeHint?;
 
 
 // atomic rules for statements

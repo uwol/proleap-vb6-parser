@@ -2,5 +2,5 @@ Dim Object As Variant
 
 With Object
 	.MemberPropertyCall = "SomeValue"
-	.MemberFunctionCall()
+	.MemberFunctionCall
 End With

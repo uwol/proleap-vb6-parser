@@ -56,9 +56,11 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 
 	@Override
 	public void parseDirectory(final File inputDirectory) throws IOException {
-		for (final File inputFile : inputDirectory.listFiles()) {
-			if (inputFile.isFile() && !inputFile.isHidden()) {
-				parseFile(inputFile);
+		if (inputDirectory.isDirectory() && !inputDirectory.isHidden()) {
+			for (final File inputFile : inputDirectory.listFiles()) {
+				if (inputFile.isFile() && !inputFile.isHidden()) {
+					parseFile(inputFile);
+				}
 			}
 		}
 	}
