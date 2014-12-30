@@ -80,8 +80,12 @@ moduleHeader : VERSION WS DOUBLELITERAL WS CLASS;
 
 moduleConfig :
 	BEGIN NEWLINE+ 
-	(ambiguousIdentifier WS? EQ WS? literal NEWLINE)+ 
+	moduleConfigElement+
 	END NEWLINE+
+;
+
+moduleConfigElement :
+	ambiguousIdentifier WS? EQ WS? literal NEWLINE
 ;
 
 moduleAttributes : (attributeStmt NEWLINE+)+;

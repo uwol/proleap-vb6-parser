@@ -10,7 +10,7 @@ Call FunctionExample1
 FunctionExample1
 
 Call FunctionExample2(2.0, 3, 4, 2)
-FunctionExample2(2.0, 3, 4, 2)
+FunctionExample2 2.0, 3, 4, 2
 
 Sub SubExample1()
 	' sub body
