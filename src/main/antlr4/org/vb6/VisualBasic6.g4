@@ -44,7 +44,7 @@
 *
 * Change log:
 *
-* v1.2-SNAPSHOT
+* v1.2
 *	- refined call statements
 *
 * v1.1 
