@@ -44,7 +44,7 @@
 *
 * Change log:
 *
-* v1.2
+* v1.2-SNAPSHOT
 *	- refined call statements
 *
 * v1.1 
@@ -554,10 +554,11 @@ iCS_B_ProcedureCall : certainIdentifier (WS argsCall)?;
 iCS_B_MemberProcedureCall : implicitCallStmt_InStmt? '.' ambiguousIdentifier typeHint? (WS argsCall)? dictionaryCallStmt?;
 
 
+// iCS_S_MembersCall first, so that member calls are not resolved as separate iCS_S_VariableOrProcedureCalls
 implicitCallStmt_InStmt :
-	iCS_S_VariableOrProcedureCall
+	iCS_S_MembersCall
+	| iCS_S_VariableOrProcedureCall
 	| iCS_S_ProcedureOrArrayCall
-	| iCS_S_MembersCall
 	| iCS_S_DictionaryCall
 ;
 
