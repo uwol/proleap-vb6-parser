@@ -44,7 +44,7 @@
 *
 * Change log:
 *
-* v1.3-SNAPSHOT
+* v1.3
 *	- call statement precedence
 *
 * v1.2
