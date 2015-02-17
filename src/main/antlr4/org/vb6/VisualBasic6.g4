@@ -16,7 +16,7 @@
 */
 
 /*
-* Visual Basic 6.0 Grammar for ANTLR4, Version 1.0 
+* Visual Basic 6.0 Grammar for ANTLR4
 *
 * This is an approximate grammar for Visual Basic 6.0, derived 
 * from the Visual Basic 6.0 language reference 
