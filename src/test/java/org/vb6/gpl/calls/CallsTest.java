@@ -10,9 +10,8 @@ public class CallsTest {
 
 	@Test
 	public void test() throws Exception {
-		final File inputDirectory = new File(
-				"src/test/resources/org/vb6/gpl/calls/Calls.cls");
+		final File inputFile = new File("src/test/resources/org/vb6/gpl/calls/Calls.cls");
 		final VbParseTestRunner runner = new VbParseTestRunnerImpl();
-		runner.parseFile(inputDirectory);
+		runner.parseFile(inputFile);
 	}
 }

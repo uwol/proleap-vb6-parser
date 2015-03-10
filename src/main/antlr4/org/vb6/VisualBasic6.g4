@@ -870,7 +870,7 @@ FILENUMBER : '#' LETTERORDIGIT+;
 
 
 // identifier
-IDENTIFIER : LETTER (LETTERORDIGIT)*;
+IDENTIFIER : LETTER LETTERORDIGIT*;
 
 
 // whitespace, line breaks, comments, ...

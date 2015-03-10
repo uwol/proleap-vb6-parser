@@ -1,4 +1,4 @@
-package org.vb6.gpl.calls;
+package org.vb6.gpl.statements;
 
 import java.io.File;
 
@@ -6,11 +6,11 @@ import org.junit.Test;
 import org.vb6.runner.VbParseTestRunner;
 import org.vb6.runner.impl.VbParseTestRunnerImpl;
 
-public class Module1Test {
+public class SelectCaseRecTest {
 
 	@Test
 	public void test() throws Exception {
-		final File inputFile = new File("src/test/resources/org/vb6/gpl/calls/Module1.cls");
+		final File inputFile = new File("src/test/resources/org/vb6/gpl/statements/SelectCaseRec.cls");
 		final VbParseTestRunner runner = new VbParseTestRunnerImpl();
 		runner.parseFile(inputFile);
 	}
