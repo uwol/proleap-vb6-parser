@@ -127,15 +127,15 @@ public class TestGenerator {
 		}
 	}
 
-	private static boolean isClazzModule(final File inputFile) {
+	protected static boolean isClazzModule(final File inputFile) {
 		final String extension = FilenameUtils
-				.getExtension(inputFile.getName());
+				.getExtension(inputFile.getName()).toLowerCase();
 		return "cls".equals(extension);
 	}
 
-	private static boolean isStandardModule(final File inputFile) {
+	protected static boolean isStandardModule(final File inputFile) {
 		final String extension = FilenameUtils
-				.getExtension(inputFile.getName());
+				.getExtension(inputFile.getName()).toLowerCase();
 		return "bas".equals(extension);
 	}
 
