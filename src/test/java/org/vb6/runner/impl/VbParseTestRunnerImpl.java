@@ -68,9 +68,9 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 	@Override
 	public void parseFile(final File inputFile) throws IOException {
 		if (!isClazzModule(inputFile) && !isStandardModule(inputFile)) {
-			LOG.info("Ignoring {}.", inputFile.getName());
+			LOG.info("Ignoring file {}.", inputFile.getName());
 		} else {
-			LOG.info("Parsing {}.", inputFile.getName());
+			LOG.info("Parsing file {}.", inputFile.getName());
 
 			final InputStream inputStream = new FileInputStream(inputFile);
 			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(
