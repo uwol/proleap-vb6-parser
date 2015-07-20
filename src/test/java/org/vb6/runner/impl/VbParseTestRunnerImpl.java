@@ -1,20 +1,20 @@
 /*
 Copyright (C) 2014 u.wol@wwu.de
 
-This file is part of vb6transform.
+This file is part of vb6grammar.
 
-vb6transform is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+vb6grammar is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
 
-vb6transform is distributed in the hope that it will be useful,
+vb6grammar is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with vb6transform. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU Lesser General Public License
+along with vb6grammar. If not, see <http://www.gnu.org/licenses/>.
  */
 
 package org.vb6.runner.impl;
@@ -39,18 +39,15 @@ import org.vb6.runner.VbParseTestRunner;
  */
 public class VbParseTestRunnerImpl implements VbParseTestRunner {
 
-	private final static Logger LOG = LogManager
-			.getLogger(VbParseTestRunnerImpl.class);
+	private final static Logger LOG = LogManager.getLogger(VbParseTestRunnerImpl.class);
 
 	private boolean isClazzModule(final File inputFile) {
-		final String extension = FilenameUtils
-				.getExtension(inputFile.getName());
+		final String extension = FilenameUtils.getExtension(inputFile.getName());
 		return "cls".equals(extension);
 	}
 
 	private boolean isStandardModule(final File inputFile) {
-		final String extension = FilenameUtils
-				.getExtension(inputFile.getName());
+		final String extension = FilenameUtils.getExtension(inputFile.getName());
 		return "bas".equals(extension);
 	}
 
@@ -73,8 +70,7 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 			LOG.info("Parsing file {}.", inputFile.getName());
 
 			final InputStream inputStream = new FileInputStream(inputFile);
-			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(
-					new ANTLRInputStream(inputStream));
+			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(new ANTLRInputStream(inputStream));
 
 			lexer.removeErrorListeners();
 			lexer.addErrorListener(ThrowingErrorListener.INSTANCE);
