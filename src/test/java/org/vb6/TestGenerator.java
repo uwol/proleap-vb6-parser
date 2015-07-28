@@ -99,6 +99,7 @@ public class TestGenerator {
 						 * should be placed
 						 */
 						final File subOutputDirectory = new File(outputDirectoryPath + "/" + subInputDirectoryName);
+						subOutputDirectory.mkdirs();
 
 						// determine the package name of test classes
 						final String subPackageName = packageName + "." + subInputDirectoryName;
