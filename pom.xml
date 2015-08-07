@@ -6,7 +6,7 @@
 	<description>vb6grammar</description>
 	<groupId>vb6grammar</groupId>
 	<artifactId>vb6grammar</artifactId>
-	<version>1.0.0</version>
+	<version>1.3.0</version>
 	<packaging>jar</packaging>
 
 	<build>
