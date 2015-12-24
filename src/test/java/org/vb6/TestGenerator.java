@@ -48,32 +48,34 @@ public class TestGenerator {
 			final File outputFile = new File(outputDirectory + "/" + inputFilename + "Test.java");
 
 			LOG.info("Creating {}.", outputFile);
-			outputFile.createNewFile();
+			final boolean createdNewFile = outputFile.createNewFile();
 
-			final PrintWriter pWriter = new PrintWriter(new FileWriter(outputFile));
+			if (createdNewFile) {
+				final PrintWriter pWriter = new PrintWriter(new FileWriter(outputFile));
 
-			final String vb6InputFileName = vb6InputFile.getPath().replace("\\", "/");
+				final String vb6InputFileName = vb6InputFile.getPath().replace("\\", "/");
 
-			pWriter.write("package " + packageName + ";\n");
-			pWriter.write("\n");
-			pWriter.write("import java.io.File;\n");
-			pWriter.write("\n");
-			pWriter.write("import org.junit.Test;\n");
-			pWriter.write("import org.vb6.runner.VbParseTestRunner;\n");
-			pWriter.write("import org.vb6.runner.impl.VbParseTestRunnerImpl;\n");
-			pWriter.write("\n");
-			pWriter.write("public class " + inputFilename + "Test {\n");
-			pWriter.write("\n");
-			pWriter.write("	@Test\n");
-			pWriter.write("	public void test() throws Exception {\n");
-			pWriter.write("		final File inputFile = new File(\"" + vb6InputFileName + "\");\n");
-			pWriter.write("		final VbParseTestRunner runner = new VbParseTestRunnerImpl();\n");
-			pWriter.write("		runner.parseFile(inputFile);\n");
-			pWriter.write("	}\n");
-			pWriter.write("}");
+				pWriter.write("package " + packageName + ";\n");
+				pWriter.write("\n");
+				pWriter.write("import java.io.File;\n");
+				pWriter.write("\n");
+				pWriter.write("import org.junit.Test;\n");
+				pWriter.write("import org.vb6.runner.VbParseTestRunner;\n");
+				pWriter.write("import org.vb6.runner.impl.VbParseTestRunnerImpl;\n");
+				pWriter.write("\n");
+				pWriter.write("public class " + inputFilename + "Test {\n");
+				pWriter.write("\n");
+				pWriter.write("	@Test\n");
+				pWriter.write("	public void test() throws Exception {\n");
+				pWriter.write("		final File inputFile = new File(\"" + vb6InputFileName + "\");\n");
+				pWriter.write("		final VbParseTestRunner runner = new VbParseTestRunnerImpl();\n");
+				pWriter.write("		runner.parseFile(inputFile);\n");
+				pWriter.write("	}\n");
+				pWriter.write("}");
 
-			pWriter.flush();
-			pWriter.close();
+				pWriter.flush();
+				pWriter.close();
+			}
 		}
 	}
 
