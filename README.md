@@ -9,6 +9,7 @@ http://msdn.microsoft.com/en-us/library/aa338033%28v=vs.60%29.aspx
 and tested against MSDN VB6 statement examples as well as several Visual 
 Basic 6.0 code repositories.
 
+
 Characteristics:
 
 1. This grammar is line-based and takes into account whitespace, so that
@@ -25,3 +26,8 @@ Known limitations:
    statements.
 
 2. Comments are skipped.
+
+
+Release process:
+
+* Milestones are published in the [ANTLR grammars repo](https://github.com/antlr/grammars-v4).
