@@ -20,24 +20,6 @@ Characteristics:
    e.g. "A.Type", but not "Type.B".
 
 
-Known limitations:
-
-1. Preprocessor statements (#if, #else, ...) must not interfere with regular
-   statements.
-
-2. Comments are skipped.
-
-
-Release process:
-
-* Milestones are published in the [ANTLR grammars repo](https://github.com/antlr/grammars-v4).
-
-
-VM Args:
-
-* For parsing large VB6 source code files, following VM args have to be set: -Xmx2048m -XX:MaxPermSize=256m
-
-
 Execution:
 
 ```java
@@ -57,3 +39,21 @@ final org.antlr.v4.runtime.CommonTokenStream tokens = new org.antlr.v4.runtime.C
 final org.vb6.VisualBasic6Parser parser = new org.vb6.VisualBasic6Parser(tokens);
 final org.vb6.VisualBasic6Parser.StartRuleContext ctx = parser.startRule();
 ```
+
+
+VM Args:
+
+* For parsing large VB6 source code files, following VM args have to be set: -Xmx2048m -XX:MaxPermSize=256m
+
+
+Known limitations:
+
+1. Preprocessor statements (#if, #else, ...) must not interfere with regular
+   statements.
+
+2. Comments are skipped.
+
+
+Release process:
+
+* Milestones are published in the [ANTLR grammars repo](https://github.com/antlr/grammars-v4).
