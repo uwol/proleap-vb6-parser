@@ -43,9 +43,17 @@ Execution:
 ```java
 final java.io.File inputFile = new java.io.File("src/test/resources/org/vb6/gpl/statements/Print.cls");
 final java.io.InputStream inputStream = new java.io.FileInputStream(inputFile);
+
+/*
+* lexer
+*/
 final org.antlr.v4.runtime.ANTLRInputStream antlrInputStream = new org.antlr.v4.runtime.ANTLRInputStream(inputStream);
 final org.vb6.VisualBasic6Lexer lexer = new org.vb6.VisualBasic6Lexer(antlrInputStream);
 final org.antlr.v4.runtime.CommonTokenStream tokens = new org.antlr.v4.runtime.CommonTokenStream(lexer);
+
+/*
+* parser
+*/
 final org.vb6.VisualBasic6Parser parser = new org.vb6.VisualBasic6Parser(tokens);
 final org.vb6.VisualBasic6Parser.StartRuleContext ctx = parser.startRule();
 ```
