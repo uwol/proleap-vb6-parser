@@ -40,6 +40,23 @@ final org.vb6.VisualBasic6Parser parser = new org.vb6.VisualBasic6Parser(tokens)
 final org.vb6.VisualBasic6Parser.StartRuleContext ctx = parser.startRule();
 ```
 
+```java
+/*
+ * traverse the abstract syntax tree (AST) with an ANTLR visitor
+ */
+final org.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new org.vb6.VisualBasic6BaseVisitor<Boolean>() {
+	/*
+	 * exemplary callback function for print statement
+	 */
+	@Override
+	public Boolean visitPrintStmt(final VisualBasic6Parser.PrintStmtContext ctx) {
+		return visitChildren(ctx);
+	}
+};
+
+visitor.visit(ctx);
+```
+
 
 VM Args:
 
