@@ -3,7 +3,7 @@
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
- * of the BSD license.  See the LICENSE file for details.
+ * of the BSD 3-clause license. See the LICENSE file for details.
  */
 
 package org.vb6;
