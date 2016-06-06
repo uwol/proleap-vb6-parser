@@ -74,3 +74,8 @@ Known limitations:
 Release process:
 
 * Milestones are published in the [ANTLR grammars repo](https://github.com/antlr/grammars-v4).
+
+
+Travis Status:
+
+* <a href="https://travis-ci.org/uwol/vb6grammar"><img src="https://api.travis-ci.org/uwol/vb6grammar.png"></a>
