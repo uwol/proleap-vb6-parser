@@ -15,7 +15,7 @@ public class ReDimTest {
 
 	@Test
 	public void test() throws Exception {
-		final File inputFile = new File("src/test/resources/org/vb6/gpl/statements/ReDim.cs");
+		final File inputFile = new File("src/test/resources/org/vb6/gpl/statements/ReDim.cls");
 
 		final InputStream inputStream = new FileInputStream(inputFile);
 		final VisualBasic6Lexer lexer = new VisualBasic6Lexer(new ANTLRInputStream(inputStream));
