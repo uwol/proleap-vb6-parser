@@ -63,15 +63,18 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 
 	protected void doCompareParseTree(final File treeFile, final StartRuleContext startRule,
 			final VisualBasic6Parser parser) throws IOException {
-		LOG.info("Comparing parse tree with {}.", treeFile.getName());
 
 		final String treeFileData = FileUtils.readFileToString(treeFile);
 
 		if (!Strings.isBlank(treeFileData)) {
+			LOG.info("Comparing parse tree with file {}.", treeFile.getName());
+
 			final String inputFileTree = Trees.toStringTree(startRule, parser);
 			final String cleanedInputFileTree = cleanFileTree(inputFileTree);
 
 			assertEquals(treeFileData, cleanedInputFileTree);
+		} else {
+			LOG.info("Ignoring empty parse tree file {}.", treeFile.getName());
 		}
 	}
 
