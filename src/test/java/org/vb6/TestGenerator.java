@@ -125,20 +125,20 @@ public class TestGenerator {
 	}
 
 	public static void generateTreeFile(final File vb6InputFile, final File outputDirectory) throws IOException {
-		final InputStream inputStream = new FileInputStream(vb6InputFile);
-		final VisualBasic6Lexer lexer = new VisualBasic6Lexer(new ANTLRInputStream(inputStream));
-		final CommonTokenStream tokens = new CommonTokenStream(lexer);
-		final VisualBasic6Parser parser = new VisualBasic6Parser(tokens);
-		final StartRuleContext startRule = parser.startRule();
-		final String inputFileTree = Trees.toStringTree(startRule, parser);
-		final String cleanedInputFileTree = cleanFileTree(inputFileTree);
-
 		final File outputFile = new File(outputDirectory + "/" + vb6InputFile.getName() + TREE_EXTENSION);
 
 		LOG.info("Creating tree file {}.", outputFile);
 		final boolean createdNewFile = outputFile.createNewFile();
 
 		if (createdNewFile) {
+			final InputStream inputStream = new FileInputStream(vb6InputFile);
+			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(new ANTLRInputStream(inputStream));
+			final CommonTokenStream tokens = new CommonTokenStream(lexer);
+			final VisualBasic6Parser parser = new VisualBasic6Parser(tokens);
+			final StartRuleContext startRule = parser.startRule();
+			final String inputFileTree = Trees.toStringTree(startRule, parser);
+			final String cleanedInputFileTree = cleanFileTree(inputFileTree);
+
 			final PrintWriter pWriter = new PrintWriter(new FileWriter(outputFile));
 
 			pWriter.write(cleanedInputFileTree);

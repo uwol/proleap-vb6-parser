@@ -33,6 +33,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.util.Strings;
 import org.vb6.ThrowingErrorListener;
 import org.vb6.VisualBasic6Lexer;
 import org.vb6.VisualBasic6Parser;
@@ -64,11 +65,14 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 			final VisualBasic6Parser parser) throws IOException {
 		LOG.info("Comparing parse tree with {}.", treeFile.getName());
 
-		final String inputFileTree = Trees.toStringTree(startRule, parser);
-		final String cleanedInputFileTree = cleanFileTree(inputFileTree);
 		final String treeFileData = FileUtils.readFileToString(treeFile);
 
-		assertEquals(treeFileData, cleanedInputFileTree);
+		if (!Strings.isBlank(treeFileData)) {
+			final String inputFileTree = Trees.toStringTree(startRule, parser);
+			final String cleanedInputFileTree = cleanFileTree(inputFileTree);
+
+			assertEquals(treeFileData, cleanedInputFileTree);
+		}
 	}
 
 	protected void doParse(final File inputFile) throws IOException {
