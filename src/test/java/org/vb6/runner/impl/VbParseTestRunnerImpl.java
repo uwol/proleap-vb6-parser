@@ -60,14 +60,9 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 		return result;
 	}
 
-	protected void doCompareParseTree(final File inputFile, final File treeFile) throws IOException {
-		LOG.info("Comparing parse tree of file {} with {}.", inputFile.getName(), treeFile.getName());
-
-		final InputStream inputStream = new FileInputStream(inputFile);
-		final VisualBasic6Lexer lexer = new VisualBasic6Lexer(new ANTLRInputStream(inputStream));
-		final CommonTokenStream tokens = new CommonTokenStream(lexer);
-		final VisualBasic6Parser parser = new VisualBasic6Parser(tokens);
-		final StartRuleContext startRule = parser.startRule();
+	protected void doCompareParseTree(final File treeFile, final StartRuleContext startRule,
+			final VisualBasic6Parser parser) throws IOException {
+		LOG.info("Comparing parse tree with {}.", treeFile.getName());
 
 		final String inputFileTree = Trees.toStringTree(startRule, parser);
 		final String cleanedInputFileTree = cleanFileTree(inputFileTree);
@@ -91,7 +86,12 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 		parser.removeErrorListeners();
 		parser.addErrorListener(ThrowingErrorListener.INSTANCE);
 
-		parser.startRule();
+		final StartRuleContext startRule = parser.startRule();
+		final File treeFile = new File(inputFile.getAbsolutePath() + TREE_SUFFIX);
+
+		if (treeFile.exists()) {
+			doCompareParseTree(treeFile, startRule, parser);
+		}
 	}
 
 	private boolean isClazzModule(final File inputFile) {
@@ -121,12 +121,6 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 			LOG.info("Ignoring file {}.", inputFile.getName());
 		} else {
 			doParse(inputFile);
-
-			final File treeFile = new File(inputFile.getAbsolutePath() + TREE_SUFFIX);
-
-			if (treeFile.exists()) {
-				doCompareParseTree(inputFile, treeFile);
-			}
 		}
 	}
 }
