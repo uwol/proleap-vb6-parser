@@ -1,0 +1,1 @@
+MkDir "MYDIR"   ' Make new directory or folder.

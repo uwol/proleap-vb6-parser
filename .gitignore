@@ -18,7 +18,5 @@ bin/
 build/
 lib/
 src/test/java/org/vb6/examples/
-src/test/java/org/vb6/msdn/
 src/test/resources/org/vb6/examples/
-src/test/resources/org/vb6/msdn/
 target/
