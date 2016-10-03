@@ -49,18 +49,6 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 
 	public final static String TREE_SUFFIX = ".tree";
 
-	/**
-	 * To be removed, as soon as the VB6 grammar does not require NEWLINEs and
-	 * WS anymore
-	 */
-	@Deprecated
-	private static String cleanFileTree(final String inputFileTree) {
-		final String inputFileTreeNoNewline = inputFileTree.replace("\\r", "").replace("\\n", "");
-		final String inputFileTreeNoWhitespace = inputFileTreeNoNewline.replaceAll("[ ]+", " ").replace(" )", ")");
-		final String result = inputFileTreeNoWhitespace;
-		return result;
-	}
-
 	protected void doCompareParseTree(final File treeFile, final StartRuleContext startRule,
 			final VisualBasic6Parser parser) throws IOException {
 
@@ -70,7 +58,7 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 			LOG.info("Comparing parse tree with file {}.", treeFile.getName());
 
 			final String inputFileTree = Trees.toStringTree(startRule, parser);
-			final String cleanedInputFileTree = cleanFileTree(inputFileTree);
+			final String cleanedInputFileTree = org.vb6.util.StringUtils.cleanFileTree(inputFileTree);
 
 			assertEquals(treeFileData, cleanedInputFileTree);
 		} else {

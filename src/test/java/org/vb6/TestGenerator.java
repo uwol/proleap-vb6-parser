@@ -37,18 +37,6 @@ public class TestGenerator {
 
 	private static final String TREE_EXTENSION = ".tree";
 
-	/**
-	 * To be removed, as soon as the VB6 grammar does not require NEWLINEs and
-	 * WS anymore
-	 */
-	@Deprecated
-	private static String cleanFileTree(final String inputFileTree) {
-		final String inputFileTreeNoNewline = inputFileTree.replace("\\r", "").replace("\\n", "");
-		final String inputFileTreeNoWhitespace = inputFileTreeNoNewline.replaceAll("[ ]+", " ").replace(" )", ")");
-		final String result = inputFileTreeNoWhitespace;
-		return result;
-	}
-
 	public static String firstToUpper(final String str) {
 		return Character.toUpperCase(str.charAt(0)) + str.substring(1);
 	}
@@ -137,7 +125,7 @@ public class TestGenerator {
 			final VisualBasic6Parser parser = new VisualBasic6Parser(tokens);
 			final StartRuleContext startRule = parser.startRule();
 			final String inputFileTree = Trees.toStringTree(startRule, parser);
-			final String cleanedInputFileTree = cleanFileTree(inputFileTree);
+			final String cleanedInputFileTree = org.vb6.util.StringUtils.cleanFileTree(inputFileTree);
 
 			final PrintWriter pWriter = new PrintWriter(new FileWriter(outputFile));
 
