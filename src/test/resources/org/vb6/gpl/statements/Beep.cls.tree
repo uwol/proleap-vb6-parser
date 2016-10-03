@@ -1,0 +1,1 @@
+(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (beepStmt Beep)) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier J))))) (blockStmt (forNextStmt For (ambiguousIdentifier J) = (valueStmt (literal 1)) To (valueStmt (literal 2)) (block (blockStmt (beepStmt Beep))) Next (ambiguousIdentifier J)))))))) <EOF>)

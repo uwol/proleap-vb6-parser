@@ -1,0 +1,1 @@
+(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (killStmt Kill (valueStmt (literal "TestFile")))) (blockStmt (killStmt Kill (valueStmt (literal "*.TXT"))))))))) <EOF>)

@@ -10,7 +10,7 @@ public class PrintTest {
 
 	@Test
 	public void test() throws Exception {
-		final File inputFile = new File("src/test/resources/org/vb6/msdn/statements/Print.Cls");
+		final File inputFile = new File("src/test/resources/org/vb6/msdn/statements/Print.cls");
 		final VbParseTestRunner runner = new VbParseTestRunnerImpl();
 		runner.parseFile(inputFile);
 	}

@@ -1,0 +1,1 @@
+(startRule (module (moduleOptions (moduleOption Option Compare Binary) (moduleOption Option Compare Text))) <EOF>)

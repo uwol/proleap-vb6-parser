@@ -1,0 +1,1 @@
+(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (chdirStmt ChDir (valueStmt (literal "MYDIR")))) (blockStmt (chdirStmt ChDir (valueStmt (literal "D:\WINDOWS\SYSTEM"))))))))) <EOF>)
