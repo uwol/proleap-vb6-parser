@@ -1,0 +1,61 @@
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier MyAppID)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier ReturnValue))))) \n 
+						(blockStmt 
+							(appactivateStmt AppActivate   
+								(valueStmt 
+									(literal "Microsoft Word")))) \n    \n \n \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyAppID)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_ProcedureOrArrayCall 
+											(ambiguousIdentifier Shell) ( 
+											(argsCall 
+												(argCall 
+													(valueStmt 
+														(literal "C:\WORD\WINWORD.EXE"))) ,   
+												(argCall 
+													(valueStmt 
+														(literal 1)))) )))))) \n 
+						(blockStmt 
+							(appactivateStmt AppActivate   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier MyAppID)))))) \n    \n \n \n \n \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier ReturnValue)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_ProcedureOrArrayCall 
+											(ambiguousIdentifier Shell) ( 
+											(argsCall 
+												(argCall 
+													(valueStmt 
+														(literal "c:\EXCEL\EXCEL.EXE"))) , 
+												(argCall 
+													(valueStmt 
+														(literal 1)))) )))))) \n 
+						(blockStmt 
+							(appactivateStmt AppActivate   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier ReturnValue)))))))))) \n   ) <EOF>)
