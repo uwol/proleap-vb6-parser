@@ -1,1 +1,4 @@
-(startRule (module (moduleOptions (moduleOption Option Private Module))) <EOF>)
+(startRule 
+	(module 
+		(moduleOptions 
+			(moduleOption Option Private Module) \n)) <EOF>)

@@ -1,1 +1,72 @@
-(startRule (module (moduleBody (moduleBodyElement (subStmt Sub (ambiguousIdentifier ExitStatementDemo) (argList ()) (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier I)) , (variableSubStmt (ambiguousIdentifier MyNum))))) (blockStmt (doLoopStmt Do (block (blockStmt (forNextStmt For (ambiguousIdentifier I) = (valueStmt (literal 1)) To (valueStmt (literal 1000)) (block (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyNum))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Int) ( (argsCall (argCall (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Rnd)))) * (valueStmt (literal 1000))))))))))) (blockStmt (selectCaseStmt Select Case (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyNum)))) (sC_Case Case (sC_Cond (valueStmt (literal 7))) : (block (blockStmt (exitStmt Exit For)))) (sC_Case Case (sC_Cond (valueStmt (literal 29))) : (block (blockStmt (exitStmt Exit Do)))) (sC_Case Case (sC_Cond (valueStmt (literal 54))) : (block (blockStmt (exitStmt Exit Sub)))) End Select))) Next (ambiguousIdentifier I)))) Loop))) End Sub)))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(subStmt Sub   
+					(ambiguousIdentifier ExitStatementDemo) 
+					(argList ( )) \n 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier I)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier MyNum))))) \n    
+						(blockStmt 
+							(doLoopStmt Do \n       
+								(block 
+									(blockStmt 
+										(forNextStmt For   
+											(ambiguousIdentifier I)   =   
+											(valueStmt 
+												(literal 1))   To   
+											(valueStmt 
+												(literal 1000)) \n          
+											(block 
+												(blockStmt 
+													(letStmt 
+														(implicitCallStmt_InStmt 
+															(iCS_S_VariableOrProcedureCall 
+																(ambiguousIdentifier MyNum)))   =   
+														(valueStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_ProcedureOrArrayCall 
+																	(ambiguousIdentifier Int) ( 
+																	(argsCall 
+																		(argCall 
+																			(valueStmt 
+																				(valueStmt 
+																					(implicitCallStmt_InStmt 
+																						(iCS_S_VariableOrProcedureCall 
+																							(ambiguousIdentifier Rnd))))   *   
+																				(valueStmt 
+																					(literal 1000))))) )))))) \n          
+												(blockStmt 
+													(selectCaseStmt Select   Case   
+														(valueStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_VariableOrProcedureCall 
+																	(ambiguousIdentifier MyNum)))) \n             
+														(sC_Case Case   
+															(sC_Cond 
+																(valueStmt 
+																	(literal 7))) :  
+															(block 
+																(blockStmt 
+																	(exitStmt Exit For))) \n            ) 
+														(sC_Case Case   
+															(sC_Cond 
+																(valueStmt 
+																	(literal 29))) :  
+															(block 
+																(blockStmt 
+																	(exitStmt Exit Do))) \n            ) 
+														(sC_Case Case   
+															(sC_Cond 
+																(valueStmt 
+																	(literal 54))) :  
+															(block 
+																(blockStmt 
+																	(exitStmt Exit Sub))) \n         ) End Select))) \n       Next   
+											(ambiguousIdentifier I)))) \n    Loop))) \n End Sub)))) <EOF>)

@@ -1,1 +1,54 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier Counter))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Counter))) = (valueStmt (literal 0)))) (blockStmt (whileWendStmt While (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Counter)))) < (valueStmt (literal 20))) (block (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Counter))) = (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Counter)))) + (valueStmt (literal 1)))))) Wend)) (blockStmt (implicitCallStmt_InBlock (iCS_B_MemberProcedureCall (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Debug))) . (ambiguousIdentifier (ambiguousKeyword Print)) (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Counter)))))))))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier Counter))))) \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier Counter)))   =   
+								(valueStmt 
+									(literal 0)))) \n 
+						(blockStmt 
+							(whileWendStmt While   
+								(valueStmt 
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier Counter))))   <   
+									(valueStmt 
+										(literal 20))) \n    
+								(block 
+									(blockStmt 
+										(letStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier Counter)))   =   
+											(valueStmt 
+												(valueStmt 
+													(implicitCallStmt_InStmt 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier Counter))))   +   
+												(valueStmt 
+													(literal 1)))))) \n Wend)) \n 
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_MemberProcedureCall 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Debug))) . 
+									(ambiguousIdentifier 
+										(ambiguousKeyword Print))   
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier Counter)))))))))))))) <EOF>)

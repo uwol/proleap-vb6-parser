@@ -1,1 +1,61 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier OldName)) , (variableSubStmt (ambiguousIdentifier NewName))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier OldName))) = (valueStmt (literal "OLDFILE")))) : (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier NewName))) = (valueStmt (literal "NEWFILE")))) (blockStmt (nameStmt Name (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier OldName)))) As (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier NewName)))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier OldName))) = (valueStmt (literal "C:\MYDIR\OLDFILE")))) : (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier NewName))) = (valueStmt (literal "C:\YOURDIR\NEWFILE")))) (blockStmt (nameStmt Name (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier OldName)))) As (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier NewName))))))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier OldName)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier NewName))))) \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier OldName)))   =   
+								(valueStmt 
+									(literal "OLDFILE")))) :  
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier NewName)))   =   
+								(valueStmt 
+									(literal "NEWFILE")))) \n 
+						(blockStmt 
+							(nameStmt Name   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier OldName))))   As   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier NewName)))))) \n \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier OldName)))   =   
+								(valueStmt 
+									(literal "C:\MYDIR\OLDFILE")))) :  
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier NewName)))   =   
+								(valueStmt 
+									(literal "C:\YOURDIR\NEWFILE")))) \n 
+						(blockStmt 
+							(nameStmt Name   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier OldName))))   As   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier NewName))))))))))) <EOF>)

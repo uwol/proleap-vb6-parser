@@ -1,1 +1,82 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (explicitCallStmt (eCS_ProcedureCall Call (ambiguousIdentifier PrintToDebugWindow) ( (argsCall (argCall (valueStmt (literal "Hello World"))))))))))) (moduleBodyElement (subStmt Sub (ambiguousIdentifier PrintToDebugWindow) (argList ( (arg (ambiguousIdentifier AnyString)))) (block (blockStmt (implicitCallStmt_InBlock (iCS_B_MemberProcedureCall (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Debug))) . (ambiguousIdentifier (ambiguousKeyword Print)) (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier AnyString)))))))))) End Sub)) (moduleBodyElement (moduleBlock (block (blockStmt (explicitCallStmt (eCS_ProcedureCall Call (ambiguousIdentifier Shell) ( (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier AppName))))) , (argCall (valueStmt (literal 1))))))))))) (moduleBodyElement (declareStmt (visibility Private) Declare Sub (ambiguousIdentifier MessageBeep) Lib "User" (argList ( (arg ByVal (ambiguousIdentifier N) (asTypeClause As (type (baseType Integer)))))))) (moduleBodyElement (subStmt Sub (ambiguousIdentifier CallMyDll) (argList ()) (block (blockStmt (explicitCallStmt (eCS_ProcedureCall Call (ambiguousIdentifier MessageBeep) ( (argsCall (argCall (valueStmt (literal 0)))))))) (blockStmt (implicitCallStmt_InBlock (iCS_B_ProcedureCall (certainIdentifier MessageBeep) (argsCall (argCall (valueStmt (literal 0)))))))) End Sub)))) <EOF>)
+(startRule 
+	(module \n 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(explicitCallStmt 
+								(eCS_ProcedureCall Call   
+									(ambiguousIdentifier PrintToDebugWindow) ( 
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(literal "Hello World")))) )))))))    \n \n \n 
+			(moduleBodyElement 
+				(subStmt Sub   
+					(ambiguousIdentifier PrintToDebugWindow) 
+					(argList ( 
+						(arg 
+							(ambiguousIdentifier AnyString)) )) \n    
+					(block 
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_MemberProcedureCall 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Debug))) . 
+									(ambiguousIdentifier 
+										(ambiguousKeyword Print))   
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier AnyString)))))))))) \n End Sub)) \n \n \n \n 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(explicitCallStmt 
+								(eCS_ProcedureCall Call   
+									(ambiguousIdentifier Shell) ( 
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier AppName))))) ,   
+										(argCall 
+											(valueStmt 
+												(literal 1)))) ))))))) \n       \n \n \n \n 
+			(moduleBodyElement 
+				(declareStmt 
+					(visibility Private)   Declare   Sub   
+					(ambiguousIdentifier MessageBeep)   Lib   "User"   
+					(argList ( 
+						(arg ByVal   
+							(ambiguousIdentifier N)   
+							(asTypeClause As   
+								(type 
+									(baseType Integer)))) )))) \n 
+			(moduleBodyElement 
+				(subStmt Sub   
+					(ambiguousIdentifier CallMyDll) 
+					(argList ( )) \n    
+					(block 
+						(blockStmt 
+							(explicitCallStmt 
+								(eCS_ProcedureCall Call   
+									(ambiguousIdentifier MessageBeep) ( 
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(literal 0)))) )))) \n    
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_ProcedureCall 
+									(certainIdentifier MessageBeep)   
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(literal 0)))))))) \n End Sub)))) <EOF>)

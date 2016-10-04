@@ -1,1 +1,55 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier TextLine))))) (blockStmt (openStmt Open (valueStmt (literal "TESTFILE")) For Input As (valueStmt (literal #1)))) (blockStmt (doLoopStmt Do While (valueStmt Not (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier EOF) ( (argsCall (argCall (valueStmt (literal 1))))))))) (block (blockStmt (lineInputStmt Line Input (valueStmt (literal #1)) , (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier TextLine)))))) (blockStmt (implicitCallStmt_InBlock (iCS_B_MemberProcedureCall (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Debug))) . (ambiguousIdentifier (ambiguousKeyword Print)) (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier TextLine)))))))))) Loop)) (blockStmt (closeStmt Close (valueStmt (literal #1))))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier TextLine))))) \n 
+						(blockStmt 
+							(openStmt Open   
+								(valueStmt 
+									(literal "TESTFILE"))   For   Input   As   
+								(valueStmt 
+									(literal #1)))) \n 
+						(blockStmt 
+							(doLoopStmt Do   While   
+								(valueStmt Not   
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_ProcedureOrArrayCall 
+												(ambiguousIdentifier EOF) ( 
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(literal 1)))) ))))) \n    
+								(block 
+									(blockStmt 
+										(lineInputStmt Line Input   
+											(valueStmt 
+												(literal #1)) ,   
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier TextLine)))))) \n    
+									(blockStmt 
+										(implicitCallStmt_InBlock 
+											(iCS_B_MemberProcedureCall 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier Debug))) . 
+												(ambiguousIdentifier 
+													(ambiguousKeyword Print))   
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_VariableOrProcedureCall 
+																	(ambiguousIdentifier TextLine)))))))))) \n Loop)) \n 
+						(blockStmt 
+							(closeStmt Close   
+								(valueStmt 
+									(literal #1))))))))) <EOF>)

@@ -1,1 +1,48 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier MyStr)) , (variableSubStmt (ambiguousIdentifier MyInt))))) (blockStmt (letStmt Let (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyStr))) = (valueStmt (literal "Hello World")))) (blockStmt (letStmt Let (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyInt))) = (valueStmt (literal 5)))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier MyStr)) , (variableSubStmt (ambiguousIdentifier MyInt))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyStr))) = (valueStmt (literal "Hello World")))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyInt))) = (valueStmt (literal 5))))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier MyStr)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier MyInt))))) \n \n 
+						(blockStmt 
+							(letStmt Let   
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyStr)))   =   
+								(valueStmt 
+									(literal "Hello World")))) \n 
+						(blockStmt 
+							(letStmt Let   
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyInt)))   =   
+								(valueStmt 
+									(literal 5)))) \n \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier MyStr)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier MyInt))))) \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyStr)))   =   
+								(valueStmt 
+									(literal "Hello World")))) \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyInt)))   =   
+								(valueStmt 
+									(literal 5))))))))) <EOF>)

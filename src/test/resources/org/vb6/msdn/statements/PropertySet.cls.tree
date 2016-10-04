@@ -1,1 +1,23 @@
-(startRule (module (moduleBody (moduleBodyElement (propertySetStmt Property Set (ambiguousIdentifier Pen) (argList ( (arg (ambiguousIdentifier P) (asTypeClause As (type (complexType (ambiguousIdentifier Object))))))) (block (blockStmt (setStmt Set (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier CurrentPen))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier P))))))) End Property)))) <EOF>)
+(startRule 
+	(module \n 
+		(moduleBody 
+			(moduleBodyElement 
+				(propertySetStmt Property Set   
+					(ambiguousIdentifier Pen) 
+					(argList ( 
+						(arg 
+							(ambiguousIdentifier P)   
+							(asTypeClause As   
+								(type 
+									(complexType 
+										(ambiguousIdentifier Object))))) )) \n    
+					(block 
+						(blockStmt 
+							(setStmt Set   
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier CurrentPen)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier P))))))) \n End Property)))) <EOF>)

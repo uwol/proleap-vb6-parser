@@ -1,1 +1,10 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (mkdirStmt MkDir (valueStmt (literal "MYDIR"))))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(mkdirStmt MkDir   
+								(valueStmt 
+									(literal "MYDIR"))))))))) <EOF>)

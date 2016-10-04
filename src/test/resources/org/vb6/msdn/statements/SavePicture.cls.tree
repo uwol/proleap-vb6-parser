@@ -1,1 +1,189 @@
-(startRule (module (moduleBody (moduleBodyElement (subStmt (visibility Private) Sub (ambiguousIdentifier Form_Click) (argList ()) (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier CX)) , (variableSubStmt (ambiguousIdentifier CY)) , (variableSubStmt (ambiguousIdentifier Limit)) , (variableSubStmt (ambiguousIdentifier Radius) (asTypeClause as (type (baseType Integer)))) , (variableSubStmt (ambiguousIdentifier Msg) (asTypeClause as (type (baseType String))))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier ScaleMode))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier vbPixels)))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier AutoRedraw))) = (valueStmt (literal True)))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier (ambiguousKeyword Width)))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Height)))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier CX))) = (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier ScaleWidth)))) / (valueStmt (literal 2))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier CY))) = (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier ScaleHeight)))) / (valueStmt (literal 2))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Limit))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier CX)))))) (blockStmt (forNextStmt For (ambiguousIdentifier Radius) = (valueStmt (literal 0)) To (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Limit)))) (block (blockStmt (implicitCallStmt_InBlock (iCS_B_ProcedureCall (certainIdentifier Circle) (argsCall (argCall (valueStmt ( (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier CX)))) , (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier CY))))))) , (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Radius))))) , (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier RGB) ( (argsCall (argCall (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Rnd)))) * (valueStmt (literal 255)))) , (argCall (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Rnd)))) * (valueStmt (literal 255)))) , (argCall (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Rnd)))) * (valueStmt (literal 255)))))))))))))) (blockStmt (implicitCallStmt_InBlock (iCS_B_ProcedureCall (certainIdentifier DoEvents))))) Next (ambiguousIdentifier Radius))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Msg))) = (valueStmt (literal "Choose OK to save the graphics from this form ")))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Msg))) = (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Msg)))) & (valueStmt (literal "to a bitmap file."))))) (blockStmt (implicitCallStmt_InBlock (iCS_B_ProcedureCall (certainIdentifier MsgBox) (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Msg))))))))) (blockStmt (savepictureStmt SavePicture (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Image)))) , (valueStmt (literal "TEST.BMP"))))) End Sub)))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(subStmt 
+					(visibility Private)   Sub   
+					(ambiguousIdentifier Form_Click)   
+					(argList ( )) \n    \n    
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier CX)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier CY)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier Limit)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier Radius)     
+										(asTypeClause as   
+											(type 
+												(baseType Integer)))) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier Msg)   
+										(asTypeClause as   
+											(type 
+												(baseType String))))))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier ScaleMode)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier vbPixels)))))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier AutoRedraw)))   =   
+								(valueStmt 
+									(literal True)))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier 
+											(ambiguousKeyword Width))))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Height)))))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier CX)))   =   
+								(valueStmt 
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier ScaleWidth))))   /   
+									(valueStmt 
+										(literal 2))))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier CY)))   =   
+								(valueStmt 
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier ScaleHeight))))   /   
+									(valueStmt 
+										(literal 2))))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier Limit)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier CX)))))) \n    
+						(blockStmt 
+							(forNextStmt For   
+								(ambiguousIdentifier Radius)   =   
+								(valueStmt 
+									(literal 0))   To   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Limit)))) \n       
+								(block 
+									(blockStmt 
+										(implicitCallStmt_InBlock 
+											(iCS_B_ProcedureCall 
+												(certainIdentifier Circle)   
+												(argsCall 
+													(argCall 
+														(valueStmt ( 
+															(valueStmt 
+																(implicitCallStmt_InStmt 
+																	(iCS_S_VariableOrProcedureCall 
+																		(ambiguousIdentifier CX)))) ,   
+															(valueStmt 
+																(implicitCallStmt_InStmt 
+																	(iCS_S_VariableOrProcedureCall 
+																		(ambiguousIdentifier CY)))) ))) ,   
+													(argCall 
+														(valueStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_VariableOrProcedureCall 
+																	(ambiguousIdentifier Radius))))) ,   
+													(argCall 
+														(valueStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_ProcedureOrArrayCall 
+																	(ambiguousIdentifier RGB) ( 
+																	(argsCall 
+																		(argCall 
+																			(valueStmt 
+																				(valueStmt 
+																					(implicitCallStmt_InStmt 
+																						(iCS_S_VariableOrProcedureCall 
+																							(ambiguousIdentifier Rnd))))   *   
+																				(valueStmt 
+																					(literal 255)))) ,   
+																		(argCall 
+																			(valueStmt 
+																				(valueStmt 
+																					(implicitCallStmt_InStmt 
+																						(iCS_S_VariableOrProcedureCall 
+																							(ambiguousIdentifier Rnd))))   *   
+																				(valueStmt 
+																					(literal 255)))) ,   
+																		(argCall 
+																			(valueStmt 
+																				(valueStmt 
+																					(implicitCallStmt_InStmt 
+																						(iCS_S_VariableOrProcedureCall 
+																							(ambiguousIdentifier Rnd))))   *   
+																				(valueStmt 
+																					(literal 255))))) ))))))))) \n       
+									(blockStmt 
+										(implicitCallStmt_InBlock 
+											(iCS_B_ProcedureCall 
+												(certainIdentifier DoEvents))))) \n    Next   
+								(ambiguousIdentifier Radius))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier Msg)))   =   
+								(valueStmt 
+									(literal "Choose OK to save the graphics from this form ")))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier Msg)))   =   
+								(valueStmt 
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier Msg))))   &   
+									(valueStmt 
+										(literal "to a bitmap file."))))) \n    
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_ProcedureCall 
+									(certainIdentifier MsgBox)   
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier Msg))))))))) \n    
+						(blockStmt 
+							(savepictureStmt SavePicture   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Image)))) ,   
+								(valueStmt 
+									(literal "TEST.BMP"))))) \n End Sub)))) <EOF>)

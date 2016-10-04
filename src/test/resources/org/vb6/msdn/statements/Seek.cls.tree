@@ -1,1 +1,180 @@
-(startRule (module (moduleBody (moduleBodyElement (typeStmt Type (ambiguousIdentifier Record) (typeStmt_Element (ambiguousIdentifier ID) (asTypeClause As (type (baseType Integer)))) (typeStmt_Element (ambiguousIdentifier (ambiguousKeyword Name)) (asTypeClause As (type (baseType String)) (fieldLength * 20))) End Type)) (moduleBodyElement (moduleBlock (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier MyRecord) (asTypeClause As (type (complexType (ambiguousIdentifier Record))))) , (variableSubStmt (ambiguousIdentifier MaxSize)) , (variableSubStmt (ambiguousIdentifier RecordNumber))))) (blockStmt (openStmt Open (valueStmt (literal "TESTFILE")) For Random As (valueStmt (literal #1)) Len = (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier (ambiguousKeyword Len)) ( (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyRecord)))))))))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MaxSize))) = (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier LOF) ( (argsCall (argCall (valueStmt (literal 1)))))))) \ (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier (ambiguousKeyword Len)) ( (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyRecord))))))))))))) (blockStmt (forNextStmt For (ambiguousIdentifier RecordNumber) = (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MaxSize)))) To (valueStmt (literal 1)) Step (valueStmt - (valueStmt (literal 1))) (block (blockStmt (seekStmt Seek (valueStmt (literal #1)) , (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier RecordNumber)))))) (blockStmt (getStmt Get (valueStmt (literal #1)) , , (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyRecord))))))) Next (ambiguousIdentifier RecordNumber))) (blockStmt (closeStmt Close (valueStmt (literal #1)))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier MaxSize)) , (variableSubStmt (ambiguousIdentifier NextChar)) , (variableSubStmt (ambiguousIdentifier MyChar))))) (blockStmt (openStmt Open (valueStmt (literal "TESTFILE")) For Input As (valueStmt (literal #1)))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MaxSize))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier LOF) ( (argsCall (argCall (valueStmt (literal 1)))))))))) (blockStmt (forNextStmt For (ambiguousIdentifier NextChar) = (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MaxSize)))) To (valueStmt (literal 1)) Step (valueStmt (literal -1)) (block (blockStmt (seekStmt Seek (valueStmt (literal #1)) , (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier NextChar)))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyChar))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier (ambiguousKeyword Input)) ( (argsCall (argCall (valueStmt (literal 1))) , (argCall (valueStmt (literal #1))))))))))) Next (ambiguousIdentifier NextChar))) (blockStmt (closeStmt Close (valueStmt (literal #1))))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(typeStmt Type   
+					(ambiguousIdentifier Record) \n    
+					(typeStmt_Element 
+						(ambiguousIdentifier ID)   
+						(asTypeClause As   
+							(type 
+								(baseType Integer))) \n   ) 
+					(typeStmt_Element 
+						(ambiguousIdentifier 
+							(ambiguousKeyword Name))   
+						(asTypeClause As   
+							(type 
+								(baseType String))   
+							(fieldLength *   20)) \n) End Type)) \n \n 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier MyRecord)   
+										(asTypeClause As   
+											(type 
+												(complexType 
+													(ambiguousIdentifier Record))))) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier MaxSize)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier RecordNumber))))) \n \n 
+						(blockStmt 
+							(openStmt Open   
+								(valueStmt 
+									(literal "TESTFILE"))   For   Random   As   
+								(valueStmt 
+									(literal #1))   Len   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_ProcedureOrArrayCall 
+											(ambiguousIdentifier 
+												(ambiguousKeyword Len)) ( 
+											(argsCall 
+												(argCall 
+													(valueStmt 
+														(implicitCallStmt_InStmt 
+															(iCS_S_VariableOrProcedureCall 
+																(ambiguousIdentifier MyRecord)))))) )))))) \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MaxSize)))   =   
+								(valueStmt 
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_ProcedureOrArrayCall 
+												(ambiguousIdentifier LOF) ( 
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(literal 1)))) ))))   \   
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_ProcedureOrArrayCall 
+												(ambiguousIdentifier 
+													(ambiguousKeyword Len)) ( 
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_VariableOrProcedureCall 
+																	(ambiguousIdentifier MyRecord)))))) ))))))) \n \n 
+						(blockStmt 
+							(forNextStmt For   
+								(ambiguousIdentifier RecordNumber)   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier MaxSize))))   To   
+								(valueStmt 
+									(literal 1))   Step   
+								(valueStmt -   
+									(valueStmt 
+										(literal 1))) \n    
+								(block 
+									(blockStmt 
+										(seekStmt Seek   
+											(valueStmt 
+												(literal #1)) ,   
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier RecordNumber)))))) \n    
+									(blockStmt 
+										(getStmt Get   
+											(valueStmt 
+												(literal #1)) ,   ,   
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier MyRecord))))))) \n Next   
+								(ambiguousIdentifier RecordNumber))) \n 
+						(blockStmt 
+							(closeStmt Close   
+								(valueStmt 
+									(literal #1)))) \n \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier MaxSize)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier NextChar)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier MyChar))))) \n 
+						(blockStmt 
+							(openStmt Open   
+								(valueStmt 
+									(literal "TESTFILE"))   For   Input   As   
+								(valueStmt 
+									(literal #1)))) \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MaxSize)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_ProcedureOrArrayCall 
+											(ambiguousIdentifier LOF) ( 
+											(argsCall 
+												(argCall 
+													(valueStmt 
+														(literal 1)))) )))))) \n \n 
+						(blockStmt 
+							(forNextStmt For   
+								(ambiguousIdentifier NextChar)   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier MaxSize))))   To   
+								(valueStmt 
+									(literal 1))   Step   
+								(valueStmt 
+									(literal -1))    \n    
+								(block 
+									(blockStmt 
+										(seekStmt Seek   
+											(valueStmt 
+												(literal #1)) ,   
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier NextChar)))))) \n    
+									(blockStmt 
+										(letStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier MyChar)))   =   
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_ProcedureOrArrayCall 
+														(ambiguousIdentifier 
+															(ambiguousKeyword Input)) ( 
+														(argsCall 
+															(argCall 
+																(valueStmt 
+																	(literal 1))) ,   
+															(argCall 
+																(valueStmt 
+																	(literal #1)))) ))))))) \n Next   
+								(ambiguousIdentifier NextChar))) \n 
+						(blockStmt 
+							(closeStmt Close   
+								(valueStmt 
+									(literal #1))))))))) <EOF>)

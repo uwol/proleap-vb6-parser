@@ -1,1 +1,103 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier NumArray) ( (subscripts (subscript (valueStmt (literal 10))))) (asTypeClause As (type (baseType Integer))))))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier StrVarArray) ( (subscripts (subscript (valueStmt (literal 10))))) (asTypeClause As (type (baseType String))))))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier StrFixArray) ( (subscripts (subscript (valueStmt (literal 10))))) (asTypeClause As (type (baseType String)) (fieldLength * 10)))))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier VarArray) ( (subscripts (subscript (valueStmt (literal 10))))) (asTypeClause As (type (baseType Variant))))))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier DynamicArray) () (asTypeClause As (type (baseType Integer))))))) (blockStmt (redimStmt ReDim (redimSubStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier DynamicArray))) ( (subscripts (subscript (valueStmt (literal 10)))))))) (blockStmt (eraseStmt Erase (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier NumArray)))))) (blockStmt (eraseStmt Erase (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier StrVarArray)))))) (blockStmt (eraseStmt Erase (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier StrFixArray)))))) (blockStmt (eraseStmt Erase (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier VarArray)))))) (blockStmt (eraseStmt Erase (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier DynamicArray))))))))))) <EOF>)
+(startRule 
+	(module \n 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier NumArray) ( 
+										(subscripts 
+											(subscript 
+												(valueStmt 
+													(literal 10)))) )   
+										(asTypeClause As   
+											(type 
+												(baseType Integer))))))) \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier StrVarArray) ( 
+										(subscripts 
+											(subscript 
+												(valueStmt 
+													(literal 10)))) )   
+										(asTypeClause As   
+											(type 
+												(baseType String))))))) \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier StrFixArray) ( 
+										(subscripts 
+											(subscript 
+												(valueStmt 
+													(literal 10)))) )   
+										(asTypeClause As   
+											(type 
+												(baseType String))   
+											(fieldLength *   10)))))) \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier VarArray) ( 
+										(subscripts 
+											(subscript 
+												(valueStmt 
+													(literal 10)))) )   
+										(asTypeClause As   
+											(type 
+												(baseType Variant))))))) \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier DynamicArray) ( )   
+										(asTypeClause As   
+											(type 
+												(baseType Integer))))))) \n 
+						(blockStmt 
+							(redimStmt ReDim   
+								(redimSubStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier DynamicArray))) ( 
+									(subscripts 
+										(subscript 
+											(valueStmt 
+												(literal 10)))) )))) \n 
+						(blockStmt 
+							(eraseStmt Erase   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier NumArray)))))) \n 
+						(blockStmt 
+							(eraseStmt Erase   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier StrVarArray)))))) \n    \n 
+						(blockStmt 
+							(eraseStmt Erase   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier StrFixArray)))))) \n 
+						(blockStmt 
+							(eraseStmt Erase   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier VarArray)))))) \n 
+						(blockStmt 
+							(eraseStmt Erase   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier DynamicArray))))))))))) <EOF>)

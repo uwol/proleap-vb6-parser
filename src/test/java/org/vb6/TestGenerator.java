@@ -17,11 +17,11 @@ import java.io.PrintWriter;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.Trees;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.vb6.VisualBasic6Parser.StartRuleContext;
+import org.vb6.util.TreeUtils;
 
 public class TestGenerator {
 
@@ -124,12 +124,11 @@ public class TestGenerator {
 			final CommonTokenStream tokens = new CommonTokenStream(lexer);
 			final VisualBasic6Parser parser = new VisualBasic6Parser(tokens);
 			final StartRuleContext startRule = parser.startRule();
-			final String inputFileTree = Trees.toStringTree(startRule, parser);
-			final String cleanedInputFileTree = org.vb6.util.StringUtils.cleanFileTree(inputFileTree);
+			final String inputFileTree = TreeUtils.toStringTree(startRule, parser);
 
 			final PrintWriter pWriter = new PrintWriter(new FileWriter(outputFile));
 
-			pWriter.write(cleanedInputFileTree);
+			pWriter.write(inputFileTree);
 			pWriter.flush();
 			pWriter.close();
 		}

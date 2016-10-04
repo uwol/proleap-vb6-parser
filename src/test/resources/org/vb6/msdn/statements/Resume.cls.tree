@@ -1,1 +1,53 @@
-(startRule (module (moduleBody (moduleBodyElement (subStmt Sub (ambiguousIdentifier ResumeStatementDemo) (argList ()) (block (blockStmt (onErrorStmt On Error GoTo (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier ErrorHandler)))))) (blockStmt (openStmt Open (valueStmt (literal "TESTFILE")) For Output As (valueStmt (literal #1)))) (blockStmt (killStmt Kill (valueStmt (literal "TESTFILE")))) (blockStmt (exitStmt Exit Sub)) (blockStmt (implicitCallStmt_InBlock (iCS_B_ProcedureCall (certainIdentifier ErrorHandler)))) : (blockStmt (selectCaseStmt Select Case (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Err)) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Number)))))) (sC_Case Case (sC_Cond (valueStmt (literal 55))) (block (blockStmt (closeStmt Close (valueStmt (literal #1)))))) (sC_Case Case (sC_Cond Else)) End Select)) (blockStmt (resumeStmt Resume))) End Sub)))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(subStmt Sub   
+					(ambiguousIdentifier ResumeStatementDemo) 
+					(argList ( )) \n    
+					(block 
+						(blockStmt 
+							(onErrorStmt On Error   GoTo   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier ErrorHandler)))))) \n    
+						(blockStmt 
+							(openStmt Open   
+								(valueStmt 
+									(literal "TESTFILE"))   For   Output   As   
+								(valueStmt 
+									(literal #1)))) \n    
+						(blockStmt 
+							(killStmt Kill   
+								(valueStmt 
+									(literal "TESTFILE")))) \n    
+						(blockStmt 
+							(exitStmt Exit Sub)) \n 
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_ProcedureCall 
+									(certainIdentifier ErrorHandler)))) :    \n    
+						(blockStmt 
+							(selectCaseStmt Select   Case   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_MembersCall 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier Err)) 
+											(iCS_S_MemberCall . 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier Number)))))) \n       
+								(sC_Case Case   
+									(sC_Cond 
+										(valueStmt 
+											(literal 55))) \n          
+									(block 
+										(blockStmt 
+											(closeStmt Close   
+												(valueStmt 
+													(literal #1))))) \n      ) 
+								(sC_Case Case   
+									(sC_Cond Else) \n          \n   ) End Select)) \n    
+						(blockStmt 
+							(resumeStmt Resume))) \n    \n End Sub)))) <EOF>)

@@ -1,1 +1,64 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier I))))) (blockStmt (openStmt Open (valueStmt (literal "TESTFILE")) For Output As (valueStmt (literal #1)))) (blockStmt (implicitCallStmt_InBlock (iCS_B_MemberProcedureCall (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier VBA))) . (ambiguousIdentifier (ambiguousKeyword Width)) (argsCall (argCall (valueStmt (literal 1))) , (argCall (valueStmt (literal 5))))))) (blockStmt (forNextStmt For (ambiguousIdentifier I) = (valueStmt (literal 0)) To (valueStmt (literal 9)) (block (blockStmt (printStmt Print (valueStmt (literal #1)) , (outputList (outputList_Expression (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Chr) ( (argsCall (argCall (valueStmt (valueStmt (literal 48)) + (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier I)))))))))))) ;)))) Next (ambiguousIdentifier I))) (blockStmt (closeStmt Close (valueStmt (literal #1))))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier I))))) \n 
+						(blockStmt 
+							(openStmt Open   
+								(valueStmt 
+									(literal "TESTFILE"))   For   Output   As   
+								(valueStmt 
+									(literal #1)))) \n 
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_MemberProcedureCall 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier VBA))) . 
+									(ambiguousIdentifier 
+										(ambiguousKeyword Width))   
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(literal 1))) ,   
+										(argCall 
+											(valueStmt 
+												(literal 5))))))) \n 
+						(blockStmt 
+							(forNextStmt For   
+								(ambiguousIdentifier I)   =   
+								(valueStmt 
+									(literal 0))   To   
+								(valueStmt 
+									(literal 9)) \n    
+								(block 
+									(blockStmt 
+										(printStmt Print   
+											(valueStmt 
+												(literal #1)) ,   
+											(outputList 
+												(outputList_Expression 
+													(valueStmt 
+														(implicitCallStmt_InStmt 
+															(iCS_S_ProcedureOrArrayCall 
+																(ambiguousIdentifier Chr) ( 
+																(argsCall 
+																	(argCall 
+																		(valueStmt 
+																			(valueStmt 
+																				(literal 48))   +   
+																			(valueStmt 
+																				(implicitCallStmt_InStmt 
+																					(iCS_S_VariableOrProcedureCall 
+																						(ambiguousIdentifier I))))))) ))))) ;)))) \n Next   
+								(ambiguousIdentifier I))) \n 
+						(blockStmt 
+							(closeStmt Close   
+								(valueStmt 
+									(literal #1))))))))) <EOF>)

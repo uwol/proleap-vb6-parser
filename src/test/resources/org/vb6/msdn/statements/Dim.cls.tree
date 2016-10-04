@@ -1,1 +1,103 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier AnyValue)) , (variableSubStmt (ambiguousIdentifier MyValue))))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier Number) (asTypeClause As (type (baseType Integer))))))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier AnotherVar)) , (variableSubStmt (ambiguousIdentifier Choice) (asTypeClause As (type (baseType Boolean)))) , (variableSubStmt (ambiguousIdentifier BirthDate) (asTypeClause As (type (baseType Date))))))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier DayArray) ( (subscripts (subscript (valueStmt (literal 50))))))))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier Matrix) ( (subscripts (subscript (valueStmt (literal 3))) , (subscript (valueStmt (literal 4))))) (asTypeClause As (type (baseType Integer))))))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier MyMatrix) ( (subscripts (subscript (valueStmt (literal 1)) To (valueStmt (literal 5))) , (subscript (valueStmt (literal 4)) To (valueStmt (literal 9))) , (subscript (valueStmt (literal 3)) To (valueStmt (literal 5))))) (asTypeClause As (type (baseType Double))))))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier BirthDay) ( (subscripts (subscript (valueStmt (literal 1)) To (valueStmt (literal 10))))) (asTypeClause As (type (baseType Date))))))) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier MyArray) ()))))))))) <EOF>)
+(startRule 
+	(module \n \n 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier AnyValue)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier MyValue))))) \n \n \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier Number)   
+										(asTypeClause As   
+											(type 
+												(baseType Integer))))))) \n \n \n \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier AnotherVar)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier Choice)   
+										(asTypeClause As   
+											(type 
+												(baseType Boolean)))) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier BirthDate)   
+										(asTypeClause As   
+											(type 
+												(baseType Date))))))) \n \n \n \n \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier DayArray) ( 
+										(subscripts 
+											(subscript 
+												(valueStmt 
+													(literal 50)))) ))))) \n \n \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier Matrix) ( 
+										(subscripts 
+											(subscript 
+												(valueStmt 
+													(literal 3))) ,   
+											(subscript 
+												(valueStmt 
+													(literal 4)))) )   
+										(asTypeClause As   
+											(type 
+												(baseType Integer))))))) \n \n \n \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier MyMatrix) ( 
+										(subscripts 
+											(subscript 
+												(valueStmt 
+													(literal 1))   To   
+												(valueStmt 
+													(literal 5))) ,    
+											(subscript 
+												(valueStmt 
+													(literal 4))   To   
+												(valueStmt 
+													(literal 9))) ,    
+											(subscript 
+												(valueStmt 
+													(literal 3))   To   
+												(valueStmt 
+													(literal 5)))) )   
+										(asTypeClause As   
+											(type 
+												(baseType Double))))))) \n \n \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier BirthDay) ( 
+										(subscripts 
+											(subscript 
+												(valueStmt 
+													(literal 1))   To   
+												(valueStmt 
+													(literal 10)))) )   
+										(asTypeClause As   
+											(type 
+												(baseType Date)))))))       \n \n \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier MyArray) ( )))))))))) <EOF>)

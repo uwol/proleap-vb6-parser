@@ -1,1 +1,39 @@
-(startRule (module (moduleBody (moduleBodyElement (enumerationStmt (visibility Public) Enum (ambiguousIdentifier InterfaceColors) (enumerationStmt_Constant (ambiguousIdentifier icMistyRose) = (valueStmt (literal &HE1E4FF&))) (enumerationStmt_Constant (ambiguousIdentifier icSlateGray) = (valueStmt (literal &H908070&))) (enumerationStmt_Constant (ambiguousIdentifier icDodgerBlue) = (valueStmt (literal &HFF901E&))) (enumerationStmt_Constant (ambiguousIdentifier icDeepSkyBlue) = (valueStmt (literal &HFFBF00&))) (enumerationStmt_Constant (ambiguousIdentifier icSpringGreen) = (valueStmt (literal &H7FFF00&))) (enumerationStmt_Constant (ambiguousIdentifier icForestGreen) = (valueStmt (literal &H228B22&))) (enumerationStmt_Constant (ambiguousIdentifier icGoldenrod) = (valueStmt (literal &H20A5DA&))) (enumerationStmt_Constant (ambiguousIdentifier icFirebrick) = (valueStmt (literal &H2222B2&))) End Enum)))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(enumerationStmt 
+					(visibility Public)   Enum   
+					(ambiguousIdentifier InterfaceColors) \n    
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier icMistyRose)   =   
+						(valueStmt 
+							(literal &HE1E4FF&)) \n   ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier icSlateGray)   =   
+						(valueStmt 
+							(literal &H908070&)) \n   ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier icDodgerBlue)   =   
+						(valueStmt 
+							(literal &HFF901E&)) \n   ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier icDeepSkyBlue)   =   
+						(valueStmt 
+							(literal &HFFBF00&)) \n   ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier icSpringGreen)   =   
+						(valueStmt 
+							(literal &H7FFF00&)) \n   ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier icForestGreen)   =   
+						(valueStmt 
+							(literal &H228B22&)) \n   ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier icGoldenrod)   =   
+						(valueStmt 
+							(literal &H20A5DA&)) \n   ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier icFirebrick)   =   
+						(valueStmt 
+							(literal &H2222B2&)) \n) End Enum)))) <EOF>)

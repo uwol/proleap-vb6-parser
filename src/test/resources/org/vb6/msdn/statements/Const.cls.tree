@@ -1,1 +1,42 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (constStmt Const (constSubStmt (ambiguousIdentifier MyVar) = (valueStmt (literal 459))))) (blockStmt (constStmt (visibility Public) Const (constSubStmt (ambiguousIdentifier MyString) = (valueStmt (literal "HELP"))))) (blockStmt (constStmt (visibility Private) Const (constSubStmt (ambiguousIdentifier MyInt) (asTypeClause As (type (baseType Integer))) = (valueStmt (literal 5))))) (blockStmt (constStmt Const (constSubStmt (ambiguousIdentifier MyStr) = (valueStmt (literal "Hello"))) , (constSubStmt (ambiguousIdentifier MyDouble) (asTypeClause As (type (baseType Double))) = (valueStmt (literal 3.4567)))))))))) <EOF>)
+(startRule 
+	(module \n 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(constStmt Const   
+								(constSubStmt 
+									(ambiguousIdentifier MyVar)   =   
+									(valueStmt 
+										(literal 459))))) \n \n \n 
+						(blockStmt 
+							(constStmt 
+								(visibility Public)   Const   
+								(constSubStmt 
+									(ambiguousIdentifier MyString)   =   
+									(valueStmt 
+										(literal "HELP"))))) \n \n \n 
+						(blockStmt 
+							(constStmt 
+								(visibility Private)   Const   
+								(constSubStmt 
+									(ambiguousIdentifier MyInt)   
+									(asTypeClause As   
+										(type 
+											(baseType Integer)))   =   
+									(valueStmt 
+										(literal 5))))) \n \n \n 
+						(blockStmt 
+							(constStmt Const   
+								(constSubStmt 
+									(ambiguousIdentifier MyStr)   =   
+									(valueStmt 
+										(literal "Hello"))) ,   
+								(constSubStmt 
+									(ambiguousIdentifier MyDouble)   
+									(asTypeClause As   
+										(type 
+											(baseType Double)))   =   
+									(valueStmt 
+										(literal 3.4567)))))))))) <EOF>)

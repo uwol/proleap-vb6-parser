@@ -1,1 +1,22 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier I))))) (blockStmt (forNextStmt For (ambiguousIdentifier I) = (valueStmt (literal 1)) To (valueStmt (literal 3)) (block (blockStmt (beepStmt Beep))) Next (ambiguousIdentifier I)))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier I))))) \n 
+						(blockStmt 
+							(forNextStmt For   
+								(ambiguousIdentifier I)   =   
+								(valueStmt 
+									(literal 1))   To   
+								(valueStmt 
+									(literal 3)) \n    
+								(block 
+									(blockStmt 
+										(beepStmt Beep))) \n Next   
+								(ambiguousIdentifier I)))))))) <EOF>)

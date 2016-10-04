@@ -1,1 +1,144 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (implicitCallStmt_InBlock (iCS_B_MemberProcedureCall (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Worksheets) ( (argsCall (argCall (valueStmt (literal "Sheet1")))))) (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Range) ( (argsCall (argCall (valueStmt (literal "A1"))))))))) . (ambiguousIdentifier Sort) (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier key1))) := (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Worksheets) ( (argsCall (argCall (valueStmt (literal "Sheet1")))))) (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Range) ( (argsCall (argCall (valueStmt (literal "A1")))))))))))))))) (blockStmt (setStmt Set (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier currentCell))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Worksheets) ( (argsCall (argCall (valueStmt (literal "Sheet1")))))) (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Range) ( (argsCall (argCall (valueStmt (literal "A1")))))))))))) (blockStmt (doLoopStmt Do While (valueStmt Not (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier IsEmpty) ( (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier currentCell))))))))))) (block (blockStmt (setStmt Set (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier nextCell))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_VariableOrProcedureCall (ambiguousIdentifier currentCell)) (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Offset) ( (argsCall (argCall (valueStmt (literal 1))) , (argCall (valueStmt (literal 0)))))))))))) (blockStmt (ifThenElseStmt (ifBlockStmt If (ifConditionStmt (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_VariableOrProcedureCall (ambiguousIdentifier nextCell)) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Value)))))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_VariableOrProcedureCall (ambiguousIdentifier currentCell)) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Value)))))))) Then (block (blockStmt (implicitCallStmt_InBlock (iCS_B_MemberProcedureCall (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_VariableOrProcedureCall (ambiguousIdentifier currentCell)) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier EntireRow))))) . (ambiguousIdentifier Delete)))))) End If)) (blockStmt (setStmt Set (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier currentCell))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier nextCell))))))) Loop))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_MemberProcedureCall 
+									(implicitCallStmt_InStmt 
+										(iCS_S_MembersCall 
+											(iCS_S_ProcedureOrArrayCall 
+												(ambiguousIdentifier Worksheets) ( 
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(literal "Sheet1")))) )) 
+											(iCS_S_MemberCall . 
+												(iCS_S_ProcedureOrArrayCall 
+													(ambiguousIdentifier Range) ( 
+													(argsCall 
+														(argCall 
+															(valueStmt 
+																(literal "A1")))) ))))) . 
+									(ambiguousIdentifier Sort)      
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier key1))) := 
+												(valueStmt 
+													(implicitCallStmt_InStmt 
+														(iCS_S_MembersCall 
+															(iCS_S_ProcedureOrArrayCall 
+																(ambiguousIdentifier Worksheets) ( 
+																(argsCall 
+																	(argCall 
+																		(valueStmt 
+																			(literal "Sheet1")))) )) 
+															(iCS_S_MemberCall . 
+																(iCS_S_ProcedureOrArrayCall 
+																	(ambiguousIdentifier Range) ( 
+																	(argsCall 
+																		(argCall 
+																			(valueStmt 
+																				(literal "A1")))) )))))))))))) \n 
+						(blockStmt 
+							(setStmt Set   
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier currentCell)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_MembersCall 
+											(iCS_S_ProcedureOrArrayCall 
+												(ambiguousIdentifier Worksheets) ( 
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(literal "Sheet1")))) )) 
+											(iCS_S_MemberCall . 
+												(iCS_S_ProcedureOrArrayCall 
+													(ambiguousIdentifier Range) ( 
+													(argsCall 
+														(argCall 
+															(valueStmt 
+																(literal "A1")))) )))))))) \n 
+						(blockStmt 
+							(doLoopStmt Do   While   
+								(valueStmt Not   
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_ProcedureOrArrayCall 
+												(ambiguousIdentifier IsEmpty) ( 
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_VariableOrProcedureCall 
+																	(ambiguousIdentifier currentCell)))))) ))))) \n     
+								(block 
+									(blockStmt 
+										(setStmt Set   
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier nextCell)))   =   
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_MembersCall 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier currentCell)) 
+														(iCS_S_MemberCall . 
+															(iCS_S_ProcedureOrArrayCall 
+																(ambiguousIdentifier Offset) ( 
+																(argsCall 
+																	(argCall 
+																		(valueStmt 
+																			(literal 1))) ,   
+																	(argCall 
+																		(valueStmt 
+																			(literal 0)))) )))))))) \n     
+									(blockStmt 
+										(ifThenElseStmt 
+											(ifBlockStmt If   
+												(ifConditionStmt 
+													(valueStmt 
+														(valueStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_MembersCall 
+																	(iCS_S_VariableOrProcedureCall 
+																		(ambiguousIdentifier nextCell)) 
+																	(iCS_S_MemberCall . 
+																		(iCS_S_VariableOrProcedureCall 
+																			(ambiguousIdentifier Value))))))   =   
+														(valueStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_MembersCall 
+																	(iCS_S_VariableOrProcedureCall 
+																		(ambiguousIdentifier currentCell)) 
+																	(iCS_S_MemberCall . 
+																		(iCS_S_VariableOrProcedureCall 
+																			(ambiguousIdentifier Value))))))))   Then \n         
+												(block 
+													(blockStmt 
+														(implicitCallStmt_InBlock 
+															(iCS_B_MemberProcedureCall 
+																(implicitCallStmt_InStmt 
+																	(iCS_S_MembersCall 
+																		(iCS_S_VariableOrProcedureCall 
+																			(ambiguousIdentifier currentCell)) 
+																		(iCS_S_MemberCall . 
+																			(iCS_S_VariableOrProcedureCall 
+																				(ambiguousIdentifier EntireRow))))) . 
+																(ambiguousIdentifier Delete))))) \n    ) End If)) \n     
+									(blockStmt 
+										(setStmt Set   
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier currentCell)))   =   
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier nextCell))))))) \n Loop))))))) <EOF>)

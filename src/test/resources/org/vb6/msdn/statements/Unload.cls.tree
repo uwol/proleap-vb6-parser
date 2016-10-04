@@ -1,1 +1,120 @@
-(startRule (module (moduleBody (moduleBodyElement (subStmt (visibility Private) Sub (ambiguousIdentifier Form_Click) (argList ()) (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier Answer)) , (variableSubStmt (ambiguousIdentifier Msg))))) (blockStmt (unloadStmt Unload (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Form1)))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Msg))) = (valueStmt (literal "Form1 has been unloaded. Choose Yes to load and ")))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Msg))) = (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Msg)))) & (valueStmt (literal "display the form. Choose No to load the form "))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Msg))) = (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Msg)))) & (valueStmt (literal "and leave it invisible."))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Answer))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier MsgBox) ( (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Msg))))) , (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier vbYesNo)))))))))))) (blockStmt (ifThenElseStmt (ifBlockStmt If (ifConditionStmt (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Answer)))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier vbYes)))))) Then (block (blockStmt (implicitCallStmt_InBlock (iCS_B_ProcedureCall (certainIdentifier Show)))))) (ifElseBlockStmt Else (block (blockStmt (loadStmt Load (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Form1)))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Msg))) = (valueStmt (literal "Form1 is now loaded. Choose OK to display it.")))) (blockStmt (implicitCallStmt_InBlock (iCS_B_ProcedureCall (certainIdentifier MsgBox) (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Msg))))))))) (blockStmt (implicitCallStmt_InBlock (iCS_B_ProcedureCall (certainIdentifier Show)))))) End If))) End Sub)))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(subStmt 
+					(visibility Private)   Sub   
+					(ambiguousIdentifier Form_Click)   
+					(argList ( )) \n    
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier Answer)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier Msg))))) \n    
+						(blockStmt 
+							(unloadStmt Unload   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Form1)))))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier Msg)))   =   
+								(valueStmt 
+									(literal "Form1 has been unloaded. Choose Yes to load and ")))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier Msg)))   =   
+								(valueStmt 
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier Msg))))   &   
+									(valueStmt 
+										(literal "display the form. Choose No to load the form "))))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier Msg)))   =   
+								(valueStmt 
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier Msg))))   &   
+									(valueStmt 
+										(literal "and leave it invisible."))))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier Answer)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_ProcedureOrArrayCall 
+											(ambiguousIdentifier MsgBox) ( 
+											(argsCall 
+												(argCall 
+													(valueStmt 
+														(implicitCallStmt_InStmt 
+															(iCS_S_VariableOrProcedureCall 
+																(ambiguousIdentifier Msg))))) ,   
+												(argCall 
+													(valueStmt 
+														(implicitCallStmt_InStmt 
+															(iCS_S_VariableOrProcedureCall 
+																(ambiguousIdentifier vbYesNo)))))) )))))) \n    
+						(blockStmt 
+							(ifThenElseStmt 
+								(ifBlockStmt If   
+									(ifConditionStmt 
+										(valueStmt 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier Answer))))   =   
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier vbYes))))))   Then \n       
+									(block 
+										(blockStmt 
+											(implicitCallStmt_InBlock 
+												(iCS_B_ProcedureCall 
+													(certainIdentifier Show))))) \n   ) 
+								(ifElseBlockStmt Else \n       
+									(block 
+										(blockStmt 
+											(loadStmt Load   
+												(valueStmt 
+													(implicitCallStmt_InStmt 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier Form1)))))) \n       
+										(blockStmt 
+											(letStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier Msg)))   =   
+												(valueStmt 
+													(literal "Form1 is now loaded. Choose OK to display it.")))) \n       
+										(blockStmt 
+											(implicitCallStmt_InBlock 
+												(iCS_B_ProcedureCall 
+													(certainIdentifier MsgBox)   
+													(argsCall 
+														(argCall 
+															(valueStmt 
+																(implicitCallStmt_InStmt 
+																	(iCS_S_VariableOrProcedureCall 
+																		(ambiguousIdentifier Msg))))))))) \n       
+										(blockStmt 
+											(implicitCallStmt_InBlock 
+												(iCS_B_ProcedureCall 
+													(certainIdentifier Show))))) \n   ) End If))) \n End Sub)))) <EOF>)

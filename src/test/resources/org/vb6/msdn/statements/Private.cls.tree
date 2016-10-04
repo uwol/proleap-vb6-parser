@@ -1,1 +1,43 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (variableStmt (visibility Private) (variableListStmt (variableSubStmt (ambiguousIdentifier Number) (asTypeClause As (type (baseType Integer))))))) (blockStmt (variableStmt (visibility Private) (variableListStmt (variableSubStmt (ambiguousIdentifier NameArray) ( (subscripts (subscript (valueStmt (literal 1)) To (valueStmt (literal 5))))) (asTypeClause As (type (baseType String))))))) (blockStmt (variableStmt (visibility Private) (variableListStmt (variableSubStmt (ambiguousIdentifier MyVar)) , (variableSubStmt (ambiguousIdentifier YourVar)) , (variableSubStmt (ambiguousIdentifier ThisVar) (asTypeClause As (type (baseType Integer)))))))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt 
+								(visibility Private)   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier Number)   
+										(asTypeClause As   
+											(type 
+												(baseType Integer))))))) \n 
+						(blockStmt 
+							(variableStmt 
+								(visibility Private)   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier NameArray) ( 
+										(subscripts 
+											(subscript 
+												(valueStmt 
+													(literal 1))   To   
+												(valueStmt 
+													(literal 5)))) )   
+										(asTypeClause As   
+											(type 
+												(baseType String))))))) \n \n 
+						(blockStmt 
+							(variableStmt 
+								(visibility Private)   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier MyVar)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier YourVar)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier ThisVar)   
+										(asTypeClause As   
+											(type 
+												(baseType Integer)))))))))))) <EOF>)

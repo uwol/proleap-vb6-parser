@@ -1,1 +1,48 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (saveSettingStmt SaveSetting (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier appname))) := (valueStmt (literal "MyApp"))) , (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier section))) := (valueStmt (literal "Startup"))) , (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier key))) := (valueStmt (literal "Top"))) , (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier setting))) := (valueStmt (literal 75))))) (blockStmt (saveSettingStmt SaveSetting (valueStmt (literal "MyApp")) , (valueStmt (literal "Startup")) , (valueStmt (literal "Left")) , (valueStmt (literal 50)))) (blockStmt (deleteSettingStmt DeleteSetting (valueStmt (literal "MyApp")) , (valueStmt (literal "Startup"))))))))) <EOF>)
+(startRule 
+	(module \n 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(saveSettingStmt SaveSetting   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier appname)))   :=   
+									(valueStmt 
+										(literal "MyApp"))) ,   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier section)))   :=   
+									(valueStmt 
+										(literal "Startup"))) ,              
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier key)))   :=   
+									(valueStmt 
+										(literal "Top"))) ,   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier setting)))   :=   
+									(valueStmt 
+										(literal 75)))))  \n 
+						(blockStmt 
+							(saveSettingStmt SaveSetting   
+								(valueStmt 
+									(literal "MyApp")) , 
+								(valueStmt 
+									(literal "Startup")) ,   
+								(valueStmt 
+									(literal "Left")) ,   
+								(valueStmt 
+									(literal 50))))  \n \n 
+						(blockStmt 
+							(deleteSettingStmt DeleteSetting   
+								(valueStmt 
+									(literal "MyApp")) ,   
+								(valueStmt 
+									(literal "Startup"))))))))) <EOF>)

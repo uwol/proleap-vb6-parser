@@ -1,1 +1,158 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (forEachStmt For Each (ambiguousIdentifier c) in (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Worksheets) ( (argsCall (argCall (valueStmt (literal "Sheet1")))))) (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Range) ( (argsCall (argCall (valueStmt (literal "A1:D10")))))))))) (block (blockStmt (ifThenElseStmt (ifBlockStmt If (ifConditionStmt (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_VariableOrProcedureCall (ambiguousIdentifier c)) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Value)))))) < (valueStmt (literal .001)))) Then (block (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_VariableOrProcedureCall (ambiguousIdentifier c)) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Value))))) = (valueStmt (literal 0)))))) End If))) Next (ambiguousIdentifier c))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier numBlanks))) = (valueStmt (literal 0)))) (blockStmt (forEachStmt For Each (ambiguousIdentifier c) In (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Range) ( (argsCall (argCall (valueStmt (literal "TestRange")))))))) (block (blockStmt (ifThenElseStmt (ifBlockStmt If (ifConditionStmt (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_VariableOrProcedureCall (ambiguousIdentifier c)) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Value)))))) = (valueStmt (literal "")))) Then (block (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier numBlanks))) = (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier numBlanks)))) + (valueStmt (literal 1))))))) End If))) Next (ambiguousIdentifier c))) (blockStmt (implicitCallStmt_InBlock (iCS_B_ProcedureCall (certainIdentifier MsgBox) (argsCall (argCall (valueStmt (valueStmt (valueStmt (literal "There are ")) & (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier numBlanks))))) & (valueStmt (literal " empty cells in this range.")))))))) (blockStmt (ifThenElseStmt (ifBlockStmt If (ifConditionStmt (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Application)) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier OperatingSystem)))))) Like (valueStmt (literal "*Macintosh*")))) Then (block (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Application)) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier StandardFont))))) = (valueStmt (literal "Geneva")))))) (ifElseBlockStmt Else (block (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Application)) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier StandardFont))))) = (valueStmt (literal "Arial")))))) End If))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(forEachStmt For   Each   
+								(ambiguousIdentifier c)   in   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_MembersCall 
+											(iCS_S_ProcedureOrArrayCall 
+												(ambiguousIdentifier Worksheets) ( 
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(literal "Sheet1")))) )) 
+											(iCS_S_MemberCall . 
+												(iCS_S_ProcedureOrArrayCall 
+													(ambiguousIdentifier Range) ( 
+													(argsCall 
+														(argCall 
+															(valueStmt 
+																(literal "A1:D10")))) )))))) \r\n     
+								(block 
+									(blockStmt 
+										(ifThenElseStmt 
+											(ifBlockStmt If   
+												(ifConditionStmt 
+													(valueStmt 
+														(valueStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_MembersCall 
+																	(iCS_S_VariableOrProcedureCall 
+																		(ambiguousIdentifier c)) 
+																	(iCS_S_MemberCall . 
+																		(iCS_S_VariableOrProcedureCall 
+																			(ambiguousIdentifier Value))))))   <   
+														(valueStmt 
+															(literal .001))))   Then \r\n         
+												(block 
+													(blockStmt 
+														(letStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_MembersCall 
+																	(iCS_S_VariableOrProcedureCall 
+																		(ambiguousIdentifier c)) 
+																	(iCS_S_MemberCall . 
+																		(iCS_S_VariableOrProcedureCall 
+																			(ambiguousIdentifier Value)))))   =   
+															(valueStmt 
+																(literal 0))))) \r\n    ) End If))) \r\n Next   
+								(ambiguousIdentifier c))) \r\n \r\n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier numBlanks)))   =   
+								(valueStmt 
+									(literal 0)))) \r\n 
+						(blockStmt 
+							(forEachStmt For   Each   
+								(ambiguousIdentifier c)   In   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_ProcedureOrArrayCall 
+											(ambiguousIdentifier Range) ( 
+											(argsCall 
+												(argCall 
+													(valueStmt 
+														(literal "TestRange")))) )))) \r\n     
+								(block 
+									(blockStmt 
+										(ifThenElseStmt 
+											(ifBlockStmt If   
+												(ifConditionStmt 
+													(valueStmt 
+														(valueStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_MembersCall 
+																	(iCS_S_VariableOrProcedureCall 
+																		(ambiguousIdentifier c)) 
+																	(iCS_S_MemberCall . 
+																		(iCS_S_VariableOrProcedureCall 
+																			(ambiguousIdentifier Value))))))   =   
+														(valueStmt 
+															(literal ""))))   Then \r\n         
+												(block 
+													(blockStmt 
+														(letStmt 
+															(implicitCallStmt_InStmt 
+																(iCS_S_VariableOrProcedureCall 
+																	(ambiguousIdentifier numBlanks)))   =   
+															(valueStmt 
+																(valueStmt 
+																	(implicitCallStmt_InStmt 
+																		(iCS_S_VariableOrProcedureCall 
+																			(ambiguousIdentifier numBlanks))))   +   
+																(valueStmt 
+																	(literal 1)))))) \r\n    ) End If))) \r\n Next   
+								(ambiguousIdentifier c))) \r\n 
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_ProcedureCall 
+									(certainIdentifier MsgBox)   
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(valueStmt 
+													(valueStmt 
+														(literal "There are "))   &   
+													(valueStmt 
+														(implicitCallStmt_InStmt 
+															(iCS_S_VariableOrProcedureCall 
+																(ambiguousIdentifier numBlanks)))))   &   
+												(valueStmt 
+													(literal " empty cells in this range.")))))))) \r\n \r\n 
+						(blockStmt 
+							(ifThenElseStmt 
+								(ifBlockStmt If   
+									(ifConditionStmt 
+										(valueStmt 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_MembersCall 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier Application)) 
+														(iCS_S_MemberCall . 
+															(iCS_S_VariableOrProcedureCall 
+																(ambiguousIdentifier OperatingSystem))))))   Like   
+											(valueStmt 
+												(literal "*Macintosh*"))))   Then \r\n     
+									(block 
+										(blockStmt 
+											(letStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_MembersCall 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier Application)) 
+														(iCS_S_MemberCall . 
+															(iCS_S_VariableOrProcedureCall 
+																(ambiguousIdentifier StandardFont)))))   =   
+												(valueStmt 
+													(literal "Geneva"))))) \r\n) 
+								(ifElseBlockStmt Else \r\n     
+									(block 
+										(blockStmt 
+											(letStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_MembersCall 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier Application)) 
+														(iCS_S_MemberCall . 
+															(iCS_S_VariableOrProcedureCall 
+																(ambiguousIdentifier StandardFont)))))   =   
+												(valueStmt 
+													(literal "Arial"))))) \r\n) End If))))))) <EOF>)

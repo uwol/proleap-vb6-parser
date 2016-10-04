@@ -1,1 +1,244 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (setStmt Set (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier dataTableRange))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Worksheets) ( (argsCall (argCall (valueStmt (literal "Sheet1")))))) (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Range) ( (argsCall (argCall (valueStmt (literal "A1:K11")))))))))))) (blockStmt (setStmt Set (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier rowInputCell))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Worksheets) ( (argsCall (argCall (valueStmt (literal "Sheet1")))))) (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Range) ( (argsCall (argCall (valueStmt (literal "A12")))))))))))) (blockStmt (setStmt Set (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier columnInputCell))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Worksheets) ( (argsCall (argCall (valueStmt (literal "Sheet1")))))) (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Range) ( (argsCall (argCall (valueStmt (literal "A13")))))))))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Worksheets) ( (argsCall (argCall (valueStmt (literal "Sheet1")))))) (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Range) ( (argsCall (argCall (valueStmt (literal "A1"))))))) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Formula))))) = (valueStmt (literal "=A12*A13")))) (blockStmt (forNextStmt For (ambiguousIdentifier i) = (valueStmt (literal 2)) To (valueStmt (literal 11)) (block (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Worksheets) ( (argsCall (argCall (valueStmt (literal "Sheet1")))))) (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Cells) ( (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier i))))) , (argCall (valueStmt (literal 1))))))))) = (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier i)))) - (valueStmt (literal 1))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Worksheets) ( (argsCall (argCall (valueStmt (literal "Sheet1")))))) (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Cells) ( (argsCall (argCall (valueStmt (literal 1))) , (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier i))))))))))) = (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier i)))) - (valueStmt (literal 1)))))) Next (ambiguousIdentifier i))) (blockStmt (implicitCallStmt_InBlock (iCS_B_MemberProcedureCall (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier dataTableRange))) . (ambiguousIdentifier Table) (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier rowInputCell))))) , (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier columnInputCell))))))))) (blockStmt (withStmt With (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Worksheets) ( (argsCall (argCall (valueStmt (literal "Sheet1")))))) (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Range) ( (argsCall (argCall (valueStmt (literal "A1"))))))) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier CurrentRegion))))) (block (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Rows) ( (argsCall (argCall (valueStmt (literal 1))))))) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Font))) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Bold))))) = (valueStmt (literal True)))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_MemberCall . (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier Columns) ( (argsCall (argCall (valueStmt (literal 1))))))) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Font))) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Bold))))) = (valueStmt (literal True)))) (blockStmt (implicitCallStmt_InBlock (iCS_B_MemberProcedureCall (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Columns))))) . (ambiguousIdentifier AutoFit))))) End With))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(setStmt Set   
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier dataTableRange)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_MembersCall 
+											(iCS_S_ProcedureOrArrayCall 
+												(ambiguousIdentifier Worksheets) ( 
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(literal "Sheet1")))) )) 
+											(iCS_S_MemberCall . 
+												(iCS_S_ProcedureOrArrayCall 
+													(ambiguousIdentifier Range) ( 
+													(argsCall 
+														(argCall 
+															(valueStmt 
+																(literal "A1:K11")))) )))))))) \n 
+						(blockStmt 
+							(setStmt Set   
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier rowInputCell)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_MembersCall 
+											(iCS_S_ProcedureOrArrayCall 
+												(ambiguousIdentifier Worksheets) ( 
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(literal "Sheet1")))) )) 
+											(iCS_S_MemberCall . 
+												(iCS_S_ProcedureOrArrayCall 
+													(ambiguousIdentifier Range) ( 
+													(argsCall 
+														(argCall 
+															(valueStmt 
+																(literal "A12")))) )))))))) \n 
+						(blockStmt 
+							(setStmt Set   
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier columnInputCell)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_MembersCall 
+											(iCS_S_ProcedureOrArrayCall 
+												(ambiguousIdentifier Worksheets) ( 
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(literal "Sheet1")))) )) 
+											(iCS_S_MemberCall . 
+												(iCS_S_ProcedureOrArrayCall 
+													(ambiguousIdentifier Range) ( 
+													(argsCall 
+														(argCall 
+															(valueStmt 
+																(literal "A13")))) )))))))) \n \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_MembersCall 
+										(iCS_S_ProcedureOrArrayCall 
+											(ambiguousIdentifier Worksheets) ( 
+											(argsCall 
+												(argCall 
+													(valueStmt 
+														(literal "Sheet1")))) )) 
+										(iCS_S_MemberCall . 
+											(iCS_S_ProcedureOrArrayCall 
+												(ambiguousIdentifier Range) ( 
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(literal "A1")))) ))) 
+										(iCS_S_MemberCall . 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier Formula)))))   =   
+								(valueStmt 
+									(literal "=A12*A13")))) \n 
+						(blockStmt 
+							(forNextStmt For   
+								(ambiguousIdentifier i)   =   
+								(valueStmt 
+									(literal 2))   To   
+								(valueStmt 
+									(literal 11)) \n     
+								(block 
+									(blockStmt 
+										(letStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_MembersCall 
+													(iCS_S_ProcedureOrArrayCall 
+														(ambiguousIdentifier Worksheets) ( 
+														(argsCall 
+															(argCall 
+																(valueStmt 
+																	(literal "Sheet1")))) )) 
+													(iCS_S_MemberCall . 
+														(iCS_S_ProcedureOrArrayCall 
+															(ambiguousIdentifier Cells) ( 
+															(argsCall 
+																(argCall 
+																	(valueStmt 
+																		(implicitCallStmt_InStmt 
+																			(iCS_S_VariableOrProcedureCall 
+																				(ambiguousIdentifier i))))) ,   
+																(argCall 
+																	(valueStmt 
+																		(literal 1)))) )))))   =   
+											(valueStmt 
+												(valueStmt 
+													(implicitCallStmt_InStmt 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier i))))   -   
+												(valueStmt 
+													(literal 1))))) \n     
+									(blockStmt 
+										(letStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_MembersCall 
+													(iCS_S_ProcedureOrArrayCall 
+														(ambiguousIdentifier Worksheets) ( 
+														(argsCall 
+															(argCall 
+																(valueStmt 
+																	(literal "Sheet1")))) )) 
+													(iCS_S_MemberCall . 
+														(iCS_S_ProcedureOrArrayCall 
+															(ambiguousIdentifier Cells) ( 
+															(argsCall 
+																(argCall 
+																	(valueStmt 
+																		(literal 1))) ,   
+																(argCall 
+																	(valueStmt 
+																		(implicitCallStmt_InStmt 
+																			(iCS_S_VariableOrProcedureCall 
+																				(ambiguousIdentifier i)))))) )))))   =   
+											(valueStmt 
+												(valueStmt 
+													(implicitCallStmt_InStmt 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier i))))   -   
+												(valueStmt 
+													(literal 1)))))) \n Next   
+								(ambiguousIdentifier i))) \n 
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_MemberProcedureCall 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier dataTableRange))) . 
+									(ambiguousIdentifier Table)   
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier rowInputCell))))) ,   
+										(argCall 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier columnInputCell))))))))) \n 
+						(blockStmt 
+							(withStmt With   
+								(implicitCallStmt_InStmt 
+									(iCS_S_MembersCall 
+										(iCS_S_ProcedureOrArrayCall 
+											(ambiguousIdentifier Worksheets) ( 
+											(argsCall 
+												(argCall 
+													(valueStmt 
+														(literal "Sheet1")))) )) 
+										(iCS_S_MemberCall . 
+											(iCS_S_ProcedureOrArrayCall 
+												(ambiguousIdentifier Range) ( 
+												(argsCall 
+													(argCall 
+														(valueStmt 
+															(literal "A1")))) ))) 
+										(iCS_S_MemberCall . 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier CurrentRegion))))) \n     
+								(block 
+									(blockStmt 
+										(letStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_MembersCall 
+													(iCS_S_MemberCall . 
+														(iCS_S_ProcedureOrArrayCall 
+															(ambiguousIdentifier Rows) ( 
+															(argsCall 
+																(argCall 
+																	(valueStmt 
+																		(literal 1)))) ))) 
+													(iCS_S_MemberCall . 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier Font))) 
+													(iCS_S_MemberCall . 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier Bold)))))   =   
+											(valueStmt 
+												(literal True)))) \n     
+									(blockStmt 
+										(letStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_MembersCall 
+													(iCS_S_MemberCall . 
+														(iCS_S_ProcedureOrArrayCall 
+															(ambiguousIdentifier Columns) ( 
+															(argsCall 
+																(argCall 
+																	(valueStmt 
+																		(literal 1)))) ))) 
+													(iCS_S_MemberCall . 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier Font))) 
+													(iCS_S_MemberCall . 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier Bold)))))   =   
+											(valueStmt 
+												(literal True)))) \n     
+									(blockStmt 
+										(implicitCallStmt_InBlock 
+											(iCS_B_MemberProcedureCall 
+												(implicitCallStmt_InStmt 
+													(iCS_S_MembersCall 
+														(iCS_S_MemberCall . 
+															(iCS_S_VariableOrProcedureCall 
+																(ambiguousIdentifier Columns))))) . 
+												(ambiguousIdentifier AutoFit))))) \n End With))))))) <EOF>)

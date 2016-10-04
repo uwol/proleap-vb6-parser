@@ -1,1 +1,59 @@
-(startRule (module (moduleBody (moduleBodyElement (typeStmt Type (ambiguousIdentifier EmployeeRecord) (typeStmt_Element (ambiguousIdentifier ID) (asTypeClause As (type (baseType Integer)))) (typeStmt_Element (ambiguousIdentifier (ambiguousKeyword Name)) (asTypeClause As (type (baseType String)) (fieldLength * 20))) (typeStmt_Element (ambiguousIdentifier Address) (asTypeClause As (type (baseType String)) (fieldLength * 30))) (typeStmt_Element (ambiguousIdentifier Phone) (asTypeClause As (type (baseType Long)))) (typeStmt_Element (ambiguousIdentifier HireDate) (asTypeClause As (type (baseType Date)))) End Type)) (moduleBodyElement (subStmt Sub (ambiguousIdentifier CreateRecord) (argList ()) (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier MyRecord) (asTypeClause As (type (complexType (ambiguousIdentifier EmployeeRecord)))))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_MembersCall (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyRecord)) (iCS_S_MemberCall . (iCS_S_VariableOrProcedureCall (ambiguousIdentifier ID))))) = (valueStmt (literal 12003))))) End Sub)))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(typeStmt Type   
+					(ambiguousIdentifier EmployeeRecord) \n    
+					(typeStmt_Element 
+						(ambiguousIdentifier ID)   
+						(asTypeClause As   
+							(type 
+								(baseType Integer))) \n   ) 
+					(typeStmt_Element 
+						(ambiguousIdentifier 
+							(ambiguousKeyword Name))   
+						(asTypeClause As   
+							(type 
+								(baseType String))   
+							(fieldLength *   20)) \n   ) 
+					(typeStmt_Element 
+						(ambiguousIdentifier Address)   
+						(asTypeClause As   
+							(type 
+								(baseType String))   
+							(fieldLength *   30)) \n   ) 
+					(typeStmt_Element 
+						(ambiguousIdentifier Phone)   
+						(asTypeClause As   
+							(type 
+								(baseType Long))) \n   ) 
+					(typeStmt_Element 
+						(ambiguousIdentifier HireDate)   
+						(asTypeClause As   
+							(type 
+								(baseType Date))) \n) End Type)) \n 
+			(moduleBodyElement 
+				(subStmt Sub   
+					(ambiguousIdentifier CreateRecord) 
+					(argList ( )) \n    
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier MyRecord)   
+										(asTypeClause As   
+											(type 
+												(complexType 
+													(ambiguousIdentifier EmployeeRecord)))))))) \n \n    \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_MembersCall 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier MyRecord)) 
+										(iCS_S_MemberCall . 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier ID)))))   =   
+								(valueStmt 
+									(literal 12003))))) \n End Sub)))) <EOF>)

@@ -1,1 +1,14 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (killStmt Kill (valueStmt (literal "TestFile")))) (blockStmt (killStmt Kill (valueStmt (literal "*.TXT"))))))))) <EOF>)
+(startRule 
+	(module \n 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(killStmt Kill   
+								(valueStmt 
+									(literal "TestFile")))) \n \n \n 
+						(blockStmt 
+							(killStmt Kill   
+								(valueStmt 
+									(literal "*.TXT"))))))))   ) <EOF>)

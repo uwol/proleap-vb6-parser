@@ -1,1 +1,98 @@
-(startRule (module (moduleBody (moduleBodyElement (subStmt Sub (ambiguousIdentifier OnGosubGotoDemo) (argList ()) (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier Number)) , (variableSubStmt (ambiguousIdentifier MyString))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Number))) = (valueStmt (literal 2)))) (blockStmt (onGoSubStmt On (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Number)))) GoSub (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Sub1)))) , (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Sub2)))))) (blockStmt (onGoToStmt On (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Number)))) GoTo (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Line1)))) , (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Line2)))))) (blockStmt (exitStmt Exit Sub)) (blockStmt (lineLabel (ambiguousIdentifier Sub1) :)) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyString))) = (valueStmt (literal "In Sub1")))) : (blockStmt (returnStmt Return)) (blockStmt (lineLabel (ambiguousIdentifier Sub2) :)) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyString))) = (valueStmt (literal "In Sub2")))) : (blockStmt (returnStmt Return)) (blockStmt (implicitCallStmt_InBlock (iCS_B_ProcedureCall (certainIdentifier Line1)))) : (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyString))) = (valueStmt (literal "In Line1")))) (blockStmt (implicitCallStmt_InBlock (iCS_B_ProcedureCall (certainIdentifier Line2)))) : (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyString))) = (valueStmt (literal "In Line2"))))) End Sub)))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(subStmt Sub   
+					(ambiguousIdentifier OnGosubGotoDemo) 
+					(argList ( )) \n 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier Number)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier MyString))))) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier Number)))   =   
+								(valueStmt 
+									(literal 2)))) \n    \n    
+						(blockStmt 
+							(onGoSubStmt On   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Number))))   GoSub   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Sub1)))) ,   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Sub2)))))) \n       \n    
+						(blockStmt 
+							(onGoToStmt On   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Number))))   GoTo   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Line1)))) ,   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Line2)))))) \n    \n    
+						(blockStmt 
+							(exitStmt Exit Sub)) \n 
+						(blockStmt 
+							(lineLabel 
+								(ambiguousIdentifier Sub1) :)) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyString)))   =   
+								(valueStmt 
+									(literal "In Sub1"))))  :  
+						(blockStmt 
+							(returnStmt Return)) \n 
+						(blockStmt 
+							(lineLabel 
+								(ambiguousIdentifier Sub2) :)) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyString)))   =   
+								(valueStmt 
+									(literal "In Sub2"))))  :  
+						(blockStmt 
+							(returnStmt Return)) \n 
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_ProcedureCall 
+									(certainIdentifier Line1)))) :  \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyString)))   =   
+								(valueStmt 
+									(literal "In Line1")))) \n 
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_ProcedureCall 
+									(certainIdentifier Line2)))) :  \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyString)))   =   
+								(valueStmt 
+									(literal "In Line2"))))) \n End Sub)))) <EOF>)

@@ -1,1 +1,100 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier CurrentColor) (asTypeClause As (type (baseType Integer))))))) (blockStmt (constStmt Const (constSubStmt (ambiguousIdentifier BLACK) = (valueStmt (literal 0))) , (constSubStmt (ambiguousIdentifier RED) = (valueStmt (literal 1))) , (constSubStmt (ambiguousIdentifier GREEN) = (valueStmt (literal 2))) , (constSubStmt (ambiguousIdentifier BLUE) = (valueStmt (literal 3)))))))) (moduleBodyElement (propertyGetStmt Property Get (ambiguousIdentifier PenColor) (argList ()) (asTypeClause As (type (baseType String))) (block (blockStmt (selectCaseStmt Select Case (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier CurrentColor)))) (sC_Case Case (sC_Cond (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier RED))))) (block (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier PenColor))) = (valueStmt (literal "Red")))))) (sC_Case Case (sC_Cond (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier GREEN))))) (block (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier PenColor))) = (valueStmt (literal "Green")))))) (sC_Case Case (sC_Cond (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier BLUE))))) (block (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier PenColor))) = (valueStmt (literal "Blue")))))) End Select))) End Property)) (moduleBodyElement (moduleBlock (block (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier ColorName))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier PenColor))))))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier CurrentColor)   
+										(asTypeClause As   
+											(type 
+												(baseType Integer))))))) \n 
+						(blockStmt 
+							(constStmt Const   
+								(constSubStmt 
+									(ambiguousIdentifier BLACK)   =   
+									(valueStmt 
+										(literal 0))) ,   
+								(constSubStmt 
+									(ambiguousIdentifier RED)   =   
+									(valueStmt 
+										(literal 1))) ,   
+								(constSubStmt 
+									(ambiguousIdentifier GREEN)   =   
+									(valueStmt 
+										(literal 2))) ,   
+								(constSubStmt 
+									(ambiguousIdentifier BLUE)   =   
+									(valueStmt 
+										(literal 3)))))))) \n \n \n 
+			(moduleBodyElement 
+				(propertyGetStmt Property Get   
+					(ambiguousIdentifier PenColor) 
+					(argList ( ))   
+					(asTypeClause As   
+						(type 
+							(baseType String))) \n    
+					(block 
+						(blockStmt 
+							(selectCaseStmt Select   Case   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier CurrentColor)))) \n       
+								(sC_Case Case   
+									(sC_Cond 
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier RED))))) \n          
+									(block 
+										(blockStmt 
+											(letStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier PenColor)))   =   
+												(valueStmt 
+													(literal "Red"))))) \n      ) 
+								(sC_Case Case   
+									(sC_Cond 
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier GREEN))))) \n          
+									(block 
+										(blockStmt 
+											(letStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier PenColor)))   =   
+												(valueStmt 
+													(literal "Green"))))) \n      ) 
+								(sC_Case Case   
+									(sC_Cond 
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier BLUE))))) \n          
+									(block 
+										(blockStmt 
+											(letStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier PenColor)))   =   
+												(valueStmt 
+													(literal "Blue"))))) \n   ) End Select))) \n End Property)) \n \n \n \n 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier ColorName)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier PenColor))))))))))) <EOF>)

@@ -1,1 +1,52 @@
-(startRule (module (moduleHeader VERSION 1.0 CLASS) (moduleBody (moduleBodyElement (enumerationStmt (visibility Public) Enum (ambiguousIdentifier Enum1) \t (enumerationStmt_Constant (ambiguousIdentifier EnumConst1) = (valueStmt (literal 1)) \t) (enumerationStmt_Constant (ambiguousIdentifier EnumConst2) = (valueStmt (literal 2)) \t) (enumerationStmt_Constant (ambiguousIdentifier EnumConst3) = (valueStmt (literal -1)) \t) (enumerationStmt_Constant (ambiguousIdentifier EnumConst4) = (valueStmt (literal &H123ABC&))) End Enum)) (moduleBodyElement (enumerationStmt (visibility Private) Enum (ambiguousIdentifier Enum2) \t (enumerationStmt_Constant (ambiguousIdentifier EC1) \t) (enumerationStmt_Constant (ambiguousIdentifier EC2) \t) (enumerationStmt_Constant (ambiguousIdentifier EC3)) End Enum)) (moduleBodyElement (enumerationStmt (visibility Public) Enum (ambiguousIdentifier Days) (enumerationStmt_Constant (ambiguousIdentifier Monday)) (enumerationStmt_Constant (ambiguousIdentifier Tuesday)) (enumerationStmt_Constant (ambiguousIdentifier Wednesday)) (enumerationStmt_Constant (ambiguousIdentifier Thursday)) (enumerationStmt_Constant (ambiguousIdentifier Friday)) (enumerationStmt_Constant (ambiguousIdentifier Saturday)) (enumerationStmt_Constant (ambiguousIdentifier Sunday)) End Enum)))) <EOF>)
+(startRule 
+	(module 
+		(moduleHeader VERSION   1.0   CLASS) \n \n 
+		(moduleBody 
+			(moduleBodyElement 
+				(enumerationStmt 
+					(visibility Public)   Enum   
+					(ambiguousIdentifier Enum1) \n\t 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier EnumConst1) = 
+						(valueStmt 
+							(literal 1)) \n\t) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier EnumConst2)   =   
+						(valueStmt 
+							(literal 2)) \n\t) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier EnumConst3)   =   
+						(valueStmt 
+							(literal -1)) \n\t) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier EnumConst4)   =   
+						(valueStmt 
+							(literal &H123ABC&)) \n) End Enum)) \n \n \n 
+			(moduleBodyElement 
+				(enumerationStmt 
+					(visibility Private)   Enum   
+					(ambiguousIdentifier Enum2) \n\t 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier EC1) \n\t) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier EC2) \n\t) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier EC3) \n) End Enum)) \n \n 
+			(moduleBodyElement 
+				(enumerationStmt 
+					(visibility Public)   Enum   
+					(ambiguousIdentifier Days) \n   
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier Monday) \n  ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier Tuesday) \n  ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier Wednesday) \n  ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier Thursday) \n  ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier Friday) \n  ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier Saturday) \n  ) 
+					(enumerationStmt_Constant 
+						(ambiguousIdentifier Sunday) \n) End Enum)))) <EOF>)

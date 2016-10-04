@@ -1,1 +1,27 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (setattrStmt SetAttr (valueStmt (literal "TESTFILE")) , (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier vbHidden)))))) (blockStmt (setattrStmt SetAttr (valueStmt (literal "TESTFILE")) , (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier vbHidden)))) + (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier vbReadOnly)))))))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(setattrStmt SetAttr   
+								(valueStmt 
+									(literal "TESTFILE")) ,   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier vbHidden)))))) \n 
+						(blockStmt 
+							(setattrStmt SetAttr   
+								(valueStmt 
+									(literal "TESTFILE")) ,   
+								(valueStmt 
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier vbHidden))))   +   
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier vbReadOnly))))))))))) \n   ) <EOF>)

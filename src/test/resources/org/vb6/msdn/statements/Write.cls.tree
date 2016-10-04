@@ -1,1 +1,128 @@
-(startRule (module (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (openStmt Open (valueStmt (literal "TESTFILE")) For Output As (valueStmt (literal #1)))) (blockStmt (writeStmt Write (valueStmt (literal #1)) , (outputList (outputList_Expression (valueStmt (literal "Hello World"))) , (outputList_Expression (valueStmt (literal 234)))))) (blockStmt (writeStmt Write (valueStmt (literal #1)) ,)) (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier MyBool)) , (variableSubStmt (ambiguousIdentifier MyDate)) , (variableSubStmt (ambiguousIdentifier MyNull)) , (variableSubStmt (ambiguousIdentifier MyError))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyBool))) = (valueStmt (literal False)))) : (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyDate))) = (valueStmt (literal #February 12, 1969#)))) : (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyNull))) = (valueStmt (literal Null)))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyError))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier CVErr) ( (argsCall (argCall (valueStmt (literal 32767)))))))))) (blockStmt (writeStmt Write (valueStmt (literal #1)) , (outputList (outputList_Expression (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyBool))))) ; (outputList_Expression (valueStmt (literal " is a Boolean value")))))) (blockStmt (writeStmt Write (valueStmt (literal #1)) , (outputList (outputList_Expression (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyDate))))) ; (outputList_Expression (valueStmt (literal " is a date")))))) (blockStmt (writeStmt Write (valueStmt (literal #1)) , (outputList (outputList_Expression (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyNull))))) ; (outputList_Expression (valueStmt (literal " is a null value")))))) (blockStmt (writeStmt Write (valueStmt (literal #1)) , (outputList (outputList_Expression (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyError))))) ; (outputList_Expression (valueStmt (literal " is an error value")))))) (blockStmt (closeStmt Close (valueStmt (literal #1))))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(openStmt Open   
+								(valueStmt 
+									(literal "TESTFILE"))   For   Output   As   
+								(valueStmt 
+									(literal #1)))) \n 
+						(blockStmt 
+							(writeStmt Write   
+								(valueStmt 
+									(literal #1)) ,   
+								(outputList 
+									(outputList_Expression 
+										(valueStmt 
+											(literal "Hello World"))) ,   
+									(outputList_Expression 
+										(valueStmt 
+											(literal 234)))))) \n 
+						(blockStmt 
+							(writeStmt Write   
+								(valueStmt 
+									(literal #1)) ,)) \n \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier MyBool)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier MyDate)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier MyNull)) ,   
+									(variableSubStmt 
+										(ambiguousIdentifier MyError))))) \n \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyBool)))   =   
+								(valueStmt 
+									(literal False))))  :  
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyDate)))   =   
+								(valueStmt 
+									(literal #February 12, 1969#))))  :  
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyNull)))   =   
+								(valueStmt 
+									(literal Null)))) \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyError)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_ProcedureOrArrayCall 
+											(ambiguousIdentifier CVErr) ( 
+											(argsCall 
+												(argCall 
+													(valueStmt 
+														(literal 32767)))) )))))) \n \n \n  \n \n 
+						(blockStmt 
+							(writeStmt Write   
+								(valueStmt 
+									(literal #1)) ,   
+								(outputList 
+									(outputList_Expression 
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier MyBool)))))   ;   
+									(outputList_Expression 
+										(valueStmt 
+											(literal " is a Boolean value")))))) \n 
+						(blockStmt 
+							(writeStmt Write   
+								(valueStmt 
+									(literal #1)) ,   
+								(outputList 
+									(outputList_Expression 
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier MyDate)))))   ;   
+									(outputList_Expression 
+										(valueStmt 
+											(literal " is a date")))))) \n 
+						(blockStmt 
+							(writeStmt Write   
+								(valueStmt 
+									(literal #1)) ,   
+								(outputList 
+									(outputList_Expression 
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier MyNull)))))   ;   
+									(outputList_Expression 
+										(valueStmt 
+											(literal " is a null value")))))) \n 
+						(blockStmt 
+							(writeStmt Write   
+								(valueStmt 
+									(literal #1)) ,   
+								(outputList 
+									(outputList_Expression 
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier MyError)))))   ;   
+									(outputList_Expression 
+										(valueStmt 
+											(literal " is an error value")))))) \n 
+						(blockStmt 
+							(closeStmt Close   
+								(valueStmt 
+									(literal #1))))))))) <EOF>)

@@ -1,1 +1,60 @@
-(startRule (module (moduleBody (moduleBodyElement (declareStmt Declare Sub (ambiguousIdentifier MessageBeep) Lib "User" (argList ( (arg ByVal (ambiguousIdentifier N) (asTypeClause As (type (baseType Integer)))))))) (moduleBodyElement (declareStmt Declare Sub (ambiguousIdentifier MessageBeep) Lib "User" Alias "SomeBeep" (argList ( (arg ByVal (ambiguousIdentifier N) (asTypeClause As (type (baseType Integer)))))))) (moduleBodyElement (declareStmt Declare Function (ambiguousIdentifier GetWinFlags) Lib "Kernel" Alias "#132" (argList ()) (asTypeClause As (type (baseType Long))))) (moduleBodyElement (moduleBlock (block (blockStmt (macroIfThenElseStmt (macroIfBlockStmt #If (ifConditionStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Win32))))) Then (moduleBody (moduleBodyElement (declareStmt Declare Sub (ambiguousIdentifier MessageBeep) Lib "User32" (argList ( (arg ByVal (ambiguousIdentifier N) (asTypeClause As (type (baseType Long)))))))))) (macroElseBlockStmt #Else (moduleBody (moduleBodyElement (declareStmt Declare Sub (ambiguousIdentifier MessageBeep) Lib "User" (argList ( (arg ByVal (ambiguousIdentifier N) (asTypeClause As (type (baseType Integer)))))))))) #End If))))))) <EOF>)
+(startRule 
+	(module \n 
+		(moduleBody 
+			(moduleBodyElement 
+				(declareStmt Declare   Sub   
+					(ambiguousIdentifier MessageBeep)   Lib   "User"   
+					(argList ( 
+						(arg ByVal   
+							(ambiguousIdentifier N)   
+							(asTypeClause As   
+								(type 
+									(baseType Integer)))) )))) \n \n 
+			(moduleBodyElement 
+				(declareStmt Declare   Sub   
+					(ambiguousIdentifier MessageBeep)   Lib   "User"   Alias   "SomeBeep" 
+					(argList ( 
+						(arg ByVal   
+							(ambiguousIdentifier N)   
+							(asTypeClause As   
+								(type 
+									(baseType Integer)))) )))) \n \n 
+			(moduleBodyElement 
+				(declareStmt Declare   Function   
+					(ambiguousIdentifier GetWinFlags)   Lib   "Kernel"   Alias   "#132" 
+					(argList ( ))   
+					(asTypeClause As   
+						(type 
+							(baseType Long))))) \n \n \n \n \n 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(macroIfThenElseStmt 
+								(macroIfBlockStmt #If   
+									(ifConditionStmt 
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier Win32)))))   Then \n    
+									(moduleBody 
+										(moduleBodyElement 
+											(declareStmt Declare   Sub   
+												(ambiguousIdentifier MessageBeep)   Lib   "User32"   
+												(argList ( 
+													(arg ByVal   
+														(ambiguousIdentifier N)   
+														(asTypeClause As   
+															(type 
+																(baseType Long)))) ))))) \n) 
+								(macroElseBlockStmt #Else \n    
+									(moduleBody 
+										(moduleBodyElement 
+											(declareStmt Declare   Sub   
+												(ambiguousIdentifier MessageBeep)   Lib   "User"   
+												(argList ( 
+													(arg ByVal   
+														(ambiguousIdentifier N)   
+														(asTypeClause As   
+															(type 
+																(baseType Integer)))) ))))) \n) #End If))))))) <EOF>)

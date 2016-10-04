@@ -1,1 +1,27 @@
-(startRule (module (moduleOptions (moduleOption Option explicit)) (moduleBody (moduleBodyElement (moduleBlock (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier MyVar))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyInt))) = (valueStmt (literal 10)))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyVar))) = (valueStmt (literal 10))))))))) <EOF>)
+(startRule 
+	(module 
+		(moduleOptions 
+			(moduleOption Option explicit) \n) 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier MyVar))))) \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyInt)))   =   
+								(valueStmt 
+									(literal 10)))) \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier MyVar)))   =   
+								(valueStmt 
+									(literal 10))))))))) <EOF>)

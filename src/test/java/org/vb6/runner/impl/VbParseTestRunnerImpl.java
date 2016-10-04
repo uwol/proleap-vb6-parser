@@ -59,8 +59,9 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 
 			final String inputFileTree = Trees.toStringTree(startRule, parser);
 			final String cleanedInputFileTree = org.vb6.util.StringUtils.cleanFileTree(inputFileTree);
+			final String cleanedTreeFileData = org.vb6.util.StringUtils.cleanFileTree(treeFileData);
 
-			assertEquals(treeFileData, cleanedInputFileTree);
+			assertEquals(cleanedTreeFileData, cleanedInputFileTree);
 		} else {
 			LOG.info("Ignoring empty parse tree file {}.", treeFile.getName());
 		}

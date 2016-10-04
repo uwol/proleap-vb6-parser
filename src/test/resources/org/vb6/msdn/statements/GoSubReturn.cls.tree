@@ -1,1 +1,75 @@
-(startRule (module (moduleBody (moduleBodyElement (subStmt Sub (ambiguousIdentifier GosubDemo) (argList ()) (block (blockStmt (variableStmt Dim (variableListStmt (variableSubStmt (ambiguousIdentifier Num))))) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Num))) = (valueStmt (implicitCallStmt_InStmt (iCS_S_ProcedureOrArrayCall (ambiguousIdentifier InputBox) ( (argsCall (argCall (valueStmt (literal "Enter a positive number to be divided by 2.")))))))))) (blockStmt (ifThenElseStmt If (ifConditionStmt (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Num)))) > (valueStmt (literal 0)))) Then (blockStmt (goSubStmt GoSub (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier MyRoutine)))))))) (blockStmt (implicitCallStmt_InBlock (iCS_B_MemberProcedureCall (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Debug))) . (ambiguousIdentifier (ambiguousKeyword Print)) (argsCall (argCall (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Num))))))))) (blockStmt (exitStmt Exit Sub)) (blockStmt (lineLabel (ambiguousIdentifier MyRoutine) :)) (blockStmt (letStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Num))) = (valueStmt (valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall (ambiguousIdentifier Num)))) / (valueStmt (literal 2))))) (blockStmt (returnStmt Return))) End Sub)))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(subStmt Sub   
+					(ambiguousIdentifier GosubDemo) 
+					(argList ( )) \n 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier Num))))) \n \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier Num)))   =   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_ProcedureOrArrayCall 
+											(ambiguousIdentifier InputBox) ( 
+											(argsCall 
+												(argCall 
+													(valueStmt 
+														(literal "Enter a positive number to be divided by 2.")))) )))))) \n \n    
+						(blockStmt 
+							(ifThenElseStmt If   
+								(ifConditionStmt 
+									(valueStmt 
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier Num))))   >   
+										(valueStmt 
+											(literal 0))))   Then   
+								(blockStmt 
+									(goSubStmt GoSub   
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier MyRoutine))))))))    \n    
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_MemberProcedureCall 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Debug))) . 
+									(ambiguousIdentifier 
+										(ambiguousKeyword Print))   
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier Num))))))))) \n    
+						(blockStmt 
+							(exitStmt Exit Sub)) \n 
+						(blockStmt 
+							(lineLabel 
+								(ambiguousIdentifier MyRoutine) :)) \n    
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier Num)))   =   
+								(valueStmt 
+									(valueStmt 
+										(implicitCallStmt_InStmt 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier Num)))) / 
+									(valueStmt 
+										(literal 2))))) \n    
+						(blockStmt 
+							(returnStmt Return))) \n End Sub)))) <EOF>)
