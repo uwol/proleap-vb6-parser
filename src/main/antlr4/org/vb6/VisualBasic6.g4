@@ -54,11 +54,6 @@
 
 grammar VisualBasic6;
 
-options
-{
-	language = Java;
-}
-
 
 // module ----------------------------------
 
