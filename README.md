@@ -3,6 +3,8 @@ vb6grammar
 
 Visual Basic 6.0 Grammar for ANTLR4
 
+<a href="https://travis-ci.org/uwol/vb6grammar"><img src="https://api.travis-ci.org/uwol/vb6grammar.png"></a>
+
 This is an approximate grammar for Visual Basic 6.0, derived 
 from the Visual Basic 6.0 language reference 
 http://msdn.microsoft.com/en-us/library/aa338033%28v=vs.60%29.aspx 
@@ -118,7 +120,12 @@ Release process
 * Milestones are published in the [ANTLR grammars repo](https://github.com/antlr/grammars-v4).
 
 
-Travis status
--------------
+License
+-------
 
-* <a href="https://travis-ci.org/uwol/vb6grammar"><img src="https://api.travis-ci.org/uwol/vb6grammar.png"></a>
+Licensed under the BSD 3-Clause License. See LICENSE for details.
+
+### And finally...
+
+Patches accepted, or create an issue! 
+I'd love, if you could send me a note in which context you're using the grammar. Thank you!
