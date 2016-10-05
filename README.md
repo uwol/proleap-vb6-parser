@@ -21,11 +21,49 @@ Characteristics
    e.g. "A.Type", but not "Type.B".
 
 
+Example
+-------
+
+### Input: VB6 code
+
+```
+Private Sub Command1_Click ()
+   Text1.Text = "Hello, world!"
+End Sub
+```
+
+### Output: abstract syntax tree (AST)
+
+```
+(startRule
+	(module
+		(moduleBody
+			(moduleBodyElement
+				(subStmt
+					(visibility Private) Sub
+					(ambiguousIdentifier Command1_Click)
+					(argList ( ))
+					(block
+						(blockStmt
+							(letStmt
+								(implicitCallStmt_InStmt
+									(iCS_S_MembersCall
+										(iCS_S_VariableOrProcedureCall
+											(ambiguousIdentifier Text1))
+										(iCS_S_MemberCall .
+											(iCS_S_VariableOrProcedureCall
+												(ambiguousIdentifier
+													(ambiguousKeyword Text)))))) =
+								(valueStmt
+									(literal "Hello, world!"))))) End Sub)))) <EOF>)
+```
+
+
 Execution
 ---------
 
 ```java
-final java.io.File inputFile = new java.io.File("src/test/resources/org/vb6/gpl/statements/Print.cls");
+final java.io.File inputFile = new java.io.File("src/test/resources/org/vb6/gpl/HelloWorld.cls");
 final java.io.InputStream inputStream = new java.io.FileInputStream(inputFile);
 
 /*
