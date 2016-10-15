@@ -152,7 +152,7 @@ Tests run: 128, Failures: 0, Errors: 0, Skipped: 0
 $ mvn clean install
 ```
 
-* To use it in your project, add following dependency to your pom.xml:
+* To use it in your Maven project, add following dependency to your pom.xml:
 
 ```
 <dependency>
