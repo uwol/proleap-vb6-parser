@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<name>vb6grammar</name>
 	<description>An approximate grammar for Visual Basic 6.0</description>
-	<groupId>org.antlr-grammars</groupId>
+	<groupId>io.github.uwol</groupId>
 	<artifactId>vb6grammar</artifactId>
 	<version>1.4.0</version>
 	<packaging>jar</packaging>
