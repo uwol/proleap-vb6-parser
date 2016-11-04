@@ -64,6 +64,8 @@ End Sub
 Execution
 ---------
 
+### Abstract Syntax Tree Parsing
+
 ```java
 final java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/HelloWorld.cls");
 final java.io.InputStream inputStream = new java.io.FileInputStream(inputFile);
@@ -76,7 +78,7 @@ final io.proleap.vb6.VisualBasic6Lexer lexer = new io.proleap.vb6.VisualBasic6Le
 final org.antlr.v4.runtime.CommonTokenStream tokens = new org.antlr.v4.runtime.CommonTokenStream(lexer);
 
 /*
-* parser
+* AST parser
 */
 final io.proleap.vb6.VisualBasic6Parser parser = new io.proleap.vb6.VisualBasic6Parser(tokens);
 final io.proleap.vb6.VisualBasic6Parser.StartRuleContext ctx = parser.startRule();
@@ -97,6 +99,16 @@ final io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.v
 };
 
 visitor.visit(ctx);
+```
+
+### Abstract Semantic Graph Parsing
+
+```java
+io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
+
+final io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
+final io.proleap.vb6.parser.metamodel.Module module = program.getModule("HelloWorld");
+final io.proleap.vb6.parser.metamodel.Sub sub = module.getSub("Command1_Click");
 ```
 
 
