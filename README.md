@@ -1,12 +1,16 @@
-vb6grammar
-==================================================
-
-Visual Basic 6.0 Grammar and Parser for ANTLR4
+ANTLR4-based grammar and parser for Visual Basic 6.0
+====================================================
 
 <a href="https://travis-ci.org/uwol/vb6grammar"><img src="https://api.travis-ci.org/uwol/vb6grammar.png"></a>
 
-This is an approximate grammar and parser for Visual Basic 6.0, derived
-from the Visual Basic 6.0 language reference
+This is an approximate grammar and parser for Visual Basic 6.0, which generates an 
+Abstract Syntax Tree (AST) and Abstract Semantic Graph (ASG) for Visual Basic 6.0 code.
+
+The AST represents plain Visual Basic 6.0 source code in a syntax tree structure. 
+The ASG is generated from the AST by a semantic analysis and provides data and control 
+flow information (e. g. variable access).
+
+The grammar is derived from the Visual Basic 6.0 language reference
 http://msdn.microsoft.com/en-us/library/aa338033%28v=vs.60%29.aspx
 and tested against MSDN VB6 statement examples as well as several Visual
 Basic 6.0 code repositories.
@@ -64,7 +68,7 @@ End Sub
 Execution
 ---------
 
-### Abstract Syntax Tree Parsing
+### Abstract Syntax Tree (AST) parsing
 
 ```java
 final java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/HelloWorld.cls");
@@ -78,37 +82,37 @@ final io.proleap.vb6.VisualBasic6Lexer lexer = new io.proleap.vb6.VisualBasic6Le
 final org.antlr.v4.runtime.CommonTokenStream tokens = new org.antlr.v4.runtime.CommonTokenStream(lexer);
 
 /*
-* AST parser
+* parser
 */
 final io.proleap.vb6.VisualBasic6Parser parser = new io.proleap.vb6.VisualBasic6Parser(tokens);
 final io.proleap.vb6.VisualBasic6Parser.StartRuleContext ctx = parser.startRule();
 ```
 
-```java
-/*
- * traverse the abstract syntax tree (AST) with an ANTLR visitor
- */
-final io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.VisualBasic6BaseVisitor<Boolean>() {
-	/*
-	 * exemplary callback function for print statement
-	 */
-	@Override
-	public Boolean visitPrintStmt(final VisualBasic6Parser.PrintStmtContext ctx) {
-		return visitChildren(ctx);
-	}
-};
-
-visitor.visit(ctx);
-```
-
-### Abstract Semantic Graph Parsing
+### Abstract Semantic Graph (ASG) parsing
 
 ```java
 io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
 
+final java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/HelloWorld.cls");
 final io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
-final io.proleap.vb6.parser.metamodel.Module module = program.getModule("HelloWorld");
-final io.proleap.vb6.parser.metamodel.Sub sub = module.getSub("Command1_Click");
+
+/*
+ * traverse the AST with an ANTLR visitor
+ */
+final io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.VisualBasic6BaseVisitor<Boolean>() {
+  /*
+  * exemplary callback function for SUB
+  */
+  @Override
+  public Boolean visitSubStmt(final io.proleap.vb6.VisualBasic6Parser.SubStmtContext ctx) {
+    final io.proleap.vb6.parser.metamodel.Sub asgElement = (io.proleap.vb6.parser.metamodel.Sub) io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getSemanticGraphElementRegistry().getSemanticGraphElement(ctx);
+    return visitChildren(ctx);
+  }
+};
+
+for (final io.proleap.vb6.parser.metamodel.Module module : program.getModules()) {
+  visitor.visit(module.getCtx());
+}
 ```
 
 
