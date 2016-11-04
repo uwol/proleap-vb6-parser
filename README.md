@@ -1,11 +1,11 @@
 vb6grammar
 ==================================================
 
-Visual Basic 6.0 Grammar for ANTLR4
+Visual Basic 6.0 Grammar and Parser for ANTLR4
 
 <a href="https://travis-ci.org/uwol/vb6grammar"><img src="https://api.travis-ci.org/uwol/vb6grammar.png"></a>
 
-This is an approximate grammar for Visual Basic 6.0, derived
+This is an approximate grammar and parser for Visual Basic 6.0, derived
 from the Visual Basic 6.0 language reference
 http://msdn.microsoft.com/en-us/library/aa338033%28v=vs.60%29.aspx
 and tested against MSDN VB6 statement examples as well as several Visual

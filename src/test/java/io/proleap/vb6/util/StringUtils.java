@@ -9,7 +9,6 @@ public class StringUtils {
 	@Deprecated
 	public static String cleanFileTree(final String input) {
 		final String inputNoEscapedNewline = input.replace("\\r", "").replace("\\n", "");
-
 		final String inputNoNewline = inputNoEscapedNewline.replace("\r", "").replace("\n", "");
 		final String inputReducedWhitespace = inputNoNewline.replaceAll("[\\s]+", " ").replaceAll("[\\s]+\\)", ")");
 		final String result = inputReducedWhitespace;
