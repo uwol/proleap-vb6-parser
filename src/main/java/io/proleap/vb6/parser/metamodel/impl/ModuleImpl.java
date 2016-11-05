@@ -109,7 +109,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 	@Override
 	public Attribute addAttribute(final AttributeStmtContext ctx) {
-		Attribute result = (Attribute) getSemanticGraphElement(ctx);
+		Attribute result = (Attribute) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -129,7 +129,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 	@Override
 	public ProcedureDeclaration addDeclaration(final DeclareStmtContext ctx) {
-		ProcedureDeclaration result = (ProcedureDeclaration) getSemanticGraphElement(ctx);
+		ProcedureDeclaration result = (ProcedureDeclaration) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -149,7 +149,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 	@Override
 	public DefType addDefType(final DeftypeStmtContext ctx) {
-		DefType result = (DefType) getSemanticGraphElement(ctx);
+		DefType result = (DefType) getASGElement(ctx);
 
 		if (result == null) {
 			final VbBaseType vbType;
@@ -206,7 +206,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 	@Override
 	public Enumeration addEnumeration(final EnumerationStmtContext ctx) {
-		Enumeration result = (Enumeration) getSemanticGraphElement(ctx);
+		Enumeration result = (Enumeration) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -222,7 +222,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 	@Override
 	public Function addFunction(final FunctionStmtContext ctx) {
-		Function result = (Function) getSemanticGraphElement(ctx);
+		Function result = (Function) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -256,7 +256,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 	@Override
 	public ModuleConfigElement addModuleConfigElement(final ModuleConfigElementContext ctx) {
-		ModuleConfigElement result = (ModuleConfigElement) getSemanticGraphElement(ctx);
+		ModuleConfigElement result = (ModuleConfigElement) getASGElement(ctx);
 
 		if (result == null) {
 
@@ -310,7 +310,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 	@Override
 	public PropertyGet addPropertyGet(final PropertyGetStmtContext ctx) {
-		PropertyGet result = (PropertyGet) getSemanticGraphElement(ctx);
+		PropertyGet result = (PropertyGet) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -344,7 +344,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 	@Override
 	public PropertyLet addPropertyLet(final PropertyLetStmtContext ctx) {
-		PropertyLet result = (PropertyLet) getSemanticGraphElement(ctx);
+		PropertyLet result = (PropertyLet) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -365,7 +365,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 	@Override
 	public PropertySet addPropertySet(final PropertySetStmtContext ctx) {
-		PropertySet result = (PropertySet) getSemanticGraphElement(ctx);
+		PropertySet result = (PropertySet) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -386,7 +386,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 	@Override
 	public Sub addSub(final SubStmtContext ctx) {
-		Sub result = (Sub) getSemanticGraphElement(ctx);
+		Sub result = (Sub) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -407,8 +407,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 	@Override
 	public io.proleap.vb6.parser.metamodel.Type addType(final TypeStmtContext ctx) {
-		io.proleap.vb6.parser.metamodel.Type result = (io.proleap.vb6.parser.metamodel.Type) getSemanticGraphElement(
-				ctx);
+		io.proleap.vb6.parser.metamodel.Type result = (io.proleap.vb6.parser.metamodel.Type) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -428,7 +427,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 	@Override
 	public TypeElement addTypeElement(final TypeStmt_ElementContext ctx) {
-		TypeElement result = (TypeElement) getSemanticGraphElement(ctx);
+		TypeElement result = (TypeElement) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);

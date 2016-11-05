@@ -52,7 +52,7 @@ public class VbTypeVisitorImpl extends AbstractVbParserVisitorImpl {
 	public Boolean visitEnumerationStmt_Constant(
 			@NotNull final VisualBasic6Parser.EnumerationStmt_ConstantContext ctx) {
 		final EnumerationStmtContext enumerationCtx = (EnumerationStmtContext) ctx.getParent();
-		final Enumeration enumeration = (Enumeration) getSemanticGraphElement(enumerationCtx);
+		final Enumeration enumeration = (Enumeration) getASGElement(enumerationCtx);
 
 		enumeration.addEnumerationConstant(ctx);
 

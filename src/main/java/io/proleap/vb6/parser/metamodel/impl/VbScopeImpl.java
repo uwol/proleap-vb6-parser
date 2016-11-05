@@ -222,7 +222,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ArgValueAssignment addArgValueAssignment(final ArgCallContext ctx) {
-		ArgValueAssignment result = (ArgValueAssignment) getSemanticGraphElement(ctx);
+		ArgValueAssignment result = (ArgValueAssignment) getASGElement(ctx);
 
 		if (result == null) {
 			result = new ArgValueAssignmentImpl(module, this, ctx);
@@ -240,7 +240,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Call addCall(final CallContext callContext, final ImplicitCallStmt_InStmtContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			/*
@@ -272,7 +272,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Call addCall(final CallContext callContext, final VisualBasic6Parser.ICS_S_MembersCallContext ctx) {
-		MembersCall result = (MembersCall) getSemanticGraphElement(ctx);
+		MembersCall result = (MembersCall) getASGElement(ctx);
 
 		if (result == null) {
 			result = new MembersCallImpl(module, this, ctx);
@@ -309,7 +309,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 	@Override
 	public Call addCall(final ComplexType instanceType, final CallContext callContext,
 			final ICS_S_MemberCallContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			/*
@@ -336,7 +336,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 	@Override
 	public Call addCall(final ComplexType instanceType, final CallContext callContext,
 			final ICS_S_VariableOrProcedureCallContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -569,7 +569,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Call addCall(final ComplexType instanceType, final ICS_S_ProcedureOrArrayCallContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -641,7 +641,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Call addCall(final DictionaryCallStmtContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 
@@ -658,7 +658,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Call addCall(final ECS_MemberProcedureCallContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -713,7 +713,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Call addCall(final ECS_ProcedureCallContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -750,7 +750,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Call addCall(final ExplicitCallStmtContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final Call delegatedCall;
@@ -773,7 +773,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Call addCall(final ICS_B_MemberProcedureCallContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -828,7 +828,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Call addCall(final ICS_B_ProcedureCallContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -865,7 +865,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Call addCall(final ICS_S_DictionaryCallContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final Call delegatedCall = addCall(ctx.dictionaryCallStmt());
@@ -880,7 +880,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Call addCall(final ImplicitCallStmt_InBlockContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final Call delegatedCall;
@@ -904,7 +904,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Constant addConstant(final ConstSubStmtContext ctx) {
-		Constant result = (Constant) getSemanticGraphElement(ctx);
+		Constant result = (Constant) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -923,7 +923,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Exit addExit(final ExitStmtContext ctx) {
-		Exit result = (Exit) getSemanticGraphElement(ctx);
+		Exit result = (Exit) getASGElement(ctx);
 
 		if (result == null) {
 			final ExitType exitType;
@@ -952,7 +952,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ForEach addForEach(final ForEachStmtContext ctx) {
-		ForEach result = (ForEach) getSemanticGraphElement(ctx);
+		ForEach result = (ForEach) getASGElement(ctx);
 
 		if (result == null) {
 			result = new ForEachImpl(module, this, ctx);
@@ -976,7 +976,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ForNext addForNext(final ForNextStmtContext ctx) {
-		ForNext result = (ForNext) getSemanticGraphElement(ctx);
+		ForNext result = (ForNext) getASGElement(ctx);
 
 		if (result == null) {
 			result = new ForNextImpl(module, this, ctx);
@@ -1015,7 +1015,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public IfCondition addIfCondition(final IfConditionStmtContext ctx) {
-		IfCondition result = (IfCondition) getSemanticGraphElement(ctx);
+		IfCondition result = (IfCondition) getASGElement(ctx);
 
 		if (result == null) {
 			result = new IfConditionImpl(module, module, ctx);
@@ -1034,7 +1034,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 	 */
 	@Override
 	public Let addLet(final LetStmtContext ctx) {
-		Let result = (Let) getSemanticGraphElement(ctx);
+		Let result = (Let) getASGElement(ctx);
 
 		if (result == null) {
 			result = new LetImpl(module, this, ctx);
@@ -1060,7 +1060,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public LineLabel addLineLabel(final LineLabelContext ctx) {
-		LineLabel result = (LineLabel) getSemanticGraphElement(ctx);
+		LineLabel result = (LineLabel) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -1074,7 +1074,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Literal addLiteral(final LiteralContext ctx) {
-		Literal result = (Literal) getSemanticGraphElement(ctx);
+		Literal result = (Literal) getASGElement(ctx);
 
 		if (result == null) {
 			final Type type = determineType(ctx);
@@ -1089,7 +1089,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public OnError addOnError(final OnErrorStmtContext ctx) {
-		OnError result = (OnError) getSemanticGraphElement(ctx);
+		OnError result = (OnError) getASGElement(ctx);
 
 		if (result == null) {
 			final String lineLabelName = determineName(ctx);
@@ -1111,7 +1111,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ReDim addReDim(final RedimSubStmtContext ctx) {
-		ReDim result = (ReDim) getSemanticGraphElement(ctx);
+		ReDim result = (ReDim) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -1130,7 +1130,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Resume addResume(final ResumeStmtContext ctx) {
-		Resume result = (Resume) getSemanticGraphElement(ctx);
+		Resume result = (Resume) getASGElement(ctx);
 
 		if (result == null) {
 			final String lineLabelName = determineName(ctx);
@@ -1153,7 +1153,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Select addSelect(final SelectCaseStmtContext ctx) {
-		Select result = (Select) getSemanticGraphElement(ctx);
+		Select result = (Select) getASGElement(ctx);
 
 		if (result == null) {
 			result = new SelectImpl(module, this, ctx);
@@ -1178,7 +1178,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public SelectCase addSelectCase(final SC_CaseContext ctx) {
-		SelectCase result = (SelectCase) getSemanticGraphElement(ctx);
+		SelectCase result = (SelectCase) getASGElement(ctx);
 
 		if (result == null) {
 			result = new SelectCaseImpl(module, this, ctx);
@@ -1197,7 +1197,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public SelectCaseCond addSelectCaseCond(final SC_CondContext ctx) {
-		SelectCaseCond result = (SelectCaseCond) getSemanticGraphElement(ctx);
+		SelectCaseCond result = (SelectCaseCond) getASGElement(ctx);
 
 		if (result == null) {
 			final SelectCaseCondType selectCaseCondType;
@@ -1250,7 +1250,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 	 */
 	@Override
 	public Set addSet(final SetStmtContext ctx) {
-		Set result = (Set) getSemanticGraphElement(ctx);
+		Set result = (Set) getASGElement(ctx);
 
 		if (result == null) {
 			result = new SetImpl(module, this, ctx);
@@ -1276,7 +1276,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public CallValueStmt addValueStmt(final CallContext callContext, final VsICSContext ctx) {
-		CallValueStmt result = (CallValueStmt) getSemanticGraphElement(ctx);
+		CallValueStmt result = (CallValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final Call delegatedCall = addCall(callContext, ctx.implicitCallStmt_InStmt());
@@ -1291,7 +1291,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final ValueStmtContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			if (ctx == null) {
@@ -1374,7 +1374,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsAddContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final ValueStmt delegatedValueStmtLeft = addValueStmt(ctx.valueStmt(0));
@@ -1390,7 +1390,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsAddressOfContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new StringValueStmtImpl(module, this, ctx);
@@ -1403,7 +1403,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsAmpContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new StringValueStmtImpl(module, this, ctx);
@@ -1416,7 +1416,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsAndContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1429,7 +1429,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueAssignment addValueStmt(final VsAssignContext ctx) {
-		ValueAssignment result = (ValueAssignment) getSemanticGraphElement(ctx);
+		ValueAssignment result = (ValueAssignment) getASGElement(ctx);
 
 		if (result == null) {
 			result = new ValueAssignmentImpl(module, this, ctx);
@@ -1483,7 +1483,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsDivContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final ValueStmt delegatedValueStmtLeft = addValueStmt(ctx.valueStmt(0));
@@ -1499,7 +1499,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsEqContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final ValueStmt subValueStmt0 = addValueStmt(ctx.valueStmt(0));
@@ -1517,7 +1517,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsEqvContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1530,7 +1530,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsGeqContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1543,7 +1543,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsGtContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1556,7 +1556,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsImpContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1569,7 +1569,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsIsContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final ValueStmt subValueStmt0 = addValueStmt(ctx.valueStmt(0));
@@ -1587,7 +1587,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsLeqContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1600,7 +1600,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsLikeContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1613,7 +1613,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsLiteralContext ctx) {
-		LiteralValueStmt result = (LiteralValueStmt) getSemanticGraphElement(ctx);
+		LiteralValueStmt result = (LiteralValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new LiteralValueStmtImpl(module, this, ctx);
@@ -1629,7 +1629,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsLtContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1642,7 +1642,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsMidContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new StringValueStmtImpl(module, this, ctx);
@@ -1655,7 +1655,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsMinusContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final ValueStmt delegatedValueStmtLeft = addValueStmt(ctx.valueStmt(0));
@@ -1671,7 +1671,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsModContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final ValueStmt delegatedValueStmtLeft = addValueStmt(ctx.valueStmt(0));
@@ -1687,7 +1687,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsMultContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final ValueStmt delegatedValueStmtLeft = addValueStmt(ctx.valueStmt(0));
@@ -1703,7 +1703,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsNegationContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final ValueStmt delegatedValueStmtLeft = addValueStmt(ctx.valueStmt());
@@ -1718,7 +1718,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsNeqContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1731,7 +1731,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsNewContext ctx) {
-		NewValueStmt result = (NewValueStmt) getSemanticGraphElement(ctx);
+		NewValueStmt result = (NewValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final Type type = determineType(ctx);
@@ -1748,7 +1748,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsNotContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final ValueStmt subValueStmt = addValueStmt(ctx.valueStmt());
@@ -1764,7 +1764,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsOrContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1777,7 +1777,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsPlusContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final ValueStmt delegatedValueStmtLeft = addValueStmt(ctx.valueStmt());
@@ -1792,7 +1792,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsPowContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1805,7 +1805,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsStructContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new StructValueStmtImpl(module, this, ctx);
@@ -1818,7 +1818,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsTypeOfContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1831,7 +1831,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public ValueStmt addValueStmt(final VsXorContext ctx) {
-		ValueStmt result = (ValueStmt) getSemanticGraphElement(ctx);
+		ValueStmt result = (ValueStmt) getASGElement(ctx);
 
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
@@ -1844,7 +1844,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public Variable addVariable(final VariableSubStmtContext ctx) {
-		Variable result = (Variable) getSemanticGraphElement(ctx);
+		Variable result = (Variable) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -1866,7 +1866,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public While addWhile(final WhileWendStmtContext ctx) {
-		While result = (While) getSemanticGraphElement(ctx);
+		While result = (While) getASGElement(ctx);
 
 		if (result == null) {
 			result = new WhileImpl(module, this, ctx);
@@ -1882,7 +1882,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	@Override
 	public With addWith(final WithStmtContext ctx) {
-		With result = (With) getSemanticGraphElement(ctx);
+		With result = (With) getASGElement(ctx);
 
 		if (result == null) {
 			result = new WithImpl(module, this, ctx);

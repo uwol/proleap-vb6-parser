@@ -32,7 +32,7 @@ public abstract class ASGElementImpl implements ASGElement {
 	public Collection<ASGElement> getChildren() {
 		final ASGElementRegistry asgElementRegistry = VbParserContext.getInstance().getASGElementRegistry();
 		final List<ASGElement> result = VbParserContext.getInstance().getAstTraverser()
-				.findSemanticGraphElementChildren(ctx, asgElementRegistry);
+				.findASGElementChildren(ctx, asgElementRegistry);
 		return result;
 	}
 
@@ -44,7 +44,7 @@ public abstract class ASGElementImpl implements ASGElement {
 	@Override
 	public ASGElement getParent() {
 		final ASGElementRegistry asgElementRegistry = VbParserContext.getInstance().getASGElementRegistry();
-		final ASGElement result = VbParserContext.getInstance().getAstTraverser().findParentSemanticGraphElement(ctx,
+		final ASGElement result = VbParserContext.getInstance().getAstTraverser().findParentASGElement(ctx,
 				asgElementRegistry);
 		return result;
 	}

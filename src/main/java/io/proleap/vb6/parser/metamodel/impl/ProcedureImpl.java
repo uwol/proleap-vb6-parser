@@ -53,7 +53,7 @@ public abstract class ProcedureImpl extends VbScopeImpl implements Procedure {
 
 	@Override
 	public Arg addArg(final ArgContext ctx) {
-		Arg result = (Arg) getSemanticGraphElement(ctx);
+		Arg result = (Arg) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
@@ -80,7 +80,7 @@ public abstract class ProcedureImpl extends VbScopeImpl implements Procedure {
 
 	@Override
 	public Call addCall(final Type argType, final ArgDefaultValueContext ctx) {
-		Call result = (Call) getSemanticGraphElement(ctx);
+		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);

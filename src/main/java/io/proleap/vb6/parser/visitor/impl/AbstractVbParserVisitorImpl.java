@@ -26,12 +26,12 @@ public abstract class AbstractVbParserVisitorImpl extends VisualBasic6BaseVisito
 		this.module = module;
 	}
 
-	protected VbScope findVbScope(final ParseTree ctx) {
+	protected VbScope findScope(final ParseTree ctx) {
 		final ASGElementRegistry registry = VbParserContext.getInstance().getASGElementRegistry();
 		return VbParserContext.getInstance().getAstTraverser().findParent(VbScope.class, ctx, registry);
 	}
 
-	protected ASGElement getSemanticGraphElement(final ParseTree ctx) {
+	protected ASGElement getASGElement(final ParseTree ctx) {
 		final ASGElement result = VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
 		return result;
 	}

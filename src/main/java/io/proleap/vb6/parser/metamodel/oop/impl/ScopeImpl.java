@@ -91,7 +91,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		return result;
 	}
 
-	protected ASGElement getSemanticGraphElement(final ParseTree ctx) {
+	protected ASGElement getASGElement(final ParseTree ctx) {
 		final ASGElement result = VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
 		return result;
 	}

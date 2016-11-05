@@ -40,7 +40,7 @@ public interface ASTTraverser {
 	 * Identifies the parent semantic graph element, comparable to the AST
 	 * parent.
 	 */
-	ASGElement findParentSemanticGraphElement(ParseTree ctx, ASGElementRegistry asgElementRegistry);
+	ASGElement findParentASGElement(ParseTree ctx, ASGElementRegistry asgElementRegistry);
 
-	List<ASGElement> findSemanticGraphElementChildren(ParseTree from, ASGElementRegistry asgElementRegistry);
+	List<ASGElement> findASGElementChildren(ParseTree from, ASGElementRegistry asgElementRegistry);
 }
