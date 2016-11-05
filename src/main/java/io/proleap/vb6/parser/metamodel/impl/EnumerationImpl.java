@@ -62,7 +62,7 @@ public class EnumerationImpl extends VbScopedElementImpl implements Enumeration 
 		enumerationConstantsByCtx.put(ctx, enumerationConstant);
 		enumerationConstantsByName.put(name, enumerationConstant);
 
-		VbParserContext.getInstance().getSemanticGraphElementRegistry().addSemanticGraphElement(enumerationConstant);
+		VbParserContext.getInstance().getASGElementRegistry().addASGElement(enumerationConstant);
 
 		final ValueStmt valueStmt = module.addValueStmt(ctx.valueStmt());
 		enumerationConstant.setValueStmt(valueStmt);

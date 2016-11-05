@@ -49,7 +49,7 @@ public class ProcedureDeclarationImpl extends VbScopedElementImpl implements Pro
 		args.put(name, arg);
 		argsList.add(arg);
 
-		VbParserContext.getInstance().getSemanticGraphElementRegistry().addSemanticGraphElement(arg);
+		VbParserContext.getInstance().getASGElementRegistry().addASGElement(arg);
 
 		return arg;
 	}

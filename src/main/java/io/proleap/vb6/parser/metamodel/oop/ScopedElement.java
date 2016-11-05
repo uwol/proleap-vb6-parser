@@ -8,9 +8,9 @@
 
 package io.proleap.vb6.parser.metamodel.oop;
 
-import io.proleap.vb6.parser.metamodel.SemanticGraphElement;
+import io.proleap.vb6.parser.metamodel.ASGElement;
 
-public interface ScopedElement extends SemanticGraphElement {
+public interface ScopedElement extends ASGElement {
 
 	<T extends Scope> T findSuperScope(Class<T> type);
 

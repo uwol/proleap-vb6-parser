@@ -12,11 +12,11 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import io.proleap.vb6.parser.metamodel.impl.SemanticGraphElementImpl;
+import io.proleap.vb6.parser.metamodel.impl.ASGElementImpl;
 import io.proleap.vb6.parser.metamodel.oop.Scope;
 import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
 
-public abstract class ScopedElementImpl extends SemanticGraphElementImpl implements ScopedElement {
+public abstract class ScopedElementImpl extends ASGElementImpl implements ScopedElement {
 
 	private final static Logger LOG = LogManager.getLogger(ScopedElementImpl.class);
 

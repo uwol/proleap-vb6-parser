@@ -12,10 +12,10 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.VisualBasic6BaseVisitor;
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
+import io.proleap.vb6.parser.metamodel.ASGElement;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.SemanticGraphElement;
 import io.proleap.vb6.parser.metamodel.VbScope;
-import io.proleap.vb6.parser.registry.SemanticGraphElementRegistry;
+import io.proleap.vb6.parser.registry.ASGElementRegistry;
 import io.proleap.vb6.parser.visitor.ParserVisitor;
 
 public abstract class AbstractVbParserVisitorImpl extends VisualBasic6BaseVisitor<Boolean> implements ParserVisitor {
@@ -27,13 +27,12 @@ public abstract class AbstractVbParserVisitorImpl extends VisualBasic6BaseVisito
 	}
 
 	protected VbScope findVbScope(final ParseTree ctx) {
-		final SemanticGraphElementRegistry registry = VbParserContext.getInstance().getSemanticGraphElementRegistry();
+		final ASGElementRegistry registry = VbParserContext.getInstance().getASGElementRegistry();
 		return VbParserContext.getInstance().getAstTraverser().findParent(VbScope.class, ctx, registry);
 	}
 
-	protected SemanticGraphElement getSemanticGraphElement(final ParseTree ctx) {
-		final SemanticGraphElement result = VbParserContext.getInstance().getSemanticGraphElementRegistry()
-				.getSemanticGraphElement(ctx);
+	protected ASGElement getSemanticGraphElement(final ParseTree ctx) {
+		final ASGElement result = VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
 		return result;
 	}
 

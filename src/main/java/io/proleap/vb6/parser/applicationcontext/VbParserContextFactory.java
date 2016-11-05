@@ -16,7 +16,7 @@ import io.proleap.vb6.parser.inference.impl.TypeInferenceImpl;
 import io.proleap.vb6.parser.registry.api.impl.ApiEnumerationRegistryImpl;
 import io.proleap.vb6.parser.registry.api.impl.ApiProcedureRegistryImpl;
 import io.proleap.vb6.parser.registry.api.impl.ApiPropertyRegistryImpl;
-import io.proleap.vb6.parser.registry.impl.SemanticGraphElementRegistryImpl;
+import io.proleap.vb6.parser.registry.impl.ASGElementRegistryImpl;
 import io.proleap.vb6.parser.registry.impl.TypeRegistryImpl;
 import io.proleap.vb6.parser.registry.impl.VbTypeNameSanitizerImpl;
 import io.proleap.vb6.parser.runner.impl.VbParserRunnerImpl;
@@ -29,6 +29,7 @@ public class VbParserContextFactory {
 		VbParserContext.getInstance().setApiEnumerationRegistry(new ApiEnumerationRegistryImpl());
 		VbParserContext.getInstance().setApiProcedureRegistry(new ApiProcedureRegistryImpl());
 		VbParserContext.getInstance().setApiPropertyRegistry(new ApiPropertyRegistryImpl());
+		VbParserContext.getInstance().setASGElementRegistry(new ASGElementRegistryImpl());
 		VbParserContext.getInstance().setAstTraverser(new ASTTraverserImpl());
 		VbParserContext.getInstance().setNameResolver(new NameResolverImpl());
 		VbParserContext.getInstance().setParserRunner(new VbParserRunnerImpl());
@@ -37,6 +38,5 @@ public class VbParserContextFactory {
 		VbParserContext.getInstance().setTypeNameSanitizer(new VbTypeNameSanitizerImpl());
 		VbParserContext.getInstance().setTypeRegistry(new TypeRegistryImpl());
 		VbParserContext.getInstance().setTypeResolver(new TypeResolverImpl());
-		VbParserContext.getInstance().setSemanticGraphElementRegistry(new SemanticGraphElementRegistryImpl());
 	}
 }

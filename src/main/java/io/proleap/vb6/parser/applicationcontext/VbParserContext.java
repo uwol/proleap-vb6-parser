@@ -13,7 +13,7 @@ import io.proleap.vb6.parser.antlr.NameResolver;
 import io.proleap.vb6.parser.antlr.TypeResolver;
 import io.proleap.vb6.parser.inference.TypeAssignmentInference;
 import io.proleap.vb6.parser.inference.TypeInference;
-import io.proleap.vb6.parser.registry.SemanticGraphElementRegistry;
+import io.proleap.vb6.parser.registry.ASGElementRegistry;
 import io.proleap.vb6.parser.registry.TypeNameSanitizer;
 import io.proleap.vb6.parser.registry.TypeRegistry;
 import io.proleap.vb6.parser.registry.api.ApiEnumerationRegistry;
@@ -39,13 +39,13 @@ public class VbParserContext {
 
 	protected ApiPropertyRegistry apiPropertyRegistry;
 
+	protected ASGElementRegistry asgElementRegistry;
+
 	protected ASTTraverser astTraverser;
 
 	protected NameResolver nameResolver;
 
 	protected VbParserRunner parserRunner;
-
-	protected SemanticGraphElementRegistry semanticGraphElementRegistry;
 
 	protected TypeAssignmentInference typeAssignmentInference;
 
@@ -73,6 +73,10 @@ public class VbParserContext {
 		return apiPropertyRegistry;
 	}
 
+	public ASGElementRegistry getASGElementRegistry() {
+		return asgElementRegistry;
+	}
+
 	public ASTTraverser getAstTraverser() {
 		return astTraverser;
 	}
@@ -83,10 +87,6 @@ public class VbParserContext {
 
 	public VbParserRunner getParserRunner() {
 		return parserRunner;
-	}
-
-	public SemanticGraphElementRegistry getSemanticGraphElementRegistry() {
-		return semanticGraphElementRegistry;
 	}
 
 	public TypeAssignmentInference getTypeAssignmentInference() {
@@ -125,6 +125,10 @@ public class VbParserContext {
 		this.apiPropertyRegistry = apiPropertyRegistry;
 	}
 
+	public void setASGElementRegistry(final ASGElementRegistry asgElementRegistry) {
+		this.asgElementRegistry = asgElementRegistry;
+	}
+
 	public void setAstTraverser(final ASTTraverser astTraverser) {
 		this.astTraverser = astTraverser;
 	}
@@ -135,10 +139,6 @@ public class VbParserContext {
 
 	public void setParserRunner(final VbParserRunner parserRunner) {
 		this.parserRunner = parserRunner;
-	}
-
-	public void setSemanticGraphElementRegistry(final SemanticGraphElementRegistry semanticGraphElementRegistry) {
-		this.semanticGraphElementRegistry = semanticGraphElementRegistry;
 	}
 
 	public void setTypeAssignmentInference(final TypeAssignmentInference typeAssignmentInference) {

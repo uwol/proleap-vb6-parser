@@ -10,12 +10,12 @@ package io.proleap.vb6.parser.registry;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import io.proleap.vb6.parser.metamodel.SemanticGraphElement;
+import io.proleap.vb6.parser.metamodel.ASGElement;
 
-public interface SemanticGraphElementRegistry {
+public interface ASGElementRegistry {
 
-	void addSemanticGraphElement(SemanticGraphElement semanticGraphElement);
+	void addASGElement(ASGElement asgElement);
 
-	SemanticGraphElement getSemanticGraphElement(ParseTree ctx);
+	ASGElement getASGElement(ParseTree ctx);
 
 }

@@ -96,21 +96,19 @@ io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefault
 final java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/HelloWorld.cls");
 final io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
 
-/*
- * traverse the AST with an ANTLR visitor
- */
 final io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.VisualBasic6BaseVisitor<Boolean>() {
-  /*
-  * exemplary callback function for SUB
-  */
+  // examplary callback function for SUB
   @Override
   public Boolean visitSubStmt(final io.proleap.vb6.VisualBasic6Parser.SubStmtContext ctx) {
-    final io.proleap.vb6.parser.metamodel.Sub asgElement = (io.proleap.vb6.parser.metamodel.Sub) io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getSemanticGraphElementRegistry().getSemanticGraphElement(ctx);
+    final io.proleap.vb6.parser.metamodel.Sub asgElement = (io.proleap.vb6.parser.metamodel.Sub) io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
+    asgElement.getArgsList();
+
     return visitChildren(ctx);
   }
 };
 
 for (final io.proleap.vb6.parser.metamodel.Module module : program.getModules()) {
+  // traverse AST with ANTLR visitor
   visitor.visit(module.getCtx());
 }
 ```

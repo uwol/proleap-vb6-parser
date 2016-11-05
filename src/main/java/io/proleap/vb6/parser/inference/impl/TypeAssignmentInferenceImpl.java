@@ -23,7 +23,7 @@ import io.proleap.vb6.parser.metamodel.ForNext;
 import io.proleap.vb6.parser.metamodel.Let;
 import io.proleap.vb6.parser.metamodel.Procedure;
 import io.proleap.vb6.parser.metamodel.ReDim;
-import io.proleap.vb6.parser.metamodel.SemanticGraphElement;
+import io.proleap.vb6.parser.metamodel.ASGElement;
 import io.proleap.vb6.parser.metamodel.Set;
 import io.proleap.vb6.parser.metamodel.Variable;
 import io.proleap.vb6.parser.metamodel.VbBaseType;
@@ -44,7 +44,7 @@ public class TypeAssignmentInferenceImpl implements TypeAssignmentInference {
 
 	@Override
 	public void addTypeAssignment(final ArgCallContext ctx) {
-		final ArgValueAssignment argSetterCall = (ArgValueAssignment) getSemanticGraphElement(ctx);
+		final ArgValueAssignment argSetterCall = (ArgValueAssignment) getASGElement(ctx);
 
 		assert (argSetterCall != null);
 
@@ -58,7 +58,7 @@ public class TypeAssignmentInferenceImpl implements TypeAssignmentInference {
 
 	@Override
 	public void addTypeAssignment(final ForNextStmtContext ctx) {
-		final ForNext forNext = (ForNext) getSemanticGraphElement(ctx);
+		final ForNext forNext = (ForNext) getASGElement(ctx);
 
 		assert (forNext != null);
 
@@ -73,7 +73,7 @@ public class TypeAssignmentInferenceImpl implements TypeAssignmentInference {
 
 	@Override
 	public void addTypeAssignment(final LetStmtContext ctx) {
-		final Let let = (Let) getSemanticGraphElement(ctx);
+		final Let let = (Let) getASGElement(ctx);
 
 		assert (let != null);
 
@@ -107,7 +107,7 @@ public class TypeAssignmentInferenceImpl implements TypeAssignmentInference {
 
 	@Override
 	public void addTypeAssignment(final RedimSubStmtContext ctx) {
-		final ReDim reDim = (ReDim) getSemanticGraphElement(ctx);
+		final ReDim reDim = (ReDim) getASGElement(ctx);
 
 		final Variable variable = reDim.getVariable();
 
@@ -118,7 +118,7 @@ public class TypeAssignmentInferenceImpl implements TypeAssignmentInference {
 
 	@Override
 	public void addTypeAssignment(final SetStmtContext ctx) {
-		final Set set = (Set) getSemanticGraphElement(ctx);
+		final Set set = (Set) getASGElement(ctx);
 
 		assert (set != null);
 
@@ -152,7 +152,7 @@ public class TypeAssignmentInferenceImpl implements TypeAssignmentInference {
 
 	@Override
 	public void addTypeAssignment(final VsAssignContext ctx) {
-		final ValueAssignment vsAssign = (ValueAssignment) getSemanticGraphElement(ctx);
+		final ValueAssignment vsAssign = (ValueAssignment) getASGElement(ctx);
 
 		assert (vsAssign != null);
 
@@ -167,9 +167,9 @@ public class TypeAssignmentInferenceImpl implements TypeAssignmentInference {
 		return typedElement != null ? typedElement.getType() : null;
 	}
 
-	protected SemanticGraphElement getSemanticGraphElement(final ParseTree ctx) {
-		final SemanticGraphElement result = VbParserContext.getInstance().getSemanticGraphElementRegistry()
-				.getSemanticGraphElement(ctx);
+	protected ASGElement getASGElement(final ParseTree ctx) {
+		final ASGElement result = VbParserContext.getInstance().getASGElementRegistry()
+				.getASGElement(ctx);
 		return result;
 	}
 

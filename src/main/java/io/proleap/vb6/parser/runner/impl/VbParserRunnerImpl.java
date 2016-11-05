@@ -60,25 +60,11 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	protected final int TYPE_ANALYSIS_DEPTH = 4;
 
 	protected void analyze(final Program program) {
-
-		/*
-		 * register predefined model elements
-		 */
 		registerModelElements();
 
-		/*
-		 * analyze declarations
-		 */
 		analyzeDeclarations(program);
-
-		/*
-		 * analyze expressions
-		 */
 		analyzeExpressions(program);
 
-		/*
-		 * analyze type assignments
-		 */
 		for (int i = 0; i < TYPE_ANALYSIS_DEPTH; i++) {
 			analyzeTypeAssignments(program);
 		}
@@ -113,9 +99,6 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	public Program analyzeDirectory(final File inputDirectory) throws IOException {
 		final Program program = new ProgramImpl();
 
-		/*
-		 * parse
-		 */
 		for (final File inputFile : inputDirectory.listFiles()) {
 			parseFile(inputFile, program);
 		}
@@ -138,11 +121,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	public Program analyzeFile(final File inputFile) throws IOException {
 		final Program program = new ProgramImpl();
 
-		/*
-		 * parse
-		 */
 		parseFile(inputFile, program);
-
 		analyze(program);
 
 		return program;
@@ -434,29 +413,10 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	}
 
 	protected void registerModelElements() {
-		/*
-		 * initialize primitive vb types
-		 */
 		registerVbBaseTypes();
-
-		/*
-		 * register api enumerations
-		 */
 		registerApiEnumerations();
-
-		/*
-		 * register api properties
-		 */
 		registerApiProperties();
-
-		/*
-		 * register api procedures
-		 */
 		registerApiProcedures();
-
-		/*
-		 * register api modules
-		 */
 		registerApiModules();
 	}
 

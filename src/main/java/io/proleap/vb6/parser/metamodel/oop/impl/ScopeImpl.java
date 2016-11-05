@@ -18,7 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
-import io.proleap.vb6.parser.metamodel.SemanticGraphElement;
+import io.proleap.vb6.parser.metamodel.ASGElement;
 import io.proleap.vb6.parser.metamodel.oop.Declaration;
 import io.proleap.vb6.parser.metamodel.oop.NamedElement;
 import io.proleap.vb6.parser.metamodel.oop.Scope;
@@ -91,9 +91,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		return result;
 	}
 
-	protected SemanticGraphElement getSemanticGraphElement(final ParseTree ctx) {
-		final SemanticGraphElement result = VbParserContext.getInstance().getSemanticGraphElementRegistry()
-				.getSemanticGraphElement(ctx);
+	protected ASGElement getSemanticGraphElement(final ParseTree ctx) {
+		final ASGElement result = VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
 		return result;
 	}
 
@@ -111,11 +110,11 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		return result;
 	}
 
-	protected void registerSemanticGraphElement(final SemanticGraphElement semanticGraphElement) {
-		assert semanticGraphElement != null;
-		assert semanticGraphElement.getCtx() != null;
+	protected void registerSemanticGraphElement(final ASGElement asgElement) {
+		assert asgElement != null;
+		assert asgElement.getCtx() != null;
 
-		VbParserContext.getInstance().getSemanticGraphElementRegistry().addSemanticGraphElement(semanticGraphElement);
+		VbParserContext.getInstance().getASGElementRegistry().addASGElement(asgElement);
 	}
 
 	@Override
