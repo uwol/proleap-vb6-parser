@@ -100,8 +100,8 @@ final io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.v
   // examplary callback function for SUB
   @Override
   public Boolean visitSubStmt(final io.proleap.vb6.VisualBasic6Parser.SubStmtContext ctx) {
-    final io.proleap.vb6.parser.metamodel.Sub asgElement = (io.proleap.vb6.parser.metamodel.Sub) io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
-    asgElement.getArgsList();
+    final io.proleap.vb6.parser.metamodel.Sub sub = (io.proleap.vb6.parser.metamodel.Sub) io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
+    sub.getArgsList();
 
     return visitChildren(ctx);
   }

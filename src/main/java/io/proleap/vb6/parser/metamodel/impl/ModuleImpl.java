@@ -104,7 +104,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 		this.ctx = ctx;
 		module = this;
 
-		registerSemanticGraphElement(this);
+		registerASGElement(this);
 	}
 
 	@Override

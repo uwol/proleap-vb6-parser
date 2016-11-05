@@ -263,7 +263,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new CallDelegateImpl(delegatedCall, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -300,7 +300,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				}
 			}
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -327,7 +327,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new CallDelegateImpl(delegatedCall, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -561,7 +561,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				}
 			}
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -633,7 +633,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				}
 			}
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -650,7 +650,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new DictionaryCallImpl(name, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -705,7 +705,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				result = new UndefinedCallImpl(name, null, module, this, ctx);
 			}
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -742,7 +742,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				result = new UndefinedCallImpl(name, null, module, this, ctx);
 			}
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -765,7 +765,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new CallDelegateImpl(delegatedCall, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -820,7 +820,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				result = new UndefinedCallImpl(name, null, module, this, ctx);
 			}
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -857,7 +857,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				result = new UndefinedCallImpl(name, null, module, this, ctx);
 			}
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -872,7 +872,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new CallDelegateImpl(delegatedCall, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -896,7 +896,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new CallDelegateImpl(delegatedCall, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1283,7 +1283,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new CallValueStmtImpl(delegatedCall, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1382,7 +1382,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new ArithmeticValueStmtImpl(delegatedValueStmtLeft, delegatedValueStmtRight, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1395,7 +1395,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new StringValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1408,7 +1408,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new StringValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1421,7 +1421,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1473,7 +1473,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			final ValueStmt rightHandValueStmt = addValueStmt(ctx.valueStmt());
 			result.setRightHandValueStmt(rightHandValueStmt);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
@@ -1491,7 +1491,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new ArithmeticValueStmtImpl(delegatedValueStmtLeft, delegatedValueStmtRight, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1509,7 +1509,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			result.addSubValueStmt(subValueStmt0);
 			result.addSubValueStmt(subValueStmt1);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1522,7 +1522,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1535,7 +1535,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1548,7 +1548,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1561,7 +1561,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1579,7 +1579,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			result.addSubValueStmt(subValueStmt0);
 			result.addSubValueStmt(subValueStmt1);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1592,7 +1592,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1605,7 +1605,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1618,7 +1618,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new LiteralValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 
 			final Literal literal = addLiteral(ctx.literal());
 			result.setLiteral(literal);
@@ -1634,7 +1634,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1647,7 +1647,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new StringValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1663,7 +1663,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new ArithmeticValueStmtImpl(delegatedValueStmtLeft, delegatedValueStmtRight, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1679,7 +1679,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new ArithmeticValueStmtImpl(delegatedValueStmtLeft, delegatedValueStmtRight, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1695,7 +1695,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new ArithmeticValueStmtImpl(delegatedValueStmtLeft, delegatedValueStmtRight, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1710,7 +1710,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new ArithmeticValueStmtImpl(delegatedValueStmtLeft, null, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1723,7 +1723,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1740,7 +1740,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new NewValueStmtImpl(type, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1756,7 +1756,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			result = new NotValueStmtImpl(module, this, ctx);
 			result.addSubValueStmt(subValueStmt);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1769,7 +1769,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1784,7 +1784,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new ArithmeticValueStmtImpl(delegatedValueStmtLeft, null, module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1797,7 +1797,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1810,7 +1810,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new StructValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1823,7 +1823,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1836,7 +1836,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		if (result == null) {
 			result = new BooleanValueStmtImpl(module, this, ctx);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;

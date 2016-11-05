@@ -72,7 +72,7 @@ public abstract class ProcedureImpl extends VbScopeImpl implements Procedure {
 			args.put(name, result);
 			argsList.add(result);
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
@@ -102,7 +102,7 @@ public abstract class ProcedureImpl extends VbScopeImpl implements Procedure {
 				result = new UndefinedCallImpl(name, defaultValueLiteralType, module, this, ctx);
 			}
 
-			registerSemanticGraphElement(result);
+			registerASGElement(result);
 		}
 
 		return result;
