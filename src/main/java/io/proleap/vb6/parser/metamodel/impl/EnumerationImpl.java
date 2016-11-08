@@ -8,7 +8,9 @@
 
 package io.proleap.vb6.parser.metamodel.impl;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -20,12 +22,15 @@ import io.proleap.vb6.parser.metamodel.Enumeration;
 import io.proleap.vb6.parser.metamodel.EnumerationConstant;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.call.EnumerationCall;
 import io.proleap.vb6.parser.metamodel.oop.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
 public class EnumerationImpl extends VbScopedElementImpl implements Enumeration {
 
 	protected final EnumerationStmtContext ctx;
+
+	protected final List<EnumerationCall> enumerationCalls = new ArrayList<EnumerationCall>();
 
 	protected final Map<EnumerationStmt_ConstantContext, EnumerationConstant> enumerationConstantsByCtx = new LinkedHashMap<EnumerationStmt_ConstantContext, EnumerationConstant>();
 
@@ -41,6 +46,11 @@ public class EnumerationImpl extends VbScopedElementImpl implements Enumeration 
 		this.ctx = ctx;
 		this.module = module;
 		this.name = name;
+	}
+
+	@Override
+	public void addEnumerationCall(final EnumerationCall enumerationCall) {
+		enumerationCalls.add(enumerationCall);
 	}
 
 	@Override
@@ -79,6 +89,11 @@ public class EnumerationImpl extends VbScopedElementImpl implements Enumeration 
 	@Override
 	public EnumerationStmtContext getCtx() {
 		return ctx;
+	}
+
+	@Override
+	public List<EnumerationCall> getEnumerationCalls() {
+		return enumerationCalls;
 	}
 
 	@Override

@@ -447,10 +447,15 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 						final EnumerationCall enumerationCall = new EnumerationCallImpl(name, enumeration, module, this,
 								ctx);
 
+						associateEnumerationCallWithEnumeration(enumerationCall, enumeration);
+
 						result = enumerationCall;
 					} else if (enumerationConstant != null) {
 						final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
 								enumerationConstant, module, this, ctx);
+
+						associateEnumerationConstantCallWithEnumerationConstant(enumerationConstantCall,
+								enumerationConstant);
 
 						final boolean isStandalone = instanceType == null;
 						enumerationConstantCall.setStandaloneCall(isStandalone);
@@ -539,10 +544,15 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 						final EnumerationCall enumerationCall = new EnumerationCallImpl(name, enumeration, module, this,
 								ctx);
 
+						associateEnumerationCallWithEnumeration(enumerationCall, enumeration);
+
 						result = enumerationCall;
 					} else if (enumerationConstant != null) {
 						final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
 								enumerationConstant, module, this, ctx);
+
+						associateEnumerationConstantCallWithEnumerationConstant(enumerationConstantCall,
+								enumerationConstant);
 
 						final boolean isStandalone = instanceType == null;
 						enumerationConstantCall.setStandaloneCall(isStandalone);
@@ -1957,6 +1967,16 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	protected void associateConstantCallWithConstant(final ConstantCall constantCall, final Constant constant) {
 		constant.addConstantCall(constantCall);
+	}
+
+	protected void associateEnumerationCallWithEnumeration(final EnumerationCall enumerationCall,
+			final Enumeration enumeration) {
+		enumeration.addEnumerationCall(enumerationCall);
+	}
+
+	protected void associateEnumerationConstantCallWithEnumerationConstant(
+			final EnumerationConstantCall enumerationConstantCall, final EnumerationConstant enumerationConstant) {
+		enumerationConstant.addEnumerationConstantCall(enumerationConstantCall);
 	}
 
 	protected void associateFunctionCallWithFunction(final FunctionCall functionCall, final Function function,

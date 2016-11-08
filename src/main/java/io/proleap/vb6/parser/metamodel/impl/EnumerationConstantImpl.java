@@ -8,9 +8,13 @@
 
 package io.proleap.vb6.parser.metamodel.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmt_ConstantContext;
 import io.proleap.vb6.parser.metamodel.Enumeration;
 import io.proleap.vb6.parser.metamodel.EnumerationConstant;
+import io.proleap.vb6.parser.metamodel.call.EnumerationConstantCall;
 import io.proleap.vb6.parser.metamodel.oop.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
@@ -19,6 +23,8 @@ public class EnumerationConstantImpl extends VbScopedElementImpl implements Enum
 	protected final EnumerationStmt_ConstantContext ctx;
 
 	protected final Enumeration enumeration;
+
+	protected final List<EnumerationConstantCall> enumerationConstantCalls = new ArrayList<EnumerationConstantCall>();
 
 	protected final String name;
 
@@ -37,6 +43,11 @@ public class EnumerationConstantImpl extends VbScopedElementImpl implements Enum
 	}
 
 	@Override
+	public void addEnumerationConstantCall(final EnumerationConstantCall enumerationConstantCall) {
+		enumerationConstantCalls.add(enumerationConstantCall);
+	}
+
+	@Override
 	public EnumerationStmt_ConstantContext getCtx() {
 		return ctx;
 	}
@@ -44,6 +55,11 @@ public class EnumerationConstantImpl extends VbScopedElementImpl implements Enum
 	@Override
 	public Enumeration getEnumeration() {
 		return enumeration;
+	}
+
+	@Override
+	public List<EnumerationConstantCall> getEnumerationConstantCalls() {
+		return enumerationConstantCalls;
 	}
 
 	@Override

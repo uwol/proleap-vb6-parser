@@ -8,18 +8,24 @@
 
 package io.proleap.vb6.parser.metamodel;
 
+import java.util.List;
 import java.util.Map;
 
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmt_ConstantContext;
+import io.proleap.vb6.parser.metamodel.call.EnumerationCall;
 import io.proleap.vb6.parser.metamodel.oop.ComplexType;
 
 public interface Enumeration extends ComplexType, VbScopedElement {
+
+	void addEnumerationCall(EnumerationCall enumerationCall);
 
 	void addEnumerationConstant(EnumerationStmt_ConstantContext ctx);
 
 	@Override
 	EnumerationStmtContext getCtx();
+
+	List<EnumerationCall> getEnumerationCalls();
 
 	EnumerationConstant getEnumerationConstant(EnumerationStmt_ConstantContext ctx);
 
