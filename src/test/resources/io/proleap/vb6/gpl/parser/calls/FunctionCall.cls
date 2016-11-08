@@ -6,11 +6,11 @@ Private Function Function2(I, J)
     Function2 = 2
 End Function
 
-Private Sub TestSimpleCalls()
+Private Sub TestFunctionCalls()
     Function1    
     Function2 1, 2
 
-    Dim I
+	Dim I
 
     I = Function1
     I = Function1()

@@ -28,7 +28,9 @@ import static io.proleap.vb6.parser.util.CastUtils.castSub;
 import static io.proleap.vb6.parser.util.CastUtils.castVariable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.apache.logging.log4j.LogManager;
@@ -213,6 +215,8 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 	public final static String ME = "ME";
 
 	protected Module module;
+
+	protected Map<String, Variable> variables = new HashMap<String, Variable>();
 
 	public VbScopeImpl(final Module module, final VbScope superScope, final ParseTree ctx) {
 		super(superScope, ctx);
@@ -1859,6 +1863,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			result.setDeclaredAsStaticArray(isStaticArray);
 
 			storeScopedElement(result);
+			variables.put(name, result);
 		}
 
 		return result;
@@ -2035,5 +2040,10 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 	@Override
 	public Module getModule() {
 		return module;
+	}
+
+	@Override
+	public Variable getVariable(final String name) {
+		return variables.get(name);
 	}
 }

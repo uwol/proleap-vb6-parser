@@ -14,6 +14,9 @@ import io.proleap.vb6.parser.applicationcontext.VbParserContext;
 import io.proleap.vb6.parser.metamodel.Function;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Program;
+import io.proleap.vb6.parser.metamodel.Sub;
+import io.proleap.vb6.parser.metamodel.Variable;
+import io.proleap.vb6.parser.metamodel.VbBaseType;
 
 public class FunctionCallTest extends VbTestSupport {
 
@@ -35,11 +38,23 @@ public class FunctionCallTest extends VbTestSupport {
 		assertFalse(function1.getFunctionCalls().isEmpty());
 		assertEquals(3, function1.getFunctionCalls().size());
 
+		// type has been inferred by value assignment
+		assertEquals(VbBaseType.INTEGER, function1.getType());
+
 		final Function function2 = module.getFunction("Function2");
 
 		assertNotNull(function2);
 		assertFalse(function2.getFunctionCalls().isEmpty());
 		assertEquals(2, function2.getFunctionCalls().size());
+
+		// type has been inferred by value assignment
+		assertEquals(VbBaseType.INTEGER, function2.getType());
+
+		final Sub subTestFunctionCalls = module.getSub("TestFunctionCalls");
+		final Variable variableI = subTestFunctionCalls.getVariable("I");
+
+		// type has been inferred by value assignment
+		assertEquals(VbBaseType.INTEGER, variableI.getType());
 	}
 
 }
