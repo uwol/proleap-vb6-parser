@@ -212,6 +212,8 @@ public interface VbScope extends VbScopedElement, Scope {
 
 	With addWith(WithStmtContext ctx);
 
+	Constant getConstant(String name);
+
 	Variable getVariable(String name);
 
 }

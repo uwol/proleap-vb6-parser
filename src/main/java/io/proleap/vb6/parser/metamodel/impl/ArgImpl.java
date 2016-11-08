@@ -8,7 +8,9 @@
 
 package io.proleap.vb6.parser.metamodel.impl;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
@@ -17,11 +19,14 @@ import io.proleap.vb6.parser.metamodel.Arg;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Procedure;
 import io.proleap.vb6.parser.metamodel.ProcedureDeclaration;
+import io.proleap.vb6.parser.metamodel.call.ArgCall;
 import io.proleap.vb6.parser.metamodel.call.Call;
 import io.proleap.vb6.parser.metamodel.oop.Scope;
 import io.proleap.vb6.parser.metamodel.oop.Type;
 
 public class ArgImpl extends VbScopedElementImpl implements Arg {
+
+	protected final List<ArgCall> argCalls = new ArrayList<ArgCall>();
 
 	protected final ArgContext ctx;
 
@@ -54,10 +59,20 @@ public class ArgImpl extends VbScopedElementImpl implements Arg {
 	}
 
 	@Override
+	public void addArgCall(final ArgCall argCall) {
+		argCalls.add(argCall);
+	}
+
+	@Override
 	public void addTypeOfAssignedValue(final Type type) {
 		if (type != null) {
 			typesOfAssignedValues.add(type);
 		}
+	}
+
+	@Override
+	public List<ArgCall> getArgCalls() {
+		return argCalls;
 	}
 
 	@Override

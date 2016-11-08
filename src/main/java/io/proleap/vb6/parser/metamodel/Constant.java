@@ -8,12 +8,19 @@
 
 package io.proleap.vb6.parser.metamodel;
 
+import java.util.List;
+
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
+import io.proleap.vb6.parser.metamodel.call.ConstantCall;
 import io.proleap.vb6.parser.metamodel.oop.Declaration;
 import io.proleap.vb6.parser.metamodel.oop.TypedElement;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
 public interface Constant extends TypedElement, Declaration, VbScopedElement {
+
+	void addConstantCall(ConstantCall constantCall);
+
+	List<ConstantCall> getConstantCalls();
 
 	@Override
 	ConstSubStmtContext getCtx();

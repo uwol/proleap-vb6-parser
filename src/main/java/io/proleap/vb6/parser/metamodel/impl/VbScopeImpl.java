@@ -214,6 +214,8 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	public final static String ME = "ME";
 
+	protected Map<String, Constant> constants = new HashMap<String, Constant>();
+
 	protected Module module;
 
 	protected Map<String, Variable> variables = new HashMap<String, Variable>();
@@ -271,7 +273,6 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		}
 
 		return result;
-
 	}
 
 	@Override
@@ -411,11 +412,15 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 					} else if (variable != null) {
 						final VariableCall variableCall = new VariableCallImpl(name, variable, module, this, ctx);
 
+						associateVariableCallWithVariable(variableCall, variable);
+
 						result = variableCall;
 					}
 					// arg values can be overwritten
 					else if (arg != null) {
 						final ArgCall argCall = new ArgCallImpl(name, arg, module, this, ctx);
+
+						associateArgCallWithArg(argCall, arg);
 
 						result = argCall;
 					} else if (propertyLet != null) {
@@ -434,6 +439,8 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 						result = propertySetCall;
 					} else if (constant != null) {
 						final ConstantCall constantCall = new ConstantCallImpl(name, constant, module, this, ctx);
+
+						associateConstantCallWithConstant(constantCall, constant);
 
 						result = constantCall;
 					} else if (enumeration != null) {
@@ -494,13 +501,19 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 					} else if (variable != null) {
 						final VariableCall variableCall = new VariableCallImpl(name, variable, module, this, ctx);
 
+						associateVariableCallWithVariable(variableCall, variable);
+
 						result = variableCall;
 					} else if (arg != null) {
 						final ArgCall argCall = new ArgCallImpl(name, arg, module, this, ctx);
 
+						associateArgCallWithArg(argCall, arg);
+
 						result = argCall;
 					} else if (constant != null) {
 						final ConstantCall constantCall = new ConstantCallImpl(name, constant, module, this, ctx);
+
+						associateConstantCallWithConstant(constantCall, constant);
 
 						result = constantCall;
 					} else if (propertyGet != null) {
@@ -920,6 +933,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			result.setValueStmt(valueStmt);
 
 			storeScopedElement(result);
+			constants.put(name, result);
 		}
 
 		return result;
@@ -1937,6 +1951,14 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		}
 	}
 
+	protected void associateArgCallWithArg(final ArgCall argCall, final Arg arg) {
+		arg.addArgCall(argCall);
+	}
+
+	protected void associateConstantCallWithConstant(final ConstantCall constantCall, final Constant constant) {
+		constant.addConstantCall(constantCall);
+	}
+
 	protected void associateFunctionCallWithFunction(final FunctionCall functionCall, final Function function,
 			final ArgsCallContext ctx) {
 		function.addFunctionCall(functionCall);
@@ -1969,6 +1991,15 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		sub.addSubCall(subCall);
 
 		associateArgCallsWithArgs(sub, ctx);
+	}
+
+	protected void associateVariableCallWithVariable(final VariableCall variableCall, final Variable variable) {
+		variable.addVariableCall(variableCall);
+	}
+
+	@Override
+	public Constant getConstant(final String name) {
+		return constants.get(name);
 	}
 
 	/**

@@ -8,12 +8,19 @@
 
 package io.proleap.vb6.parser.metamodel;
 
+import java.util.List;
+
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
+import io.proleap.vb6.parser.metamodel.call.ArgCall;
 import io.proleap.vb6.parser.metamodel.call.Call;
 import io.proleap.vb6.parser.metamodel.oop.AssignableTypedElement;
 import io.proleap.vb6.parser.metamodel.oop.NamedElement;
 
 public interface Arg extends AssignableTypedElement, NamedElement, VbScopedElement {
+
+	void addArgCall(ArgCall argCall);
+
+	List<ArgCall> getArgCalls();
 
 	@Override
 	ArgContext getCtx();

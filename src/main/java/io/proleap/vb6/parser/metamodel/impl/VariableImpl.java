@@ -8,7 +8,9 @@
 
 package io.proleap.vb6.parser.metamodel.impl;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import io.proleap.vb6.VisualBasic6Parser.VariableSubStmtContext;
@@ -16,6 +18,7 @@ import io.proleap.vb6.parser.applicationcontext.VbParserContext;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Variable;
 import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.call.VariableCall;
 import io.proleap.vb6.parser.metamodel.oop.Type;
 
 public class VariableImpl extends VbScopedElementImpl implements Variable {
@@ -38,6 +41,8 @@ public class VariableImpl extends VbScopedElementImpl implements Variable {
 	 */
 	protected Set<Type> typesOfAssignedValues = new LinkedHashSet<Type>();
 
+	protected final List<VariableCall> variableCalls = new ArrayList<VariableCall>();
+
 	public VariableImpl(final String name, final Type type, final Module module, final VbScope superScope,
 			final VariableSubStmtContext ctx) {
 		super(module, superScope, ctx);
@@ -52,6 +57,11 @@ public class VariableImpl extends VbScopedElementImpl implements Variable {
 		if (type != null) {
 			typesOfAssignedValues.add(type);
 		}
+	}
+
+	@Override
+	public void addVariableCall(final VariableCall variableCall) {
+		variableCalls.add(variableCall);
 	}
 
 	@Override
@@ -75,6 +85,11 @@ public class VariableImpl extends VbScopedElementImpl implements Variable {
 	@Override
 	public Set<Type> getTypesOfAssignedValues() {
 		return typesOfAssignedValues;
+	}
+
+	@Override
+	public List<VariableCall> getVariableCalls() {
+		return variableCalls;
 	}
 
 	@Override

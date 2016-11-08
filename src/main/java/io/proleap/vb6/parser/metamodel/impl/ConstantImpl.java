@@ -8,14 +8,20 @@
 
 package io.proleap.vb6.parser.metamodel.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
 import io.proleap.vb6.parser.metamodel.Constant;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.call.ConstantCall;
 import io.proleap.vb6.parser.metamodel.oop.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
 public class ConstantImpl extends VbScopedElementImpl implements Constant {
+
+	protected final List<ConstantCall> constantCalls = new ArrayList<ConstantCall>();
 
 	protected final ConstSubStmtContext ctx;
 
@@ -35,6 +41,16 @@ public class ConstantImpl extends VbScopedElementImpl implements Constant {
 		this.name = name;
 		scope = superScope;
 		this.type = type;
+	}
+
+	@Override
+	public void addConstantCall(final ConstantCall constantCall) {
+		constantCalls.add(constantCall);
+	}
+
+	@Override
+	public List<ConstantCall> getConstantCalls() {
+		return constantCalls;
 	}
 
 	@Override
