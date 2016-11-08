@@ -8,6 +8,10 @@
 
 package io.proleap.vb6.parser.metamodel.oop.api.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.proleap.vb6.parser.metamodel.call.ApiEnumerationConstantCall;
 import io.proleap.vb6.parser.metamodel.oop.Type;
 import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumeration;
 import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumerationConstant;
@@ -15,6 +19,8 @@ import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumerationConstant;
 public class ApiEnumerationConstantImpl implements ApiEnumerationConstant {
 
 	protected final ApiEnumeration apiEnumeration;
+
+	protected final List<ApiEnumerationConstantCall> apiEnumerationConstantCalls = new ArrayList<ApiEnumerationConstantCall>();
 
 	protected final String name;
 
@@ -24,8 +30,18 @@ public class ApiEnumerationConstantImpl implements ApiEnumerationConstant {
 	}
 
 	@Override
+	public void addApiEnumerationConstantCall(final ApiEnumerationConstantCall apiEnumerationConstantCall) {
+		apiEnumerationConstantCalls.add(apiEnumerationConstantCall);
+	}
+
+	@Override
 	public ApiEnumeration getApiEnumeration() {
 		return apiEnumeration;
+	}
+
+	@Override
+	public List<ApiEnumerationConstantCall> getApiEnumerationConstantCalls() {
+		return apiEnumerationConstantCalls;
 	}
 
 	@Override

@@ -8,11 +8,19 @@
 
 package io.proleap.vb6.parser.metamodel.oop.api;
 
+import java.util.List;
+
 import io.proleap.vb6.parser.metamodel.ModelElement;
+import io.proleap.vb6.parser.metamodel.call.ApiEnumerationConstantCall;
 import io.proleap.vb6.parser.metamodel.oop.Declaration;
 import io.proleap.vb6.parser.metamodel.oop.TypedElement;
 
 public interface ApiEnumerationConstant extends ModelElement, TypedElement, Declaration {
 
+	void addApiEnumerationConstantCall(ApiEnumerationConstantCall apiEnumerationConstantCall);
+
 	ApiEnumeration getApiEnumeration();
+
+	List<ApiEnumerationConstantCall> getApiEnumerationConstantCalls();
+
 }

@@ -8,10 +8,16 @@
 
 package io.proleap.vb6.parser.metamodel.oop.api.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.proleap.vb6.parser.metamodel.call.ApiPropertyCall;
 import io.proleap.vb6.parser.metamodel.oop.Type;
 import io.proleap.vb6.parser.metamodel.oop.api.ApiProperty;
 
 public class ApiPropertyImpl implements ApiProperty {
+
+	protected final List<ApiPropertyCall> apiPropertyCalls = new ArrayList<ApiPropertyCall>();
 
 	protected final String name;
 
@@ -20,6 +26,16 @@ public class ApiPropertyImpl implements ApiProperty {
 	public ApiPropertyImpl(final String name, final Type type) {
 		this.name = name;
 		this.type = type;
+	}
+
+	@Override
+	public void addApiPropertyCall(final ApiPropertyCall apiPropertyCall) {
+		apiPropertyCalls.add(apiPropertyCall);
+	}
+
+	@Override
+	public List<ApiPropertyCall> getApiPropertyCalls() {
+		return apiPropertyCalls;
 	}
 
 	@Override

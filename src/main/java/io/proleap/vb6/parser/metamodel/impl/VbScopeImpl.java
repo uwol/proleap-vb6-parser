@@ -465,25 +465,34 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 						final ApiProcedureCall apiProcedureCall = new ApiProcedureCallImpl(name, apiProcedure, module,
 								this, ctx);
 
+						associateApiProcedureCallWithApiProcedure(apiProcedureCall, apiProcedure);
+
 						result = apiProcedureCall;
 					} else if (apiProperty != null) {
 						final ApiPropertyCall apiPropertyCall = new ApiPropertyCallImpl(name, apiProperty, module, this,
 								ctx);
+
+						associateApiPropertyCallWithApiProperty(apiPropertyCall, apiProperty);
 
 						result = apiPropertyCall;
 					} else if (apiEnumeration != null) {
 						final ApiEnumerationCall apiEnumerationCall = new ApiEnumerationCallImpl(name, apiEnumeration,
 								module, this, ctx);
 
+						associateApiEnumerationCallWithApiEnumeration(apiEnumerationCall, apiEnumeration);
+
 						result = apiEnumerationCall;
 					} else if (apiEnumerationConstant != null) {
-						final ApiEnumerationConstantCall enumerationConstantCall = new ApiEnumerationConstantCallImpl(
+						final ApiEnumerationConstantCall apiEnumerationConstantCall = new ApiEnumerationConstantCallImpl(
 								name, apiEnumerationConstant, module, this, ctx);
 
-						final boolean isStandalone = instanceType == null;
-						enumerationConstantCall.setStandaloneCall(isStandalone);
+						associateApiEnumerationConstantCallWithApiEnumerationConstant(apiEnumerationConstantCall,
+								apiEnumerationConstant);
 
-						result = enumerationConstantCall;
+						final boolean isStandalone = instanceType == null;
+						apiEnumerationConstantCall.setStandaloneCall(isStandalone);
+
+						result = apiEnumerationConstantCall;
 					} else {
 						LOG.warn("left hand call to unknown element {}", name);
 						result = new UndefinedCallImpl(name, null, module, this, ctx);
@@ -562,25 +571,34 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 						final ApiProcedureCall apiProcedureCall = new ApiProcedureCallImpl(name, apiProcedure, module,
 								this, ctx);
 
+						associateApiProcedureCallWithApiProcedure(apiProcedureCall, apiProcedure);
+
 						result = apiProcedureCall;
 					} else if (apiProperty != null) {
 						final ApiPropertyCall apiPropertyCall = new ApiPropertyCallImpl(name, apiProperty, module, this,
 								ctx);
+
+						associateApiPropertyCallWithApiProperty(apiPropertyCall, apiProperty);
 
 						result = apiPropertyCall;
 					} else if (apiEnumeration != null) {
 						final ApiEnumerationCall apiEnumerationCall = new ApiEnumerationCallImpl(name, apiEnumeration,
 								module, this, ctx);
 
+						associateApiEnumerationCallWithApiEnumeration(apiEnumerationCall, apiEnumeration);
+
 						result = apiEnumerationCall;
 					} else if (apiEnumerationConstant != null) {
-						final ApiEnumerationConstantCall enumerationConstantCall = new ApiEnumerationConstantCallImpl(
+						final ApiEnumerationConstantCall apiEnumerationConstantCall = new ApiEnumerationConstantCallImpl(
 								name, apiEnumerationConstant, module, this, ctx);
 
-						final boolean isStandalone = instanceType == null;
-						enumerationConstantCall.setStandaloneCall(isStandalone);
+						associateApiEnumerationConstantCallWithApiEnumerationConstant(apiEnumerationConstantCall,
+								apiEnumerationConstant);
 
-						result = enumerationConstantCall;
+						final boolean isStandalone = instanceType == null;
+						apiEnumerationConstantCall.setStandaloneCall(isStandalone);
+
+						result = apiEnumerationConstantCall;
 					} else {
 						LOG.warn("call to unknown element {}", name);
 						result = new UndefinedCallImpl(name, null, module, this, ctx);
@@ -648,10 +666,14 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 					final ApiProcedureCall apiProcedureCall = new ApiProcedureCallImpl(name, apiProcedure, module, this,
 							ctx);
 
+					associateApiProcedureCallWithApiProcedure(apiProcedureCall, apiProcedure);
+
 					result = apiProcedureCall;
 				} else if (apiProperty != null) {
 					final ApiPropertyCall apiPropertyCall = new ApiPropertyCallImpl(name, apiProperty, module, this,
 							ctx);
+
+					associateApiPropertyCallWithApiProperty(apiPropertyCall, apiProperty);
 
 					result = apiPropertyCall;
 				} else {
@@ -727,7 +749,12 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 				result = functionCall;
 			} else if (apiProcedure != null) {
-				result = new ApiProcedureCallImpl(name, apiProcedure, module, this, ctx);
+				final ApiProcedureCall apiProcedureCall = new ApiProcedureCallImpl(name, apiProcedure, module, this,
+						ctx);
+
+				associateApiProcedureCallWithApiProcedure(apiProcedureCall, apiProcedure);
+
+				result = apiProcedureCall;
 			} else {
 				result = new UndefinedCallImpl(name, null, module, this, ctx);
 			}
@@ -764,7 +791,12 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 				result = functionCall;
 			} else if (apiProcedure != null) {
-				result = new ApiProcedureCallImpl(name, apiProcedure, module, this, ctx);
+				final ApiProcedureCall apiProcedureCall = new ApiProcedureCallImpl(name, apiProcedure, module, this,
+						ctx);
+
+				associateApiProcedureCallWithApiProcedure(apiProcedureCall, apiProcedure);
+
+				result = apiProcedureCall;
 			} else {
 				result = new UndefinedCallImpl(name, null, module, this, ctx);
 			}
@@ -842,7 +874,12 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 				result = functionCall;
 			} else if (apiProcedure != null) {
-				result = new ApiProcedureCallImpl(name, apiProcedure, module, this, ctx);
+				final ApiProcedureCall apiProcedureCall = new ApiProcedureCallImpl(name, apiProcedure, module, this,
+						ctx);
+
+				associateApiProcedureCallWithApiProcedure(apiProcedureCall, apiProcedure);
+
+				result = apiProcedureCall;
 			} else {
 				result = new UndefinedCallImpl(name, null, module, this, ctx);
 			}
@@ -879,7 +916,12 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 				result = functionCall;
 			} else if (apiProcedure != null) {
-				result = new ApiProcedureCallImpl(name, apiProcedure, module, this, ctx);
+				final ApiProcedureCall apiProcedureCall = new ApiProcedureCallImpl(name, apiProcedure, module, this,
+						ctx);
+
+				associateApiProcedureCallWithApiProcedure(apiProcedureCall, apiProcedure);
+
+				result = apiProcedureCall;
 			} else {
 				result = new UndefinedCallImpl(name, null, module, this, ctx);
 			}
@@ -1924,6 +1966,27 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		}
 
 		return result;
+	}
+
+	protected void associateApiEnumerationCallWithApiEnumeration(final ApiEnumerationCall apiEnumerationCall,
+			final ApiEnumeration apiEnumeration) {
+		apiEnumeration.addApiEnumerationCall(apiEnumerationCall);
+	}
+
+	protected void associateApiEnumerationConstantCallWithApiEnumerationConstant(
+			final ApiEnumerationConstantCall apiEnumerationConstantCall,
+			final ApiEnumerationConstant apiEnumerationConstant) {
+		apiEnumerationConstant.addApiEnumerationConstantCall(apiEnumerationConstantCall);
+	}
+
+	protected void associateApiProcedureCallWithApiProcedure(final ApiProcedureCall apiProcedureCall,
+			final ApiProcedure apiProcedure) {
+		apiProcedure.addApiProcedureCall(apiProcedureCall);
+	}
+
+	protected void associateApiPropertyCallWithApiProperty(final ApiPropertyCall apiPropertyCall,
+			final ApiProperty apiProperty) {
+		apiProperty.addApiPropertyCall(apiPropertyCall);
 	}
 
 	protected void associateArgCallsWithArgs(final Procedure procedure, final ArgsCallContext ctx) {

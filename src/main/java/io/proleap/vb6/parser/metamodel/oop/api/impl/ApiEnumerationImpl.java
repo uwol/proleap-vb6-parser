@@ -8,14 +8,19 @@
 
 package io.proleap.vb6.parser.metamodel.oop.api.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
+import io.proleap.vb6.parser.metamodel.call.ApiEnumerationCall;
 import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumeration;
 import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumerationConstant;
 
 public class ApiEnumerationImpl implements ApiEnumeration {
+
+	protected final List<ApiEnumerationCall> apiEnumerationCalls = new ArrayList<ApiEnumerationCall>();
 
 	protected final Map<String, ApiEnumerationConstant> constants = new HashMap<String, ApiEnumerationConstant>();
 
@@ -23,6 +28,16 @@ public class ApiEnumerationImpl implements ApiEnumeration {
 
 	public ApiEnumerationImpl(final String name) {
 		this.name = name;
+	}
+
+	@Override
+	public void addApiEnumerationCall(final ApiEnumerationCall apiEnumerationCall) {
+		apiEnumerationCalls.add(apiEnumerationCall);
+	}
+
+	@Override
+	public List<ApiEnumerationCall> getApiEnumerationCalls() {
+		return apiEnumerationCalls;
 	}
 
 	@Override

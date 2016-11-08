@@ -16,7 +16,7 @@ import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Program;
 import io.proleap.vb6.parser.metamodel.Variable;
 
-public class EnumCallTest extends VbTestSupport {
+public class EnumerationCallTest extends VbTestSupport {
 
 	@Override
 	@Before
@@ -26,10 +26,10 @@ public class EnumCallTest extends VbTestSupport {
 
 	@Test
 	public void test() throws Exception {
-		final File inputFile = new File("src/test/resources/io/proleap/vb6/gpl/parser/calls/EnumCall.cls");
+		final File inputFile = new File("src/test/resources/io/proleap/vb6/gpl/parser/calls/EnumerationCall.cls");
 		final Program program = VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
 
-		final Module module = program.getClazzModule("EnumCall");
+		final Module module = program.getClazzModule("EnumerationCall");
 		final Enumeration days = module.getEnumerations().get("Days");
 
 		assertNotNull(days);

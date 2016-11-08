@@ -8,10 +8,16 @@
 
 package io.proleap.vb6.parser.metamodel.oop.api.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.proleap.vb6.parser.metamodel.call.ApiProcedureCall;
 import io.proleap.vb6.parser.metamodel.oop.Type;
 import io.proleap.vb6.parser.metamodel.oop.api.ApiProcedure;
 
 public class ApiProcedureImpl implements ApiProcedure {
+
+	protected final List<ApiProcedureCall> apiProcedureCalls = new ArrayList<ApiProcedureCall>();
 
 	protected final String name;
 
@@ -20,6 +26,16 @@ public class ApiProcedureImpl implements ApiProcedure {
 	public ApiProcedureImpl(final String name, final Type type) {
 		this.name = name;
 		this.type = type;
+	}
+
+	@Override
+	public void addApiProcedureCall(final ApiProcedureCall apiProcedureCall) {
+		apiProcedureCalls.add(apiProcedureCall);
+	}
+
+	@Override
+	public List<ApiProcedureCall> getApiProcedureCalls() {
+		return apiProcedureCalls;
 	}
 
 	@Override

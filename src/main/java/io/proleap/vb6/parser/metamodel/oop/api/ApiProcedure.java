@@ -8,10 +8,17 @@
 
 package io.proleap.vb6.parser.metamodel.oop.api;
 
+import java.util.List;
+
 import io.proleap.vb6.parser.metamodel.ModelElement;
+import io.proleap.vb6.parser.metamodel.call.ApiProcedureCall;
 import io.proleap.vb6.parser.metamodel.oop.Declaration;
 import io.proleap.vb6.parser.metamodel.oop.TypedElement;
 
 public interface ApiProcedure extends ModelElement, TypedElement, Declaration {
+
+	void addApiProcedureCall(ApiProcedureCall apiProcedureCall);
+
+	List<ApiProcedureCall> getApiProcedureCalls();
 
 }
