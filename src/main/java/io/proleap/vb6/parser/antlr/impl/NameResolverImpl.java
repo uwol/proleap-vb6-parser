@@ -57,14 +57,7 @@ public class NameResolverImpl implements NameResolver {
 	private final static Logger LOG = LogManager.getLogger(NameResolverImpl.class);
 
 	public String determineName(final AmbiguousIdentifierContext ctx) {
-		final String result;
-
-		if (ctx != null) {
-			result = ctx.getText();
-		} else {
-			result = null;
-		}
-
+		final String result = ctx != null ? ctx.getText() : null;
 		return result;
 	}
 
@@ -84,14 +77,7 @@ public class NameResolverImpl implements NameResolver {
 	}
 
 	public String determineName(final CertainIdentifierContext ctx) {
-		final String result;
-
-		if (ctx != null) {
-			result = ctx.getText();
-		} else {
-			result = null;
-		}
-
+		final String result = ctx != null ? ctx.getText() : null;
 		return result;
 	}
 
