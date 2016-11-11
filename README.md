@@ -113,6 +113,37 @@ io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.Vis
 visitor.visit(ctx);
 ```
 
+### Combined Abstract Syntax Tree (AST) and Abstract Semantic Graph (ASG) parsing
+
+```java
+io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
+
+java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/parser/HelloWorld.cls");
+
+/*
+ * semantic analysis
+ */
+io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
+
+/*
+* traverse AST with ANTLR visitor
+*/
+io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.VisualBasic6BaseVisitor<Boolean>() {
+  @Override
+  public Boolean visitVariableSubStmt(final io.proleap.vb6.VisualBasic6Parser.VariableSubStmtContext ctx) {
+    io.proleap.vb6.parser.metamodel.Variable variable = (io.proleap.vb6.parser.metamodel.Variable) io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
+    String name = variable.getName();
+    io.proleap.vb6.parser.metamodel.oop.Type type = variable.getType();
+
+    return visitChildren(ctx);
+  }
+};
+
+for (final io.proleap.vb6.parser.metamodel.Module module : program.getModules()) {
+  visitor.visit(module.getCtx());
+}
+```
+
 
 VM args
 -------
