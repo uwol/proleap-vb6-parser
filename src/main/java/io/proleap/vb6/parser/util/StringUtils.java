@@ -16,7 +16,7 @@ public class StringUtils {
 
 	public static boolean isDouble(final String str) {
 		try {
-			final double d = Double.parseDouble(str);
+			Double.parseDouble(str);
 		} catch (final NumberFormatException nfe) {
 			return false;
 		}
@@ -25,7 +25,7 @@ public class StringUtils {
 
 	public static boolean isInteger(final String str) {
 		try {
-			final int i = Integer.parseInt(str);
+			Integer.parseInt(str);
 		} catch (final NumberFormatException nfe) {
 			return false;
 		}

@@ -68,60 +68,49 @@ End Sub
 Execution
 ---------
 
-### Abstract Syntax Tree (AST) parsing
-
-```java
-final java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/HelloWorld.cls");
-final java.io.InputStream inputStream = new java.io.FileInputStream(inputFile);
-
-/*
-* lexer
-*/
-final org.antlr.v4.runtime.ANTLRInputStream antlrInputStream = new org.antlr.v4.runtime.ANTLRInputStream(inputStream);
-final io.proleap.vb6.VisualBasic6Lexer lexer = new io.proleap.vb6.VisualBasic6Lexer(antlrInputStream);
-final org.antlr.v4.runtime.CommonTokenStream tokens = new org.antlr.v4.runtime.CommonTokenStream(lexer);
-
-/*
-* parser
-*/
-final io.proleap.vb6.VisualBasic6Parser parser = new io.proleap.vb6.VisualBasic6Parser(tokens);
-final io.proleap.vb6.VisualBasic6Parser.StartRuleContext ctx = parser.startRule();
-
-/*
-* traverse AST with ANTLR visitor
-*/
-final io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.VisualBasic6BaseVisitor<Boolean>();
-visitor.visit(ctx);
-```
-
 ### Abstract Semantic Graph (ASG) parsing
 
 ```java
 io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
 
-final java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/HelloWorld.cls");
+java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/parser/HelloWorld.cls");
 
 /*
-* semantic analysis
-*/
-final io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
+ * semantic analysis
+ */
+io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
+
+Module module = program.getClazzModule("HelloWorld");
+Variable variableI = module.getVariable("I");
+Type typeI = variableI.getType();
+Variable variableJ = module.getVariable("J");
+Type typeJ = variableI.getType();
+```
+
+### Abstract Syntax Tree (AST) parsing
+
+```java
+java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/HelloWorld.cls");
+java.io.InputStream inputStream = new java.io.FileInputStream(inputFile);
 
 /*
-* traverse AST with ANTLR visitor; examplary callback function for SUB
+* lexer
 */
-final io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.VisualBasic6BaseVisitor<Boolean>() {
-  @Override
-  public Boolean visitSubStmt(final io.proleap.vb6.VisualBasic6Parser.SubStmtContext ctx) {
-    final io.proleap.vb6.parser.metamodel.Sub sub = (io.proleap.vb6.parser.metamodel.Sub) io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
-    sub.getArgsList();
+org.antlr.v4.runtime.ANTLRInputStream antlrInputStream = new org.antlr.v4.runtime.ANTLRInputStream(inputStream);
+io.proleap.vb6.VisualBasic6Lexer lexer = new io.proleap.vb6.VisualBasic6Lexer(antlrInputStream);
+org.antlr.v4.runtime.CommonTokenStream tokens = new org.antlr.v4.runtime.CommonTokenStream(lexer);
 
-    return visitChildren(ctx);
-  }
-};
+/*
+* parser
+*/
+io.proleap.vb6.VisualBasic6Parser parser = new io.proleap.vb6.VisualBasic6Parser(tokens);
+io.proleap.vb6.VisualBasic6Parser.StartRuleContext ctx = parser.startRule();
 
-for (final io.proleap.vb6.parser.metamodel.Module module : program.getModules()) {
-  visitor.visit(module.getCtx());
-}
+/*
+* traverse AST with ANTLR visitor
+*/
+io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.VisualBasic6BaseVisitor<Boolean>();
+visitor.visit(ctx);
 ```
 
 
