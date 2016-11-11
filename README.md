@@ -113,7 +113,7 @@ io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.Vis
 visitor.visit(ctx);
 ```
 
-### Combined Abstract Syntax Tree (AST) and Abstract Semantic Graph (ASG) parsing
+### Abstract Semantic Graph (ASG) parsing with Abstract Syntax Tree (AST) traversal
 
 ```java
 io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
