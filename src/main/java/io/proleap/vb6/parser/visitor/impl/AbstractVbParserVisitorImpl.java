@@ -16,6 +16,7 @@ import io.proleap.vb6.parser.metamodel.ASGElement;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.VbScope;
 import io.proleap.vb6.parser.registry.ASGElementRegistry;
+import io.proleap.vb6.parser.util.ANTLRUtils;
 import io.proleap.vb6.parser.visitor.ParserVisitor;
 
 public abstract class AbstractVbParserVisitorImpl extends VisualBasic6BaseVisitor<Boolean> implements ParserVisitor {
@@ -28,7 +29,7 @@ public abstract class AbstractVbParserVisitorImpl extends VisualBasic6BaseVisito
 
 	protected VbScope findScope(final ParseTree ctx) {
 		final ASGElementRegistry registry = VbParserContext.getInstance().getASGElementRegistry();
-		return VbParserContext.getInstance().getAstTraverser().findParent(VbScope.class, ctx, registry);
+		return ANTLRUtils.findParent(VbScope.class, ctx, registry);
 	}
 
 	protected ASGElement getASGElement(final ParseTree ctx) {

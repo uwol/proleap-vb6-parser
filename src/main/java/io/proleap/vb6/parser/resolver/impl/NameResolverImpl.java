@@ -6,7 +6,7 @@
  * of the BSD 3-clause license. See the LICENSE file for details.
  */
 
-package io.proleap.vb6.parser.antlr.impl;
+package io.proleap.vb6.parser.resolver.impl;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.apache.logging.log4j.LogManager;
@@ -50,7 +50,7 @@ import io.proleap.vb6.VisualBasic6Parser.TypeStmt_ElementContext;
 import io.proleap.vb6.VisualBasic6Parser.ValueStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.VariableSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.VsICSContext;
-import io.proleap.vb6.parser.antlr.NameResolver;
+import io.proleap.vb6.parser.resolver.NameResolver;
 
 public class NameResolverImpl implements NameResolver {
 

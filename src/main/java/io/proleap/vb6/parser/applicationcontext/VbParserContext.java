@@ -8,9 +8,6 @@
 
 package io.proleap.vb6.parser.applicationcontext;
 
-import io.proleap.vb6.parser.antlr.ASTTraverser;
-import io.proleap.vb6.parser.antlr.NameResolver;
-import io.proleap.vb6.parser.antlr.TypeResolver;
 import io.proleap.vb6.parser.inference.TypeAssignmentInference;
 import io.proleap.vb6.parser.inference.TypeInference;
 import io.proleap.vb6.parser.registry.ASGElementRegistry;
@@ -19,6 +16,8 @@ import io.proleap.vb6.parser.registry.TypeRegistry;
 import io.proleap.vb6.parser.registry.api.ApiEnumerationRegistry;
 import io.proleap.vb6.parser.registry.api.ApiProcedureRegistry;
 import io.proleap.vb6.parser.registry.api.ApiPropertyRegistry;
+import io.proleap.vb6.parser.resolver.NameResolver;
+import io.proleap.vb6.parser.resolver.TypeResolver;
 import io.proleap.vb6.parser.runner.VbParserRunner;
 
 public class VbParserContext {
@@ -40,8 +39,6 @@ public class VbParserContext {
 	protected ApiPropertyRegistry apiPropertyRegistry;
 
 	protected ASGElementRegistry asgElementRegistry;
-
-	protected ASTTraverser astTraverser;
 
 	protected NameResolver nameResolver;
 
@@ -75,10 +72,6 @@ public class VbParserContext {
 
 	public ASGElementRegistry getASGElementRegistry() {
 		return asgElementRegistry;
-	}
-
-	public ASTTraverser getAstTraverser() {
-		return astTraverser;
 	}
 
 	public NameResolver getNameResolver() {
@@ -127,10 +120,6 @@ public class VbParserContext {
 
 	public void setASGElementRegistry(final ASGElementRegistry asgElementRegistry) {
 		this.asgElementRegistry = asgElementRegistry;
-	}
-
-	public void setAstTraverser(final ASTTraverser astTraverser) {
-		this.astTraverser = astTraverser;
 	}
 
 	public void setNameResolver(final NameResolver nameResolver) {

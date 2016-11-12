@@ -16,6 +16,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
 import io.proleap.vb6.parser.metamodel.ASGElement;
 import io.proleap.vb6.parser.registry.ASGElementRegistry;
+import io.proleap.vb6.parser.util.ANTLRUtils;
 
 /**
  * http://en.wikipedia.org/wiki/Abstract_semantic_graph
@@ -31,8 +32,7 @@ public abstract class ASGElementImpl implements ASGElement {
 	@Override
 	public Collection<ASGElement> getChildren() {
 		final ASGElementRegistry asgElementRegistry = VbParserContext.getInstance().getASGElementRegistry();
-		final List<ASGElement> result = VbParserContext.getInstance().getAstTraverser()
-				.findASGElementChildren(ctx, asgElementRegistry);
+		final List<ASGElement> result = ANTLRUtils.findASGElementChildren(ctx, asgElementRegistry);
 		return result;
 	}
 
@@ -44,8 +44,7 @@ public abstract class ASGElementImpl implements ASGElement {
 	@Override
 	public ASGElement getParent() {
 		final ASGElementRegistry asgElementRegistry = VbParserContext.getInstance().getASGElementRegistry();
-		final ASGElement result = VbParserContext.getInstance().getAstTraverser().findParentASGElement(ctx,
-				asgElementRegistry);
+		final ASGElement result = ANTLRUtils.findParentASGElement(ctx, asgElementRegistry);
 		return result;
 	}
 
