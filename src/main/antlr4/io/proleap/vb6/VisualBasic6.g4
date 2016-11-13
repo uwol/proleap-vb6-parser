@@ -30,25 +30,6 @@
 *    statements.
 *
 * 2. Comments are skipped.
-*
-*
-* Change log:
-*
-* v1.4
-*  - erase statement fix
-*  - explicit token definition
-*
-* v1.3
-*  - call statement precedence
-*
-* v1.2
-*  - refined call statements
-*
-* v1.1 
-*  - precedence of operators and of ELSE in select statements
-*  - optimized member calls
-*
-* v1.0 Initial revision
 */
 
 grammar VisualBasic6;

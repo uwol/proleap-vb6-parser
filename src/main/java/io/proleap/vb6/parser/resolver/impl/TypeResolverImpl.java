@@ -19,11 +19,6 @@ import io.proleap.vb6.VisualBasic6Parser.ArgDefaultValueContext;
 import io.proleap.vb6.VisualBasic6Parser.AsTypeClauseContext;
 import io.proleap.vb6.VisualBasic6Parser.AttributeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
-import io.proleap.vb6.VisualBasic6Parser.ICS_B_MemberProcedureCallContext;
-import io.proleap.vb6.VisualBasic6Parser.ICS_B_ProcedureCallContext;
-import io.proleap.vb6.VisualBasic6Parser.ICS_S_MembersCallContext;
-import io.proleap.vb6.VisualBasic6Parser.ICS_S_ProcedureOrArrayCallContext;
-import io.proleap.vb6.VisualBasic6Parser.ICS_S_VariableOrProcedureCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ImplicitCallStmt_InStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.LiteralContext;
 import io.proleap.vb6.VisualBasic6Parser.TypeHintContext;
@@ -60,32 +55,6 @@ import io.proleap.vb6.parser.util.StringUtils;
 public class TypeResolverImpl implements TypeResolver {
 
 	private final static Logger LOG = LogManager.getLogger(TypeResolverImpl.class);
-
-	public Type determineType(final ICS_B_MemberProcedureCallContext ctx) {
-		final Type contextType = determineType(ctx.implicitCallStmt_InStmt());
-		// FIXME
-		final Type result = null;
-		return result;
-	}
-
-	public Type determineType(final ICS_B_ProcedureCallContext ctx) {
-		final Type result = null;
-		return result;
-	}
-
-	public Type determineType(final ICS_S_MembersCallContext ctx) {
-		// FIXME
-		final Type result = null;
-		return result;
-	}
-
-	public Type determineType(final ICS_S_ProcedureOrArrayCallContext ctx) {
-		return null;
-	}
-
-	public Type determineType(final ICS_S_VariableOrProcedureCallContext ctx) {
-		return null;
-	}
 
 	public Type determineType(final ImplicitCallStmt_InStmtContext ctx) {
 		final Type result;
@@ -149,16 +118,6 @@ public class TypeResolverImpl implements TypeResolver {
 			result = determineType((AttributeStmtContext) ctx);
 		} else if (ctx instanceof ConstSubStmtContext) {
 			result = determineType((ConstSubStmtContext) ctx);
-		} else if (ctx instanceof ICS_B_ProcedureCallContext) {
-			result = determineType((ICS_B_ProcedureCallContext) ctx);
-		} else if (ctx instanceof ICS_B_MemberProcedureCallContext) {
-			result = determineType((ICS_B_MemberProcedureCallContext) ctx);
-		} else if (ctx instanceof ICS_S_ProcedureOrArrayCallContext) {
-			result = determineType((ICS_S_ProcedureOrArrayCallContext) ctx);
-		} else if (ctx instanceof ICS_S_VariableOrProcedureCallContext) {
-			result = determineType((ICS_S_VariableOrProcedureCallContext) ctx);
-		} else if (ctx instanceof ICS_S_MembersCallContext) {
-			result = determineType((ICS_S_MembersCallContext) ctx);
 		} else if (ctx instanceof ImplicitCallStmt_InStmtContext) {
 			result = determineType((ImplicitCallStmt_InStmtContext) ctx);
 		} else if (ctx instanceof LiteralContext) {
