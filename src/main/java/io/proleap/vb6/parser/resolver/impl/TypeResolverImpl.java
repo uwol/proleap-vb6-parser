@@ -53,9 +53,9 @@ import io.proleap.vb6.parser.resolver.TypeResolver;
 import io.proleap.vb6.parser.util.StringUtils;
 
 /**
- * Resolves and returns types of context elements on a syntactic level. Instead,
- * semantic type analysis including transitive type relation analysis is
- * conducted on the semantic model.
+ * Resolves and returns types of AST elements on a syntactic declarative level
+ * (e. g. AS Integer). In contrast, semantic type analysis by value assignments
+ * including transitive type relation analysis is conducted on the ASG.
  */
 public class TypeResolverImpl implements TypeResolver {
 
