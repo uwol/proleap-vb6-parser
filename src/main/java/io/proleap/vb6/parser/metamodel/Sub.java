@@ -13,6 +13,9 @@ import java.util.List;
 import io.proleap.vb6.VisualBasic6Parser.SubStmtContext;
 import io.proleap.vb6.parser.metamodel.call.SubCall;
 
+/**
+ * Declares the name, arguments, and code that form the body of a Sub procedure.
+ */
 public interface Sub extends Procedure {
 
 	void addSubCall(SubCall subCall);

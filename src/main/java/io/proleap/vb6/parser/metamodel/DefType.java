@@ -12,6 +12,11 @@ import java.util.List;
 
 import io.proleap.vb6.parser.metamodel.oop.BaseType;
 
+/**
+ * On module level sets the default data type for variables, arguments passed to
+ * procedures, and the return types for Function and Property Get procedures
+ * whose names start with the specified characters.
+ */
 public interface DefType {
 
 	public interface LetterRange {

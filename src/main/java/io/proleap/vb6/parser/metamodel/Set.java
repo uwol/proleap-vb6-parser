@@ -12,6 +12,9 @@ import io.proleap.vb6.VisualBasic6Parser.SetStmtContext;
 import io.proleap.vb6.parser.metamodel.call.Call;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
+/**
+ * Assigns an object reference to a variable or property.
+ */
 public interface Set extends VbScopedElement {
 
 	@Override

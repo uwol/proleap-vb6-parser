@@ -12,6 +12,9 @@ import io.proleap.vb6.VisualBasic6Parser.LetStmtContext;
 import io.proleap.vb6.parser.metamodel.call.Call;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
+/**
+ * Assigns the value of an expression to a variable or property.
+ */
 public interface Let extends VbScopedElement {
 
 	@Override

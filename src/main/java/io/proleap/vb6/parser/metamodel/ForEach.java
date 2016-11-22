@@ -11,6 +11,9 @@ package io.proleap.vb6.parser.metamodel;
 import io.proleap.vb6.VisualBasic6Parser.ForEachStmtContext;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
+/**
+ * Repeats a group of statements for each element in an array or collection.
+ */
 public interface ForEach extends VbScope {
 
 	@Override

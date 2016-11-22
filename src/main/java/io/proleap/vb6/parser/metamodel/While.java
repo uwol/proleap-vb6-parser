@@ -11,6 +11,9 @@ package io.proleap.vb6.parser.metamodel;
 import io.proleap.vb6.VisualBasic6Parser.WhileWendStmtContext;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
+/**
+ * Executes a series of statements as long as a given condition is True.
+ */
 public interface While extends VbScope {
 
 	ValueStmt getCondition();

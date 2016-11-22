@@ -13,6 +13,10 @@ import java.util.List;
 import io.proleap.vb6.parser.metamodel.oop.ComplexType;
 import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
 
+/**
+ * Used at module level to define a user-defined data type containing one or
+ * more elements.
+ */
 public interface Type extends ScopedElement, ComplexType {
 
 	void addTypeElement(TypeElement typeElement);

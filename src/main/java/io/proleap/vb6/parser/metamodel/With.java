@@ -11,6 +11,9 @@ package io.proleap.vb6.parser.metamodel;
 import io.proleap.vb6.VisualBasic6Parser.WithStmtContext;
 import io.proleap.vb6.parser.metamodel.call.Call;
 
+/**
+ * Executes a series of statements on a single object or a user-defined type.
+ */
 public interface With extends VbScope {
 
 	@Override

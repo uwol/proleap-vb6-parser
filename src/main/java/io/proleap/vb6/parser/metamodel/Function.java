@@ -14,6 +14,10 @@ import io.proleap.vb6.VisualBasic6Parser.FunctionStmtContext;
 import io.proleap.vb6.parser.metamodel.call.FunctionCall;
 import io.proleap.vb6.parser.metamodel.oop.AssignableTypedElement;
 
+/**
+ * Declares the name, arguments, and code that form the body of a Function
+ * procedure.
+ */
 public interface Function extends Procedure, AssignableTypedElement {
 
 	void addFunctionCall(FunctionCall functionCall);

@@ -8,6 +8,9 @@
 
 package io.proleap.vb6.parser.metamodel;
 
+/**
+ * Resumes execution after an error-handling routine is finished.
+ */
 public interface Resume extends VbScopedElement {
 
 	LineLabel getLineLabel();

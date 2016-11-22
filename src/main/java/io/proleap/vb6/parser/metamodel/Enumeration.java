@@ -16,6 +16,9 @@ import io.proleap.vb6.VisualBasic6Parser.EnumerationStmt_ConstantContext;
 import io.proleap.vb6.parser.metamodel.call.EnumerationCall;
 import io.proleap.vb6.parser.metamodel.oop.ComplexType;
 
+/**
+ * Declares a type for an enumeration.
+ */
 public interface Enumeration extends ComplexType, VbScopedElement {
 
 	void addEnumerationCall(EnumerationCall enumerationCall);
