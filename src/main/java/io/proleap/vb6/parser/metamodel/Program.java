@@ -13,21 +13,21 @@ import java.util.Map;
 
 public interface Program extends VbScope {
 
-	ClazzModule getClazzModule(final String name);
+	ClazzModule getClazzModule(String name);
 
 	Map<String, ClazzModule> getClazzModules();
 
-	Module getModule(final String name);
+	Module getModule(String name);
 
 	Collection<Module> getModules();
 
-	StandardModule getStandardModule(final String name);
+	StandardModule getStandardModule(String name);
 
 	Map<String, StandardModule> getStandardModules();
 
-	void registerClazzModule(final ClazzModule clazzModule);
+	void registerClazzModule(ClazzModule clazzModule);
 
-	void registerModule(final Module module);
+	void registerModule(Module module);
 
-	void registerStandardModule(final StandardModule standardModule);
+	void registerStandardModule(StandardModule standardModule);
 }

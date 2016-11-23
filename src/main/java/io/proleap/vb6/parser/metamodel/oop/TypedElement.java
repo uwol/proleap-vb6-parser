@@ -10,6 +10,6 @@ package io.proleap.vb6.parser.metamodel.oop;
 
 public interface TypedElement {
 
-	public Type getType();
+	Type getType();
 
 }

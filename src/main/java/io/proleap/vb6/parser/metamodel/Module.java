@@ -41,11 +41,11 @@ public interface Module extends VbScope, ComplexType {
 
 	ProcedureDeclaration addDeclaration(DeclareStmtContext ctx);
 
-	DefType addDefType(final DeftypeStmtContext ctx);
+	DefType addDefType(DeftypeStmtContext ctx);
 
 	Enumeration addEnumeration(EnumerationStmtContext ctx);
 
-	Function addFunction(final FunctionStmtContext ctx);
+	Function addFunction(FunctionStmtContext ctx);
 
 	ModuleConfigElement addModuleConfigElement(ModuleConfigElementContext ctx);
 
@@ -59,15 +59,15 @@ public interface Module extends VbScope, ComplexType {
 
 	void addOptionPrivateModule(OptionPrivateModuleStmtContext ctx);
 
-	PropertyGet addPropertyGet(final PropertyGetStmtContext ctx);
+	PropertyGet addPropertyGet(PropertyGetStmtContext ctx);
 
-	PropertyLet addPropertyLet(final PropertyLetStmtContext ctx);
+	PropertyLet addPropertyLet(PropertyLetStmtContext ctx);
 
-	PropertySet addPropertySet(final PropertySetStmtContext ctx);
+	PropertySet addPropertySet(PropertySetStmtContext ctx);
 
-	Sub addSub(final SubStmtContext ctx);
+	Sub addSub(SubStmtContext ctx);
 
-	io.proleap.vb6.parser.metamodel.Type addType(final TypeStmtContext ctx);
+	io.proleap.vb6.parser.metamodel.Type addType(TypeStmtContext ctx);
 
 	TypeElement addTypeElement(TypeStmt_ElementContext ctx);
 
@@ -76,21 +76,21 @@ public interface Module extends VbScope, ComplexType {
 
 	List<DefType> getDefTypes();
 
-	EnumerationConstant getEnumerationConstant(final String name);
+	EnumerationConstant getEnumerationConstant(String name);
 
 	Map<String, Enumeration> getEnumerations();
 
-	Function getFunction(final String name);
+	Function getFunction(String name);
 
 	Program getProgram();
 
-	PropertyGet getPropertyGet(final String name);
+	PropertyGet getPropertyGet(String name);
 
-	PropertyLet getPropertyLet(final String name);
+	PropertyLet getPropertyLet(String name);
 
-	PropertySet getPropertySet(final String name);
+	PropertySet getPropertySet(String name);
 
-	Sub getSub(final String name);
+	Sub getSub(String name);
 
 	Double getVersion();
 

@@ -15,8 +15,8 @@ import io.proleap.vb6.parser.metamodel.Program;
 
 public interface VbParserRunner {
 
-	public Program analyzeDirectory(File inputDirectory) throws IOException;
+	Program analyzeDirectory(File inputDirectory) throws IOException;
 
-	public Program analyzeFile(File inputFile) throws IOException;
+	Program analyzeFile(File inputFile) throws IOException;
 
 }

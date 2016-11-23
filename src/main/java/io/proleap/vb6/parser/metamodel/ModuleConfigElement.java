@@ -15,6 +15,6 @@ import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
 public interface ModuleConfigElement extends ScopedElement, NamedElement {
 
 	@Override
-	public ModuleConfigElementContext getCtx();
+	ModuleConfigElementContext getCtx();
 
 }

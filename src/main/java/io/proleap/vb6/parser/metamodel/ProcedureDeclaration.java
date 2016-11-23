@@ -13,6 +13,6 @@ import io.proleap.vb6.parser.metamodel.oop.Declaration;
 
 public interface ProcedureDeclaration extends VbScopedElement, Declaration {
 
-	Arg addArg(final ArgContext ctx);
+	Arg addArg(ArgContext ctx);
 
 }

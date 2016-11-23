@@ -29,5 +29,5 @@ public interface Select extends VbScope, TypedElement {
 
 	ValueStmt getValueStmt();
 
-	void setValueStmt(final ValueStmt valueStmt);
+	void setValueStmt(ValueStmt valueStmt);
 }
