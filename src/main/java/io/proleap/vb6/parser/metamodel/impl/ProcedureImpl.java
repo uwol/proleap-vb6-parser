@@ -97,7 +97,7 @@ public abstract class ProcedureImpl extends VbScopeImpl implements Procedure {
 				final ApiEnumerationConstantCall apiEnumerationConstantCall = new ApiEnumerationConstantCallImpl(name,
 						apiEnumerationConstant, module, this, ctx);
 
-				associateApiEnumerationConstantCallWithApiEnumerationConstant(apiEnumerationConstantCall,
+				linkApiEnumerationConstantCallWithApiEnumerationConstant(apiEnumerationConstantCall,
 						apiEnumerationConstant);
 
 				result = apiEnumerationConstantCall;

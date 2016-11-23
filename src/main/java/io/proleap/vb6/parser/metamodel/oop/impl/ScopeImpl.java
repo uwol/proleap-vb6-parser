@@ -31,7 +31,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	protected final List<ScopedElement> scopedElements = new ArrayList<ScopedElement>();
 
-	protected final Map<String, List<ScopedElement>> scopedElementsByName = new LinkedHashMap<String, List<ScopedElement>>();
+	protected final Map<String, List<ScopedElement>> scopedElementsSymbolTable = new LinkedHashMap<String, List<ScopedElement>>();
 
 	public ScopeImpl(final Scope superScope, final ParseTree ctx) {
 		super(superScope, ctx);
@@ -43,6 +43,11 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	protected Type determineType(final ParseTree ctx) {
 		return VbParserContext.getInstance().getTypeResolver().determineType(ctx);
+	}
+
+	protected ASGElement getASGElement(final ParseTree ctx) {
+		final ASGElement result = VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
+		return result;
 	}
 
 	private String getScopedElementKey(final String name) {
@@ -83,16 +88,11 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			result = null;
 		} else {
 			final String scopedElementKey = getScopedElementKey(name);
-			final List<ScopedElement> scopedElementInScope = scopedElementsByName.get(scopedElementKey);
+			final List<ScopedElement> scopedElementInScope = scopedElementsSymbolTable.get(scopedElementKey);
 
 			result = scopedElementInScope;
 		}
 
-		return result;
-	}
-
-	protected ASGElement getASGElement(final ParseTree ctx) {
-		final ASGElement result = VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
 		return result;
 	}
 
@@ -134,11 +134,11 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			final NamedElement namedElement = (NamedElement) scopedElement;
 			final String scopedElementKey = getScopedElementKey(namedElement.getName());
 
-			if (scopedElementsByName.get(scopedElementKey) == null) {
-				scopedElementsByName.put(scopedElementKey, new ArrayList<ScopedElement>());
+			if (scopedElementsSymbolTable.get(scopedElementKey) == null) {
+				scopedElementsSymbolTable.put(scopedElementKey, new ArrayList<ScopedElement>());
 			}
 
-			scopedElementsByName.get(scopedElementKey).add(scopedElement);
+			scopedElementsSymbolTable.get(scopedElementKey).add(scopedElement);
 		}
 	}
 }

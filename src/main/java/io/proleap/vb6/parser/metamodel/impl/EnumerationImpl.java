@@ -34,7 +34,7 @@ public class EnumerationImpl extends VbScopedElementImpl implements Enumeration 
 
 	protected final Map<EnumerationStmt_ConstantContext, EnumerationConstant> enumerationConstantsByCtx = new LinkedHashMap<EnumerationStmt_ConstantContext, EnumerationConstant>();
 
-	protected final Map<String, EnumerationConstant> enumerationConstantsByName = new LinkedHashMap<String, EnumerationConstant>();
+	protected final Map<String, EnumerationConstant> enumerationConstantsSymbolTable = new LinkedHashMap<String, EnumerationConstant>();
 
 	protected final Module module;
 
@@ -70,7 +70,7 @@ public class EnumerationImpl extends VbScopedElementImpl implements Enumeration 
 		final EnumerationConstant enumerationConstant = new EnumerationConstantImpl(name, position, this, ctx);
 
 		enumerationConstantsByCtx.put(ctx, enumerationConstant);
-		enumerationConstantsByName.put(name, enumerationConstant);
+		enumerationConstantsSymbolTable.put(name, enumerationConstant);
 
 		VbParserContext.getInstance().getASGElementRegistry().addASGElement(enumerationConstant);
 
@@ -103,12 +103,12 @@ public class EnumerationImpl extends VbScopedElementImpl implements Enumeration 
 
 	@Override
 	public EnumerationConstant getEnumerationConstant(final String name) {
-		return enumerationConstantsByName.get(name);
+		return enumerationConstantsSymbolTable.get(name);
 	}
 
 	@Override
 	public Map<String, EnumerationConstant> getEnumerationConstants() {
-		return enumerationConstantsByName;
+		return enumerationConstantsSymbolTable;
 	}
 
 	@Override
