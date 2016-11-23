@@ -22,14 +22,6 @@
 *
 * 2. Keywords can be used as identifiers depending on the context, enabling
 *    e.g. "A.Type", but not "Type.B".
-*
-*
-* Known limitations:
-*
-* 1. Preprocessor statements (#if, #else, ...) must not interfere with regular
-*    statements.
-*
-* 2. Comments are skipped.
 */
 
 grammar VisualBasic6;
