@@ -1,0 +1,73 @@
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(moduleBlock 
+					(block 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier filename))))) \n 
+						(blockStmt 
+							(variableStmt Dim   
+								(variableListStmt 
+									(variableSubStmt 
+										(ambiguousIdentifier filepath))))) \n \n 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier filepath) 
+										(typeHint $)))   =   
+								(valueStmt 
+									(valueStmt 
+										(valueStmt 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_MembersCall 
+														(iCS_S_VariableOrProcedureCall 
+															(ambiguousIdentifier filename)) 
+														(iCS_S_MemberCall . 
+															(iCS_S_VariableOrProcedureCall 
+																(ambiguousIdentifier 
+																	(ambiguousKeyword Text)) 
+																(typeHint $))))))   &   
+											(valueStmt 
+												(literal "\sometext")))   &   
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier filepath) 
+													(typeHint $)))))   &   
+									(valueStmt 
+										(literal ".txt"))))) \n \n \n 
+						(blockStmt 
+							(ifThenElseStmt 
+								(ifBlockStmt If   
+									(ifConditionStmt 
+										(valueStmt 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_ProcedureOrArrayCall 
+														(ambiguousIdentifier Func1) ( 
+														(argsCall 
+															(argCall 
+																(valueStmt 
+																	(valueStmt 
+																		(implicitCallStmt_InStmt 
+																			(iCS_S_MembersCall 
+																				(iCS_S_VariableOrProcedureCall 
+																					(ambiguousIdentifier filname)) 
+																				(iCS_S_MemberCall . 
+																					(iCS_S_VariableOrProcedureCall 
+																						(ambiguousIdentifier 
+																							(ambiguousKeyword Text)) 
+																						(typeHint $))))))   &   
+																	(valueStmt 
+																		(literal "\log")))) ,   
+															(argCall 
+																(valueStmt 
+																	(literal True)))) ))))   =   
+											(valueStmt 
+												(literal True))))   Then \n \n) End If))))))) <EOF>)
