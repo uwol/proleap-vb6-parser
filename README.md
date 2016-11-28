@@ -202,7 +202,7 @@ $ mvn clean install
 ```
 <dependency>
   <groupId>io.github.uwol</groupId>
-  <artifactId>vb6grammar</artifactId>
+  <artifactId>vb6parser</artifactId>
   <version>2.0.0</version>
 </dependency>
 ```
