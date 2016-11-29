@@ -10,18 +10,18 @@ package io.proleap.vb6.parser.metamodel.impl;
 
 import io.proleap.vb6.VisualBasic6Parser.WithStmtContext;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.With;
 import io.proleap.vb6.parser.metamodel.call.Call;
 
-public class WithImpl extends VbScopeImpl implements With {
+public class WithImpl extends ScopeImpl implements With {
 
 	protected final WithStmtContext ctx;
 
 	protected Call withVariableCall;
 
-	public WithImpl(final Module module, final VbScope superScope, final WithStmtContext ctx) {
-		super(module, superScope, ctx);
+	public WithImpl(final Module module, final Scope scope, final WithStmtContext ctx) {
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 	}

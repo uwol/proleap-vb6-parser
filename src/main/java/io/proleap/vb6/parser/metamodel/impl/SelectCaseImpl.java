@@ -13,10 +13,10 @@ import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Select;
 import io.proleap.vb6.parser.metamodel.SelectCase;
 import io.proleap.vb6.parser.metamodel.SelectCaseCond;
-import io.proleap.vb6.parser.metamodel.VbScope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
-public class SelectCaseImpl extends VbScopedElementImpl implements SelectCase {
+public class SelectCaseImpl extends ScopedElementImpl implements SelectCase {
 
 	protected final SC_CaseContext ctx;
 
@@ -24,8 +24,8 @@ public class SelectCaseImpl extends VbScopedElementImpl implements SelectCase {
 
 	protected SelectCaseCond selectCaseCond;
 
-	public SelectCaseImpl(final Module module, final VbScope superScope, final SC_CaseContext ctx) {
-		super(module, superScope, ctx);
+	public SelectCaseImpl(final Module module, final Scope scope, final SC_CaseContext ctx) {
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 	}

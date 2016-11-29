@@ -12,18 +12,18 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Sub;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.SubCall;
 import io.proleap.vb6.parser.metamodel.call.impl.CallImpl;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class SubCallImpl extends CallImpl implements SubCall {
 
 	protected Sub sub;
 
-	public SubCallImpl(final String name, final Sub sub, final Module module, final VbScope superScope,
+	public SubCallImpl(final String name, final Sub sub, final Module module, final Scope scope,
 			final ParseTree ctx) {
-		super(name, module, superScope, ctx);
+		super(name, module, scope, ctx);
 
 		this.sub = sub;
 	}

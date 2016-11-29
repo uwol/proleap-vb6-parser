@@ -12,10 +12,9 @@ import java.util.List;
 
 import io.proleap.vb6.VisualBasic6Parser.VariableSubStmtContext;
 import io.proleap.vb6.parser.metamodel.call.VariableCall;
-import io.proleap.vb6.parser.metamodel.oop.AssignableTypedElement;
-import io.proleap.vb6.parser.metamodel.oop.Declaration;
+import io.proleap.vb6.parser.metamodel.type.AssignableTypedElement;
 
-public interface Variable extends AssignableTypedElement, Declaration, VbScopedElement {
+public interface Variable extends AssignableTypedElement, Declaration, ScopedElement {
 
 	void addVariableCall(VariableCall variableCall);
 

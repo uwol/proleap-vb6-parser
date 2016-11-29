@@ -6,12 +6,14 @@
  * of the BSD 3-clause license. See the LICENSE file for details.
  */
 
-package io.proleap.vb6.parser.metamodel;
+package io.proleap.vb6.parser.metamodel.type;
 
-import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
+import io.proleap.vb6.parser.metamodel.Declaration;
 
-public interface VbScopedElement extends ScopedElement {
+public interface Type extends Declaration {
 
-	Module getModule();
+	@Override
+	String getName();
 
+	boolean isCollection();
 }

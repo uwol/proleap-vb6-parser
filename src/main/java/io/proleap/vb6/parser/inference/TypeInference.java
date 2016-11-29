@@ -11,7 +11,7 @@ package io.proleap.vb6.parser.inference;
 import java.util.Set;
 
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public interface TypeInference {
 

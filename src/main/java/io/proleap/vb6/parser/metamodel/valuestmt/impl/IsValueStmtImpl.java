@@ -10,13 +10,13 @@ package io.proleap.vb6.parser.metamodel.valuestmt.impl;
 
 import io.proleap.vb6.VisualBasic6Parser.ValueStmtContext;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.valuestmt.IsValueStmt;
 
 public class IsValueStmtImpl extends BooleanValueStmtImpl implements IsValueStmt {
 
-	public IsValueStmtImpl(final Module module, final Scope superScope, final ValueStmtContext ctx) {
-		super(module, superScope, ctx);
+	public IsValueStmtImpl(final Module module, final Scope scope, final ValueStmtContext ctx) {
+		super(module, scope, ctx);
 	}
 
 }

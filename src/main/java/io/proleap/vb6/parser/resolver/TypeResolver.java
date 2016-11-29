@@ -10,7 +10,7 @@ package io.proleap.vb6.parser.resolver;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public interface TypeResolver {
 

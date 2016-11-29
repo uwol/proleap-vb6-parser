@@ -12,16 +12,16 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.IfCondition;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public class IfConditionImpl extends VbScopedElementImpl implements IfCondition {
+public class IfConditionImpl extends ScopedElementImpl implements IfCondition {
 
 	protected ValueStmt valueStmt;
 
-	public IfConditionImpl(final Module module, final Scope superScope, final ParseTree ctx) {
-		super(module, superScope, ctx);
+	public IfConditionImpl(final Module module, final Scope scope, final ParseTree ctx) {
+		super(module, scope, ctx);
 	}
 
 	@Override

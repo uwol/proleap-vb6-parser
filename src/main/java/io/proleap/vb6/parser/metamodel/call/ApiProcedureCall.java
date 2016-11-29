@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.parser.metamodel.call;
 
-import io.proleap.vb6.parser.metamodel.oop.api.ApiProcedure;
+import io.proleap.vb6.parser.metamodel.api.ApiProcedure;
 
 public interface ApiProcedureCall extends Call {
 

@@ -12,9 +12,9 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.EnumerationConstant;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.EnumerationConstantCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class EnumerationConstantCallImpl extends CallImpl implements EnumerationConstantCall {
 
@@ -23,8 +23,8 @@ public class EnumerationConstantCallImpl extends CallImpl implements Enumeration
 	protected boolean standalone;
 
 	public EnumerationConstantCallImpl(final String name, final EnumerationConstant enumerationConstant,
-			final Module module, final VbScope superScope, final ParseTree ctx) {
-		super(name, module, superScope, ctx);
+			final Module module, final Scope scope, final ParseTree ctx) {
+		super(name, module, scope, ctx);
 
 		this.enumerationConstant = enumerationConstant;
 	}

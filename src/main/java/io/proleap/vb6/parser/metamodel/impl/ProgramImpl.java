@@ -19,11 +19,11 @@ import io.proleap.vb6.parser.metamodel.ClazzModule;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Program;
 import io.proleap.vb6.parser.metamodel.StandardModule;
-import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
+import io.proleap.vb6.parser.metamodel.ScopedElement;
 import io.proleap.vb6.parser.resolver.NameResolver;
 import io.proleap.vb6.parser.resolver.impl.NameResolverImpl;
 
-public class ProgramImpl extends VbScopeImpl implements Program {
+public class ProgramImpl extends ScopeImpl implements Program {
 
 	protected final Map<String, ClazzModule> clazzModules = new LinkedHashMap<String, ClazzModule>();
 

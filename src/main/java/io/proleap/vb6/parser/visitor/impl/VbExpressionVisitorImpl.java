@@ -12,7 +12,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 
 /**
  * Visitor for analyzing expressions in the AST.
@@ -25,7 +25,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitArgCall(@NotNull final VisualBasic6Parser.ArgCallContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addArgValueAssignment(ctx);
 
@@ -34,7 +34,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitExitStmt(@NotNull final VisualBasic6Parser.ExitStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addExit(ctx);
 
@@ -43,7 +43,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitExplicitCallStmt(@NotNull final VisualBasic6Parser.ExplicitCallStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addCall(ctx);
 
@@ -52,7 +52,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitForEachStmt(@NotNull final VisualBasic6Parser.ForEachStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addForEach(ctx);
 
@@ -61,7 +61,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitForNextStmt(@NotNull final VisualBasic6Parser.ForNextStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addForNext(ctx);
 
@@ -70,7 +70,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitICS_S_MembersCall(@NotNull final VisualBasic6Parser.ICS_S_MembersCallContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addCall(null, ctx);
 
@@ -80,7 +80,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 	@Override
 	public Boolean visitICS_S_ProcedureOrArrayCall(
 			@NotNull final VisualBasic6Parser.ICS_S_ProcedureOrArrayCallContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addCall(null, ctx);
 
@@ -90,7 +90,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 	@Override
 	public Boolean visitICS_S_VariableOrProcedureCall(
 			@NotNull final VisualBasic6Parser.ICS_S_VariableOrProcedureCallContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addCall(null, null, ctx);
 
@@ -99,7 +99,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitIfConditionStmt(@NotNull final VisualBasic6Parser.IfConditionStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addIfCondition(ctx);
 
@@ -109,7 +109,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 	@Override
 	public Boolean visitImplicitCallStmt_InBlock(
 			@NotNull final VisualBasic6Parser.ImplicitCallStmt_InBlockContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addCall(ctx);
 
@@ -118,7 +118,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitImplicitCallStmt_InStmt(@NotNull final VisualBasic6Parser.ImplicitCallStmt_InStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addCall(null, ctx);
 
@@ -127,7 +127,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitLetStmt(@NotNull final VisualBasic6Parser.LetStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addLet(ctx);
 
@@ -136,7 +136,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitLiteral(@NotNull final VisualBasic6Parser.LiteralContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addLiteral(ctx);
 
@@ -145,7 +145,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitOnErrorStmt(@NotNull final VisualBasic6Parser.OnErrorStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addOnError(ctx);
 
@@ -154,7 +154,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitResumeStmt(@NotNull final VisualBasic6Parser.ResumeStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addResume(ctx);
 
@@ -163,7 +163,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitSC_Case(@NotNull final VisualBasic6Parser.SC_CaseContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addSelectCase(ctx);
 
@@ -172,7 +172,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitSelectCaseStmt(@NotNull final VisualBasic6Parser.SelectCaseStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addSelect(ctx);
 
@@ -181,7 +181,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitSetStmt(@NotNull final VisualBasic6Parser.SetStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addSet(ctx);
 
@@ -190,7 +190,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsAdd(@NotNull final VisualBasic6Parser.VsAddContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -199,7 +199,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsAddressOf(@NotNull final VisualBasic6Parser.VsAddressOfContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -208,7 +208,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsAmp(@NotNull final VisualBasic6Parser.VsAmpContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -217,7 +217,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsAnd(@NotNull final VisualBasic6Parser.VsAndContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -226,7 +226,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsAssign(@NotNull final VisualBasic6Parser.VsAssignContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -235,7 +235,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsDiv(@NotNull final VisualBasic6Parser.VsDivContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -244,7 +244,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsEq(@NotNull final VisualBasic6Parser.VsEqContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -253,7 +253,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsEqv(@NotNull final VisualBasic6Parser.VsEqvContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -262,7 +262,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsGeq(@NotNull final VisualBasic6Parser.VsGeqContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -271,7 +271,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsGt(@NotNull final VisualBasic6Parser.VsGtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -280,7 +280,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsICS(@NotNull final VisualBasic6Parser.VsICSContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(null, ctx);
 
@@ -289,7 +289,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsImp(@NotNull final VisualBasic6Parser.VsImpContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -298,7 +298,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsIs(@NotNull final VisualBasic6Parser.VsIsContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -307,7 +307,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsLeq(@NotNull final VisualBasic6Parser.VsLeqContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -316,7 +316,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsLike(@NotNull final VisualBasic6Parser.VsLikeContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -325,7 +325,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsLiteral(@NotNull final VisualBasic6Parser.VsLiteralContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -334,7 +334,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsLt(@NotNull final VisualBasic6Parser.VsLtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -343,7 +343,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsMid(@NotNull final VisualBasic6Parser.VsMidContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -352,7 +352,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsMinus(@NotNull final VisualBasic6Parser.VsMinusContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -361,7 +361,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsMod(@NotNull final VisualBasic6Parser.VsModContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -370,7 +370,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsMult(@NotNull final VisualBasic6Parser.VsMultContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -379,7 +379,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsNegation(@NotNull final VisualBasic6Parser.VsNegationContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -388,7 +388,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsNeq(@NotNull final VisualBasic6Parser.VsNeqContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -397,7 +397,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsNew(@NotNull final VisualBasic6Parser.VsNewContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -406,7 +406,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsNot(@NotNull final VisualBasic6Parser.VsNotContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -415,7 +415,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsOr(@NotNull final VisualBasic6Parser.VsOrContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -424,7 +424,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsPlus(@NotNull final VisualBasic6Parser.VsPlusContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -433,7 +433,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsPow(@NotNull final VisualBasic6Parser.VsPowContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -442,7 +442,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsStruct(@NotNull final VisualBasic6Parser.VsStructContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -451,7 +451,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsTypeOf(@NotNull final VisualBasic6Parser.VsTypeOfContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -460,7 +460,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVsXor(@NotNull final VisualBasic6Parser.VsXorContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addValueStmt(ctx);
 
@@ -469,7 +469,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitWhileWendStmt(@NotNull final VisualBasic6Parser.WhileWendStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addWhile(ctx);
 
@@ -478,7 +478,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitWithStmt(@NotNull final VisualBasic6Parser.WithStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addWith(ctx);
 

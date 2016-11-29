@@ -14,10 +14,9 @@ import java.util.Map;
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgDefaultValueContext;
 import io.proleap.vb6.parser.metamodel.call.Call;
-import io.proleap.vb6.parser.metamodel.oop.Declaration;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
-public interface Procedure extends VbScope, Declaration {
+public interface Procedure extends Scope, Declaration {
 
 	Arg addArg(ArgContext ctx);
 

@@ -25,16 +25,16 @@ import io.proleap.vb6.parser.metamodel.Arg;
 import io.proleap.vb6.parser.metamodel.ModelElement;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Procedure;
+import io.proleap.vb6.parser.metamodel.ScopedElement;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumerationConstant;
 import io.proleap.vb6.parser.metamodel.call.ApiEnumerationConstantCall;
 import io.proleap.vb6.parser.metamodel.call.Call;
 import io.proleap.vb6.parser.metamodel.call.impl.ApiEnumerationConstantCallImpl;
 import io.proleap.vb6.parser.metamodel.call.impl.UndefinedCallImpl;
-import io.proleap.vb6.parser.metamodel.oop.ComplexType;
-import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
-import io.proleap.vb6.parser.metamodel.oop.Type;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumerationConstant;
+import io.proleap.vb6.parser.metamodel.type.ComplexType;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
-public abstract class ProcedureImpl extends VbScopeImpl implements Procedure {
+public abstract class ProcedureImpl extends ScopeImpl implements Procedure {
 
 	protected final LinkedHashMap<String, Arg> args = new LinkedHashMap<String, Arg>();
 

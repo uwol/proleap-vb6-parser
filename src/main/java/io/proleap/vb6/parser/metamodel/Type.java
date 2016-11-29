@@ -10,8 +10,7 @@ package io.proleap.vb6.parser.metamodel;
 
 import java.util.List;
 
-import io.proleap.vb6.parser.metamodel.oop.ComplexType;
-import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
+import io.proleap.vb6.parser.metamodel.type.ComplexType;
 
 /**
  * Used at module level to define a user-defined data type containing one or

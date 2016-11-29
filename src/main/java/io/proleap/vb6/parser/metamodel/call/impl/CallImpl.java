@@ -11,16 +11,16 @@ package io.proleap.vb6.parser.metamodel.call.impl;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Module;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.Call;
-import io.proleap.vb6.parser.metamodel.impl.VbScopedElementImpl;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
+import io.proleap.vb6.parser.metamodel.impl.ScopedElementImpl;
 
-public abstract class CallImpl extends VbScopedElementImpl implements Call {
+public abstract class CallImpl extends ScopedElementImpl implements Call {
 
 	protected final String name;
 
-	public CallImpl(final String name, final Module module, final Scope superScope, final ParseTree ctx) {
-		super(module, superScope, ctx);
+	public CallImpl(final String name, final Module module, final Scope scope, final ParseTree ctx) {
+		super(module, scope, ctx);
 
 		this.name = name;
 	}

@@ -12,7 +12,7 @@ import java.util.List;
 
 import io.proleap.vb6.VisualBasic6Parser.PropertyGetStmtContext;
 import io.proleap.vb6.parser.metamodel.call.PropertyGetCall;
-import io.proleap.vb6.parser.metamodel.oop.AssignableTypedElement;
+import io.proleap.vb6.parser.metamodel.type.AssignableTypedElement;
 
 /**
  * Declares the name, arguments, and code that form the body of a Property

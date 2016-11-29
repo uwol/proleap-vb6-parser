@@ -9,9 +9,8 @@
 package io.proleap.vb6.parser.metamodel;
 
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
-import io.proleap.vb6.parser.metamodel.oop.Declaration;
 
-public interface ProcedureDeclaration extends VbScopedElement, Declaration {
+public interface ProcedureDeclaration extends ScopedElement, Declaration {
 
 	Arg addArg(ArgContext ctx);
 

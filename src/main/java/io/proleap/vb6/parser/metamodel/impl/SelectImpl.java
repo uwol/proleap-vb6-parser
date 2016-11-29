@@ -15,11 +15,11 @@ import io.proleap.vb6.VisualBasic6Parser.SelectCaseStmtContext;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Select;
 import io.proleap.vb6.parser.metamodel.SelectCase;
-import io.proleap.vb6.parser.metamodel.VbScope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public class SelectImpl extends VbScopeImpl implements Select {
+public class SelectImpl extends ScopeImpl implements Select {
 
 	protected final SelectCaseStmtContext ctx;
 
@@ -27,8 +27,8 @@ public class SelectImpl extends VbScopeImpl implements Select {
 
 	protected ValueStmt valueStmt;
 
-	public SelectImpl(final Module module, final VbScope superScope, final SelectCaseStmtContext ctx) {
-		super(module, superScope, ctx);
+	public SelectImpl(final Module module, final Scope scope, final SelectCaseStmtContext ctx) {
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 	}

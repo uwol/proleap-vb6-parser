@@ -10,17 +10,18 @@ package io.proleap.vb6.parser.metamodel.valuestmt.impl;
 
 import io.proleap.vb6.VisualBasic6Parser.ValueStmtContext;
 import io.proleap.vb6.parser.metamodel.Module;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.Call;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.CallValueStmt;
 
 public class CallValueStmtImpl extends ValueStmtImpl implements CallValueStmt {
 
 	protected Call call;
 
-	public CallValueStmtImpl(final Call call, final Module module, final Scope superScope, final ValueStmtContext ctx) {
-		super(module, superScope, ctx);
+	public CallValueStmtImpl(final Call call, final Module module, final Scope scope,
+			final ValueStmtContext ctx) {
+		super(module, scope, ctx);
 
 		this.call = call;
 	}

@@ -8,6 +8,6 @@
 
 package io.proleap.vb6.parser.metamodel;
 
-public interface Statement extends VbScopedElement {
+public interface Statement extends ScopedElement {
 
 }

@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.parser.registry.impl;
 
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.registry.TypeNameSanitizer;
 
 public class VbTypeNameSanitizerImpl implements TypeNameSanitizer {

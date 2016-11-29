@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.parser.metamodel;
 
-import io.proleap.vb6.parser.metamodel.oop.BaseType;
+import io.proleap.vb6.parser.metamodel.type.BaseType;
 
 public enum VbBaseType implements BaseType {
 

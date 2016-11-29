@@ -12,10 +12,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
-import io.proleap.vb6.parser.metamodel.oop.BaseType;
-import io.proleap.vb6.parser.metamodel.oop.ComplexType;
-import io.proleap.vb6.parser.metamodel.oop.Type;
-import io.proleap.vb6.parser.metamodel.oop.impl.ComplexTypeImpl;
+import io.proleap.vb6.parser.metamodel.type.BaseType;
+import io.proleap.vb6.parser.metamodel.type.ComplexType;
+import io.proleap.vb6.parser.metamodel.type.Type;
+import io.proleap.vb6.parser.metamodel.type.impl.ComplexTypeImpl;
 import io.proleap.vb6.parser.registry.TypeRegistry;
 
 public class TypeRegistryImpl implements TypeRegistry {

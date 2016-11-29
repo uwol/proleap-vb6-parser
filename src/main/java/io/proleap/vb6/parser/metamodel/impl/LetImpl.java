@@ -11,12 +11,12 @@ package io.proleap.vb6.parser.metamodel.impl;
 import io.proleap.vb6.VisualBasic6Parser.LetStmtContext;
 import io.proleap.vb6.parser.metamodel.Let;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.Call;
 import io.proleap.vb6.parser.metamodel.call.Call.CallType;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public class LetImpl extends VbScopedElementImpl implements Let {
+public class LetImpl extends ScopedElementImpl implements Let {
 
 	protected final LetStmtContext ctx;
 
@@ -24,8 +24,8 @@ public class LetImpl extends VbScopedElementImpl implements Let {
 
 	protected ValueStmt rightHandValueStmt;
 
-	public LetImpl(final Module module, final VbScope superScope, final LetStmtContext ctx) {
-		super(module, superScope, ctx);
+	public LetImpl(final Module module, final Scope scope, final LetStmtContext ctx) {
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 	}

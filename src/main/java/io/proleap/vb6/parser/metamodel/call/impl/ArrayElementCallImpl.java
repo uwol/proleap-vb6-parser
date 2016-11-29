@@ -13,9 +13,9 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Variable;
 import io.proleap.vb6.parser.metamodel.VbBaseType;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.ArrayElementCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class ArrayElementCallImpl extends CallImpl implements ArrayElementCall {
 
@@ -23,8 +23,8 @@ public class ArrayElementCallImpl extends CallImpl implements ArrayElementCall {
 
 	protected Variable variable;
 
-	public ArrayElementCallImpl(final String name, final Module module, final VbScope superScope, final ParseTree ctx) {
-		super(name, module, superScope, ctx);
+	public ArrayElementCallImpl(final String name, final Module module, final Scope scope, final ParseTree ctx) {
+		super(name, module, scope, ctx);
 	}
 
 	@Override

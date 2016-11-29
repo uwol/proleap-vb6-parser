@@ -16,7 +16,7 @@ import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Program;
 import io.proleap.vb6.parser.metamodel.Variable;
 import io.proleap.vb6.parser.metamodel.VbBaseType;
-import io.proleap.vb6.parser.metamodel.oop.ComplexType;
+import io.proleap.vb6.parser.metamodel.type.ComplexType;
 
 public class VariableCallTest extends VbTestSupport {
 

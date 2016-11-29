@@ -11,10 +11,10 @@ package io.proleap.vb6.parser.metamodel.call.impl;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumerationConstant;
 import io.proleap.vb6.parser.metamodel.call.ApiEnumerationConstantCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumerationConstant;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class ApiEnumerationConstantCallImpl extends CallImpl implements ApiEnumerationConstantCall {
 
@@ -23,8 +23,8 @@ public class ApiEnumerationConstantCallImpl extends CallImpl implements ApiEnume
 	protected boolean standalone;
 
 	public ApiEnumerationConstantCallImpl(final String name, final ApiEnumerationConstant apiEnumerationConstant,
-			final Module module, final VbScope superScope, final ParseTree ctx) {
-		super(name, module, superScope, ctx);
+			final Module module, final Scope scope, final ParseTree ctx) {
+		super(name, module, scope, ctx);
 
 		this.apiEnumerationConstant = apiEnumerationConstant;
 	}

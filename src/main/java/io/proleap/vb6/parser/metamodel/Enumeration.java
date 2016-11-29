@@ -14,7 +14,7 @@ import java.util.Map;
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmt_ConstantContext;
 import io.proleap.vb6.parser.metamodel.call.EnumerationCall;
-import io.proleap.vb6.parser.metamodel.oop.ComplexType;
+import io.proleap.vb6.parser.metamodel.type.ComplexType;
 
 /**
  * Declares a type for an enumeration.

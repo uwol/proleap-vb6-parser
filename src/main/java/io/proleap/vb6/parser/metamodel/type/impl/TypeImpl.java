@@ -6,9 +6,9 @@
  * of the BSD 3-clause license. See the LICENSE file for details.
  */
 
-package io.proleap.vb6.parser.metamodel.oop.impl;
+package io.proleap.vb6.parser.metamodel.type.impl;
 
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public abstract class TypeImpl implements Type {
 

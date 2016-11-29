@@ -10,17 +10,17 @@ package io.proleap.vb6.parser.metamodel.impl;
 
 import io.proleap.vb6.VisualBasic6Parser.WhileWendStmtContext;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.While;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public class WhileImpl extends VbScopeImpl implements While {
+public class WhileImpl extends ScopeImpl implements While {
 
 	protected ValueStmt condition;
 
 	protected final WhileWendStmtContext ctx;
 
-	public WhileImpl(final Module module, final VbScope scope, final WhileWendStmtContext ctx) {
+	public WhileImpl(final Module module, final Scope scope, final WhileWendStmtContext ctx) {
 		super(module, scope, ctx);
 
 		this.ctx = ctx;

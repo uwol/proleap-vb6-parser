@@ -50,11 +50,11 @@ import io.proleap.vb6.parser.metamodel.PropertySet;
 import io.proleap.vb6.parser.metamodel.Sub;
 import io.proleap.vb6.parser.metamodel.TypeElement;
 import io.proleap.vb6.parser.metamodel.VbBaseType;
-import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.ScopedElement;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.util.StringUtils;
 
-public abstract class ModuleImpl extends VbScopeImpl implements Module {
+public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	public final static String NEW_ENUM = "NewEnum";
 

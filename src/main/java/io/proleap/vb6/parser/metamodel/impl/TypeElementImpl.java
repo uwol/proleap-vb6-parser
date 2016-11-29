@@ -15,9 +15,9 @@ import io.proleap.vb6.VisualBasic6Parser.TypeStmt_ElementContext;
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.TypeElement;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
-public class TypeElementImpl extends VbScopedElementImpl implements TypeElement {
+public class TypeElementImpl extends ScopedElementImpl implements TypeElement {
 
 	protected final TypeStmt_ElementContext ctx;
 

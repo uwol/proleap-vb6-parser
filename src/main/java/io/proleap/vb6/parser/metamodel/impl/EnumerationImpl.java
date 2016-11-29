@@ -21,12 +21,12 @@ import io.proleap.vb6.parser.applicationcontext.VbParserContext;
 import io.proleap.vb6.parser.metamodel.Enumeration;
 import io.proleap.vb6.parser.metamodel.EnumerationConstant;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.EnumerationCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public class EnumerationImpl extends VbScopedElementImpl implements Enumeration {
+public class EnumerationImpl extends ScopedElementImpl implements Enumeration {
 
 	protected final EnumerationStmtContext ctx;
 
@@ -122,7 +122,7 @@ public class EnumerationImpl extends VbScopedElementImpl implements Enumeration 
 	}
 
 	@Override
-	public VbScope getSuperScope() {
+	public Scope getScope() {
 		return module;
 	}
 

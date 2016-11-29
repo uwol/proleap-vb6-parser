@@ -11,13 +11,13 @@ package io.proleap.vb6.parser.metamodel.valuestmt.impl;
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
 import io.proleap.vb6.parser.metamodel.Arg;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
-import io.proleap.vb6.parser.metamodel.impl.VbScopedElementImpl;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.impl.ScopedElementImpl;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ArgValueAssignment;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public class ArgValueAssignmentImpl extends VbScopedElementImpl implements ArgValueAssignment {
+public class ArgValueAssignmentImpl extends ScopedElementImpl implements ArgValueAssignment {
 
 	protected Arg arg;
 
@@ -25,8 +25,8 @@ public class ArgValueAssignmentImpl extends VbScopedElementImpl implements ArgVa
 
 	protected final ArgCallContext ctx;
 
-	public ArgValueAssignmentImpl(final Module module, final VbScope superScope, final ArgCallContext ctx) {
-		super(module, superScope, ctx);
+	public ArgValueAssignmentImpl(final Module module, final Scope scope, final ArgCallContext ctx) {
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 	}

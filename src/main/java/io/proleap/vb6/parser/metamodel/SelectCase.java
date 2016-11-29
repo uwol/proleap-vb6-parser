@@ -9,9 +9,9 @@
 package io.proleap.vb6.parser.metamodel;
 
 import io.proleap.vb6.VisualBasic6Parser.SC_CaseContext;
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 
-public interface SelectCase extends VbScopedElement, TypedElement {
+public interface SelectCase extends ScopedElement, TypedElement {
 
 	@Override
 	SC_CaseContext getCtx();

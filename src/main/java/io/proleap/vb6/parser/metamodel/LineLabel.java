@@ -10,9 +10,6 @@ package io.proleap.vb6.parser.metamodel;
 
 import java.util.List;
 
-import io.proleap.vb6.parser.metamodel.oop.Declaration;
-import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
-
 public interface LineLabel extends ScopedElement, Declaration {
 
 	void addOnError(OnError onError);

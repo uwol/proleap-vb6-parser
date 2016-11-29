@@ -14,12 +14,12 @@ import java.util.List;
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
 import io.proleap.vb6.parser.metamodel.Constant;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.ConstantCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public class ConstantImpl extends VbScopedElementImpl implements Constant {
+public class ConstantImpl extends ScopedElementImpl implements Constant {
 
 	protected final List<ConstantCall> constantCalls = new ArrayList<ConstantCall>();
 
@@ -27,19 +27,16 @@ public class ConstantImpl extends VbScopedElementImpl implements Constant {
 
 	protected final String name;
 
-	protected final VbScope scope;
-
 	protected final Type type;
 
 	protected ValueStmt valueStmt;
 
-	public ConstantImpl(final String name, final Type type, final Module module, final VbScope superScope,
+	public ConstantImpl(final String name, final Type type, final Module module, final Scope scope,
 			final ConstSubStmtContext ctx) {
-		super(module, superScope, ctx);
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 		this.name = name;
-		scope = superScope;
 		this.type = type;
 	}
 
@@ -64,11 +61,6 @@ public class ConstantImpl extends VbScopedElementImpl implements Constant {
 	}
 
 	@Override
-	public VbScope getSuperScope() {
-		return scope;
-	}
-
-	@Override
 	public Type getType() {
 		return type;
 	}
@@ -80,7 +72,7 @@ public class ConstantImpl extends VbScopedElementImpl implements Constant {
 
 	@Override
 	public boolean isModuleConstant() {
-		return superScope != null && superScope.equals(module);
+		return scope != null && scope.equals(module);
 	}
 
 	@Override

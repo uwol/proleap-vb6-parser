@@ -8,14 +8,14 @@
 
 package io.proleap.vb6.parser.metamodel;
 
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
 /**
  * Conditionally executes a group of statements, depending on the value of an
  * expression.
  */
-public interface IfCondition extends TypedElement, VbScopedElement {
+public interface IfCondition extends TypedElement, ScopedElement {
 
 	ValueStmt getValueStmt();
 

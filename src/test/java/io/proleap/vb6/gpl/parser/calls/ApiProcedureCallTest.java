@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import io.proleap.vb6.VbTestSupport;
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiProcedure;
+import io.proleap.vb6.parser.metamodel.api.ApiProcedure;
 
 public class ApiProcedureCallTest extends VbTestSupport {
 

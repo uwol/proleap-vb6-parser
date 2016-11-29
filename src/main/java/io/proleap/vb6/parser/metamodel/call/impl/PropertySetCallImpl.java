@@ -12,17 +12,17 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.PropertySet;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.PropertySetCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class PropertySetCallImpl extends CallImpl implements PropertySetCall {
 
 	protected PropertySet propertySet;
 
 	public PropertySetCallImpl(final String name, final PropertySet propertySet, final Module module,
-			final VbScope superScope, final ParseTree ctx) {
-		super(name, module, superScope, ctx);
+			final Scope scope, final ParseTree ctx) {
+		super(name, module, scope, ctx);
 
 		this.propertySet = propertySet;
 	}

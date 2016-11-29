@@ -14,7 +14,7 @@ import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 /**
  * Repeats a group of statements a specified number of times.
  */
-public interface ForNext extends VbScope, Statement {
+public interface ForNext extends Scope, Statement {
 
 	@Override
 	ForNextStmtContext getCtx();

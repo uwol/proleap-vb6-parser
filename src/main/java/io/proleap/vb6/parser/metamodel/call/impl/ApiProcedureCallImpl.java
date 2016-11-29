@@ -11,18 +11,18 @@ package io.proleap.vb6.parser.metamodel.call.impl;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Module;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.api.ApiProcedure;
 import io.proleap.vb6.parser.metamodel.call.ApiProcedureCall;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiProcedure;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class ApiProcedureCallImpl extends CallImpl implements ApiProcedureCall {
 
 	protected final ApiProcedure apiProcedure;
 
 	public ApiProcedureCallImpl(final String name, final ApiProcedure apiProcedure, final Module module,
-			final Scope superScope, final ParseTree ctx) {
-		super(name, module, superScope, ctx);
+			final Scope scope, final ParseTree ctx) {
+		super(name, module, scope, ctx);
 
 		this.apiProcedure = apiProcedure;
 	}

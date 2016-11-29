@@ -11,17 +11,17 @@ package io.proleap.vb6.parser.metamodel.impl;
 import io.proleap.vb6.VisualBasic6Parser.ModuleConfigElementContext;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.ModuleConfigElement;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
+import io.proleap.vb6.parser.metamodel.Scope;
 
-public class ModuleConfigElementImpl extends VbScopedElementImpl implements ModuleConfigElement {
+public class ModuleConfigElementImpl extends ScopedElementImpl implements ModuleConfigElement {
 
 	protected final ModuleConfigElementContext ctx;
 
 	protected final String name;
 
-	public ModuleConfigElementImpl(final String name, final Module module, final Scope superScope,
+	public ModuleConfigElementImpl(final String name, final Module module, final Scope scope,
 			final ModuleConfigElementContext ctx) {
-		super(module, superScope, ctx);
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 		this.name = name;

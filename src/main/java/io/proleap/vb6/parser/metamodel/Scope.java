@@ -76,13 +76,12 @@ import io.proleap.vb6.VisualBasic6Parser.WhileWendStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.WithStmtContext;
 import io.proleap.vb6.parser.metamodel.call.Call;
 import io.proleap.vb6.parser.metamodel.call.Call.CallContext;
-import io.proleap.vb6.parser.metamodel.oop.ComplexType;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
+import io.proleap.vb6.parser.metamodel.type.ComplexType;
 import io.proleap.vb6.parser.metamodel.valuestmt.ArgValueAssignment;
 import io.proleap.vb6.parser.metamodel.valuestmt.CallValueStmt;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public interface VbScope extends VbScopedElement, Scope {
+public interface Scope extends ScopedElement {
 
 	ArgValueAssignment addArgValueAssignment(ArgCallContext ctx);
 
@@ -216,7 +215,15 @@ public interface VbScope extends VbScopedElement, Scope {
 
 	Constant getConstant(String name);
 
+	List<ScopedElement> getScopedElements();
+
+	List<ScopedElement> getScopedElementsInHierarchy(String name);
+
+	List<ScopedElement> getScopedElementsInScope(String name);
+
 	List<Statement> getStatements();
+
+	List<Scope> getSubScopes();
 
 	Variable getVariable(String name);
 

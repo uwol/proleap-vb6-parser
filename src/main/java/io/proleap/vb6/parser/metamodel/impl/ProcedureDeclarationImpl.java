@@ -19,10 +19,10 @@ import io.proleap.vb6.parser.applicationcontext.VbParserContext;
 import io.proleap.vb6.parser.metamodel.Arg;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.ProcedureDeclaration;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
-public class ProcedureDeclarationImpl extends VbScopedElementImpl implements ProcedureDeclaration {
+public class ProcedureDeclarationImpl extends ScopedElementImpl implements ProcedureDeclaration {
 
 	protected final LinkedHashMap<String, Arg> args = new LinkedHashMap<String, Arg>();
 
@@ -30,9 +30,9 @@ public class ProcedureDeclarationImpl extends VbScopedElementImpl implements Pro
 
 	protected final String name;
 
-	public ProcedureDeclarationImpl(final String name, final Module module, final Scope superScope,
+	public ProcedureDeclarationImpl(final String name, final Module module, final Scope scope,
 			final ParseTree ctx) {
-		super(module, superScope, ctx);
+		super(module, scope, ctx);
 
 		this.name = name;
 	}

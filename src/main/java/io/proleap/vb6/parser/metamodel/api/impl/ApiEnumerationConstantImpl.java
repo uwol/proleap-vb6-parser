@@ -6,15 +6,15 @@
  * of the BSD 3-clause license. See the LICENSE file for details.
  */
 
-package io.proleap.vb6.parser.metamodel.oop.api.impl;
+package io.proleap.vb6.parser.metamodel.api.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.proleap.vb6.parser.metamodel.api.ApiEnumeration;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumerationConstant;
 import io.proleap.vb6.parser.metamodel.call.ApiEnumerationConstantCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumeration;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumerationConstant;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class ApiEnumerationConstantImpl implements ApiEnumerationConstant {
 

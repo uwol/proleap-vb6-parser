@@ -9,10 +9,9 @@
 package io.proleap.vb6.parser.metamodel;
 
 import io.proleap.vb6.VisualBasic6Parser.AttributeStmtContext;
-import io.proleap.vb6.parser.metamodel.oop.Declaration;
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 
-public interface Attribute extends TypedElement, Declaration, VbScopedElement {
+public interface Attribute extends TypedElement, Declaration, ScopedElement {
 
 	@Override
 	AttributeStmtContext getCtx();

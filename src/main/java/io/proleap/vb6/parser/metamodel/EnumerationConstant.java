@@ -12,11 +12,10 @@ import java.util.List;
 
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmt_ConstantContext;
 import io.proleap.vb6.parser.metamodel.call.EnumerationConstantCall;
-import io.proleap.vb6.parser.metamodel.oop.Declaration;
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public interface EnumerationConstant extends TypedElement, Declaration, VbScopedElement {
+public interface EnumerationConstant extends TypedElement, Declaration, ScopedElement {
 
 	void addEnumerationConstantCall(EnumerationConstantCall enumerationConstantCall);
 

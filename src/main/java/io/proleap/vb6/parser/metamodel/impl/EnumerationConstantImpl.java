@@ -15,10 +15,10 @@ import io.proleap.vb6.VisualBasic6Parser.EnumerationStmt_ConstantContext;
 import io.proleap.vb6.parser.metamodel.Enumeration;
 import io.proleap.vb6.parser.metamodel.EnumerationConstant;
 import io.proleap.vb6.parser.metamodel.call.EnumerationConstantCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public class EnumerationConstantImpl extends VbScopedElementImpl implements EnumerationConstant {
+public class EnumerationConstantImpl extends ScopedElementImpl implements EnumerationConstant {
 
 	protected final EnumerationStmt_ConstantContext ctx;
 
@@ -34,7 +34,7 @@ public class EnumerationConstantImpl extends VbScopedElementImpl implements Enum
 
 	public EnumerationConstantImpl(final String name, final int position, final Enumeration enumeration,
 			final EnumerationStmt_ConstantContext ctx) {
-		super(enumeration.getModule(), enumeration.getSuperScope(), ctx);
+		super(enumeration.getModule(), enumeration.getScope(), ctx);
 
 		this.ctx = ctx;
 		this.enumeration = enumeration;

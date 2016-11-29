@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.parser.metamodel.call;
 
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumeration;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumeration;
 
 public interface ApiEnumerationCall extends Call {
 

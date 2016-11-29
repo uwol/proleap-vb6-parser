@@ -24,14 +24,14 @@ import io.proleap.vb6.parser.metamodel.PropertyLet;
 import io.proleap.vb6.parser.metamodel.PropertySet;
 import io.proleap.vb6.parser.metamodel.Sub;
 import io.proleap.vb6.parser.metamodel.Variable;
-import io.proleap.vb6.parser.metamodel.oop.BaseType;
-import io.proleap.vb6.parser.metamodel.oop.ComplexType;
-import io.proleap.vb6.parser.metamodel.oop.Type;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumeration;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumerationConstant;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiModule;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiProcedure;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiProperty;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumeration;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumerationConstant;
+import io.proleap.vb6.parser.metamodel.api.ApiModule;
+import io.proleap.vb6.parser.metamodel.api.ApiProcedure;
+import io.proleap.vb6.parser.metamodel.api.ApiProperty;
+import io.proleap.vb6.parser.metamodel.type.BaseType;
+import io.proleap.vb6.parser.metamodel.type.ComplexType;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class CastUtils {
 

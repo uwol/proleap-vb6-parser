@@ -14,7 +14,7 @@ import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 /**
  * Executes a series of statements as long as a given condition is True.
  */
-public interface While extends VbScope, Statement {
+public interface While extends Scope, Statement {
 
 	ValueStmt getCondition();
 

@@ -12,17 +12,17 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Constant;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.ConstantCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class ConstantCallImpl extends CallImpl implements ConstantCall {
 
 	protected Constant constant;
 
-	public ConstantCallImpl(final String name, final Constant constant, final Module module, final VbScope superScope,
+	public ConstantCallImpl(final String name, final Constant constant, final Module module, final Scope scope,
 			final ParseTree ctx) {
-		super(name, module, superScope, ctx);
+		super(name, module, scope, ctx);
 
 		this.constant = constant;
 	}

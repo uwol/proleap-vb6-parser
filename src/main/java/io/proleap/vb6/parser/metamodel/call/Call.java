@@ -8,11 +8,11 @@
 
 package io.proleap.vb6.parser.metamodel.call;
 
-import io.proleap.vb6.parser.metamodel.VbScopedElement;
-import io.proleap.vb6.parser.metamodel.oop.NamedElement;
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
+import io.proleap.vb6.parser.metamodel.NamedElement;
+import io.proleap.vb6.parser.metamodel.ScopedElement;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 
-public interface Call extends VbScopedElement, TypedElement, NamedElement {
+public interface Call extends ScopedElement, TypedElement, NamedElement {
 
 	public enum CallContext {
 		LET_LEFT_HAND_SIDE

@@ -8,8 +8,8 @@
 
 package io.proleap.vb6.parser.registry.api;
 
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumeration;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumerationConstant;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumeration;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumerationConstant;
 
 public interface ApiEnumerationRegistry {
 

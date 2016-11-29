@@ -17,11 +17,11 @@ import io.proleap.vb6.VisualBasic6Parser.VariableSubStmtContext;
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Variable;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.VariableCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
-public class VariableImpl extends VbScopedElementImpl implements Variable {
+public class VariableImpl extends ScopedElementImpl implements Variable {
 
 	protected final VariableSubStmtContext ctx;
 
@@ -43,9 +43,9 @@ public class VariableImpl extends VbScopedElementImpl implements Variable {
 
 	protected final List<VariableCall> variableCalls = new ArrayList<VariableCall>();
 
-	public VariableImpl(final String name, final Type type, final Module module, final VbScope superScope,
+	public VariableImpl(final String name, final Type type, final Module module, final Scope scope,
 			final VariableSubStmtContext ctx) {
-		super(module, superScope, ctx);
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 		this.name = name;
@@ -123,7 +123,7 @@ public class VariableImpl extends VbScopedElementImpl implements Variable {
 
 	@Override
 	public boolean isModuleVariable() {
-		return superScope != null && superScope.equals(module);
+		return scope != null && scope.equals(module);
 	}
 
 	@Override

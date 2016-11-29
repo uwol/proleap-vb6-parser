@@ -6,12 +6,9 @@
  * of the BSD 3-clause license. See the LICENSE file for details.
  */
 
-package io.proleap.vb6.parser.metamodel.oop;
+package io.proleap.vb6.parser.metamodel;
 
-public interface Type extends Declaration {
+public interface NamedElement {
 
-	@Override
 	String getName();
-
-	boolean isCollection();
 }

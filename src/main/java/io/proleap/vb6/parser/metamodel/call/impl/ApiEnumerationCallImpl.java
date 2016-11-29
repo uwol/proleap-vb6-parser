@@ -11,18 +11,18 @@ package io.proleap.vb6.parser.metamodel.call.impl;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumeration;
 import io.proleap.vb6.parser.metamodel.call.ApiEnumerationCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumeration;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class ApiEnumerationCallImpl extends CallImpl implements ApiEnumerationCall {
 
 	protected ApiEnumeration apiEnumeration;
 
 	public ApiEnumerationCallImpl(final String name, final ApiEnumeration apiEnumeration, final Module module,
-			final VbScope superScope, final ParseTree ctx) {
-		super(name, module, superScope, ctx);
+			final Scope scope, final ParseTree ctx) {
+		super(name, module, scope, ctx);
 
 		this.apiEnumeration = apiEnumeration;
 	}

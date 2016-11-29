@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.parser.metamodel.valuestmt;
 
-import io.proleap.vb6.parser.metamodel.oop.NamedElement;
+import io.proleap.vb6.parser.metamodel.NamedElement;
 
 public interface NewValueStmt extends ValueStmt, NamedElement {
 

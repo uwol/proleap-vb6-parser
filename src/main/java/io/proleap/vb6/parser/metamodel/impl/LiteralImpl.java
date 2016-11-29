@@ -11,10 +11,10 @@ package io.proleap.vb6.parser.metamodel.impl;
 import io.proleap.vb6.VisualBasic6Parser.LiteralContext;
 import io.proleap.vb6.parser.metamodel.Literal;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
-public class LiteralImpl extends VbScopedElementImpl implements Literal {
+public class LiteralImpl extends ScopedElementImpl implements Literal {
 
 	protected final LiteralContext ctx;
 
@@ -22,9 +22,9 @@ public class LiteralImpl extends VbScopedElementImpl implements Literal {
 
 	protected final String value;
 
-	public LiteralImpl(final Type type, final String value, final Module module, final VbScope superScope,
+	public LiteralImpl(final Type type, final String value, final Module module, final Scope scope,
 			final LiteralContext ctx) {
-		super(module, superScope, ctx);
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 		this.type = type;

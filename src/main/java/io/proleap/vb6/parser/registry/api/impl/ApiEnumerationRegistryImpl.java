@@ -12,8 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumeration;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumerationConstant;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumeration;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumerationConstant;
 import io.proleap.vb6.parser.registry.api.ApiEnumerationRegistry;
 
 public class ApiEnumerationRegistryImpl implements ApiEnumerationRegistry {

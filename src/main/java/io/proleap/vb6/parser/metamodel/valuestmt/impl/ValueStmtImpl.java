@@ -13,18 +13,18 @@ import java.util.List;
 
 import io.proleap.vb6.VisualBasic6Parser.ValueStmtContext;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.impl.VbScopedElementImpl;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.impl.ScopedElementImpl;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public abstract class ValueStmtImpl extends VbScopedElementImpl implements ValueStmt {
+public abstract class ValueStmtImpl extends ScopedElementImpl implements ValueStmt {
 
 	protected final ValueStmtContext ctx;
 
 	protected final List<ValueStmt> subValueStmts = new ArrayList<ValueStmt>();
 
-	public ValueStmtImpl(final Module module, final Scope superScope, final ValueStmtContext ctx) {
-		super(module, superScope, ctx);
+	public ValueStmtImpl(final Module module, final Scope scope, final ValueStmtContext ctx) {
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 	}

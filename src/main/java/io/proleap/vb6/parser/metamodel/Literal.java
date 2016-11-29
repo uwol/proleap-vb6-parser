@@ -9,9 +9,9 @@
 package io.proleap.vb6.parser.metamodel;
 
 import io.proleap.vb6.VisualBasic6Parser.LiteralContext;
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 
-public interface Literal extends VbScopedElement, TypedElement {
+public interface Literal extends ScopedElement, TypedElement {
 
 	@Override
 	LiteralContext getCtx();

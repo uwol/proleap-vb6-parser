@@ -10,16 +10,16 @@ package io.proleap.vb6.parser.metamodel.valuestmt.impl;
 
 import io.proleap.vb6.VisualBasic6Parser.VsNewContext;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.NewValueStmt;
 
 public class NewValueStmtImpl extends ValueStmtImpl implements NewValueStmt {
 
 	protected final Type type;
 
-	public NewValueStmtImpl(final Type type, final Module module, final Scope superScope, final VsNewContext ctx) {
-		super(module, superScope, ctx);
+	public NewValueStmtImpl(final Type type, final Module module, final Scope scope, final VsNewContext ctx) {
+		super(module, scope, ctx);
 
 		this.type = type;
 	}

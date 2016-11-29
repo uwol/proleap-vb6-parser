@@ -9,8 +9,6 @@
 package io.proleap.vb6.parser.metamodel;
 
 import io.proleap.vb6.VisualBasic6Parser.ModuleConfigElementContext;
-import io.proleap.vb6.parser.metamodel.oop.NamedElement;
-import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
 
 public interface ModuleConfigElement extends ScopedElement, NamedElement {
 

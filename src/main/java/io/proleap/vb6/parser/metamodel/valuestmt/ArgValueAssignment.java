@@ -10,14 +10,14 @@ package io.proleap.vb6.parser.metamodel.valuestmt;
 
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
 import io.proleap.vb6.parser.metamodel.Arg;
-import io.proleap.vb6.parser.metamodel.VbScopedElement;
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
+import io.proleap.vb6.parser.metamodel.ScopedElement;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 
 /**
  * A value assignment to a procedure arg. In VB6 reference lingo such an
  * assignment is called arg call.
  */
-public interface ArgValueAssignment extends VbScopedElement, TypedElement {
+public interface ArgValueAssignment extends ScopedElement, TypedElement {
 
 	Arg getArg();
 

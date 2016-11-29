@@ -13,14 +13,14 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import io.proleap.vb6.parser.metamodel.LineLabel;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Resume;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
+import io.proleap.vb6.parser.metamodel.Scope;
 
-public class ResumeImpl extends VbScopedElementImpl implements Resume {
+public class ResumeImpl extends ScopedElementImpl implements Resume {
 
 	protected LineLabel lineLabel;
 
-	public ResumeImpl(final LineLabel lineLabel, final Module module, final Scope superScope, final ParseTree ctx) {
-		super(module, superScope, ctx);
+	public ResumeImpl(final LineLabel lineLabel, final Module module, final Scope scope, final ParseTree ctx) {
+		super(module, scope, ctx);
 
 		this.lineLabel = lineLabel;
 	}

@@ -11,14 +11,14 @@ package io.proleap.vb6.parser.metamodel.valuestmt.impl;
 import io.proleap.vb6.VisualBasic6Parser.ValueStmtContext;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.VbBaseType;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
 public class StringValueStmtImpl extends ValueStmtImpl implements ValueStmt {
 
-	public StringValueStmtImpl(final Module module, final Scope superScope, final ValueStmtContext ctx) {
-		super(module, superScope, ctx);
+	public StringValueStmtImpl(final Module module, final Scope scope, final ValueStmtContext ctx) {
+		super(module, scope, ctx);
 	}
 
 	@Override

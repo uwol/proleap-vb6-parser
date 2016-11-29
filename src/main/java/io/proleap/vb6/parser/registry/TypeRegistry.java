@@ -8,9 +8,9 @@
 
 package io.proleap.vb6.parser.registry;
 
-import io.proleap.vb6.parser.metamodel.oop.BaseType;
-import io.proleap.vb6.parser.metamodel.oop.ComplexType;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.BaseType;
+import io.proleap.vb6.parser.metamodel.type.ComplexType;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public interface TypeRegistry {
 

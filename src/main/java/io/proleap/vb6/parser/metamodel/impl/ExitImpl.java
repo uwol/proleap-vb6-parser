@@ -11,15 +11,15 @@ package io.proleap.vb6.parser.metamodel.impl;
 import io.proleap.vb6.VisualBasic6Parser.ExitStmtContext;
 import io.proleap.vb6.parser.metamodel.Exit;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 
-public class ExitImpl extends VbScopedElementImpl implements Exit {
+public class ExitImpl extends ScopedElementImpl implements Exit {
 
 	protected final ExitStmtContext ctx;
 
 	protected final ExitType exitType;
 
-	public ExitImpl(final ExitType exitType, final Module module, final VbScope scope, final ExitStmtContext ctx) {
+	public ExitImpl(final ExitType exitType, final Module module, final Scope scope, final ExitStmtContext ctx) {
 		super(module, scope, ctx);
 
 		this.ctx = ctx;

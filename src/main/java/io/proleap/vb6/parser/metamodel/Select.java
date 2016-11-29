@@ -11,14 +11,14 @@ package io.proleap.vb6.parser.metamodel;
 import java.util.List;
 
 import io.proleap.vb6.VisualBasic6Parser.SelectCaseStmtContext;
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
 /**
  * Executes one of several groups of statements, depending on the value of an
  * expression.
  */
-public interface Select extends VbScope, Statement, TypedElement {
+public interface Select extends Scope, Statement, TypedElement {
 
 	void addSelectCase(SelectCase selectCase);
 

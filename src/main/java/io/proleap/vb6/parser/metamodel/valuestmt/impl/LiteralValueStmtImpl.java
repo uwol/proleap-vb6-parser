@@ -11,16 +11,16 @@ package io.proleap.vb6.parser.metamodel.valuestmt.impl;
 import io.proleap.vb6.VisualBasic6Parser.VsLiteralContext;
 import io.proleap.vb6.parser.metamodel.Literal;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.LiteralValueStmt;
 
 public class LiteralValueStmtImpl extends ValueStmtImpl implements LiteralValueStmt {
 
 	protected Literal literal;
 
-	public LiteralValueStmtImpl(final Module module, final VbScope superScope, final VsLiteralContext ctx) {
-		super(module, superScope, ctx);
+	public LiteralValueStmtImpl(final Module module, final Scope scope, final VsLiteralContext ctx) {
+		super(module, scope, ctx);
 	}
 
 	@Override

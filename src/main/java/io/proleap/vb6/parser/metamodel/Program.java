@@ -11,7 +11,7 @@ package io.proleap.vb6.parser.metamodel;
 import java.util.Collection;
 import java.util.Map;
 
-public interface Program extends VbScope {
+public interface Program extends Scope {
 
 	ClazzModule getClazzModule(String name);
 

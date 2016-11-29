@@ -29,9 +29,9 @@ import io.proleap.vb6.VisualBasic6Parser.PropertySetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.TypeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.TypeStmt_ElementContext;
-import io.proleap.vb6.parser.metamodel.oop.ComplexType;
+import io.proleap.vb6.parser.metamodel.type.ComplexType;
 
-public interface Module extends VbScope, ComplexType {
+public interface Module extends Scope, ComplexType {
 
 	public enum OptionCompare {
 		BINARY, TEXT

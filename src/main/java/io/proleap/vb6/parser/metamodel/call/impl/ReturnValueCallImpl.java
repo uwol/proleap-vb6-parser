@@ -12,18 +12,18 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Procedure;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.ReturnValueCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
+import io.proleap.vb6.parser.metamodel.type.Type;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 
 public class ReturnValueCallImpl extends CallImpl implements ReturnValueCall {
 
 	protected Procedure procedure;
 
 	public ReturnValueCallImpl(final String name, final Procedure procedure, final Module module,
-			final VbScope superScope, final ParseTree ctx) {
-		super(name, module, superScope, ctx);
+			final Scope scope, final ParseTree ctx) {
+		super(name, module, scope, ctx);
 
 		this.procedure = procedure;
 	}

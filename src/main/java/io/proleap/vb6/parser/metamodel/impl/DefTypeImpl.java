@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.proleap.vb6.parser.metamodel.DefType;
-import io.proleap.vb6.parser.metamodel.oop.BaseType;
+import io.proleap.vb6.parser.metamodel.type.BaseType;
 
 public class DefTypeImpl implements DefType {
 

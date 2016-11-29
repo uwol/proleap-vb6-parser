@@ -10,7 +10,7 @@ package io.proleap.vb6.parser.metamodel;
 
 import java.util.List;
 
-import io.proleap.vb6.parser.metamodel.oop.BaseType;
+import io.proleap.vb6.parser.metamodel.type.BaseType;
 
 /**
  * On module level sets the default data type for variables, arguments passed to

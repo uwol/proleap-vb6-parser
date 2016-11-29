@@ -12,28 +12,25 @@ import io.proleap.vb6.VisualBasic6Parser.AttributeStmtContext;
 import io.proleap.vb6.parser.metamodel.Attribute;
 import io.proleap.vb6.parser.metamodel.Literal;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
-public class AttributeImpl extends VbScopedElementImpl implements Attribute {
+public class AttributeImpl extends ScopedElementImpl implements Attribute {
 
 	protected final AttributeStmtContext ctx;
 
 	protected final String name;
 
-	protected final VbScope scope;
-
 	protected final Type type;
 
 	protected Literal value;
 
-	public AttributeImpl(final String name, final Type type, final Module module, final VbScope superScope,
+	public AttributeImpl(final String name, final Type type, final Module module, final Scope scope,
 			final AttributeStmtContext ctx) {
-		super(module, superScope, ctx);
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 		this.name = name;
-		scope = superScope;
 		this.type = type;
 	}
 
@@ -45,11 +42,6 @@ public class AttributeImpl extends VbScopedElementImpl implements Attribute {
 	@Override
 	public String getName() {
 		return name;
-	}
-
-	@Override
-	public VbScope getSuperScope() {
-		return scope;
 	}
 
 	@Override

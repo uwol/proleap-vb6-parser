@@ -12,17 +12,17 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.PropertyGet;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.PropertyGetCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class PropertyGetCallImpl extends CallImpl implements PropertyGetCall {
 
 	protected PropertyGet propertyGet;
 
 	public PropertyGetCallImpl(final String name, final PropertyGet propertyGet, final Module module,
-			final VbScope superScope, final ParseTree ctx) {
-		super(name, module, superScope, ctx);
+			final Scope scope, final ParseTree ctx) {
+		super(name, module, scope, ctx);
 
 		this.propertyGet = propertyGet;
 	}

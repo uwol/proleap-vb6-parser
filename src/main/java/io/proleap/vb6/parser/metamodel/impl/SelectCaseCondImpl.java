@@ -15,11 +15,11 @@ import io.proleap.vb6.VisualBasic6Parser.SC_CondContext;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.SelectCase;
 import io.proleap.vb6.parser.metamodel.SelectCaseCond;
-import io.proleap.vb6.parser.metamodel.VbScope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public class SelectCaseCondImpl extends VbScopedElementImpl implements SelectCaseCond {
+public class SelectCaseCondImpl extends ScopedElementImpl implements SelectCaseCond {
 
 	protected final SC_CondContext ctx;
 
@@ -30,8 +30,8 @@ public class SelectCaseCondImpl extends VbScopedElementImpl implements SelectCas
 	protected final List<ValueStmt> valueStmts = new ArrayList<ValueStmt>();
 
 	public SelectCaseCondImpl(final SelectCaseCondType selectCaseCondType, final Module module,
-			final VbScope superScope, final SC_CondContext ctx) {
-		super(module, superScope, ctx);
+			final Scope scope, final SC_CondContext ctx) {
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 		this.selectCaseCondType = selectCaseCondType;

@@ -19,12 +19,12 @@ import io.proleap.vb6.parser.metamodel.Arg;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Procedure;
 import io.proleap.vb6.parser.metamodel.ProcedureDeclaration;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.ArgCall;
 import io.proleap.vb6.parser.metamodel.call.Call;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
-public class ArgImpl extends VbScopedElementImpl implements Arg {
+public class ArgImpl extends ScopedElementImpl implements Arg {
 
 	protected final List<ArgCall> argCalls = new ArrayList<ArgCall>();
 
@@ -49,8 +49,8 @@ public class ArgImpl extends VbScopedElementImpl implements Arg {
 	protected Set<Type> typesOfAssignedValues = new LinkedHashSet<Type>();
 
 	public ArgImpl(final String name, final Type type, final boolean isOptional, final Module module,
-			final Scope superScope, final ArgContext ctx) {
-		super(module, superScope, ctx);
+			final Scope scope, final ArgContext ctx) {
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 		this.isOptional = isOptional;

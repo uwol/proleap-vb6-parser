@@ -11,17 +11,17 @@ package io.proleap.vb6.parser.metamodel.call.impl;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.Call;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class UndefinedCallImpl extends CallImpl implements Call {
 
 	protected final Type type;
 
-	public UndefinedCallImpl(final String name, final Type type, final Module module, final VbScope superScope,
+	public UndefinedCallImpl(final String name, final Type type, final Module module, final Scope scope,
 			final ParseTree ctx) {
-		super(name, module, superScope, ctx);
+		super(name, module, scope, ctx);
 
 		this.type = type;
 	}

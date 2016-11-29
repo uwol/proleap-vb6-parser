@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.parser.metamodel.call;
 
-import io.proleap.vb6.parser.metamodel.oop.api.ApiProperty;
+import io.proleap.vb6.parser.metamodel.api.ApiProperty;
 
 public interface ApiPropertyCall extends Call {
 

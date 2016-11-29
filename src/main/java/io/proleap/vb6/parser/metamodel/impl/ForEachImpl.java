@@ -15,11 +15,11 @@ import io.proleap.vb6.VisualBasic6Parser.ForEachStmtContext;
 import io.proleap.vb6.parser.metamodel.ForEach;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Variable;
-import io.proleap.vb6.parser.metamodel.VbScope;
-import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.ScopedElement;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public class ForEachImpl extends VbScopeImpl implements ForEach {
+public class ForEachImpl extends ScopeImpl implements ForEach {
 
 	protected final ForEachStmtContext ctx;
 
@@ -27,7 +27,7 @@ public class ForEachImpl extends VbScopeImpl implements ForEach {
 
 	protected ValueStmt in;
 
-	public ForEachImpl(final Module module, final VbScope scope, final ForEachStmtContext ctx) {
+	public ForEachImpl(final Module module, final Scope scope, final ForEachStmtContext ctx) {
 		super(module, scope, ctx);
 
 		this.ctx = ctx;

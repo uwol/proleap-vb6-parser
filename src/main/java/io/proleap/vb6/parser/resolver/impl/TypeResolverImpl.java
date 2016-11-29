@@ -41,7 +41,7 @@ import io.proleap.vb6.VisualBasic6Parser.VsOrContext;
 import io.proleap.vb6.VisualBasic6Parser.VsXorContext;
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
 import io.proleap.vb6.parser.metamodel.VbBaseType;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.registry.TypeRegistry;
 import io.proleap.vb6.parser.resolver.NameResolver;
 import io.proleap.vb6.parser.resolver.TypeResolver;

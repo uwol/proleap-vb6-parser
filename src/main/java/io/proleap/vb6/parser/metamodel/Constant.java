@@ -12,8 +12,7 @@ import java.util.List;
 
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
 import io.proleap.vb6.parser.metamodel.call.ConstantCall;
-import io.proleap.vb6.parser.metamodel.oop.Declaration;
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
 /**

@@ -6,10 +6,10 @@
  * of the BSD 3-clause license. See the LICENSE file for details.
  */
 
-package io.proleap.vb6.parser.metamodel.oop.api;
+package io.proleap.vb6.parser.metamodel.api;
 
 import io.proleap.vb6.parser.metamodel.ModelElement;
-import io.proleap.vb6.parser.metamodel.oop.ComplexType;
+import io.proleap.vb6.parser.metamodel.type.ComplexType;
 
 public interface ApiModule extends ModelElement, ComplexType {
 

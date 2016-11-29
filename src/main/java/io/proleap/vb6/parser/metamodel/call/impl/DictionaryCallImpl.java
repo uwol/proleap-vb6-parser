@@ -10,15 +10,15 @@ package io.proleap.vb6.parser.metamodel.call.impl;
 
 import io.proleap.vb6.VisualBasic6Parser.DictionaryCallStmtContext;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.DictionaryCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class DictionaryCallImpl extends CallImpl implements DictionaryCall {
 
-	public DictionaryCallImpl(final String name, final Module module, final VbScope superScope,
+	public DictionaryCallImpl(final String name, final Module module, final Scope scope,
 			final DictionaryCallStmtContext ctx) {
-		super(name, module, superScope, ctx);
+		super(name, module, scope, ctx);
 	}
 
 	@Override

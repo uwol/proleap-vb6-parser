@@ -12,17 +12,17 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Variable;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.VariableCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class VariableCallImpl extends CallImpl implements VariableCall {
 
 	protected final Variable variable;
 
-	public VariableCallImpl(final String name, final Variable variable, final Module module, final VbScope superScope,
+	public VariableCallImpl(final String name, final Variable variable, final Module module, final Scope scope,
 			final ParseTree ctx) {
-		super(name, module, superScope, ctx);
+		super(name, module, scope, ctx);
 
 		this.variable = variable;
 	}

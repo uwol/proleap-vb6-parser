@@ -17,7 +17,7 @@ import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Type;
 import io.proleap.vb6.parser.metamodel.TypeElement;
 
-public class TypeImpl extends VbScopedElementImpl implements Type {
+public class TypeImpl extends ScopedElementImpl implements Type {
 
 	protected final String name;
 

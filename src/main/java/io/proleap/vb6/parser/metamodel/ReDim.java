@@ -8,8 +8,7 @@
 
 package io.proleap.vb6.parser.metamodel;
 
-import io.proleap.vb6.parser.metamodel.oop.NamedElement;
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 
 /**
  * Used at procedure level to reallocate storage space for dynamic array

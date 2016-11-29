@@ -11,10 +11,10 @@ package io.proleap.vb6.parser.metamodel;
 import java.util.List;
 
 import io.proleap.vb6.VisualBasic6Parser.SC_CondContext;
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public interface SelectCaseCond extends VbScopedElement, TypedElement {
+public interface SelectCaseCond extends ScopedElement, TypedElement {
 
 	public enum SelectCaseCondType {
 		ELSE, IS, TO, VALUE;

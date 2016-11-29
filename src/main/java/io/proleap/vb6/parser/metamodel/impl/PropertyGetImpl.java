@@ -18,7 +18,7 @@ import io.proleap.vb6.parser.applicationcontext.VbParserContext;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.PropertyGet;
 import io.proleap.vb6.parser.metamodel.call.PropertyGetCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class PropertyGetImpl extends ProcedureImpl implements PropertyGet {
 

@@ -14,18 +14,18 @@ import java.util.List;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Module;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.Call;
 import io.proleap.vb6.parser.metamodel.call.MembersCall;
-import io.proleap.vb6.parser.metamodel.impl.VbScopedElementImpl;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.impl.ScopedElementImpl;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
-public class MembersCallImpl extends VbScopedElementImpl implements MembersCall {
+public class MembersCallImpl extends ScopedElementImpl implements MembersCall {
 
 	protected final List<Call> subCalls = new ArrayList<Call>();
 
-	public MembersCallImpl(final Module module, final Scope superScope, final ParseTree ctx) {
-		super(module, superScope, ctx);
+	public MembersCallImpl(final Module module, final Scope scope, final ParseTree ctx) {
+		super(module, scope, ctx);
 	}
 
 	@Override

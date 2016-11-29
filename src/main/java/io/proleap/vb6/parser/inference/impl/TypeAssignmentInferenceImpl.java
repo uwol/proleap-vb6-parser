@@ -29,14 +29,14 @@ import io.proleap.vb6.parser.metamodel.Variable;
 import io.proleap.vb6.parser.metamodel.VbBaseType;
 import io.proleap.vb6.parser.metamodel.call.Call;
 import io.proleap.vb6.parser.metamodel.call.Call.CallType;
+import io.proleap.vb6.parser.metamodel.type.AssignableTypedElement;
+import io.proleap.vb6.parser.metamodel.type.BaseType;
+import io.proleap.vb6.parser.metamodel.type.Type;
+import io.proleap.vb6.parser.metamodel.type.TypedElement;
 import io.proleap.vb6.parser.metamodel.call.PropertyLetCall;
 import io.proleap.vb6.parser.metamodel.call.PropertySetCall;
 import io.proleap.vb6.parser.metamodel.call.ReturnValueCall;
 import io.proleap.vb6.parser.metamodel.call.VariableCall;
-import io.proleap.vb6.parser.metamodel.oop.AssignableTypedElement;
-import io.proleap.vb6.parser.metamodel.oop.BaseType;
-import io.proleap.vb6.parser.metamodel.oop.Type;
-import io.proleap.vb6.parser.metamodel.oop.TypedElement;
 import io.proleap.vb6.parser.metamodel.valuestmt.ArgValueAssignment;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueAssignment;
 

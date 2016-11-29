@@ -6,14 +6,14 @@
  * of the BSD 3-clause license. See the LICENSE file for details.
  */
 
-package io.proleap.vb6.parser.metamodel.oop.api.impl;
+package io.proleap.vb6.parser.metamodel.api.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.proleap.vb6.parser.metamodel.api.ApiProcedure;
 import io.proleap.vb6.parser.metamodel.call.ApiProcedureCall;
-import io.proleap.vb6.parser.metamodel.oop.Type;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiProcedure;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class ApiProcedureImpl implements ApiProcedure {
 

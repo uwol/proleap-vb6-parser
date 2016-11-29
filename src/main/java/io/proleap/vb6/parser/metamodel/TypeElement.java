@@ -9,9 +9,7 @@
 package io.proleap.vb6.parser.metamodel;
 
 import io.proleap.vb6.VisualBasic6Parser.TypeStmt_ElementContext;
-import io.proleap.vb6.parser.metamodel.oop.AssignableTypedElement;
-import io.proleap.vb6.parser.metamodel.oop.NamedElement;
-import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
+import io.proleap.vb6.parser.metamodel.type.AssignableTypedElement;
 
 public interface TypeElement extends ScopedElement, NamedElement, AssignableTypedElement {
 

@@ -12,18 +12,18 @@ import io.proleap.vb6.VisualBasic6Parser.RedimSubStmtContext;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.ReDim;
 import io.proleap.vb6.parser.metamodel.Variable;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.type.Type;
 
-public class ReDimImpl extends VbScopedElementImpl implements ReDim {
+public class ReDimImpl extends ScopedElementImpl implements ReDim {
 
 	protected final RedimSubStmtContext ctx;
 
 	protected final Variable variable;
 
-	public ReDimImpl(final Variable variable, final Module module, final Scope superScope,
+	public ReDimImpl(final Variable variable, final Module module, final Scope scope,
 			final RedimSubStmtContext ctx) {
-		super(module, superScope, ctx);
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 		this.variable = variable;

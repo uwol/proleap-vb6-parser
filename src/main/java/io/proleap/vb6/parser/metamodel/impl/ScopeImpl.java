@@ -29,6 +29,7 @@ import static io.proleap.vb6.parser.util.CastUtils.castVariable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -106,8 +107,10 @@ import io.proleap.vb6.VisualBasic6Parser.VsXorContext;
 import io.proleap.vb6.VisualBasic6Parser.WhileWendStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.WithStmtContext;
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
+import io.proleap.vb6.parser.metamodel.ASGElement;
 import io.proleap.vb6.parser.metamodel.Arg;
 import io.proleap.vb6.parser.metamodel.Constant;
+import io.proleap.vb6.parser.metamodel.Declaration;
 import io.proleap.vb6.parser.metamodel.Enumeration;
 import io.proleap.vb6.parser.metamodel.EnumerationConstant;
 import io.proleap.vb6.parser.metamodel.Exit;
@@ -121,6 +124,7 @@ import io.proleap.vb6.parser.metamodel.LineLabel;
 import io.proleap.vb6.parser.metamodel.Literal;
 import io.proleap.vb6.parser.metamodel.ModelElement;
 import io.proleap.vb6.parser.metamodel.Module;
+import io.proleap.vb6.parser.metamodel.NamedElement;
 import io.proleap.vb6.parser.metamodel.OnError;
 import io.proleap.vb6.parser.metamodel.Procedure;
 import io.proleap.vb6.parser.metamodel.PropertyGet;
@@ -137,9 +141,15 @@ import io.proleap.vb6.parser.metamodel.StandardModule;
 import io.proleap.vb6.parser.metamodel.Statement;
 import io.proleap.vb6.parser.metamodel.Sub;
 import io.proleap.vb6.parser.metamodel.Variable;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.ScopedElement;
 import io.proleap.vb6.parser.metamodel.While;
 import io.proleap.vb6.parser.metamodel.With;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumeration;
+import io.proleap.vb6.parser.metamodel.api.ApiEnumerationConstant;
+import io.proleap.vb6.parser.metamodel.api.ApiModule;
+import io.proleap.vb6.parser.metamodel.api.ApiProcedure;
+import io.proleap.vb6.parser.metamodel.api.ApiProperty;
 import io.proleap.vb6.parser.metamodel.call.ApiEnumerationCall;
 import io.proleap.vb6.parser.metamodel.call.ApiEnumerationConstantCall;
 import io.proleap.vb6.parser.metamodel.call.ApiProcedureCall;
@@ -180,15 +190,8 @@ import io.proleap.vb6.parser.metamodel.call.impl.PropertySetCallImpl;
 import io.proleap.vb6.parser.metamodel.call.impl.ReturnValueCallImpl;
 import io.proleap.vb6.parser.metamodel.call.impl.UndefinedCallImpl;
 import io.proleap.vb6.parser.metamodel.call.impl.VariableCallImpl;
-import io.proleap.vb6.parser.metamodel.oop.ComplexType;
-import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
-import io.proleap.vb6.parser.metamodel.oop.Type;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumeration;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiEnumerationConstant;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiModule;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiProcedure;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiProperty;
-import io.proleap.vb6.parser.metamodel.oop.impl.ScopeImpl;
+import io.proleap.vb6.parser.metamodel.type.ComplexType;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ArgValueAssignment;
 import io.proleap.vb6.parser.metamodel.valuestmt.CallValueStmt;
 import io.proleap.vb6.parser.metamodel.valuestmt.LiteralValueStmt;
@@ -209,24 +212,24 @@ import io.proleap.vb6.parser.metamodel.valuestmt.impl.StructValueStmtImpl;
 import io.proleap.vb6.parser.metamodel.valuestmt.impl.SubCallImpl;
 import io.proleap.vb6.parser.metamodel.valuestmt.impl.ValueAssignmentImpl;
 
-public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
+public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
-	private final static Logger LOG = LogManager.getLogger(VbScopeImpl.class);
+	private final static Logger LOG = LogManager.getLogger(ScopeImpl.class);
 
 	public final static String ME = "ME";
 
 	protected Map<String, Constant> constants = new HashMap<String, Constant>();
 
-	protected Module module;
+	protected final List<ScopedElement> scopedElements = new ArrayList<ScopedElement>();
+
+	protected final Map<String, List<ScopedElement>> scopedElementsSymbolTable = new LinkedHashMap<String, List<ScopedElement>>();
 
 	protected List<Statement> statements = new ArrayList<Statement>();
 
 	protected Map<String, Variable> variables = new HashMap<String, Variable>();
 
-	public VbScopeImpl(final Module module, final VbScope superScope, final ParseTree ctx) {
-		super(superScope, ctx);
-
-		this.module = module;
+	public ScopeImpl(final Module module, final Scope scope, final ParseTree ctx) {
+		super(module, scope, ctx);
 	}
 
 	@Override
@@ -387,7 +390,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				 * potentially, this let sets a return variable of a function or
 				 * property get
 				 */
-				final Procedure procedure = this.findSuperScope(Procedure.class);
+				final Procedure procedure = this.findScope(Procedure.class);
 				final boolean hasProcedureName;
 
 				if (procedure != null) {
@@ -1971,6 +1974,19 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		return result;
 	}
 
+	protected String determineName(final ParseTree ctx) {
+		return VbParserContext.getInstance().getNameResolver().determineName(ctx);
+	}
+
+	protected Type determineType(final ParseTree ctx) {
+		return VbParserContext.getInstance().getTypeResolver().determineType(ctx);
+	}
+
+	protected ASGElement getASGElement(final ParseTree ctx) {
+		final ASGElement result = VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
+		return result;
+	}
+
 	@Override
 	public Constant getConstant(final String name) {
 		return constants.get(name);
@@ -2047,9 +2063,69 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		return module;
 	}
 
+	private String getScopedElementKey(final String name) {
+		return name.toLowerCase();
+	}
+
+	@Override
+	public List<ScopedElement> getScopedElements() {
+		return scopedElements;
+	}
+
+	@Override
+	public List<ScopedElement> getScopedElementsInHierarchy(final String name) {
+		final List<ScopedElement> result;
+
+		if (name == null) {
+			result = null;
+		} else {
+			final List<ScopedElement> scopedElementInScope = getScopedElementsInScope(name);
+
+			if (scopedElementInScope != null) {
+				result = scopedElementInScope;
+			} else if (scope != null) {
+				result = scope.getScopedElementsInHierarchy(name);
+			} else {
+				result = null;
+			}
+		}
+
+		return result;
+	}
+
+	@Override
+	public List<ScopedElement> getScopedElementsInScope(final String name) {
+		final List<ScopedElement> result;
+
+		if (name == null) {
+			result = null;
+		} else {
+			final String scopedElementKey = getScopedElementKey(name);
+			final List<ScopedElement> scopedElementInScope = scopedElementsSymbolTable.get(scopedElementKey);
+
+			result = scopedElementInScope;
+		}
+
+		return result;
+	}
+
 	@Override
 	public List<Statement> getStatements() {
 		return statements;
+	}
+
+	@Override
+	public List<Scope> getSubScopes() {
+		final List<Scope> result = new ArrayList<Scope>();
+
+		for (final ScopedElement scopedElement : scopedElements) {
+			if (scopedElement instanceof Scope) {
+				final Scope scope = (Scope) scopedElement;
+				result.add(scope);
+			}
+		}
+
+		return result;
 	}
 
 	@Override
@@ -2167,6 +2243,36 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	protected void linkVariableCallWithVariable(final VariableCall variableCall, final Variable variable) {
 		variable.addVariableCall(variableCall);
+	}
+
+	protected void registerASGElement(final ASGElement asgElement) {
+		assert asgElement != null;
+		assert asgElement.getCtx() != null;
+
+		VbParserContext.getInstance().getASGElementRegistry().addASGElement(asgElement);
+	}
+
+	protected void registerScopedElement(final ScopedElement scopedElement) {
+		assert scopedElement != null;
+		assert scopedElement.getCtx() != null;
+
+		registerASGElement(scopedElement);
+		scopedElements.add(scopedElement);
+
+		/*
+		 * expressions should not be stored under their name, as they collide
+		 * with declarations under the same name -> only declarations
+		 */
+		if (scopedElement instanceof Declaration) {
+			final NamedElement namedElement = (NamedElement) scopedElement;
+			final String scopedElementKey = getScopedElementKey(namedElement.getName());
+
+			if (scopedElementsSymbolTable.get(scopedElementKey) == null) {
+				scopedElementsSymbolTable.put(scopedElementKey, new ArrayList<ScopedElement>());
+			}
+
+			scopedElementsSymbolTable.get(scopedElementKey).add(scopedElement);
+		}
 	}
 
 	protected void registerStatement(final Statement statement) {

@@ -13,10 +13,9 @@ import java.util.List;
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
 import io.proleap.vb6.parser.metamodel.call.ArgCall;
 import io.proleap.vb6.parser.metamodel.call.Call;
-import io.proleap.vb6.parser.metamodel.oop.AssignableTypedElement;
-import io.proleap.vb6.parser.metamodel.oop.NamedElement;
+import io.proleap.vb6.parser.metamodel.type.AssignableTypedElement;
 
-public interface Arg extends AssignableTypedElement, NamedElement, VbScopedElement {
+public interface Arg extends AssignableTypedElement, NamedElement, ScopedElement {
 
 	void addArgCall(ArgCall argCall);
 

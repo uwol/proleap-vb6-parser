@@ -12,7 +12,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.VbScope;
+import io.proleap.vb6.parser.metamodel.Scope;
 
 /**
  * Visitor for analyzing declarations in the AST.
@@ -32,7 +32,7 @@ public class VbDeclarationVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitConstSubStmt(@NotNull final VisualBasic6Parser.ConstSubStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addConstant(ctx);
 
@@ -62,7 +62,7 @@ public class VbDeclarationVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitLineLabel(@NotNull final VisualBasic6Parser.LineLabelContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addLineLabel(ctx);
 
@@ -134,7 +134,7 @@ public class VbDeclarationVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitRedimSubStmt(@NotNull final VisualBasic6Parser.RedimSubStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addReDim(ctx);
 
@@ -164,7 +164,7 @@ public class VbDeclarationVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	@Override
 	public Boolean visitVariableSubStmt(@NotNull final VisualBasic6Parser.VariableSubStmtContext ctx) {
-		final VbScope scope = findScope(ctx);
+		final Scope scope = findScope(ctx);
 
 		scope.addVariable(ctx);
 

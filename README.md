@@ -184,7 +184,7 @@ Running io.proleap.vb6.gpl.calls.Module1Test
 ...
 Results :
 
-Tests run: 128, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 215, Failures: 0, Errors: 0, Skipped: 0
 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS

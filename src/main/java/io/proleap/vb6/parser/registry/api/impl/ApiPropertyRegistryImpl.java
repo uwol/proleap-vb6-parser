@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
-import io.proleap.vb6.parser.metamodel.oop.api.ApiProperty;
+import io.proleap.vb6.parser.metamodel.api.ApiProperty;
 import io.proleap.vb6.parser.registry.api.ApiPropertyRegistry;
 
 public class ApiPropertyRegistryImpl implements ApiPropertyRegistry {

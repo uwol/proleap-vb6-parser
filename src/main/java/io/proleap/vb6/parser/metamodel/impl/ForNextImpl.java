@@ -15,11 +15,11 @@ import io.proleap.vb6.VisualBasic6Parser.ForNextStmtContext;
 import io.proleap.vb6.parser.metamodel.ForNext;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Variable;
-import io.proleap.vb6.parser.metamodel.VbScope;
-import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.ScopedElement;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
-public class ForNextImpl extends VbScopeImpl implements ForNext {
+public class ForNextImpl extends ScopeImpl implements ForNext {
 
 	protected final ForNextStmtContext ctx;
 
@@ -31,7 +31,7 @@ public class ForNextImpl extends VbScopeImpl implements ForNext {
 
 	protected ValueStmt to;
 
-	public ForNextImpl(final Module module, final VbScope scope, final ForNextStmtContext ctx) {
+	public ForNextImpl(final Module module, final Scope scope, final ForNextStmtContext ctx) {
 		super(module, scope, ctx);
 
 		this.ctx = ctx;

@@ -15,9 +15,9 @@ import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.PropertyLet;
 import io.proleap.vb6.parser.metamodel.PropertySet;
 import io.proleap.vb6.parser.metamodel.Variable;
+import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.Call;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
-import io.proleap.vb6.parser.metamodel.oop.Type;
+import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueAssignment;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 
@@ -39,8 +39,8 @@ public class ValueAssignmentImpl extends ValueStmtImpl implements ValueAssignmen
 
 	protected Variable variable;
 
-	public ValueAssignmentImpl(final Module module, final Scope superScope, final VsAssignContext ctx) {
-		super(module, superScope, ctx);
+	public ValueAssignmentImpl(final Module module, final Scope scope, final VsAssignContext ctx) {
+		super(module, scope, ctx);
 
 		this.ctx = ctx;
 	}
