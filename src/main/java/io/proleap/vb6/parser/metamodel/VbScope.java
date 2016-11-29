@@ -220,6 +220,4 @@ public interface VbScope extends VbScopedElement, Scope {
 
 	Variable getVariable(String name);
 
-	void registerStatement(Statement statement);
-
 }

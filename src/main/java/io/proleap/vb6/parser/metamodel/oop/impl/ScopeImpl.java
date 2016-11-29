@@ -113,8 +113,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		VbParserContext.getInstance().getASGElementRegistry().addASGElement(asgElement);
 	}
 
-	@Override
-	public void registerScopedElement(final ScopedElement scopedElement) {
+	protected void registerScopedElement(final ScopedElement scopedElement) {
 		assert scopedElement != null;
 		assert scopedElement.getCtx() != null;
 

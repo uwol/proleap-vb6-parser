@@ -20,5 +20,4 @@ public interface Scope extends ScopedElement {
 
 	List<Scope> getSubScopes();
 
-	void registerScopedElement(ScopedElement scopedElement);
 }

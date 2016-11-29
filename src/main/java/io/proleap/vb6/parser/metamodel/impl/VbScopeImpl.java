@@ -2169,8 +2169,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 		variable.addVariableCall(variableCall);
 	}
 
-	@Override
-	public void registerStatement(final Statement statement) {
+	protected void registerStatement(final Statement statement) {
 		assert statement != null;
 		assert statement.getCtx() != null;
 
