@@ -132,6 +132,8 @@ import io.proleap.vb6.parser.metamodel.PropertyLet;
 import io.proleap.vb6.parser.metamodel.PropertySet;
 import io.proleap.vb6.parser.metamodel.ReDim;
 import io.proleap.vb6.parser.metamodel.Resume;
+import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.ScopedElement;
 import io.proleap.vb6.parser.metamodel.Select;
 import io.proleap.vb6.parser.metamodel.SelectCase;
 import io.proleap.vb6.parser.metamodel.SelectCaseCond;
@@ -141,8 +143,6 @@ import io.proleap.vb6.parser.metamodel.StandardModule;
 import io.proleap.vb6.parser.metamodel.Statement;
 import io.proleap.vb6.parser.metamodel.Sub;
 import io.proleap.vb6.parser.metamodel.Variable;
-import io.proleap.vb6.parser.metamodel.Scope;
-import io.proleap.vb6.parser.metamodel.ScopedElement;
 import io.proleap.vb6.parser.metamodel.While;
 import io.proleap.vb6.parser.metamodel.With;
 import io.proleap.vb6.parser.metamodel.api.ApiEnumeration;
@@ -2279,7 +2279,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		assert statement != null;
 		assert statement.getCtx() != null;
 
-		statements.add(statement);
 		registerScopedElement(statement);
+		statements.add(statement);
 	}
 }
