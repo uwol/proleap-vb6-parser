@@ -28,7 +28,7 @@ import io.proleap.vb6.util.TreeUtils;
 
 public class TestGenerator {
 
-	private final static String[] DIRECTORIES_EXCLUDED = new String[] { "parser" };
+	private final static String[] DIRECTORIES_EXCLUDED = new String[] { "examples", "parser" };
 
 	private final static File INPUT_DIRECTORY = new File("src/test/resources");
 

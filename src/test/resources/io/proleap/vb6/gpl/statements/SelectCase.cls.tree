@@ -63,29 +63,36 @@
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Percent)))) \n\t 
 								(sC_Case Case   
-									(sC_Cond 0   To   
-										(valueStmt 
-											(literal 25))) \n\t\t 
+									(sC_Cond 
+										(sC_To 0   To   
+											(valueStmt 
+												(literal 25)))) \n\t\t 
 									(block 
 										(blockStmt 
 											(beepStmt Beep))) \n\t) 
 								(sC_Case Case   
-									(sC_Cond 26   To   
-										(valueStmt 
-											(literal 49)) ,   
+									(sC_Cond 
+										(sC_To 26   To   
+											(valueStmt 
+												(literal 49))) ,   
 										(valueStmt 
 											(literal 50))) \n\t) 
 								(sC_Case Case   
-									(sC_Cond 51   To   
-										(valueStmt 
-											(literal 75))) \n\t\t 
+									(sC_Cond 
+										(sC_To 51   To   
+											(valueStmt 
+												(literal 75)))) \n\t\t 
 									(block 
 										(blockStmt 
 											(beepStmt Beep))) \n\t) 
 								(sC_Case Case   
-									(sC_Cond 76   To   
-										(valueStmt 
-											(literal 100))) \n\t) 
+									(sC_Cond 
+										(sC_To 76   To   
+											(valueStmt 
+												(literal 100))) ,   
+										(sC_To 101   To   
+											(valueStmt 
+												(literal 105)))) \n\t) 
 								(sC_Case Case   
 									(sC_Cond Else) \n\t\t 
 									(block 
