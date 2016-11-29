@@ -16,7 +16,7 @@ import io.proleap.vb6.parser.metamodel.call.SubCall;
 /**
  * Declares the name, arguments, and code that form the body of a Sub procedure.
  */
-public interface Sub extends Procedure {
+public interface Sub extends Procedure, Statement {
 
 	void addSubCall(SubCall subCall);
 

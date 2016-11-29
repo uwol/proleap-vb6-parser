@@ -15,7 +15,7 @@ import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 /**
  * Assigns an object reference to a variable or property.
  */
-public interface Set extends VbScopedElement {
+public interface Set extends Statement {
 
 	@Override
 	SetStmtContext getCtx();

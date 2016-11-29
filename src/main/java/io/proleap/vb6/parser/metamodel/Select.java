@@ -18,7 +18,7 @@ import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
  * Executes one of several groups of statements, depending on the value of an
  * expression.
  */
-public interface Select extends VbScope, TypedElement {
+public interface Select extends VbScope, Statement, TypedElement {
 
 	void addSelectCase(SelectCase selectCase);
 

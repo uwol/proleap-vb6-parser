@@ -117,7 +117,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 
 			result = new AttributeImpl(name, type, this, this, ctx);
 
-			storeScopedElement(result);
+			registerScopedElement(result);
 			attributes.put(name, result);
 
 			final Literal literal = addLiteral(ctx.literal(0));
@@ -135,7 +135,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 			final String name = determineName(ctx);
 			result = new ProcedureDeclarationImpl(name, this, this, ctx);
 
-			storeScopedElement(result);
+			registerScopedElement(result);
 
 			if (ctx.argList() != null) {
 				for (final ArgContext argCtx : ctx.argList().arg()) {
@@ -212,7 +212,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 			final String name = determineName(ctx);
 			result = new EnumerationImpl(name, this, ctx);
 
-			storeScopedElement(result);
+			registerStatement(result);
 			enumerations.put(name, result);
 			VbParserContext.getInstance().getTypeRegistry().registerType(result);
 		}
@@ -229,7 +229,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 			final Type type = determineType(ctx.asTypeClause());
 			result = new FunctionImpl(name, type, this, ctx);
 
-			storeScopedElement(result);
+			registerStatement(result);
 			functions.put(name, result);
 
 			if (ctx.argList() != null) {
@@ -265,7 +265,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 			result = new ModuleConfigElementImpl(name, this, this, ctx);
 			moduleConfigElements.add(result);
 
-			storeScopedElement(result);
+			registerScopedElement(result);
 		}
 
 		return result;
@@ -317,7 +317,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 			final Type type = determineType(ctx.asTypeClause());
 			result = new PropertyGetImpl(name, type, this, ctx);
 
-			storeScopedElement(result);
+			registerStatement(result);
 			propertyGets.put(name, result);
 
 			if (ctx.argList() != null) {
@@ -350,7 +350,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 			final String name = determineName(ctx);
 			result = new PropertyLetImpl(name, this, ctx);
 
-			storeScopedElement(result);
+			registerStatement(result);
 			propertyLets.put(name, result);
 
 			if (ctx.argList() != null) {
@@ -371,7 +371,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 			final String name = determineName(ctx);
 			result = new PropertySetImpl(name, this, ctx);
 
-			storeScopedElement(result);
+			registerStatement(result);
 			propertySets.put(name, result);
 
 			if (ctx.argList() != null) {
@@ -392,7 +392,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 			final String name = determineName(ctx);
 			result = new SubImpl(name, this, ctx);
 
-			storeScopedElement(result);
+			registerStatement(result);
 			subs.put(name, result);
 
 			if (ctx.argList() != null) {
@@ -418,7 +418,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 				result.addTypeElement(typeElement);
 			}
 
-			storeScopedElement(result);
+			registerScopedElement(result);
 			types.put(name, result);
 		}
 
@@ -441,7 +441,7 @@ public abstract class ModuleImpl extends VbScopeImpl implements Module {
 			result.setDeclaredAsArray(isArray);
 			result.setDeclaredAsStaticArray(isStaticArray);
 
-			storeScopedElement(result);
+			registerScopedElement(result);
 		}
 
 		return result;

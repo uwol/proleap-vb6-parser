@@ -12,7 +12,7 @@ package io.proleap.vb6.parser.metamodel;
  * Enables error-handling routine and specifies the location of the routine
  * within a procedure; also to be used to disable an error-handling routine.
  */
-public interface OnError extends VbScopedElement {
+public interface OnError extends Statement {
 
 	LineLabel getLineLabel();
 }

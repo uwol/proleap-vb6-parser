@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import io.proleap.vb6.parser.applicationcontext.VbParserContext;
 import io.proleap.vb6.parser.metamodel.ASGElement;
@@ -26,8 +24,6 @@ import io.proleap.vb6.parser.metamodel.oop.ScopedElement;
 import io.proleap.vb6.parser.metamodel.oop.Type;
 
 public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
-
-	private final static Logger LOG = LogManager.getLogger(ScopeImpl.class);
 
 	protected final List<ScopedElement> scopedElements = new ArrayList<ScopedElement>();
 
@@ -118,12 +114,11 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
-	public void storeScopedElement(final ScopedElement scopedElement) {
+	public void registerScopedElement(final ScopedElement scopedElement) {
 		assert scopedElement != null;
 		assert scopedElement.getCtx() != null;
 
 		registerASGElement(scopedElement);
-
 		scopedElements.add(scopedElement);
 
 		/*

@@ -17,7 +17,7 @@ import io.proleap.vb6.parser.metamodel.call.PropertyLetCall;
  * Declares the name, arguments, and code that form the body of a Property Let
  * procedure, which assigns a value to a property.
  */
-public interface PropertyLet extends Procedure {
+public interface PropertyLet extends Procedure, Statement {
 
 	void addPropertyLetCall(PropertyLetCall propertyLetCall);
 

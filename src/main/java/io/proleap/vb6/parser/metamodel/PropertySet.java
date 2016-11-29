@@ -17,7 +17,7 @@ import io.proleap.vb6.parser.metamodel.call.PropertySetCall;
  * Declares the name, arguments, and code that form the body of a Property
  * procedure, which sets a reference to an object.
  */
-public interface PropertySet extends Procedure {
+public interface PropertySet extends Procedure, Statement {
 
 	void addPropertySetCall(PropertySetCall propertySetCall);
 

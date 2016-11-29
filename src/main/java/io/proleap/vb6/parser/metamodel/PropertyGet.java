@@ -18,7 +18,7 @@ import io.proleap.vb6.parser.metamodel.oop.AssignableTypedElement;
  * Declares the name, arguments, and code that form the body of a Property
  * procedure, which gets the value of a property.
  */
-public interface PropertyGet extends Procedure, AssignableTypedElement {
+public interface PropertyGet extends Procedure, Statement, AssignableTypedElement {
 
 	void addPropertyGetCall(PropertyGetCall propertyGetCall);
 

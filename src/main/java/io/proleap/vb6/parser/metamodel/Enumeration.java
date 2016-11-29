@@ -19,7 +19,7 @@ import io.proleap.vb6.parser.metamodel.oop.ComplexType;
 /**
  * Declares a type for an enumeration.
  */
-public interface Enumeration extends ComplexType, VbScopedElement {
+public interface Enumeration extends ComplexType, Statement {
 
 	void addEnumerationCall(EnumerationCall enumerationCall);
 

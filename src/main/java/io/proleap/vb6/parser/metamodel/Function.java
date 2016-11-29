@@ -18,7 +18,7 @@ import io.proleap.vb6.parser.metamodel.oop.AssignableTypedElement;
  * Declares the name, arguments, and code that form the body of a Function
  * procedure.
  */
-public interface Function extends Procedure, AssignableTypedElement {
+public interface Function extends Procedure, Statement, AssignableTypedElement {
 
 	void addFunctionCall(FunctionCall functionCall);
 

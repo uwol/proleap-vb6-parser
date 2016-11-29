@@ -19,7 +19,7 @@ import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 /**
  * Declares constants for use in place of literal values.
  */
-public interface Constant extends TypedElement, Declaration, VbScopedElement {
+public interface Constant extends TypedElement, Declaration, Statement {
 
 	void addConstantCall(ConstantCall constantCall);
 

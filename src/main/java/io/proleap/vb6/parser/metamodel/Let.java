@@ -15,7 +15,7 @@ import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;
 /**
  * Assigns the value of an expression to a variable or property.
  */
-public interface Let extends VbScopedElement {
+public interface Let extends Statement {
 
 	@Override
 	LetStmtContext getCtx();

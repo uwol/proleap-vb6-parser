@@ -15,7 +15,7 @@ import io.proleap.vb6.parser.metamodel.oop.TypedElement;
  * Used at procedure level to reallocate storage space for dynamic array
  * variables.
  */
-public interface ReDim extends TypedElement, NamedElement, VbScopedElement {
+public interface ReDim extends TypedElement, NamedElement, Statement {
 
 	Variable getVariable();
 }

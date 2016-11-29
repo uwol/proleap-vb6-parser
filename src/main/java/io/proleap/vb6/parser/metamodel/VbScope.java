@@ -8,6 +8,8 @@
 
 package io.proleap.vb6.parser.metamodel;
 
+import java.util.List;
+
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DictionaryCallStmtContext;
@@ -214,6 +216,10 @@ public interface VbScope extends VbScopedElement, Scope {
 
 	Constant getConstant(String name);
 
+	List<Statement> getStatements();
+
 	Variable getVariable(String name);
+
+	void registerStatement(Statement statement);
 
 }

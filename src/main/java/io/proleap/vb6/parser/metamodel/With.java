@@ -14,7 +14,7 @@ import io.proleap.vb6.parser.metamodel.call.Call;
 /**
  * Executes a series of statements on a single object or a user-defined type.
  */
-public interface With extends VbScope {
+public interface With extends VbScope, Statement {
 
 	@Override
 	WithStmtContext getCtx();

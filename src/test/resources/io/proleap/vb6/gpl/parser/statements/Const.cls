@@ -1,0 +1,1 @@
+Const Var1 = "test"

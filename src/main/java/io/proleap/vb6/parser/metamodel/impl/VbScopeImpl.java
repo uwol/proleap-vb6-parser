@@ -134,6 +134,7 @@ import io.proleap.vb6.parser.metamodel.SelectCaseCond;
 import io.proleap.vb6.parser.metamodel.SelectCaseCond.SelectCaseCondType;
 import io.proleap.vb6.parser.metamodel.Set;
 import io.proleap.vb6.parser.metamodel.StandardModule;
+import io.proleap.vb6.parser.metamodel.Statement;
 import io.proleap.vb6.parser.metamodel.Sub;
 import io.proleap.vb6.parser.metamodel.Variable;
 import io.proleap.vb6.parser.metamodel.VbScope;
@@ -218,6 +219,8 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	protected Module module;
 
+	protected List<Statement> statements = new ArrayList<Statement>();
+
 	protected Map<String, Variable> variables = new HashMap<String, Variable>();
 
 	public VbScopeImpl(final Module module, final VbScope superScope, final ParseTree ctx) {
@@ -236,7 +239,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			final ValueStmt assignedValueStmt = addValueStmt(ctx.valueStmt());
 			result.setAssignedValueStmt(assignedValueStmt);
 
-			storeScopedElement(result);
+			registerScopedElement(result);
 		}
 
 		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
@@ -984,7 +987,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			final ValueStmt valueStmt = addValueStmt(ctx.valueStmt());
 			result.setValueStmt(valueStmt);
 
-			storeScopedElement(result);
+			registerStatement(result);
 			constants.put(name, result);
 		}
 
@@ -1014,7 +1017,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new ExitImpl(exitType, module, this, ctx);
 
-			storeScopedElement(result);
+			registerStatement(result);
 		}
 
 		return result;
@@ -1038,7 +1041,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				result.setIn(in);
 			}
 
-			storeScopedElement(result);
+			registerStatement(result);
 		}
 
 		return result;
@@ -1075,7 +1078,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				result.setStep(step);
 			}
 
-			storeScopedElement(result);
+			registerStatement(result);
 		}
 
 		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
@@ -1093,7 +1096,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			final ValueStmt valueStmt = addValueStmt(ctx.valueStmt());
 			result.setValueStmt(valueStmt);
 
-			storeScopedElement(result);
+			registerScopedElement(result);
 		}
 
 		return result;
@@ -1120,7 +1123,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			final ValueStmt rightHandValueStmt = addValueStmt(valueStmt);
 			result.setRightHandValueStmt(rightHandValueStmt);
 
-			storeScopedElement(result);
+			registerStatement(result);
 		}
 
 		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
@@ -1136,7 +1139,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			final String name = determineName(ctx);
 			result = new LineLabelImpl(name, module, this, ctx);
 
-			storeScopedElement(result);
+			registerScopedElement(result);
 		}
 
 		return result;
@@ -1151,7 +1154,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			final String value = ctx.getText().replace("\"", "");
 
 			result = new LiteralImpl(type, value, module, this, ctx);
-			storeScopedElement(result);
+			registerScopedElement(result);
 		}
 
 		return result;
@@ -1173,7 +1176,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				lineLabel.addOnError(result);
 			}
 
-			storeScopedElement(result);
+			registerStatement(result);
 		}
 
 		return result;
@@ -1190,7 +1193,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 			result = new ReDimImpl(variable, module, this, ctx);
 
-			storeScopedElement(result);
+			registerStatement(result);
 		}
 
 		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
@@ -1215,7 +1218,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				lineLabel.addResume(result);
 			}
 
-			storeScopedElement(result);
+			registerStatement(result);
 		}
 
 		return result;
@@ -1240,7 +1243,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				result.addSelectCase(selectCase);
 			}
 
-			storeScopedElement(result);
+			registerStatement(result);
 		}
 
 		return result;
@@ -1259,7 +1262,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			selectCaseCond.setSelectCase(result);
 			result.setSelectCaseCond(selectCaseCond);
 
-			storeScopedElement(result);
+			registerScopedElement(result);
 		}
 
 		return result;
@@ -1309,7 +1312,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 				}
 			}
 
-			storeScopedElement(result);
+			registerScopedElement(result);
 		}
 
 		return result;
@@ -1336,7 +1339,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			final ValueStmt rightHandValueStmt = addValueStmt(valueStmt);
 			result.setRightHandValueStmt(rightHandValueStmt);
 
-			storeScopedElement(result);
+			registerStatement(result);
 		}
 
 		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
@@ -1928,7 +1931,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			result.setDeclaredAsArray(isArray);
 			result.setDeclaredAsStaticArray(isStaticArray);
 
-			storeScopedElement(result);
+			registerScopedElement(result);
 			variables.put(name, result);
 		}
 
@@ -1945,7 +1948,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			final ValueStmt condition = addValueStmt(ctx.valueStmt());
 			result.setCondition(condition);
 
-			storeScopedElement(result);
+			registerStatement(result);
 		}
 
 		return result;
@@ -1962,7 +1965,7 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 			final Call call = addCall(null, ctx.implicitCallStmt_InStmt());
 			result.setWithVariableCall(call);
 
-			storeScopedElement(result);
+			registerStatement(result);
 		}
 
 		return result;
@@ -2042,6 +2045,11 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 	@Override
 	public Module getModule() {
 		return module;
+	}
+
+	@Override
+	public List<Statement> getStatements() {
+		return statements;
 	}
 
 	@Override
@@ -2159,5 +2167,14 @@ public abstract class VbScopeImpl extends ScopeImpl implements VbScope {
 
 	protected void linkVariableCallWithVariable(final VariableCall variableCall, final Variable variable) {
 		variable.addVariableCall(variableCall);
+	}
+
+	@Override
+	public void registerStatement(final Statement statement) {
+		assert statement != null;
+		assert statement.getCtx() != null;
+
+		statements.add(statement);
+		registerScopedElement(statement);
 	}
 }

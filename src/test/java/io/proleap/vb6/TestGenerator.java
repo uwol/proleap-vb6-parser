@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -26,6 +27,8 @@ import io.proleap.vb6.VisualBasic6Parser.StartRuleContext;
 import io.proleap.vb6.util.TreeUtils;
 
 public class TestGenerator {
+
+	private final static String[] DIRECTORIES_EXCLUDED = new String[] { "parser" };
 
 	private final static File INPUT_DIRECTORY = new File("src/test/resources");
 
@@ -91,8 +94,8 @@ public class TestGenerator {
 					generateTestClass(inputDirectoryFile, outputDirectory, packageName);
 					generateTreeFile(inputDirectoryFile, inputDirectory);
 				}
-				// else, if the file is a directory
-				else if (inputDirectoryFile.isDirectory()) {
+				// else, if the file is a relevant directory
+				else if (inputDirectoryFile.isDirectory() && !isDirectoryExcluded(inputDirectoryFile)) {
 					final File subInputDirectory = inputDirectoryFile;
 					final String subInputDirectoryName = subInputDirectory.getName();
 
@@ -145,6 +148,11 @@ public class TestGenerator {
 	protected static boolean isClazzModule(final File inputFile) {
 		final String extension = FilenameUtils.getExtension(inputFile.getName()).toLowerCase();
 		return "cls".equals(extension);
+	}
+
+	protected static boolean isDirectoryExcluded(final File directory) {
+		final String directoryName = directory.getName();
+		return Arrays.asList(DIRECTORIES_EXCLUDED).contains(directoryName);
 	}
 
 	protected static boolean isStandardModule(final File inputFile) {

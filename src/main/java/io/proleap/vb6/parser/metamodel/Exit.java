@@ -13,7 +13,7 @@ import io.proleap.vb6.VisualBasic6Parser.ExitStmtContext;
 /**
  * Exits a block of DoLoop, For...Next, Function, Sub, or Property code.
  */
-public interface Exit extends VbScopedElement {
+public interface Exit extends Statement {
 
 	public enum ExitType {
 		Do, For, Function, Property, Sub;

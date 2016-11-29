@@ -15,7 +15,6 @@ import java.util.List;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.ASGElement;
-import io.proleap.vb6.parser.metamodel.oop.Scope;
 import io.proleap.vb6.parser.registry.ASGElementRegistry;
 
 public class ANTLRUtils {
@@ -94,11 +93,4 @@ public class ANTLRUtils {
 		return result;
 	}
 
-	public static ASGElement findParentASGElement(final ParseTree from, final ASGElementRegistry asgElementRegistry) {
-		return findParent(ASGElement.class, from, asgElementRegistry);
-	}
-
-	public static Scope findParentScope(final ParseTree from, final ASGElementRegistry asgElementRegistry) {
-		return findParent(Scope.class, from, asgElementRegistry);
-	}
 }
