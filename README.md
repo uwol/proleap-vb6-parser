@@ -38,7 +38,7 @@ Private Sub Command1_Click ()
 End Sub
 ```
 
-### Output: abstract syntax tree (AST)
+### Output: Abstract Syntax Tree (AST)
 
 ```
 (startRule
@@ -150,7 +150,7 @@ Tests run: 215, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 ```
 
-* To install the jar in your local Maven repository:
+* To install the JAR in your local Maven repository:
 
 ```
 $ mvn clean install
