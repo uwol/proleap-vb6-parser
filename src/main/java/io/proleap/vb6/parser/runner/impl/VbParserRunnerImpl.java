@@ -198,7 +198,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 			LOG.info("Collecting types in file {}.", inputFile.getName());
 			visitor.visit(ctx);
 		} else {
-			LOG.info("Ignoring file {}.", inputFile.getName());
+			LOG.info("Ignoring file {}", inputFile.getAbsolutePath());
 		}
 	}
 
