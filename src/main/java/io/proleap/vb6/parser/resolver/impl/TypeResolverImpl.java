@@ -9,8 +9,6 @@
 package io.proleap.vb6.parser.resolver.impl;
 
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
@@ -53,8 +51,6 @@ import io.proleap.vb6.parser.util.StringUtils;
  * including transitive type relation analysis is conducted on the ASG.
  */
 public class TypeResolverImpl implements TypeResolver {
-
-	private final static Logger LOG = LogManager.getLogger(TypeResolverImpl.class);
 
 	public Type determineType(final ImplicitCallStmt_InStmtContext ctx) {
 		final Type result;

@@ -9,8 +9,6 @@
 package io.proleap.vb6.parser.resolver.impl;
 
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.AmbiguousIdentifierContext;
@@ -53,8 +51,6 @@ import io.proleap.vb6.VisualBasic6Parser.VsICSContext;
 import io.proleap.vb6.parser.resolver.NameResolver;
 
 public class NameResolverImpl implements NameResolver {
-
-	private final static Logger LOG = LogManager.getLogger(NameResolverImpl.class);
 
 	public String determineName(final AmbiguousIdentifierContext ctx) {
 		final String result = ctx != null ? ctx.getText() : null;
