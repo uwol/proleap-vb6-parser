@@ -65,19 +65,16 @@ End Sub
 ```
 
 
-Execution
----------
+How to use
+----------
 
-### Abstract Semantic Graph (ASG) parsing
+### Simple: Abstract Semantic Graph (ASG) parsing
 
 ```java
 io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
 
 java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/parser/HelloWorld.cls");
 
-/*
- * semantic analysis
- */
 io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
 
 Module module = program.getClazzModule("HelloWorld");
@@ -87,47 +84,15 @@ Variable variableJ = module.getVariable("J");
 Type typeJ = variableI.getType();
 ```
 
-### Abstract Syntax Tree (AST) parsing
-
-```java
-java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/HelloWorld.cls");
-java.io.InputStream inputStream = new java.io.FileInputStream(inputFile);
-
-/*
-* lexer
-*/
-org.antlr.v4.runtime.ANTLRInputStream antlrInputStream = new org.antlr.v4.runtime.ANTLRInputStream(inputStream);
-io.proleap.vb6.VisualBasic6Lexer lexer = new io.proleap.vb6.VisualBasic6Lexer(antlrInputStream);
-org.antlr.v4.runtime.CommonTokenStream tokens = new org.antlr.v4.runtime.CommonTokenStream(lexer);
-
-/*
-* parser
-*/
-io.proleap.vb6.VisualBasic6Parser parser = new io.proleap.vb6.VisualBasic6Parser(tokens);
-io.proleap.vb6.VisualBasic6Parser.StartRuleContext ctx = parser.startRule();
-
-/*
-* traverse AST with ANTLR visitor
-*/
-io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.VisualBasic6BaseVisitor<Boolean>();
-visitor.visit(ctx);
-```
-
-### Abstract Semantic Graph (ASG) parsing with Abstract Syntax Tree (AST) traversal
+### Complex: Abstract Semantic Graph (ASG) parsing with Abstract Syntax Tree (AST) traversal
 
 ```java
 io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
 
 java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/parser/HelloWorld.cls");
 
-/*
- * semantic analysis
- */
 io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
 
-/*
-* traverse AST with ANTLR visitor
-*/
 io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.VisualBasic6BaseVisitor<Boolean>() {
   @Override
   public Boolean visitVariableSubStmt(final io.proleap.vb6.VisualBasic6Parser.VariableSubStmtContext ctx) {
@@ -143,12 +108,6 @@ for (final io.proleap.vb6.parser.metamodel.Module module : program.getModules())
   visitor.visit(module.getCtx());
 }
 ```
-
-
-VM args
--------
-
-* For parsing large VB6 source code files, following VM args have to be set: -Xmx2048m -XX:MaxPermSize=256m
 
 
 Build process
@@ -206,6 +165,12 @@ $ mvn clean install
   <version>2.0.0</version>
 </dependency>
 ```
+
+
+VM args
+-------
+
+* For parsing large VB6 source code files, following VM args have to be set: -Xmx2048m -XX:MaxPermSize=256m
 
 
 Release process
