@@ -467,9 +467,9 @@ sC_Cond
    | sC_To (WS? COMMA WS? (valueStmt | sC_To))* # caseCondTo
    ;
 
-sC_To :
-	INTEGERLITERAL WS TO WS valueStmt
-;
+sC_To
+   : INTEGERLITERAL WS TO WS valueStmt
+   ;
 
 sendkeysStmt
    : SENDKEYS WS valueStmt (WS? COMMA WS? valueStmt)?
