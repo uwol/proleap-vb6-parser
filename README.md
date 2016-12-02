@@ -3,28 +3,11 @@ ANTLR4-based grammar and parser for Visual Basic 6.0
 
 <a href="https://travis-ci.org/uwol/vb6parser"><img src="https://api.travis-ci.org/uwol/vb6parser.png"></a>
 
-This is an approximate grammar and parser for Visual Basic 6.0, which generates an 
+This is a grammar and parser for Visual Basic 6.0, which generates an 
 Abstract Syntax Tree (AST) and Abstract Semantic Graph (ASG) for Visual Basic 6.0 code.
-
 The AST represents plain Visual Basic 6.0 source code in a syntax tree structure. 
-The ASG is generated from the AST by a semantic analysis and provides data and control 
+The ASG is generated from the AST by semantic analysis and provides data and control 
 flow information (e. g. variable access).
-
-The grammar is derived from the Visual Basic 6.0 language reference
-http://msdn.microsoft.com/en-us/library/aa338033%28v=vs.60%29.aspx
-and tested against MSDN VB6 statement examples as well as several Visual
-Basic 6.0 code repositories.
-
-
-Characteristics
----------------
-
-1. The grammar is line-based and takes into account whitespace, so that
-   member calls (e.g. "A.B") are distinguished from contextual object calls
-   in WITH statements (e.g. "A .B").
-
-2. Keywords can be used as identifiers depending on the context, enabling
-   e.g. "A.Type", but not "Type.B".
 
 
 Example
@@ -68,15 +51,19 @@ End Sub
 How to use
 ----------
 
-### Simple: Abstract Semantic Graph (ASG) parsing
+Check out the repository. Then in Eclipse import as a an existing Maven project.
+
+
+### Simple: Generate Abstract Semantic Graph (ASG) from VB6 code
 
 ```java
 io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
 
+// generate ASG from plain VB6 code
 java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/parser/HelloWorld.cls");
-
 io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
 
+// navigate on ASG
 Module module = program.getClazzModule("HelloWorld");
 Variable variableI = module.getVariable("I");
 Type typeI = variableI.getType();
@@ -84,15 +71,16 @@ Variable variableJ = module.getVariable("J");
 Type typeJ = variableI.getType();
 ```
 
-### Complex: Abstract Semantic Graph (ASG) parsing with Abstract Syntax Tree (AST) traversal
+### Complex: Generate Abstract Semantic Graph (ASG) an traverse with Abstract Syntax Tree (AST)
 
 ```java
 io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
 
+// generate ASG from plain VB6 code
 java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/parser/HelloWorld.cls");
-
 io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
 
+// traverse the AST
 io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.VisualBasic6BaseVisitor<Boolean>() {
   @Override
   public Boolean visitVariableSubStmt(final io.proleap.vb6.VisualBasic6Parser.VariableSubStmtContext ctx) {
@@ -167,16 +155,33 @@ $ mvn clean install
 ```
 
 
+Release process
+---------------
+
+* Milestones are published in the [ANTLR grammars repo](https://github.com/antlr/grammars-v4).
+
+
 VM args
 -------
 
 * For parsing large VB6 source code files, following VM args have to be set: -Xmx2048m -XX:MaxPermSize=256m
 
 
-Release process
+Characteristics
 ---------------
 
-* Milestones are published in the [ANTLR grammars repo](https://github.com/antlr/grammars-v4).
+1. The grammar is line-based and takes into account whitespace, so that
+   member calls (e.g. "A.B") are distinguished from contextual object calls
+   in WITH statements (e.g. "A .B").
+
+2. Keywords can be used as identifiers depending on the context, enabling
+   e.g. "A.Type", but not "Type.B".
+
+3. The ANTLR4 grammar is derived from the Visual Basic 6.0 language reference
+   http://msdn.microsoft.com/en-us/library/aa338033%28v=vs.60%29.aspx
+   and tested against MSDN VB6 statement examples as well as several Visual
+   Basic 6.0 code repositories.
+
 
 
 License
