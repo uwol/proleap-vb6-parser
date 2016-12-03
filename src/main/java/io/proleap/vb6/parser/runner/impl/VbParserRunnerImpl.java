@@ -153,17 +153,19 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		return "cls".equals(extension);
 	}
 
-	protected boolean isRelevant(final File inputFile) {
-		return inputFile.isFile() && !inputFile.isHidden() && (isClazzModule(inputFile) || isStandardModule(inputFile));
-	}
-
 	protected boolean isStandardModule(final File inputFile) {
 		final String extension = FilenameUtils.getExtension(inputFile.getName()).toLowerCase();
 		return "bas".equals(extension);
 	}
 
 	protected void parseFile(final File inputFile, final Program program) throws IOException {
-		if (isRelevant(inputFile)) {
+		if (!inputFile.isFile()) {
+			LOG.warn("Could not find file {}", inputFile.getAbsolutePath());
+		} else if (inputFile.isHidden()) {
+			LOG.warn("Ignoring hidden file {}", inputFile.getAbsolutePath());
+		} else if (!isClazzModule(inputFile) && !isStandardModule(inputFile)) {
+			LOG.info("Ignoring file {} because of file extension.", inputFile.getAbsolutePath());
+		} else {
 			LOG.info("Parsing file {}.", inputFile.getName());
 
 			final InputStream inputStream = new FileInputStream(inputFile);
@@ -197,8 +199,6 @@ public class VbParserRunnerImpl implements VbParserRunner {
 
 			LOG.info("Collecting types in file {}.", inputFile.getName());
 			visitor.visit(ctx);
-		} else {
-			LOG.info("Ignoring file {}", inputFile.getAbsolutePath());
 		}
 	}
 
