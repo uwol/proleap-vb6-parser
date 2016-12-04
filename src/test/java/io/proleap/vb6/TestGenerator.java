@@ -51,10 +51,11 @@ public class TestGenerator {
 		final String inputFilename = getInputFilename(vb6InputFile);
 		final File outputFile = new File(outputDirectory + "/" + inputFilename + OUTPUT_FILE_SUFFIX + JAVA_EXTENSION);
 
-		LOG.info("Creating unit test {}.", outputFile);
 		final boolean createdNewFile = outputFile.createNewFile();
 
 		if (createdNewFile) {
+			LOG.info("Creating unit test {}.", outputFile);
+
 			final PrintWriter pWriter = new PrintWriter(new FileWriter(outputFile));
 			final String vb6InputFileName = vb6InputFile.getPath().replace("\\", "/");
 
@@ -121,10 +122,11 @@ public class TestGenerator {
 	public static void generateTreeFile(final File vb6InputFile, final File outputDirectory) throws IOException {
 		final File outputFile = new File(outputDirectory + "/" + vb6InputFile.getName() + TREE_EXTENSION);
 
-		LOG.info("Creating tree file {}.", outputFile);
 		final boolean createdNewFile = outputFile.createNewFile();
 
 		if (createdNewFile) {
+			LOG.info("Creating tree file {}.", outputFile);
+
 			final InputStream inputStream = new FileInputStream(vb6InputFile);
 			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(new ANTLRInputStream(inputStream));
 			final CommonTokenStream tokens = new CommonTokenStream(lexer);
