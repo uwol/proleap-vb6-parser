@@ -73,12 +73,10 @@ io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicat
 // navigate on ASG
 Module module = program.getClazzModule("HelloWorld");
 Variable variableI = module.getVariable("I");
-Type typeI = variableI.getType();
-Variable variableJ = module.getVariable("J");
-Type typeJ = variableI.getType();
+Type typeOfI = variableI.getType();
 ```
 
-### Complex: Generate an Abstract Semantic Graph (ASG) an traverse the Abstract Syntax Tree (AST)
+### Complex: Generate an Abstract Semantic Graph (ASG) and traverse the Abstract Syntax Tree (AST)
 
 ```java
 io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
