@@ -56,7 +56,7 @@ Import into [Eclipse](https://eclipse.org):
 
 1. Clone or download the repository. 
 2. In Eclipse import the directory as a an `existing Maven project`.
-3. Right click file `src/test/java/io.proleap.vb6.gpl.HelloWorldTest.java` and `run as JUnit test`.
+3. Right click file `src/test/java/io.proleap.vb6.ast.HelloWorldTest.java` and `run as JUnit test`.
 
 Use the following code as a starting point for developing own code.
 
@@ -64,40 +64,40 @@ Use the following code as a starting point for developing own code.
 ### Simple: Generate an Abstract Semantic Graph (ASG) from VB6 code
 
 ```java
-io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
+io.proleap.vb6.asg.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
 
 // generate ASG from plain VB6 code
-java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/parser/HelloWorld.cls");
-io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
+java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/asg/HelloWorld.cls");
+io.proleap.vb6.asg.metamodel.Program program = io.proleap.vb6.asg.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
 
 // navigate on ASG
-Module module = program.getClazzModule("HelloWorld");
-Variable variableI = module.getVariable("I");
-Type typeOfI = variableI.getType();
+io.proleap.vb6.asg.metamodel.Module module = program.getClazzModule("HelloWorld");
+io.proleap.vb6.asg.metamodel.Variable variableI = module.getVariable("I");
+io.proleap.vb6.asg.metamodel.type.Type typeOfI = variableI.getType();
 ```
 
 ### Complex: Generate an Abstract Semantic Graph (ASG) and traverse the Abstract Syntax Tree (AST)
 
 ```java
-io.proleap.vb6.parser.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
+io.proleap.vb6.asg.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
 
 // generate ASG from plain VB6 code
-java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/gpl/parser/HelloWorld.cls");
-io.proleap.vb6.parser.metamodel.Program program = io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
+java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/asg/HelloWorld.cls");
+io.proleap.vb6.asg.metamodel.Program program = io.proleap.vb6.asg.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
 
 // traverse the AST
 io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.VisualBasic6BaseVisitor<Boolean>() {
   @Override
   public Boolean visitVariableSubStmt(final io.proleap.vb6.VisualBasic6Parser.VariableSubStmtContext ctx) {
-    io.proleap.vb6.parser.metamodel.Variable variable = (io.proleap.vb6.parser.metamodel.Variable) io.proleap.vb6.parser.applicationcontext.VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
+    io.proleap.vb6.asg.metamodel.Variable variable = (io.proleap.vb6.asg.metamodel.Variable) io.proleap.vb6.asg.applicationcontext.VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
     String name = variable.getName();
-    io.proleap.vb6.parser.metamodel.oop.Type type = variable.getType();
+    io.proleap.vb6.asg.metamodel.type.Type type = variable.getType();
 
     return visitChildren(ctx);
   }
 };
 
-for (final io.proleap.vb6.parser.metamodel.Module module : program.getModules()) {
+for (final io.proleap.vb6.asg.metamodel.Module module : program.getModules()) {
   visitor.visit(module.getCtx());
 }
 ```
@@ -142,11 +142,11 @@ $ mvn clean package
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
-Running io.proleap.vb6.gpl.calls.CallsTest
+Running io.proleap.vb6.ast.calls.CallsTest
 Parsing file Calls.cls.
 Comparing parse tree with file Calls.cls.tree.
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.991 sec
-Running io.proleap.vb6.gpl.calls.Module1Test
+Running io.proleap.vb6.ast.calls.Module1Test
 ...
 Results :
 

@@ -2,7 +2,7 @@ package io.proleap.vb6;
 
 import org.junit.Before;
 
-import io.proleap.vb6.parser.applicationcontext.VbParserContextFactory;
+import io.proleap.vb6.asg.applicationcontext.VbParserContextFactory;
 
 public class VbTestSupport {
 

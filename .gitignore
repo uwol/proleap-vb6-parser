@@ -17,6 +17,6 @@ Thumbs.db
 bin/
 build/
 lib/
-src/test/java/io/proleap/vb6/examples/
-src/test/resources/io/proleap/vb6/examples/
+src/test/java/io/proleap/vb6/ast/proprietary/
+src/test/resources/io/proleap/vb6/ast/proprietary/
 target/
