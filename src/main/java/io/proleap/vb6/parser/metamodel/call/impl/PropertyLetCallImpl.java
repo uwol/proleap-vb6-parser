@@ -11,9 +11,9 @@ package io.proleap.vb6.parser.metamodel.call.impl;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.PropertyLet;
 import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.PropertyLetCall;
+import io.proleap.vb6.parser.metamodel.statement.property.let.PropertyLet;
 import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class PropertyLetCallImpl extends CallImpl implements PropertyLetCall {

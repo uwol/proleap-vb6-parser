@@ -15,9 +15,9 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.parser.metamodel.LineLabel;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.OnError;
-import io.proleap.vb6.parser.metamodel.Resume;
 import io.proleap.vb6.parser.metamodel.Scope;
+import io.proleap.vb6.parser.metamodel.statement.onerror.OnError;
+import io.proleap.vb6.parser.metamodel.statement.resume.Resume;
 
 public class LineLabelImpl extends ScopedElementImpl implements LineLabel {
 

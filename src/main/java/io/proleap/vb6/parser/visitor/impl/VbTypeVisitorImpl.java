@@ -12,11 +12,11 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmtContext;
-import io.proleap.vb6.parser.metamodel.Enumeration;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Program;
 import io.proleap.vb6.parser.metamodel.impl.ClazzModuleImpl;
 import io.proleap.vb6.parser.metamodel.impl.StandardModuleImpl;
+import io.proleap.vb6.parser.metamodel.statement.enumeration.Enumeration;
 
 /**
  * Visitor for collecting type declarations in the AST.

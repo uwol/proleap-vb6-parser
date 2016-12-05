@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.parser.metamodel.call;
 
-import io.proleap.vb6.parser.metamodel.Function;
+import io.proleap.vb6.parser.metamodel.statement.function.Function;
 
 public interface FunctionCall extends Call {
 

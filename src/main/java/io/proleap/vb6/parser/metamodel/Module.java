@@ -29,6 +29,13 @@ import io.proleap.vb6.VisualBasic6Parser.PropertySetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.TypeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.TypeStmt_ElementContext;
+import io.proleap.vb6.parser.metamodel.statement.enumeration.Enumeration;
+import io.proleap.vb6.parser.metamodel.statement.enumeration.EnumerationConstant;
+import io.proleap.vb6.parser.metamodel.statement.function.Function;
+import io.proleap.vb6.parser.metamodel.statement.property.get.PropertyGet;
+import io.proleap.vb6.parser.metamodel.statement.property.let.PropertyLet;
+import io.proleap.vb6.parser.metamodel.statement.property.set.PropertySet;
+import io.proleap.vb6.parser.metamodel.statement.sub.Sub;
 import io.proleap.vb6.parser.metamodel.type.ComplexType;
 
 public interface Module extends Scope, ComplexType {

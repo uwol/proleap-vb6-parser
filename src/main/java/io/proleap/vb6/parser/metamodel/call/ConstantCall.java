@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.parser.metamodel.call;
 
-import io.proleap.vb6.parser.metamodel.Constant;
+import io.proleap.vb6.parser.metamodel.statement.constant.Constant;
 
 public interface ConstantCall extends Call {
 

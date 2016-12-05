@@ -10,13 +10,13 @@ package io.proleap.vb6.parser.metamodel.valuestmt.impl;
 
 import io.proleap.vb6.VisualBasic6Parser.VsAssignContext;
 import io.proleap.vb6.parser.metamodel.Arg;
-import io.proleap.vb6.parser.metamodel.Constant;
 import io.proleap.vb6.parser.metamodel.Module;
-import io.proleap.vb6.parser.metamodel.PropertyLet;
-import io.proleap.vb6.parser.metamodel.PropertySet;
 import io.proleap.vb6.parser.metamodel.Variable;
 import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.Call;
+import io.proleap.vb6.parser.metamodel.statement.constant.Constant;
+import io.proleap.vb6.parser.metamodel.statement.property.let.PropertyLet;
+import io.proleap.vb6.parser.metamodel.statement.property.set.PropertySet;
 import io.proleap.vb6.parser.metamodel.type.Type;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueAssignment;
 import io.proleap.vb6.parser.metamodel.valuestmt.ValueStmt;

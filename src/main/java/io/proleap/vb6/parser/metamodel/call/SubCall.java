@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.parser.metamodel.call;
 
-import io.proleap.vb6.parser.metamodel.Sub;
+import io.proleap.vb6.parser.metamodel.statement.sub.Sub;
 
 public interface SubCall extends Call {
 

@@ -10,6 +10,9 @@ package io.proleap.vb6.parser.metamodel;
 
 import java.util.List;
 
+import io.proleap.vb6.parser.metamodel.statement.onerror.OnError;
+import io.proleap.vb6.parser.metamodel.statement.resume.Resume;
+
 public interface LineLabel extends ScopedElement, Declaration {
 
 	void addOnError(OnError onError);

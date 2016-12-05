@@ -10,10 +10,10 @@ package io.proleap.vb6.parser.metamodel.call.impl;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import io.proleap.vb6.parser.metamodel.EnumerationConstant;
 import io.proleap.vb6.parser.metamodel.Module;
 import io.proleap.vb6.parser.metamodel.Scope;
 import io.proleap.vb6.parser.metamodel.call.EnumerationConstantCall;
+import io.proleap.vb6.parser.metamodel.statement.enumeration.EnumerationConstant;
 import io.proleap.vb6.parser.metamodel.type.Type;
 
 public class EnumerationConstantCallImpl extends CallImpl implements EnumerationConstantCall {

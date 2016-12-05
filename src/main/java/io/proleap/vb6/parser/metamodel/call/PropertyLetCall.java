@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.parser.metamodel.call;
 
-import io.proleap.vb6.parser.metamodel.PropertyLet;
+import io.proleap.vb6.parser.metamodel.statement.property.let.PropertyLet;
 
 public interface PropertyLetCall extends Call {
 
