@@ -46,10 +46,11 @@
 											(ambiguousIdentifier CurrentColor)))) \n       
 								(sC_Case Case   
 									(sC_Cond 
-										(valueStmt 
-											(implicitCallStmt_InStmt 
-												(iCS_S_VariableOrProcedureCall 
-													(ambiguousIdentifier RED))))) \n          
+										(sC_CondExpr 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier RED)))))) \n          
 									(block 
 										(blockStmt 
 											(letStmt 
@@ -60,10 +61,11 @@
 													(literal "Red"))))) \n      ) 
 								(sC_Case Case   
 									(sC_Cond 
-										(valueStmt 
-											(implicitCallStmt_InStmt 
-												(iCS_S_VariableOrProcedureCall 
-													(ambiguousIdentifier GREEN))))) \n          
+										(sC_CondExpr 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier GREEN)))))) \n          
 									(block 
 										(blockStmt 
 											(letStmt 
@@ -74,10 +76,11 @@
 													(literal "Green"))))) \n      ) 
 								(sC_Case Case   
 									(sC_Cond 
-										(valueStmt 
-											(implicitCallStmt_InStmt 
-												(iCS_S_VariableOrProcedureCall 
-													(ambiguousIdentifier BLUE))))) \n          
+										(sC_CondExpr 
+											(valueStmt 
+												(implicitCallStmt_InStmt 
+													(iCS_S_VariableOrProcedureCall 
+														(ambiguousIdentifier BLUE)))))) \n          
 									(block 
 										(blockStmt 
 											(letStmt 

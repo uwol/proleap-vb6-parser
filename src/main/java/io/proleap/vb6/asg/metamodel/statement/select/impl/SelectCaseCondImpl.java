@@ -17,8 +17,8 @@ import io.proleap.vb6.asg.metamodel.Scope;
 import io.proleap.vb6.asg.metamodel.impl.ScopedElementImpl;
 import io.proleap.vb6.asg.metamodel.statement.select.SelectCase;
 import io.proleap.vb6.asg.metamodel.statement.select.SelectCaseCond;
+import io.proleap.vb6.asg.metamodel.statement.select.SelectCaseCondExpression;
 import io.proleap.vb6.asg.metamodel.type.Type;
-import io.proleap.vb6.asg.metamodel.valuestmt.ValueStmt;
 
 public class SelectCaseCondImpl extends ScopedElementImpl implements SelectCaseCond {
 
@@ -26,12 +26,12 @@ public class SelectCaseCondImpl extends ScopedElementImpl implements SelectCaseC
 
 	protected SelectCase selectCase;
 
+	protected final List<SelectCaseCondExpression> selectCaseCondExpressions = new ArrayList<SelectCaseCondExpression>();
+
 	protected final SelectCaseCondType selectCaseCondType;
 
-	protected final List<ValueStmt> valueStmts = new ArrayList<ValueStmt>();
-
-	public SelectCaseCondImpl(final SelectCaseCondType selectCaseCondType, final Module module,
-			final Scope scope, final SC_CondContext ctx) {
+	public SelectCaseCondImpl(final SelectCaseCondType selectCaseCondType, final Module module, final Scope scope,
+			final SC_CondContext ctx) {
 		super(module, scope, ctx);
 
 		this.ctx = ctx;
@@ -39,8 +39,8 @@ public class SelectCaseCondImpl extends ScopedElementImpl implements SelectCaseC
 	}
 
 	@Override
-	public void addValueStmt(final ValueStmt valueStmt) {
-		valueStmts.add(valueStmt);
+	public void addSelectCaseCondExpression(final SelectCaseCondExpression selectCaseCondExpression) {
+		selectCaseCondExpressions.add(selectCaseCondExpression);
 	}
 
 	@Override
@@ -54,6 +54,11 @@ public class SelectCaseCondImpl extends ScopedElementImpl implements SelectCaseC
 	}
 
 	@Override
+	public List<SelectCaseCondExpression> getSelectCaseCondExpressions() {
+		return selectCaseCondExpressions;
+	}
+
+	@Override
 	public SelectCaseCondType getSelectCaseCondType() {
 		return selectCaseCondType;
 	}
@@ -64,18 +69,13 @@ public class SelectCaseCondImpl extends ScopedElementImpl implements SelectCaseC
 
 		if (SelectCaseCondType.ELSE.equals(selectCaseCondType)) {
 			result = null;
-		} else if (!valueStmts.isEmpty()) {
-			result = valueStmts.get(0).getType();
+		} else if (!selectCaseCondExpressions.isEmpty()) {
+			result = selectCaseCondExpressions.get(0).getType();
 		} else {
 			result = null;
 		}
 
 		return result;
-	}
-
-	@Override
-	public List<ValueStmt> getValueStmts() {
-		return valueStmts;
 	}
 
 	@Override

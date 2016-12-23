@@ -48,8 +48,9 @@
 											(ambiguousIdentifier ColorName)))) \n       
 								(sC_Case Case   
 									(sC_Cond 
-										(valueStmt 
-											(literal "Red"))) \n          
+										(sC_CondExpr 
+											(valueStmt 
+												(literal "Red")))) \n          
 									(block 
 										(blockStmt 
 											(letStmt 
@@ -62,8 +63,9 @@
 															(ambiguousIdentifier RED))))))) \n      ) 
 								(sC_Case Case   
 									(sC_Cond 
-										(valueStmt 
-											(literal "Green"))) \n          
+										(sC_CondExpr 
+											(valueStmt 
+												(literal "Green")))) \n          
 									(block 
 										(blockStmt 
 											(letStmt 
@@ -76,8 +78,9 @@
 															(ambiguousIdentifier GREEN))))))) \n      ) 
 								(sC_Case Case   
 									(sC_Cond 
-										(valueStmt 
-											(literal "Blue"))) \n          
+										(sC_CondExpr 
+											(valueStmt 
+												(literal "Blue")))) \n          
 									(block 
 										(blockStmt 
 											(letStmt 

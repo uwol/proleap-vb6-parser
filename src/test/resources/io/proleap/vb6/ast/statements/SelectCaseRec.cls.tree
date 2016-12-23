@@ -28,15 +28,17 @@
 											(ambiguousIdentifier CondA)))) \n\t 
 								(sC_Case Case   
 									(sC_Cond 
-										(valueStmt 
-											(literal "A"))) \n\t\t 
+										(sC_CondExpr 
+											(valueStmt 
+												(literal "A")))) \n\t\t 
 									(block 
 										(blockStmt 
 											(beepStmt Beep))) \n\t) 
 								(sC_Case Case   
 									(sC_Cond 
-										(valueStmt 
-											(literal "B"))) \n\t\t 
+										(sC_CondExpr 
+											(valueStmt 
+												(literal "B")))) \n\t\t 
 									(block 
 										(blockStmt 
 											(selectCaseStmt Select   Case   
@@ -46,15 +48,17 @@
 															(ambiguousIdentifier CondB)))) \n\t\t\t 
 												(sC_Case Case   
 													(sC_Cond 
-														(valueStmt 
-															(literal "A"))) \n\t\t\t\t 
+														(sC_CondExpr 
+															(valueStmt 
+																(literal "A")))) \n\t\t\t\t 
 													(block 
 														(blockStmt 
 															(beepStmt Beep))) \n\t\t\t) 
 												(sC_Case Case   
 													(sC_Cond 
-														(valueStmt 
-															(literal "B"))) \n\t\t\t\t 
+														(sC_CondExpr 
+															(valueStmt 
+																(literal "B")))) \n\t\t\t\t 
 													(block 
 														(blockStmt 
 															(beepStmt Beep))) \n\t\t\t) 

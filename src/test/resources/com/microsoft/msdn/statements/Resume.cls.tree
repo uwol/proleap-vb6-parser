@@ -40,8 +40,9 @@
 													(ambiguousIdentifier Number)))))) \n       
 								(sC_Case Case   
 									(sC_Cond 
-										(valueStmt 
-											(literal 55))) \n          
+										(sC_CondExpr 
+											(valueStmt 
+												(literal 55)))) \n          
 									(block 
 										(blockStmt 
 											(closeStmt Close   

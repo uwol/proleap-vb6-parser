@@ -13,24 +13,23 @@ import java.util.List;
 import io.proleap.vb6.VisualBasic6Parser.SC_CondContext;
 import io.proleap.vb6.asg.metamodel.ScopedElement;
 import io.proleap.vb6.asg.metamodel.type.TypedElement;
-import io.proleap.vb6.asg.metamodel.valuestmt.ValueStmt;
 
 public interface SelectCaseCond extends ScopedElement, TypedElement {
 
 	public enum SelectCaseCondType {
-		ELSE, IS, TO, VALUE;
+		ELSE, EXPRESSION;
 	}
 
-	void addValueStmt(ValueStmt valueStmt);
+	void addSelectCaseCondExpression(SelectCaseCondExpression selectCaseCondExpression);
 
 	@Override
 	SC_CondContext getCtx();
 
 	SelectCase getSelectCase();
 
-	SelectCaseCondType getSelectCaseCondType();
+	List<SelectCaseCondExpression> getSelectCaseCondExpressions();
 
-	List<ValueStmt> getValueStmts();
+	SelectCaseCondType getSelectCaseCondType();
 
 	void setSelectCase(SelectCase selectCase);
 }

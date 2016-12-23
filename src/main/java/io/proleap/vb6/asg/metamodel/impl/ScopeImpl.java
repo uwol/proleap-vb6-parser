@@ -41,9 +41,10 @@ import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgsCallContext;
 import io.proleap.vb6.VisualBasic6Parser.CaseCondElseContext;
-import io.proleap.vb6.VisualBasic6Parser.CaseCondIsContext;
-import io.proleap.vb6.VisualBasic6Parser.CaseCondToContext;
-import io.proleap.vb6.VisualBasic6Parser.CaseCondValueContext;
+import io.proleap.vb6.VisualBasic6Parser.CaseCondExprContext;
+import io.proleap.vb6.VisualBasic6Parser.CaseCondExprIsContext;
+import io.proleap.vb6.VisualBasic6Parser.CaseCondExprToContext;
+import io.proleap.vb6.VisualBasic6Parser.CaseCondExprValueContext;
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DictionaryCallStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ECS_MemberProcedureCallContext;
@@ -69,6 +70,7 @@ import io.proleap.vb6.VisualBasic6Parser.RedimSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ResumeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SC_CaseContext;
 import io.proleap.vb6.VisualBasic6Parser.SC_CondContext;
+import io.proleap.vb6.VisualBasic6Parser.SC_CondExprContext;
 import io.proleap.vb6.VisualBasic6Parser.SelectCaseStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ValueStmtContext;
@@ -132,6 +134,7 @@ import io.proleap.vb6.asg.metamodel.call.ApiPropertyCall;
 import io.proleap.vb6.asg.metamodel.call.ArgCall;
 import io.proleap.vb6.asg.metamodel.call.ArrayElementCall;
 import io.proleap.vb6.asg.metamodel.call.Call;
+import io.proleap.vb6.asg.metamodel.call.Call.CallContext;
 import io.proleap.vb6.asg.metamodel.call.ConstantCall;
 import io.proleap.vb6.asg.metamodel.call.EnumerationCall;
 import io.proleap.vb6.asg.metamodel.call.EnumerationConstantCall;
@@ -143,7 +146,6 @@ import io.proleap.vb6.asg.metamodel.call.PropertySetCall;
 import io.proleap.vb6.asg.metamodel.call.ReturnValueCall;
 import io.proleap.vb6.asg.metamodel.call.SubCall;
 import io.proleap.vb6.asg.metamodel.call.VariableCall;
-import io.proleap.vb6.asg.metamodel.call.Call.CallContext;
 import io.proleap.vb6.asg.metamodel.call.impl.ApiEnumerationCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.ApiEnumerationConstantCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.ApiProcedureCallImpl;
@@ -195,6 +197,9 @@ import io.proleap.vb6.asg.metamodel.statement.select.Select;
 import io.proleap.vb6.asg.metamodel.statement.select.SelectCase;
 import io.proleap.vb6.asg.metamodel.statement.select.SelectCaseCond;
 import io.proleap.vb6.asg.metamodel.statement.select.SelectCaseCond.SelectCaseCondType;
+import io.proleap.vb6.asg.metamodel.statement.select.SelectCaseCondExpression;
+import io.proleap.vb6.asg.metamodel.statement.select.SelectCaseCondExpression.SelectCaseCondExpressionType;
+import io.proleap.vb6.asg.metamodel.statement.select.impl.SelectCaseCondExpressionImpl;
 import io.proleap.vb6.asg.metamodel.statement.select.impl.SelectCaseCondImpl;
 import io.proleap.vb6.asg.metamodel.statement.select.impl.SelectCaseImpl;
 import io.proleap.vb6.asg.metamodel.statement.select.impl.SelectImpl;
@@ -1295,37 +1300,66 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 			if (ctx instanceof CaseCondElseContext) {
 				selectCaseCondType = SelectCaseCondType.ELSE;
-			} else if (ctx instanceof CaseCondIsContext) {
-				selectCaseCondType = SelectCaseCondType.IS;
-			} else if (ctx instanceof CaseCondToContext) {
-				selectCaseCondType = SelectCaseCondType.TO;
-			} else if (ctx instanceof CaseCondValueContext) {
-				selectCaseCondType = SelectCaseCondType.VALUE;
+			} else if (ctx instanceof CaseCondExprContext) {
+				selectCaseCondType = SelectCaseCondType.EXPRESSION;
 			} else {
 				selectCaseCondType = null;
 			}
 
 			result = new SelectCaseCondImpl(selectCaseCondType, module, this, ctx);
 
-			if (SelectCaseCondType.IS.equals(selectCaseCondType)) {
-				final CaseCondIsContext condIsCtx = (CaseCondIsContext) ctx;
+			if (SelectCaseCondType.EXPRESSION.equals(selectCaseCondType)) {
+				final CaseCondExprContext condExprContext = (CaseCondExprContext) ctx;
+
+				for (final SC_CondExprContext sc_CondExprContext : condExprContext.sC_CondExpr()) {
+					final SelectCaseCondExpression selectCaseCondExpression = addSelectCaseCondExpression(
+							sc_CondExprContext);
+
+					result.addSelectCaseCondExpression(selectCaseCondExpression);
+					selectCaseCondExpression.setSelectCaseCond(result);
+				}
+			}
+
+			registerScopedElement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public SelectCaseCondExpression addSelectCaseCondExpression(final SC_CondExprContext ctx) {
+		SelectCaseCondExpression result = (SelectCaseCondExpression) getASGElement(ctx);
+
+		if (result == null) {
+			final SelectCaseCondExpressionType selectCaseCondExpressionType;
+
+			if (ctx instanceof CaseCondExprIsContext) {
+				selectCaseCondExpressionType = SelectCaseCondExpressionType.IS;
+			} else if (ctx instanceof CaseCondExprValueContext) {
+				selectCaseCondExpressionType = SelectCaseCondExpressionType.VALUE;
+			} else if (ctx instanceof CaseCondExprToContext) {
+				selectCaseCondExpressionType = SelectCaseCondExpressionType.TO;
+			} else {
+				selectCaseCondExpressionType = null;
+			}
+
+			result = new SelectCaseCondExpressionImpl(selectCaseCondExpressionType, module, this, ctx);
+
+			if (SelectCaseCondExpressionType.IS.equals(selectCaseCondExpressionType)) {
+				final CaseCondExprIsContext condIsCtx = (CaseCondExprIsContext) ctx;
 				final ValueStmt valueStmt = addValueStmt(condIsCtx.valueStmt());
 
 				result.addValueStmt(valueStmt);
-			} else if (SelectCaseCondType.VALUE.equals(selectCaseCondType)) {
-				final CaseCondValueContext condValueCtx = (CaseCondValueContext) ctx;
+			} else if (SelectCaseCondExpressionType.VALUE.equals(selectCaseCondExpressionType)) {
+				final CaseCondExprValueContext condValueCtx = (CaseCondExprValueContext) ctx;
 
-				for (final ValueStmtContext valueCtx : condValueCtx.valueStmt()) {
-					final ValueStmt valueStmt = addValueStmt(valueCtx);
-
-					result.addValueStmt(valueStmt);
-				}
-			} else if (SelectCaseCondType.TO.equals(selectCaseCondType)) {
-				final CaseCondToContext condToCtx = (CaseCondToContext) ctx;
+				final ValueStmt valueStmt = addValueStmt(condValueCtx.valueStmt());
+				result.addValueStmt(valueStmt);
+			} else if (SelectCaseCondExpressionType.TO.equals(selectCaseCondExpressionType)) {
+				final CaseCondExprToContext condToCtx = (CaseCondExprToContext) ctx;
 
 				for (final ValueStmtContext valueCtx : condToCtx.valueStmt()) {
 					final ValueStmt valueStmt = addValueStmt(valueCtx);
-
 					result.addValueStmt(valueStmt);
 				}
 			}

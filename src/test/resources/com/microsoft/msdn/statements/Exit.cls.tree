@@ -50,22 +50,25 @@
 																	(ambiguousIdentifier MyNum)))) \n             
 														(sC_Case Case   
 															(sC_Cond 
-																(valueStmt 
-																	(literal 7))) :  
+																(sC_CondExpr 
+																	(valueStmt 
+																		(literal 7)))) :  
 															(block 
 																(blockStmt 
 																	(exitStmt Exit For))) \n            ) 
 														(sC_Case Case   
 															(sC_Cond 
-																(valueStmt 
-																	(literal 29))) :  
+																(sC_CondExpr 
+																	(valueStmt 
+																		(literal 29)))) :  
 															(block 
 																(blockStmt 
 																	(exitStmt Exit Do))) \n            ) 
 														(sC_Case Case   
 															(sC_Cond 
-																(valueStmt 
-																	(literal 54))) :  
+																(sC_CondExpr 
+																	(valueStmt 
+																		(literal 54)))) :  
 															(block 
 																(blockStmt 
 																	(exitStmt Exit Sub))) \n         ) End Select))) \n       Next   

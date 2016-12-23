@@ -37,6 +37,7 @@ import io.proleap.vb6.VisualBasic6Parser.RedimSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ResumeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SC_CaseContext;
 import io.proleap.vb6.VisualBasic6Parser.SC_CondContext;
+import io.proleap.vb6.VisualBasic6Parser.SC_CondExprContext;
 import io.proleap.vb6.VisualBasic6Parser.SelectCaseStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ValueStmtContext;
@@ -89,6 +90,7 @@ import io.proleap.vb6.asg.metamodel.statement.resume.Resume;
 import io.proleap.vb6.asg.metamodel.statement.select.Select;
 import io.proleap.vb6.asg.metamodel.statement.select.SelectCase;
 import io.proleap.vb6.asg.metamodel.statement.select.SelectCaseCond;
+import io.proleap.vb6.asg.metamodel.statement.select.SelectCaseCondExpression;
 import io.proleap.vb6.asg.metamodel.statement.set.Set;
 import io.proleap.vb6.asg.metamodel.statement.whilestmt.While;
 import io.proleap.vb6.asg.metamodel.statement.with.With;
@@ -156,6 +158,8 @@ public interface Scope extends ScopedElement {
 	SelectCase addSelectCase(SC_CaseContext ctx);
 
 	SelectCaseCond addSelectCaseCond(SC_CondContext ctx);
+
+	SelectCaseCondExpression addSelectCaseCondExpression(SC_CondExprContext ctx);
 
 	Set addSet(SetStmtContext ctx);
 
