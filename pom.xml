@@ -115,6 +115,11 @@
 					<format>xml</format>
 					<maxmem>256m</maxmem>
 					<aggregate>true</aggregate>
+					<instrumentation>
+						<includes>
+							<include>io/proleap/vb6/asg/**/*.class</include>
+						</includes>
+					</instrumentation>
 				</configuration>
 			</plugin>
 			<plugin>
