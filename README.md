@@ -2,6 +2,7 @@ ANTLR4-based parser and grammar for Visual Basic 6.0
 ====================================================
 
 [![Build](https://api.travis-ci.org/uwol/vb6parser.png)](https://travis-ci.org/uwol/vb6parser)
+[![Coverage](https://coveralls.io/repos/github/uwol/vb6parser/badge.svg?branch=master)](https://coveralls.io/github/uwol/vb6parser?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 This is a parser and grammar for Visual Basic 6.0, which generates an
