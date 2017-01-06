@@ -1,7 +1,8 @@
 ANTLR4-based parser and grammar for Visual Basic 6.0
 ====================================================
 
-<a href="https://travis-ci.org/uwol/vb6parser"><img src="https://api.travis-ci.org/uwol/vb6parser.png"></a>
+[![Build](https://api.travis-ci.org/uwol/vb6parser.png)](https://travis-ci.org/uwol/vb6parser)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 This is a parser and grammar for Visual Basic 6.0, which generates an
 Abstract Syntax Tree (AST) and Abstract Semantic Graph (ASG) for Visual Basic 6.0 code.
