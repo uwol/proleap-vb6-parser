@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.misc.Nullable;
 import org.antlr.v4.runtime.misc.Utils;
 import org.antlr.v4.runtime.tree.Tree;
 import org.antlr.v4.runtime.tree.Trees;
+import org.sonatype.inject.Nullable;
 
 public class TreeUtils {
 

@@ -12,7 +12,7 @@ import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
 import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.misc.Nullable;
+import org.sonatype.inject.Nullable;
 
 public class ThrowingErrorListener extends BaseErrorListener {
 
