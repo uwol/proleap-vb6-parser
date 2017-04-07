@@ -1,0 +1,46 @@
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(subStmt Sub   
+					(ambiguousIdentifier Foo) 
+					(argList ( )) \n     
+					(block 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier A)))   =   
+								(valueStmt ( 
+									(valueStmt 
+										(valueStmt ( 
+											(valueStmt 
+												(valueStmt 
+													(literal 1))   +   
+												(valueStmt 
+													(literal 2))) ))   /   
+										(valueStmt ( 
+											(valueStmt 
+												(valueStmt 
+													(literal 3))   +   
+												(valueStmt 
+													(literal 4))) ))) )))) \n     
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_VariableOrProcedureCall 
+										(ambiguousIdentifier B)))   =   
+								(valueStmt ( 
+									(valueStmt 
+										(valueStmt ( 
+											(valueStmt 
+												(valueStmt 
+													(literal 1))   +   
+												(valueStmt 
+													(literal 2))) ))   /   
+										(valueStmt ( 
+											(valueStmt 
+												(valueStmt 
+													(literal 3))   +   
+												(valueStmt 
+													(literal 4))) )))   ))))) \n End Sub)))) <EOF>)
