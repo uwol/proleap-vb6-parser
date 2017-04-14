@@ -112,9 +112,9 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		analyze(program);
 
 		return program;
-  }
+	}
 
-  protected void analyzeExpressions(final Program program) {
+	protected void analyzeExpressions(final Program program) {
 		for (final Module module : program.getModules()) {
 			final ParserVisitor visitor = new VbExpressionVisitorImpl(module);
 
