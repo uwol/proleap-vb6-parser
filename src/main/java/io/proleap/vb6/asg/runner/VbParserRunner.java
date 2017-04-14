@@ -10,6 +10,7 @@ package io.proleap.vb6.asg.runner;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import io.proleap.vb6.asg.metamodel.Program;
 
@@ -19,4 +20,7 @@ public interface VbParserRunner {
 
 	Program analyzeFile(File inputFile) throws IOException;
 
+	Program analyzeDirectory(File inputDirectory, Charset charset) throws IOException;
+
+	Program analyzeFile(File inputFile, Charset charset) throws IOException;
 }
