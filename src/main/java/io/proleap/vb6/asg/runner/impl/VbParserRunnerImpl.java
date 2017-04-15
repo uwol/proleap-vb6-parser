@@ -12,8 +12,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 
-import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -97,10 +98,15 @@ public class VbParserRunnerImpl implements VbParserRunner {
 
 	@Override
 	public Program analyzeDirectory(final File inputDirectory) throws IOException {
+		return analyzeDirectory(inputDirectory, Charset.defaultCharset());
+	}
+
+	@Override
+	public Program analyzeDirectory(File inputDirectory, Charset charset) throws IOException {
 		final Program program = new ProgramImpl();
 
 		for (final File inputFile : inputDirectory.listFiles()) {
-			parseFile(inputFile, program);
+			parseFile(inputFile, charset, program);
 		}
 
 		analyze(program);
@@ -119,9 +125,14 @@ public class VbParserRunnerImpl implements VbParserRunner {
 
 	@Override
 	public Program analyzeFile(final File inputFile) throws IOException {
+		return analyzeFile(inputFile, Charset.defaultCharset());
+	}
+
+	@Override
+	public Program analyzeFile(File inputFile, Charset charset) throws IOException {
 		final Program program = new ProgramImpl();
 
-		parseFile(inputFile, program);
+		parseFile(inputFile, charset, program);
 		analyze(program);
 
 		return program;
@@ -158,7 +169,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		return "bas".equals(extension);
 	}
 
-	protected void parseFile(final File inputFile, final Program program) throws IOException {
+	protected void parseFile(final File inputFile, Charset charset, final Program program) throws IOException {
 		if (!inputFile.isFile()) {
 			LOG.warn("Could not find file {}", inputFile.getAbsolutePath());
 		} else if (inputFile.isHidden()) {
@@ -170,7 +181,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 
 			final InputStream inputStream = new FileInputStream(inputFile);
 
-			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(new ANTLRInputStream(inputStream));
+			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(CharStreams.fromStream(inputStream, charset));
 
 			// get a list of matched tokens
 			final CommonTokenStream tokens = new CommonTokenStream(lexer);
