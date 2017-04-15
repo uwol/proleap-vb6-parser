@@ -102,7 +102,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	}
 
 	@Override
-	public Program analyzeDirectory(File inputDirectory, Charset charset) throws IOException {
+	public Program analyzeDirectory(final File inputDirectory, final Charset charset) throws IOException {
 		final Program program = new ProgramImpl();
 
 		for (final File inputFile : inputDirectory.listFiles()) {
@@ -129,7 +129,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	}
 
 	@Override
-	public Program analyzeFile(File inputFile, Charset charset) throws IOException {
+	public Program analyzeFile(final File inputFile, final Charset charset) throws IOException {
 		final Program program = new ProgramImpl();
 
 		parseFile(inputFile, charset, program);
@@ -169,7 +169,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		return "bas".equals(extension);
 	}
 
-	protected void parseFile(final File inputFile, Charset charset, final Program program) throws IOException {
+	protected void parseFile(final File inputFile, final Charset charset, final Program program) throws IOException {
 		if (!inputFile.isFile()) {
 			LOG.warn("Could not find file {}", inputFile.getAbsolutePath());
 		} else if (inputFile.isHidden()) {
