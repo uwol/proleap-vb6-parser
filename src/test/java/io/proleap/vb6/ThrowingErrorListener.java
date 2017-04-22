@@ -11,7 +11,6 @@ package io.proleap.vb6;
 import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.sonatype.inject.Nullable;
 
 public class ThrowingErrorListener extends BaseErrorListener {
@@ -19,9 +18,8 @@ public class ThrowingErrorListener extends BaseErrorListener {
 	public static final ThrowingErrorListener INSTANCE = new ThrowingErrorListener();
 
 	@Override
-	public void syntaxError(@NotNull final Recognizer<?, ?> recognizer, @Nullable final Object offendingSymbol,
-			final int line, final int charPositionInLine, @NotNull final String msg,
-			@Nullable final RecognitionException e) {
+	public void syntaxError(final Recognizer<?, ?> recognizer, @Nullable final Object offendingSymbol, final int line,
+			final int charPositionInLine, final String msg, @Nullable final RecognitionException e) {
 		throw new RuntimeException("syntax error in line " + line + ":" + charPositionInLine + " " + msg);
 	}
 }
