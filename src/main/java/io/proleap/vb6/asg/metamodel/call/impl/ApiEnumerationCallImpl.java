@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.asg.metamodel.call.impl;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
@@ -21,7 +21,7 @@ public class ApiEnumerationCallImpl extends CallImpl implements ApiEnumerationCa
 	protected ApiEnumeration apiEnumeration;
 
 	public ApiEnumerationCallImpl(final String name, final ApiEnumeration apiEnumeration, final Module module,
-			final Scope scope, final ParseTree ctx) {
+			final Scope scope, final ParserRuleContext ctx) {
 		super(name, module, scope, ctx);
 
 		this.apiEnumeration = apiEnumeration;

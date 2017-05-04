@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.asg.metamodel.call.impl;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
@@ -21,7 +21,7 @@ public class PropertySetCallImpl extends CallImpl implements PropertySetCall {
 	protected PropertySet propertySet;
 
 	public PropertySetCallImpl(final String name, final PropertySet propertySet, final Module module,
-			final Scope scope, final ParseTree ctx) {
+			final Scope scope, final ParserRuleContext ctx) {
 		super(name, module, scope, ctx);
 
 		this.propertySet = propertySet;

@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.asg.metamodel.impl;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
@@ -20,7 +20,7 @@ public abstract class ScopedElementImpl extends ASGElementImpl implements Scoped
 
 	protected final Scope scope;
 
-	public ScopedElementImpl(final Module module, final Scope scope, final ParseTree ctx) {
+	public ScopedElementImpl(final Module module, final Scope scope, final ParserRuleContext ctx) {
 		super(ctx);
 
 		this.scope = scope;

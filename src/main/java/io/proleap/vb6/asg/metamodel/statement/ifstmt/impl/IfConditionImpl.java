@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.asg.metamodel.statement.ifstmt.impl;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
@@ -21,7 +21,7 @@ public class IfConditionImpl extends ScopedElementImpl implements IfCondition {
 
 	protected ValueStmt valueStmt;
 
-	public IfConditionImpl(final Module module, final Scope scope, final ParseTree ctx) {
+	public IfConditionImpl(final Module module, final Scope scope, final ParserRuleContext ctx) {
 		super(module, scope, ctx);
 	}
 

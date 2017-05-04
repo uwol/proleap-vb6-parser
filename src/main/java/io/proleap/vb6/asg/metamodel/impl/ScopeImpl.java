@@ -33,7 +33,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -248,7 +248,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	protected Map<String, Variable> variables = new HashMap<String, Variable>();
 
-	public ScopeImpl(final Module module, final Scope scope, final ParseTree ctx) {
+	public ScopeImpl(final Module module, final Scope scope, final ParserRuleContext ctx) {
 		super(module, scope, ctx);
 	}
 
@@ -2023,15 +2023,15 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		return result;
 	}
 
-	protected String determineName(final ParseTree ctx) {
+	protected String determineName(final ParserRuleContext ctx) {
 		return VbParserContext.getInstance().getNameResolver().determineName(ctx);
 	}
 
-	protected Type determineType(final ParseTree ctx) {
+	protected Type determineType(final ParserRuleContext ctx) {
 		return VbParserContext.getInstance().getTypeResolver().determineType(ctx);
 	}
 
-	protected ASGElement getASGElement(final ParseTree ctx) {
+	protected ASGElement getASGElement(final ParserRuleContext ctx) {
 		final ASGElement result = VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
 		return result;
 	}

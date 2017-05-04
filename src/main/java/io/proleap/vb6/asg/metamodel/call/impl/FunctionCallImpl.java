@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.asg.metamodel.call.impl;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
@@ -21,7 +21,7 @@ public class FunctionCallImpl extends CallImpl implements FunctionCall {
 	protected Function function;
 
 	public FunctionCallImpl(final String name, final Function function, final Module module, final Scope scope,
-			final ParseTree ctx) {
+			final ParserRuleContext ctx) {
 		super(name, module, scope, ctx);
 
 		this.function = function;

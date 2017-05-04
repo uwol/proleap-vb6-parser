@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgDefaultValueContext;
@@ -44,7 +44,7 @@ public abstract class ProcedureImpl extends ScopeImpl implements Procedure {
 
 	protected final String name;
 
-	public ProcedureImpl(final String name, final Module module, final ParseTree ctx) {
+	public ProcedureImpl(final String name, final Module module, final ParserRuleContext ctx) {
 		super(module, module, ctx);
 
 		this.module = module;

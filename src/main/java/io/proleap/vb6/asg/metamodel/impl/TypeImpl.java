@@ -11,7 +11,7 @@ package io.proleap.vb6.asg.metamodel.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Type;
@@ -23,7 +23,7 @@ public class TypeImpl extends ScopedElementImpl implements Type {
 
 	protected final List<TypeElement> typeElements = new ArrayList<TypeElement>();
 
-	public TypeImpl(final String name, final Module module, final ParseTree ctx) {
+	public TypeImpl(final String name, final Module module, final ParserRuleContext ctx) {
 		super(module, module, ctx);
 
 		this.name = name;

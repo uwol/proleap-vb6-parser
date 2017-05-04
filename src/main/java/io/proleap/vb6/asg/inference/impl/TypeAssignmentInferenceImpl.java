@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.asg.inference.impl;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ForNextStmtContext;
@@ -167,7 +167,7 @@ public class TypeAssignmentInferenceImpl implements TypeAssignmentInference {
 		return typedElement != null ? typedElement.getType() : null;
 	}
 
-	protected ASGElement getASGElement(final ParseTree ctx) {
+	protected ASGElement getASGElement(final ParserRuleContext ctx) {
 		final ASGElement result = VbParserContext.getInstance().getASGElementRegistry()
 				.getASGElement(ctx);
 		return result;

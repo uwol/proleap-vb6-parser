@@ -11,7 +11,7 @@ package io.proleap.vb6.asg.metamodel.impl;
 import java.util.Collection;
 import java.util.List;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.applicationcontext.VbParserContext;
 import io.proleap.vb6.asg.metamodel.ASGElement;
@@ -23,9 +23,9 @@ import io.proleap.vb6.asg.util.ANTLRUtils;
  */
 public abstract class ASGElementImpl implements ASGElement {
 
-	protected final ParseTree ctx;
+	protected final ParserRuleContext ctx;
 
-	public ASGElementImpl(final ParseTree ctx) {
+	public ASGElementImpl(final ParserRuleContext ctx) {
 		this.ctx = ctx;
 	}
 
@@ -37,7 +37,7 @@ public abstract class ASGElementImpl implements ASGElement {
 	}
 
 	@Override
-	public ParseTree getCtx() {
+	public ParserRuleContext getCtx() {
 		return ctx;
 	}
 

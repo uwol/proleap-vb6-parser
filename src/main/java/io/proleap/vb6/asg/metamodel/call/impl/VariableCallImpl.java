@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.asg.metamodel.call.impl;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
@@ -21,7 +21,7 @@ public class VariableCallImpl extends CallImpl implements VariableCall {
 	protected final Variable variable;
 
 	public VariableCallImpl(final String name, final Variable variable, final Module module, final Scope scope,
-			final ParseTree ctx) {
+			final ParserRuleContext ctx) {
 		super(name, module, scope, ctx);
 
 		this.variable = variable;

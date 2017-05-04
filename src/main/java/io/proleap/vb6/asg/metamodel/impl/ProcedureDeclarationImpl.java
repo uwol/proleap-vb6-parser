@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
 import io.proleap.vb6.asg.applicationcontext.VbParserContext;
@@ -31,7 +31,7 @@ public class ProcedureDeclarationImpl extends ScopedElementImpl implements Proce
 	protected final String name;
 
 	public ProcedureDeclarationImpl(final String name, final Module module, final Scope scope,
-			final ParseTree ctx) {
+			final ParserRuleContext ctx) {
 		super(module, scope, ctx);
 
 		this.name = name;

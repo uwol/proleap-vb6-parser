@@ -13,7 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmt_ConstantContext;
@@ -83,11 +83,11 @@ public class EnumerationImpl extends ScopedElementImpl implements Enumeration {
 		enumerationConstant.setValueStmt(valueStmt);
 	}
 
-	protected String determineName(final ParseTree ctx) {
+	protected String determineName(final ParserRuleContext ctx) {
 		return VbParserContext.getInstance().getNameResolver().determineName(ctx);
 	}
 
-	protected Type determineType(final ParseTree ctx) {
+	protected Type determineType(final ParserRuleContext ctx) {
 		return VbParserContext.getInstance().getTypeResolver().determineType(ctx);
 	}
 

@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.asg.metamodel.call.impl;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
@@ -20,7 +20,7 @@ public class UndefinedCallImpl extends CallImpl implements Call {
 	protected final Type type;
 
 	public UndefinedCallImpl(final String name, final Type type, final Module module, final Scope scope,
-			final ParseTree ctx) {
+			final ParserRuleContext ctx) {
 		super(name, module, scope, ctx);
 
 		this.type = type;

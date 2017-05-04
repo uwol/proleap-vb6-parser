@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.asg.metamodel.statement.onerror.impl;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.LineLabel;
 import io.proleap.vb6.asg.metamodel.Module;
@@ -24,7 +24,7 @@ public class OnErrorImpl extends ScopedElementImpl implements OnError {
 
 	protected final StatementType statementType = StatementTypeEnum.OnError;
 
-	public OnErrorImpl(final LineLabel lineLabel, final Module module, final Scope scope, final ParseTree ctx) {
+	public OnErrorImpl(final LineLabel lineLabel, final Module module, final Scope scope, final ParserRuleContext ctx) {
 		super(module, scope, ctx);
 
 		this.lineLabel = lineLabel;

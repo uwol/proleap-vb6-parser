@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.asg.metamodel.call.impl;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.Arg;
 import io.proleap.vb6.asg.metamodel.Module;
@@ -20,7 +20,7 @@ public class ArgCallImpl extends CallImpl implements ArgCall {
 
 	protected Arg arg;
 
-	public ArgCallImpl(final String name, final Arg arg, final Module module, final Scope scope, final ParseTree ctx) {
+	public ArgCallImpl(final String name, final Arg arg, final Module module, final Scope scope, final ParserRuleContext ctx) {
 		super(name, module, scope, ctx);
 
 		this.arg = arg;
