@@ -8,8 +8,6 @@
 
 package io.proleap.vb6.asg.visitor.impl;
 
-import org.antlr.v4.runtime.misc.NotNull;
-
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmtContext;
 import io.proleap.vb6.asg.metamodel.Module;
@@ -31,8 +29,8 @@ public class VbTypeVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	protected final Program program;
 
-	public VbTypeVisitorImpl(final Program program, final String moduleName, final boolean isClazzModule,
-			final boolean isStandardModule) {
+	public VbTypeVisitorImpl(final String moduleName, final boolean isClazzModule, final boolean isStandardModule,
+			final Program program) {
 		super(null);
 
 		this.program = program;
@@ -42,15 +40,14 @@ public class VbTypeVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
-	public Boolean visitEnumerationStmt(@NotNull final VisualBasic6Parser.EnumerationStmtContext ctx) {
+	public Boolean visitEnumerationStmt(final VisualBasic6Parser.EnumerationStmtContext ctx) {
 		module.addEnumeration(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitEnumerationStmt_Constant(
-			@NotNull final VisualBasic6Parser.EnumerationStmt_ConstantContext ctx) {
+	public Boolean visitEnumerationStmt_Constant(final VisualBasic6Parser.EnumerationStmt_ConstantContext ctx) {
 		final EnumerationStmtContext enumerationCtx = (EnumerationStmtContext) ctx.getParent();
 		final Enumeration enumeration = (Enumeration) getASGElement(enumerationCtx);
 
@@ -60,7 +57,7 @@ public class VbTypeVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
-	public Boolean visitModule(@NotNull final VisualBasic6Parser.ModuleContext ctx) {
+	public Boolean visitModule(final VisualBasic6Parser.ModuleContext ctx) {
 		final Module result;
 
 		if (isClazzModule) {

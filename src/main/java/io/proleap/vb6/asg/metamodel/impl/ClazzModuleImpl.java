@@ -9,7 +9,6 @@
 package io.proleap.vb6.asg.metamodel.impl;
 
 import io.proleap.vb6.VisualBasic6Parser.ModuleContext;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
 import io.proleap.vb6.asg.metamodel.ClazzModule;
 import io.proleap.vb6.asg.metamodel.Program;
 
@@ -19,8 +18,7 @@ public class ClazzModuleImpl extends ModuleImpl implements ClazzModule {
 		super(name, program, ctx);
 
 		program.registerClazzModule(this);
-
-		VbParserContext.getInstance().getTypeRegistry().registerType(this);
+		program.getTypeRegistry().registerType(this);
 	}
 
 }

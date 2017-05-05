@@ -15,7 +15,7 @@ import java.util.List;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.asg.metamodel.ASGElement;
-import io.proleap.vb6.asg.registry.ASGElementRegistry;
+import io.proleap.vb6.asg.metamodel.registry.ASGElementRegistry;
 
 public class ANTLRUtils {
 

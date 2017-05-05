@@ -8,12 +8,9 @@
 
 package io.proleap.vb6.asg.visitor.impl;
 
-import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.tree.ParseTree;
-
 import io.proleap.vb6.VisualBasic6BaseVisitor;
 import io.proleap.vb6.VisualBasic6Parser;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
+import io.proleap.vb6.asg.resolver.impl.NameResolverImpl;
 
 /**
  * Determines the module name as declared in the VB_Name attribute.
@@ -31,13 +28,9 @@ public class VbModuleNameAnalyzerVisitorImpl extends VisualBasic6BaseVisitor<Str
 		return aggregate;
 	}
 
-	protected String determineName(final ParseTree ctx) {
-		return VbParserContext.getInstance().getNameResolver().determineName(ctx);
-	}
-
 	@Override
-	public String visitAttributeStmt(@NotNull final VisualBasic6Parser.AttributeStmtContext ctx) {
-		final String name = determineName(ctx);
+	public String visitAttributeStmt(final VisualBasic6Parser.AttributeStmtContext ctx) {
+		final String name = new NameResolverImpl().determineName(ctx);
 
 		// if the module name is declared
 		if (VB_NAME.toLowerCase().equals(name.toLowerCase())) {

@@ -11,11 +11,10 @@ package io.proleap.vb6.asg.visitor.impl;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import io.proleap.vb6.VisualBasic6BaseVisitor;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
 import io.proleap.vb6.asg.metamodel.ASGElement;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
-import io.proleap.vb6.asg.registry.ASGElementRegistry;
+import io.proleap.vb6.asg.metamodel.registry.ASGElementRegistry;
 import io.proleap.vb6.asg.util.ANTLRUtils;
 import io.proleap.vb6.asg.visitor.ParserVisitor;
 
@@ -28,12 +27,12 @@ public abstract class AbstractVbParserVisitorImpl extends VisualBasic6BaseVisito
 	}
 
 	protected Scope findScope(final ParseTree ctx) {
-		final ASGElementRegistry registry = VbParserContext.getInstance().getASGElementRegistry();
+		final ASGElementRegistry registry = module.getProgram().getASGElementRegistry();
 		return ANTLRUtils.findParent(Scope.class, ctx, registry);
 	}
 
 	protected ASGElement getASGElement(final ParseTree ctx) {
-		final ASGElement result = VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
+		final ASGElement result = module.getProgram().getASGElementRegistry().getASGElement(ctx);
 		return result;
 	}
 

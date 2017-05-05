@@ -17,8 +17,8 @@ import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmt_ConstantContext;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
 import io.proleap.vb6.asg.metamodel.Module;
+import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.Scope;
 import io.proleap.vb6.asg.metamodel.call.EnumerationCall;
 import io.proleap.vb6.asg.metamodel.impl.ScopedElementImpl;
@@ -28,6 +28,8 @@ import io.proleap.vb6.asg.metamodel.statement.enumeration.Enumeration;
 import io.proleap.vb6.asg.metamodel.statement.enumeration.EnumerationConstant;
 import io.proleap.vb6.asg.metamodel.type.Type;
 import io.proleap.vb6.asg.metamodel.valuestmt.ValueStmt;
+import io.proleap.vb6.asg.resolver.impl.NameResolverImpl;
+import io.proleap.vb6.asg.resolver.impl.TypeResolverImpl;
 
 public class EnumerationImpl extends ScopedElementImpl implements Enumeration {
 
@@ -77,18 +79,19 @@ public class EnumerationImpl extends ScopedElementImpl implements Enumeration {
 		enumerationConstantsByCtx.put(ctx, enumerationConstant);
 		enumerationConstantsSymbolTable.put(name, enumerationConstant);
 
-		VbParserContext.getInstance().getASGElementRegistry().addASGElement(enumerationConstant);
+		module.getProgram().getASGElementRegistry().addASGElement(enumerationConstant);
 
 		final ValueStmt valueStmt = module.addValueStmt(ctx.valueStmt());
 		enumerationConstant.setValueStmt(valueStmt);
 	}
 
 	protected String determineName(final ParserRuleContext ctx) {
-		return VbParserContext.getInstance().getNameResolver().determineName(ctx);
+		return new NameResolverImpl().determineName(ctx);
 	}
 
 	protected Type determineType(final ParserRuleContext ctx) {
-		return VbParserContext.getInstance().getTypeResolver().determineType(ctx);
+		final Program program = module.getProgram();
+		return new TypeResolverImpl().determineType(ctx, program);
 	}
 
 	@Override

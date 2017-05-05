@@ -12,7 +12,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import io.proleap.vb6.VisualBasic6Parser.TypeStmt_ElementContext;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
+import io.proleap.vb6.asg.inference.impl.TypeInferenceImpl;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.TypeElement;
 import io.proleap.vb6.asg.metamodel.type.Type;
@@ -62,9 +62,8 @@ public class TypeElementImpl extends ScopedElementImpl implements TypeElement {
 
 	@Override
 	public Type getType() {
-		final Type defType = VbParserContext.getInstance().getTypeInference().inferTypeFromDefType(module, name);
-		final Type result = VbParserContext.getInstance().getTypeInference().inferType(type, defType,
-				typesOfAssignedValues);
+		final Type defType = new TypeInferenceImpl().inferTypeFromDefType(module, name);
+		final Type result = new TypeInferenceImpl().inferType(type, defType, typesOfAssignedValues);
 		return result;
 	}
 

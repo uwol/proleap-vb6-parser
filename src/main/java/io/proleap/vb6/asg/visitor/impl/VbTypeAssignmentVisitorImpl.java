@@ -8,11 +8,10 @@
 
 package io.proleap.vb6.asg.visitor.impl;
 
-import org.antlr.v4.runtime.misc.NotNull;
-
 import io.proleap.vb6.VisualBasic6Parser;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
+import io.proleap.vb6.asg.inference.impl.TypeAssignmentInferenceImpl;
 import io.proleap.vb6.asg.metamodel.Module;
+import io.proleap.vb6.asg.metamodel.Program;
 
 public class VbTypeAssignmentVisitorImpl extends AbstractVbParserVisitorImpl {
 
@@ -21,43 +20,49 @@ public class VbTypeAssignmentVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
-	public Boolean visitArgCall(@NotNull final VisualBasic6Parser.ArgCallContext ctx) {
-		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
+	public Boolean visitArgCall(final VisualBasic6Parser.ArgCallContext ctx) {
+		final Program program = module.getProgram();
+		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, program);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitForNextStmt(@NotNull final VisualBasic6Parser.ForNextStmtContext ctx) {
-		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
+	public Boolean visitForNextStmt(final VisualBasic6Parser.ForNextStmtContext ctx) {
+		final Program program = module.getProgram();
+		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, program);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitLetStmt(@NotNull final VisualBasic6Parser.LetStmtContext ctx) {
-		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
+	public Boolean visitLetStmt(final VisualBasic6Parser.LetStmtContext ctx) {
+		final Program program = module.getProgram();
+		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, program);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitRedimSubStmt(@NotNull final VisualBasic6Parser.RedimSubStmtContext ctx) {
-		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
+	public Boolean visitRedimSubStmt(final VisualBasic6Parser.RedimSubStmtContext ctx) {
+		final Program program = module.getProgram();
+		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, program);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitSetStmt(@NotNull final VisualBasic6Parser.SetStmtContext ctx) {
-		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
+	public Boolean visitSetStmt(final VisualBasic6Parser.SetStmtContext ctx) {
+		final Program program = module.getProgram();
+		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, program);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitVsAssign(@NotNull final VisualBasic6Parser.VsAssignContext ctx) {
-		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
+	public Boolean visitVsAssign(final VisualBasic6Parser.VsAssignContext ctx) {
+		final Program program = module.getProgram();
+		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, program);
 
 		return visitChildren(ctx);
 	}

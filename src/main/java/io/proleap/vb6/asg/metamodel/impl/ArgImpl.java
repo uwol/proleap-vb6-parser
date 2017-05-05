@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
+import io.proleap.vb6.asg.inference.impl.TypeInferenceImpl;
 import io.proleap.vb6.asg.metamodel.Arg;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Procedure;
@@ -48,8 +48,8 @@ public class ArgImpl extends ScopedElementImpl implements Arg {
 	 */
 	protected Set<Type> typesOfAssignedValues = new LinkedHashSet<Type>();
 
-	public ArgImpl(final String name, final Type type, final boolean isOptional, final Module module,
-			final Scope scope, final ArgContext ctx) {
+	public ArgImpl(final String name, final Type type, final boolean isOptional, final Module module, final Scope scope,
+			final ArgContext ctx) {
 		super(module, scope, ctx);
 
 		this.ctx = ctx;
@@ -107,9 +107,8 @@ public class ArgImpl extends ScopedElementImpl implements Arg {
 
 	@Override
 	public Type getType() {
-		final Type defType = VbParserContext.getInstance().getTypeInference().inferTypeFromDefType(module, name);
-		final Type result = VbParserContext.getInstance().getTypeInference().inferType(type, defType,
-				typesOfAssignedValues);
+		final Type defType = new TypeInferenceImpl().inferTypeFromDefType(module, name);
+		final Type result = new TypeInferenceImpl().inferType(type, defType, typesOfAssignedValues);
 		return result;
 	}
 

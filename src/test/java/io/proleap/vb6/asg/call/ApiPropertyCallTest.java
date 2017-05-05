@@ -6,28 +6,21 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.File;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import io.proleap.vb6.VbTestSupport;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
+import io.proleap.vb6.VbTestBase;
+import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.api.ApiProperty;
+import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
-public class ApiPropertyCallTest extends VbTestSupport {
-
-	@Override
-	@Before
-	public void setUp() throws Exception {
-		super.setUp();
-	}
+public class ApiPropertyCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
 		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/ApiPropertyCall.cls");
-		VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
+		final Program program = new VbParserRunnerImpl().analyzeFile(inputFile);
 
-		final ApiProperty apiProperty = VbParserContext.getInstance().getApiPropertyRegistry()
-				.getApiProperty("AppMajor");
+		final ApiProperty apiProperty = program.getApiPropertyRegistry().getApiProperty("AppMajor");
 
 		assertNotNull(apiProperty);
 		assertFalse(apiProperty.getApiPropertyCalls().isEmpty());

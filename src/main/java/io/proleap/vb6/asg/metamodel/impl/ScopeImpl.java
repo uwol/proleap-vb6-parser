@@ -108,7 +108,7 @@ import io.proleap.vb6.VisualBasic6Parser.VsTypeOfContext;
 import io.proleap.vb6.VisualBasic6Parser.VsXorContext;
 import io.proleap.vb6.VisualBasic6Parser.WhileWendStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.WithStmtContext;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
+import io.proleap.vb6.asg.inference.impl.TypeAssignmentInferenceImpl;
 import io.proleap.vb6.asg.metamodel.ASGElement;
 import io.proleap.vb6.asg.metamodel.Arg;
 import io.proleap.vb6.asg.metamodel.Declaration;
@@ -118,6 +118,7 @@ import io.proleap.vb6.asg.metamodel.ModelElement;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.NamedElement;
 import io.proleap.vb6.asg.metamodel.Procedure;
+import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.Scope;
 import io.proleap.vb6.asg.metamodel.ScopedElement;
 import io.proleap.vb6.asg.metamodel.StandardModule;
@@ -231,6 +232,8 @@ import io.proleap.vb6.asg.metamodel.valuestmt.impl.StringValueStmtImpl;
 import io.proleap.vb6.asg.metamodel.valuestmt.impl.StructValueStmtImpl;
 import io.proleap.vb6.asg.metamodel.valuestmt.impl.SubCallImpl;
 import io.proleap.vb6.asg.metamodel.valuestmt.impl.ValueAssignmentImpl;
+import io.proleap.vb6.asg.resolver.impl.NameResolverImpl;
+import io.proleap.vb6.asg.resolver.impl.TypeResolverImpl;
 
 public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
@@ -265,7 +268,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			registerScopedElement(result);
 		}
 
-		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
+		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, module.getProgram());
 
 		return result;
 	}
@@ -1104,7 +1107,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			registerStatement(result);
 		}
 
-		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
+		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, module.getProgram());
 
 		return result;
 	}
@@ -1149,7 +1152,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			registerStatement(result);
 		}
 
-		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
+		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, module.getProgram());
 
 		return result;
 	}
@@ -1219,7 +1222,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			registerStatement(result);
 		}
 
-		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
+		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, module.getProgram());
 
 		return result;
 	}
@@ -1394,7 +1397,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			registerStatement(result);
 		}
 
-		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
+		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, module.getProgram());
 
 		return result;
 	}
@@ -1601,7 +1604,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			registerASGElement(result);
 		}
 
-		VbParserContext.getInstance().getTypeAssignmentInference().addTypeAssignment(ctx);
+		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, module.getProgram());
 
 		return result;
 	}
@@ -2024,15 +2027,17 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	protected String determineName(final ParserRuleContext ctx) {
-		return VbParserContext.getInstance().getNameResolver().determineName(ctx);
+		return new NameResolverImpl().determineName(ctx);
 	}
 
 	protected Type determineType(final ParserRuleContext ctx) {
-		return VbParserContext.getInstance().getTypeResolver().determineType(ctx);
+		final Program program = module.getProgram();
+		return new TypeResolverImpl().determineType(ctx, program);
 	}
 
 	protected ASGElement getASGElement(final ParserRuleContext ctx) {
-		final ASGElement result = VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
+		final Program program = module.getProgram();
+		final ASGElement result = program.getASGElementRegistry().getASGElement(ctx);
 		return result;
 	}
 
@@ -2083,13 +2088,10 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			// name
 			final List<ScopedElement> globalProgramElements = getScopedElementsInHierarchy(name);
 
-			final ApiProcedure apiProcedure = VbParserContext.getInstance().getApiProcedureRegistry()
-					.getApiProcedure(name);
-
-			final ApiProperty apiProperty = VbParserContext.getInstance().getApiPropertyRegistry().getApiProperty(name);
-
-			final ApiEnumerationConstant apiEnumerationConstant = VbParserContext.getInstance()
-					.getApiEnumerationRegistry().getApiEnumerationConstant(name);
+			final ApiProcedure apiProcedure = module.getProgram().getApiProcedureRegistry().getApiProcedure(name);
+			final ApiProperty apiProperty = module.getProgram().getApiPropertyRegistry().getApiProperty(name);
+			final ApiEnumerationConstant apiEnumerationConstant = module.getProgram().getApiEnumerationRegistry()
+					.getApiEnumerationConstant(name);
 
 			if (globalProgramElements != null) {
 				referencedProgramElements.addAll(globalProgramElements);
@@ -2295,10 +2297,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	protected void registerASGElement(final ASGElement asgElement) {
-		assert asgElement != null;
-		assert asgElement.getCtx() != null;
-
-		VbParserContext.getInstance().getASGElementRegistry().addASGElement(asgElement);
+		module.getProgram().getASGElementRegistry().addASGElement(asgElement);
 	}
 
 	protected void registerScopedElement(final ScopedElement scopedElement) {

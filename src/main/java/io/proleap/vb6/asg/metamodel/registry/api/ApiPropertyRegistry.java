@@ -6,7 +6,7 @@
  * of the BSD 3-clause license. See the LICENSE file for details.
  */
 
-package io.proleap.vb6.asg.registry.api;
+package io.proleap.vb6.asg.metamodel.registry.api;
 
 import io.proleap.vb6.asg.metamodel.api.ApiProperty;
 

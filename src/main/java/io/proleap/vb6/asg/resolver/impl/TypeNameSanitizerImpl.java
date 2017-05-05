@@ -6,12 +6,12 @@
  * of the BSD 3-clause license. See the LICENSE file for details.
  */
 
-package io.proleap.vb6.asg.registry.impl;
+package io.proleap.vb6.asg.resolver.impl;
 
 import io.proleap.vb6.asg.metamodel.type.Type;
-import io.proleap.vb6.asg.registry.TypeNameSanitizer;
+import io.proleap.vb6.asg.resolver.TypeNameSanitizer;
 
-public class VbTypeNameSanitizerImpl implements TypeNameSanitizer {
+public class TypeNameSanitizerImpl implements TypeNameSanitizer {
 
 	@Override
 	public String sanitize(final String typeName) {

@@ -37,11 +37,9 @@ import io.proleap.vb6.VisualBasic6Parser.VsNewContext;
 import io.proleap.vb6.VisualBasic6Parser.VsNotContext;
 import io.proleap.vb6.VisualBasic6Parser.VsOrContext;
 import io.proleap.vb6.VisualBasic6Parser.VsXorContext;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
+import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.type.Type;
-import io.proleap.vb6.asg.registry.TypeRegistry;
-import io.proleap.vb6.asg.resolver.NameResolver;
 import io.proleap.vb6.asg.resolver.TypeResolver;
 import io.proleap.vb6.asg.util.StringUtils;
 
@@ -52,13 +50,13 @@ import io.proleap.vb6.asg.util.StringUtils;
  */
 public class TypeResolverImpl implements TypeResolver {
 
-	public Type determineType(final ImplicitCallStmt_InStmtContext ctx) {
+	public Type determineType(final ImplicitCallStmt_InStmtContext ctx, final Program program) {
 		final Type result;
 
 		if (ctx.iCS_S_VariableOrProcedureCall() != null) {
-			result = determineType(ctx.iCS_S_VariableOrProcedureCall());
+			result = determineType(ctx.iCS_S_VariableOrProcedureCall(), program);
 		} else if (ctx.iCS_S_ProcedureOrArrayCall() != null) {
-			result = determineType(ctx.iCS_S_ProcedureOrArrayCall());
+			result = determineType(ctx.iCS_S_ProcedureOrArrayCall(), program);
 		} else {
 			result = null;
 		}
@@ -66,7 +64,7 @@ public class TypeResolverImpl implements TypeResolver {
 		return result;
 	}
 
-	public Type determineType(final LiteralContext literal) {
+	public Type determineType(final LiteralContext literal, final Program program) {
 		final Type result;
 
 		if (literal == null) {
@@ -99,63 +97,63 @@ public class TypeResolverImpl implements TypeResolver {
 	}
 
 	@Override
-	public Type determineType(final ParseTree ctx) {
+	public Type determineType(final ParseTree ctx, final Program program) {
 		final Type result;
 
 		if (ctx instanceof ArgContext) {
-			result = determineType((ArgContext) ctx);
+			result = determineType((ArgContext) ctx, program);
 		} else if (ctx instanceof ArgCallContext) {
-			result = determineType((ArgCallContext) ctx);
+			result = determineType((ArgCallContext) ctx, program);
 		} else if (ctx instanceof ArgDefaultValueContext) {
-			result = determineType((ArgDefaultValueContext) ctx);
+			result = determineType((ArgDefaultValueContext) ctx, program);
 		} else if (ctx instanceof AsTypeClauseContext) {
-			result = determineType((AsTypeClauseContext) ctx);
+			result = determineType((AsTypeClauseContext) ctx, program);
 		} else if (ctx instanceof AttributeStmtContext) {
-			result = determineType((AttributeStmtContext) ctx);
+			result = determineType((AttributeStmtContext) ctx, program);
 		} else if (ctx instanceof ConstSubStmtContext) {
-			result = determineType((ConstSubStmtContext) ctx);
+			result = determineType((ConstSubStmtContext) ctx, program);
 		} else if (ctx instanceof ImplicitCallStmt_InStmtContext) {
-			result = determineType((ImplicitCallStmt_InStmtContext) ctx);
+			result = determineType((ImplicitCallStmt_InStmtContext) ctx, program);
 		} else if (ctx instanceof LiteralContext) {
-			result = determineType((LiteralContext) ctx);
+			result = determineType((LiteralContext) ctx, program);
 		} else if (ctx instanceof TypeHintContext) {
-			result = determineType((TypeHintContext) ctx);
+			result = determineType((TypeHintContext) ctx, program);
 		} else if (ctx instanceof TypeStmt_ElementContext) {
-			result = determineType((TypeStmt_ElementContext) ctx);
+			result = determineType((TypeStmt_ElementContext) ctx, program);
 		} else if (ctx instanceof VariableSubStmtContext) {
-			result = determineType((VariableSubStmtContext) ctx);
+			result = determineType((VariableSubStmtContext) ctx, program);
 		}
 		// specific value statements
 		else if (ctx instanceof ValueStmtContext) {
-			result = determineType((ValueStmtContext) ctx);
+			result = determineType((ValueStmtContext) ctx, program);
 		} else if (ctx instanceof VsICSContext) {
-			result = determineType((VsICSContext) ctx);
+			result = determineType((VsICSContext) ctx, program);
 		} else if (ctx instanceof VsLiteralContext) {
-			result = determineType((VsLiteralContext) ctx);
+			result = determineType((VsLiteralContext) ctx, program);
 		} else if (ctx instanceof VsLtContext) {
-			result = determineType((VsLtContext) ctx);
+			result = determineType((VsLtContext) ctx, program);
 		} else if (ctx instanceof VsLeqContext) {
-			result = determineType((VsLeqContext) ctx);
+			result = determineType((VsLeqContext) ctx, program);
 		} else if (ctx instanceof VsGtContext) {
-			result = determineType((VsGtContext) ctx);
+			result = determineType((VsGtContext) ctx, program);
 		} else if (ctx instanceof VsGeqContext) {
-			result = determineType((VsGeqContext) ctx);
+			result = determineType((VsGeqContext) ctx, program);
 		} else if (ctx instanceof VsNeqContext) {
-			result = determineType((VsNeqContext) ctx);
+			result = determineType((VsNeqContext) ctx, program);
 		} else if (ctx instanceof VsNewContext) {
-			result = determineType((VsNewContext) ctx);
+			result = determineType((VsNewContext) ctx, program);
 		} else if (ctx instanceof VsEqvContext) {
-			result = determineType((VsEqvContext) ctx);
+			result = determineType((VsEqvContext) ctx, program);
 		} else if (ctx instanceof VsIsContext) {
-			result = determineType((VsIsContext) ctx);
+			result = determineType((VsIsContext) ctx, program);
 		} else if (ctx instanceof VsLikeContext) {
-			result = determineType((VsLikeContext) ctx);
+			result = determineType((VsLikeContext) ctx, program);
 		} else if (ctx instanceof VsNotContext) {
-			result = determineType((VsNotContext) ctx);
+			result = determineType((VsNotContext) ctx, program);
 		} else if (ctx instanceof VsOrContext) {
-			result = determineType((VsOrContext) ctx);
+			result = determineType((VsOrContext) ctx, program);
 		} else if (ctx instanceof VsXorContext) {
-			result = determineType((VsXorContext) ctx);
+			result = determineType((VsXorContext) ctx, program);
 		} else {
 			result = null;
 		}
@@ -163,7 +161,7 @@ public class TypeResolverImpl implements TypeResolver {
 		return result;
 	}
 
-	public Type determineType(final TypeHintContext ctx) {
+	public Type determineType(final TypeHintContext ctx, final Program program) {
 		final Type result;
 
 		if ("&".equals(ctx.getText())) {
@@ -185,39 +183,39 @@ public class TypeResolverImpl implements TypeResolver {
 		return result;
 	}
 
-	public Type determineType(final ValueStmtContext valueStmt) {
+	public Type determineType(final ValueStmtContext valueStmt, final Program program) {
 		final Type result;
 
 		if (valueStmt == null) {
 			result = null;
 		} else if (valueStmt instanceof VsICSContext) {
-			result = determineType((VsICSContext) valueStmt);
+			result = determineType((VsICSContext) valueStmt, program);
 		} else if (valueStmt instanceof VsLiteralContext) {
-			result = determineType((VsLiteralContext) valueStmt);
+			result = determineType((VsLiteralContext) valueStmt, program);
 		} else if (valueStmt instanceof VsLtContext) {
-			result = determineType((VsLtContext) valueStmt);
+			result = determineType((VsLtContext) valueStmt, program);
 		} else if (valueStmt instanceof VsLeqContext) {
-			result = determineType((VsLeqContext) valueStmt);
+			result = determineType((VsLeqContext) valueStmt, program);
 		} else if (valueStmt instanceof VsGtContext) {
-			result = determineType((VsGtContext) valueStmt);
+			result = determineType((VsGtContext) valueStmt, program);
 		} else if (valueStmt instanceof VsGeqContext) {
-			result = determineType((VsGeqContext) valueStmt);
+			result = determineType((VsGeqContext) valueStmt, program);
 		} else if (valueStmt instanceof VsNeqContext) {
-			result = determineType((VsNeqContext) valueStmt);
+			result = determineType((VsNeqContext) valueStmt, program);
 		} else if (valueStmt instanceof VsEqvContext) {
-			result = determineType((VsEqvContext) valueStmt);
+			result = determineType((VsEqvContext) valueStmt, program);
 		} else if (valueStmt instanceof VsIsContext) {
-			result = determineType((VsIsContext) valueStmt);
+			result = determineType((VsIsContext) valueStmt, program);
 		} else if (valueStmt instanceof VsLikeContext) {
-			result = determineType((VsLikeContext) valueStmt);
+			result = determineType((VsLikeContext) valueStmt, program);
 		} else if (valueStmt instanceof VsNotContext) {
-			result = determineType((VsNotContext) valueStmt);
+			result = determineType((VsNotContext) valueStmt, program);
 		} else if (valueStmt instanceof VsOrContext) {
-			result = determineType((VsOrContext) valueStmt);
+			result = determineType((VsOrContext) valueStmt, program);
 		} else if (valueStmt instanceof VsXorContext) {
-			result = determineType((VsXorContext) valueStmt);
+			result = determineType((VsXorContext) valueStmt, program);
 		} else if (valueStmt instanceof VsNewContext) {
-			result = determineType((VsNewContext) valueStmt);
+			result = determineType((VsNewContext) valueStmt, program);
 		} else {
 			result = determineTypeFromText(valueStmt.getText());
 		}
@@ -225,19 +223,19 @@ public class TypeResolverImpl implements TypeResolver {
 		return result;
 	}
 
-	public Type determineType(final VisualBasic6Parser.ArgCallContext ctx) {
-		return determineType(ctx.valueStmt());
+	public Type determineType(final VisualBasic6Parser.ArgCallContext ctx, final Program program) {
+		return determineType(ctx.valueStmt(), program);
 	}
 
-	public Type determineType(final VisualBasic6Parser.ArgContext ctx) {
-		return determineType(ctx.asTypeClause());
+	public Type determineType(final VisualBasic6Parser.ArgContext ctx, final Program program) {
+		return determineType(ctx.asTypeClause(), program);
 	}
 
-	public Type determineType(final VisualBasic6Parser.ArgDefaultValueContext ctx) {
+	public Type determineType(final VisualBasic6Parser.ArgDefaultValueContext ctx, final Program program) {
 		Type result;
 
 		if (ctx.literal() != null) {
-			result = determineType(ctx.literal());
+			result = determineType(ctx.literal(), program);
 		} else {
 			result = null;
 		}
@@ -245,7 +243,7 @@ public class TypeResolverImpl implements TypeResolver {
 		return result;
 	}
 
-	public Type determineType(final VisualBasic6Parser.AsTypeClauseContext ctx) {
+	public Type determineType(final VisualBasic6Parser.AsTypeClauseContext ctx, final Program program) {
 		final Type result;
 
 		if (ctx == null) {
@@ -254,10 +252,10 @@ public class TypeResolverImpl implements TypeResolver {
 			result = null;
 		} else if (ctx.type().baseType() != null) {
 			final String typeName = ctx.type().baseType().getText();
-			result = getTypeRegistry().getType(typeName);
+			result = program.getTypeRegistry().getType(typeName);
 		} else if (ctx.type().complexType() != null) {
 			final String typeName = ctx.type().complexType().getText();
-			result = getTypeRegistry().getType(typeName);
+			result = program.getTypeRegistry().getType(typeName);
 		} else {
 			result = null;
 		}
@@ -265,16 +263,14 @@ public class TypeResolverImpl implements TypeResolver {
 		return result;
 	}
 
-	public Type determineType(final VisualBasic6Parser.AttributeStmtContext ctx) {
-		final Type result = determineType(ctx.literal(0));
+	public Type determineType(final VisualBasic6Parser.AttributeStmtContext ctx, final Program program) {
+		final Type result = determineType(ctx.literal(0), program);
 		return result;
 	}
 
-	public Type determineType(final VisualBasic6Parser.ConstSubStmtContext ctx) {
-		final String name = getNameResolver().determineName(ctx);
-
-		final Type asTypeType = determineType(ctx.asTypeClause());
-		final Type valueType = determineType(ctx.valueStmt());
+	public Type determineType(final VisualBasic6Parser.ConstSubStmtContext ctx, final Program program) {
+		final Type asTypeType = determineType(ctx.asTypeClause(), program);
+		final Type valueType = determineType(ctx.valueStmt(), program);
 
 		final Type result;
 
@@ -287,19 +283,19 @@ public class TypeResolverImpl implements TypeResolver {
 		return result;
 	}
 
-	public Type determineType(final VisualBasic6Parser.TypeStmt_ElementContext ctx) {
-		final Type result = determineType(ctx.asTypeClause());
+	public Type determineType(final VisualBasic6Parser.TypeStmt_ElementContext ctx, final Program program) {
+		final Type result = determineType(ctx.asTypeClause(), program);
 		return result;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VariableSubStmtContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VariableSubStmtContext ctx, final Program program) {
 
 		final Type result;
 
 		if (ctx.asTypeClause() != null) {
-			result = determineType(ctx.asTypeClause());
+			result = determineType(ctx.asTypeClause(), program);
 		} else if (ctx.typeHint() != null) {
-			result = determineType(ctx.typeHint());
+			result = determineType(ctx.typeHint(), program);
 		} else {
 			result = null;
 		}
@@ -307,48 +303,48 @@ public class TypeResolverImpl implements TypeResolver {
 		return result;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsEqvContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VsEqvContext ctx, final Program program) {
 		return VbBaseType.BOOLEAN;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsGeqContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VsGeqContext ctx, final Program program) {
 		return VbBaseType.BOOLEAN;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsGtContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VsGtContext ctx, final Program program) {
 		return VbBaseType.BOOLEAN;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsIsContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VsIsContext ctx, final Program program) {
 		return VbBaseType.BOOLEAN;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsLeqContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VsLeqContext ctx, final Program program) {
 		return VbBaseType.BOOLEAN;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsLikeContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VsLikeContext ctx, final Program program) {
 		return VbBaseType.BOOLEAN;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsLiteralContext ctx) {
-		return determineType(ctx.literal());
+	public Type determineType(final VisualBasic6Parser.VsLiteralContext ctx, final Program program) {
+		return determineType(ctx.literal(), program);
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsLtContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VsLtContext ctx, final Program program) {
 		return VbBaseType.BOOLEAN;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsNeqContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VsNeqContext ctx, final Program program) {
 		return VbBaseType.BOOLEAN;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsNewContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VsNewContext ctx, final Program program) {
 		final Type type;
 
 		if (ctx != null) {
 			final String typeName = ctx.valueStmt().getText();
-			type = getTypeRegistry().getType(typeName);
+			type = program.getTypeRegistry().getType(typeName);
 		} else {
 			type = null;
 		}
@@ -356,21 +352,21 @@ public class TypeResolverImpl implements TypeResolver {
 		return type;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsNotContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VsNotContext ctx, final Program program) {
 		return VbBaseType.BOOLEAN;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsOrContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VsOrContext ctx, final Program program) {
 		return VbBaseType.BOOLEAN;
 	}
 
-	public Type determineType(final VisualBasic6Parser.VsXorContext ctx) {
+	public Type determineType(final VisualBasic6Parser.VsXorContext ctx, final Program program) {
 		return VbBaseType.BOOLEAN;
 	}
 
-	public Type determineType(final VsICSContext ctx) {
+	public Type determineType(final VsICSContext ctx, final Program program) {
 		final ImplicitCallStmt_InStmtContext implicitCallStmt_InStmt = ctx.implicitCallStmt_InStmt();
-		return determineType(implicitCallStmt_InStmt);
+		return determineType(implicitCallStmt_InStmt, program);
 	}
 
 	protected Type determineTypeFromText(final String value) {
@@ -389,14 +385,6 @@ public class TypeResolverImpl implements TypeResolver {
 		}
 
 		return result;
-	}
-
-	protected NameResolver getNameResolver() {
-		return VbParserContext.getInstance().getNameResolver();
-	}
-
-	protected TypeRegistry getTypeRegistry() {
-		return VbParserContext.getInstance().getTypeRegistry();
 	}
 
 }

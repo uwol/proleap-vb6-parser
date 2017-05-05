@@ -13,10 +13,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
 import io.proleap.vb6.asg.metamodel.api.ApiEnumeration;
 import io.proleap.vb6.asg.metamodel.api.ApiEnumerationConstant;
 import io.proleap.vb6.asg.metamodel.call.ApiEnumerationCall;
+import io.proleap.vb6.asg.resolver.impl.TypeNameSanitizerImpl;
 
 public class ApiEnumerationImpl implements ApiEnumeration {
 
@@ -47,7 +47,7 @@ public class ApiEnumerationImpl implements ApiEnumeration {
 	}
 
 	private String getKey(final String name) {
-		final String sanitizedTypeName = VbParserContext.getInstance().getTypeNameSanitizer().sanitize(name);
+		final String sanitizedTypeName = new TypeNameSanitizerImpl().sanitize(name);
 		return sanitizedTypeName.toLowerCase();
 	}
 

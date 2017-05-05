@@ -1,5 +1,5 @@
-ANTLR4-based parser and grammar for Visual Basic 6.0
-====================================================
+ProLeap ANTLR4-based parser and grammar for Visual Basic 6.0
+============================================================
 
 [![Build](https://img.shields.io/travis/uwol/vb6parser.svg)](https://travis-ci.org/uwol/vb6parser)
 [![Coverage](https://coveralls.io/repos/github/uwol/vb6parser/badge.svg?branch=master)](https://coveralls.io/github/uwol/vb6parser?branch=master)

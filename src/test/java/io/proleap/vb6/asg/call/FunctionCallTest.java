@@ -6,30 +6,23 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.File;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import io.proleap.vb6.VbTestSupport;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
+import io.proleap.vb6.VbTestBase;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.Variable;
 import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.statement.function.Function;
 import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
+import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
-public class FunctionCallTest extends VbTestSupport {
-
-	@Override
-	@Before
-	public void setUp() throws Exception {
-		super.setUp();
-	}
+public class FunctionCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
 		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/FunctionCall.cls");
-		final Program program = VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
+		final Program program = new VbParserRunnerImpl().analyzeFile(inputFile);
 
 		final Module module = program.getClazzModule("FunctionCall");
 		final Function function1 = module.getFunction("Function1");

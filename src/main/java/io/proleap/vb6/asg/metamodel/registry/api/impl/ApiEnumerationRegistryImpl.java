@@ -6,15 +6,15 @@
  * of the BSD 3-clause license. See the LICENSE file for details.
  */
 
-package io.proleap.vb6.asg.registry.api.impl;
+package io.proleap.vb6.asg.metamodel.registry.api.impl;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
 import io.proleap.vb6.asg.metamodel.api.ApiEnumeration;
 import io.proleap.vb6.asg.metamodel.api.ApiEnumerationConstant;
-import io.proleap.vb6.asg.registry.api.ApiEnumerationRegistry;
+import io.proleap.vb6.asg.metamodel.registry.api.ApiEnumerationRegistry;
+import io.proleap.vb6.asg.resolver.impl.TypeNameSanitizerImpl;
 
 public class ApiEnumerationRegistryImpl implements ApiEnumerationRegistry {
 
@@ -38,7 +38,7 @@ public class ApiEnumerationRegistryImpl implements ApiEnumerationRegistry {
 	}
 
 	private String getKey(final String name) {
-		final String sanitizedTypeName = VbParserContext.getInstance().getTypeNameSanitizer().sanitize(name);
+		final String sanitizedTypeName = new TypeNameSanitizerImpl().sanitize(name);
 		return sanitizedTypeName.toLowerCase();
 	}
 

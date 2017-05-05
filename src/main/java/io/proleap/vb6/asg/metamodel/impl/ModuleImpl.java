@@ -33,7 +33,6 @@ import io.proleap.vb6.VisualBasic6Parser.PropertySetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.TypeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.TypeStmt_ElementContext;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
 import io.proleap.vb6.asg.metamodel.Attribute;
 import io.proleap.vb6.asg.metamodel.DefType;
 import io.proleap.vb6.asg.metamodel.Literal;
@@ -220,7 +219,9 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 			registerStatement(result);
 			enumerations.put(name, result);
-			VbParserContext.getInstance().getTypeRegistry().registerType(result);
+
+			final Program program = module.getProgram();
+			program.getTypeRegistry().registerType(result);
 		}
 
 		return result;

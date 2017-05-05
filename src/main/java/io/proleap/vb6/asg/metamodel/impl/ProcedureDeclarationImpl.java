@@ -15,12 +15,14 @@ import java.util.List;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
-import io.proleap.vb6.asg.applicationcontext.VbParserContext;
 import io.proleap.vb6.asg.metamodel.Arg;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.ProcedureDeclaration;
+import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.Scope;
 import io.proleap.vb6.asg.metamodel.type.Type;
+import io.proleap.vb6.asg.resolver.impl.NameResolverImpl;
+import io.proleap.vb6.asg.resolver.impl.TypeResolverImpl;
 
 public class ProcedureDeclarationImpl extends ScopedElementImpl implements ProcedureDeclaration {
 
@@ -39,9 +41,11 @@ public class ProcedureDeclarationImpl extends ScopedElementImpl implements Proce
 
 	@Override
 	public Arg addArg(final ArgContext ctx) {
-		final String name = VbParserContext.getInstance().getNameResolver().determineName(ctx);
+		final Program program = module.getProgram();
+
+		final String name = new NameResolverImpl().determineName(ctx);
 		final boolean isOptional = ctx.OPTIONAL() != null;
-		final Type type = VbParserContext.getInstance().getTypeResolver().determineType(ctx);
+		final Type type = new TypeResolverImpl().determineType(ctx, program);
 
 		final Arg arg = new ArgImpl(name, type, isOptional, module, module, ctx);
 		arg.setProcedureDeclaration(this);
@@ -49,7 +53,7 @@ public class ProcedureDeclarationImpl extends ScopedElementImpl implements Proce
 		args.put(name, arg);
 		argsList.add(arg);
 
-		VbParserContext.getInstance().getASGElementRegistry().addASGElement(arg);
+		program.getASGElementRegistry().addASGElement(arg);
 
 		return arg;
 	}

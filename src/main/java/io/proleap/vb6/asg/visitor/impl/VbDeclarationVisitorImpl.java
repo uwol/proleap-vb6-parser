@@ -8,8 +8,6 @@
 
 package io.proleap.vb6.asg.visitor.impl;
 
-import org.antlr.v4.runtime.misc.NotNull;
-
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
@@ -24,14 +22,14 @@ public class VbDeclarationVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
-	public Boolean visitAttributeStmt(@NotNull final VisualBasic6Parser.AttributeStmtContext ctx) {
+	public Boolean visitAttributeStmt(final VisualBasic6Parser.AttributeStmtContext ctx) {
 		module.addAttribute(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitConstSubStmt(@NotNull final VisualBasic6Parser.ConstSubStmtContext ctx) {
+	public Boolean visitConstSubStmt(final VisualBasic6Parser.ConstSubStmtContext ctx) {
 		final Scope scope = findScope(ctx);
 
 		scope.addConstant(ctx);
@@ -40,28 +38,28 @@ public class VbDeclarationVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
-	public Boolean visitDeclareStmt(@NotNull final VisualBasic6Parser.DeclareStmtContext ctx) {
+	public Boolean visitDeclareStmt(final VisualBasic6Parser.DeclareStmtContext ctx) {
 		module.addDeclaration(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitDeftypeStmt(@NotNull final VisualBasic6Parser.DeftypeStmtContext ctx) {
+	public Boolean visitDeftypeStmt(final VisualBasic6Parser.DeftypeStmtContext ctx) {
 		module.addDefType(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitFunctionStmt(@NotNull final VisualBasic6Parser.FunctionStmtContext ctx) {
+	public Boolean visitFunctionStmt(final VisualBasic6Parser.FunctionStmtContext ctx) {
 		module.addFunction(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitLineLabel(@NotNull final VisualBasic6Parser.LineLabelContext ctx) {
+	public Boolean visitLineLabel(final VisualBasic6Parser.LineLabelContext ctx) {
 		final Scope scope = findScope(ctx);
 
 		scope.addLineLabel(ctx);
@@ -70,70 +68,70 @@ public class VbDeclarationVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
-	public Boolean visitModuleConfigElement(@NotNull final VisualBasic6Parser.ModuleConfigElementContext ctx) {
+	public Boolean visitModuleConfigElement(final VisualBasic6Parser.ModuleConfigElementContext ctx) {
 		module.addModuleConfigElement(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitModuleHeader(@NotNull final VisualBasic6Parser.ModuleHeaderContext ctx) {
+	public Boolean visitModuleHeader(final VisualBasic6Parser.ModuleHeaderContext ctx) {
 		module.addModuleHeader(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitOptionBaseStmt(@NotNull final VisualBasic6Parser.OptionBaseStmtContext ctx) {
+	public Boolean visitOptionBaseStmt(final VisualBasic6Parser.OptionBaseStmtContext ctx) {
 		module.addOptionBase(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitOptionCompareStmt(@NotNull final VisualBasic6Parser.OptionCompareStmtContext ctx) {
+	public Boolean visitOptionCompareStmt(final VisualBasic6Parser.OptionCompareStmtContext ctx) {
 		module.addOptionCompare(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitOptionExplicitStmt(@NotNull final VisualBasic6Parser.OptionExplicitStmtContext ctx) {
+	public Boolean visitOptionExplicitStmt(final VisualBasic6Parser.OptionExplicitStmtContext ctx) {
 		module.addOptionExplicit(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitOptionPrivateModuleStmt(@NotNull final VisualBasic6Parser.OptionPrivateModuleStmtContext ctx) {
+	public Boolean visitOptionPrivateModuleStmt(final VisualBasic6Parser.OptionPrivateModuleStmtContext ctx) {
 		module.addOptionPrivateModule(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitPropertyGetStmt(@NotNull final VisualBasic6Parser.PropertyGetStmtContext ctx) {
+	public Boolean visitPropertyGetStmt(final VisualBasic6Parser.PropertyGetStmtContext ctx) {
 		module.addPropertyGet(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitPropertyLetStmt(@NotNull final VisualBasic6Parser.PropertyLetStmtContext ctx) {
+	public Boolean visitPropertyLetStmt(final VisualBasic6Parser.PropertyLetStmtContext ctx) {
 		module.addPropertyLet(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitPropertySetStmt(@NotNull final VisualBasic6Parser.PropertySetStmtContext ctx) {
+	public Boolean visitPropertySetStmt(final VisualBasic6Parser.PropertySetStmtContext ctx) {
 		module.addPropertySet(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitRedimSubStmt(@NotNull final VisualBasic6Parser.RedimSubStmtContext ctx) {
+	public Boolean visitRedimSubStmt(final VisualBasic6Parser.RedimSubStmtContext ctx) {
 		final Scope scope = findScope(ctx);
 
 		scope.addReDim(ctx);
@@ -142,28 +140,28 @@ public class VbDeclarationVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
-	public Boolean visitSubStmt(@NotNull final VisualBasic6Parser.SubStmtContext ctx) {
+	public Boolean visitSubStmt(final VisualBasic6Parser.SubStmtContext ctx) {
 		module.addSub(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitTypeStmt(@NotNull final VisualBasic6Parser.TypeStmtContext ctx) {
+	public Boolean visitTypeStmt(final VisualBasic6Parser.TypeStmtContext ctx) {
 		module.addType(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitTypeStmt_Element(@NotNull final VisualBasic6Parser.TypeStmt_ElementContext ctx) {
+	public Boolean visitTypeStmt_Element(final VisualBasic6Parser.TypeStmt_ElementContext ctx) {
 		module.addTypeElement(ctx);
 
 		return visitChildren(ctx);
 	}
 
 	@Override
-	public Boolean visitVariableSubStmt(@NotNull final VisualBasic6Parser.VariableSubStmtContext ctx) {
+	public Boolean visitVariableSubStmt(final VisualBasic6Parser.VariableSubStmtContext ctx) {
 		final Scope scope = findScope(ctx);
 
 		scope.addVariable(ctx);
