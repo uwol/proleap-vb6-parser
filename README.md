@@ -80,11 +80,9 @@ Use the following code as a starting point for developing own code.
 ### Simple: Generate an Abstract Semantic Graph (ASG) from VB6 code
 
 ```java
-io.proleap.vb6.asg.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
-
 // generate ASG from plain VB6 code
 java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/asg/HelloWorld.cls");
-io.proleap.vb6.asg.metamodel.Program program = io.proleap.vb6.asg.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
+io.proleap.vb6.asg.metamodel.Program program = new io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl().analyzeFile(inputFile);
 
 // navigate on ASG
 io.proleap.vb6.asg.metamodel.Module module = program.getClazzModule("HelloWorld");
@@ -95,17 +93,15 @@ io.proleap.vb6.asg.metamodel.type.Type typeOfI = variableI.getType();
 ### Complex: Generate an Abstract Semantic Graph (ASG) and traverse the Abstract Syntax Tree (AST)
 
 ```java
-io.proleap.vb6.asg.applicationcontext.VbParserContextFactory.configureDefaultApplicationContext();
-
 // generate ASG from plain VB6 code
 java.io.File inputFile = new java.io.File("src/test/resources/io/proleap/vb6/asg/HelloWorld.cls");
-io.proleap.vb6.asg.metamodel.Program program = io.proleap.vb6.asg.applicationcontext.VbParserContext.getInstance().getParserRunner().analyzeFile(inputFile);
+io.proleap.vb6.asg.metamodel.Program program = new io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl().analyzeFile(inputFile);
 
 // traverse the AST
 io.proleap.vb6.VisualBasic6BaseVisitor<Boolean> visitor = new io.proleap.vb6.VisualBasic6BaseVisitor<Boolean>() {
   @Override
   public Boolean visitVariableSubStmt(final io.proleap.vb6.VisualBasic6Parser.VariableSubStmtContext ctx) {
-    io.proleap.vb6.asg.metamodel.Variable variable = (io.proleap.vb6.asg.metamodel.Variable) io.proleap.vb6.asg.applicationcontext.VbParserContext.getInstance().getASGElementRegistry().getASGElement(ctx);
+    io.proleap.vb6.asg.metamodel.Variable variable = (io.proleap.vb6.asg.metamodel.Variable) program.getASGElementRegistry().getASGElement(ctx);
     String name = variable.getName();
     io.proleap.vb6.asg.metamodel.type.Type type = variable.getType();
 
