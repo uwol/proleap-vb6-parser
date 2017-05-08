@@ -21,7 +21,7 @@ public class ModuleConfigElementImpl extends ScopedElementImpl implements Module
 
 	public ModuleConfigElementImpl(final String name, final Module module, final Scope scope,
 			final ModuleConfigElementContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 		this.name = name;

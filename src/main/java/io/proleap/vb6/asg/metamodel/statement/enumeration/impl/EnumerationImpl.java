@@ -48,7 +48,7 @@ public class EnumerationImpl extends ScopedElementImpl implements Enumeration {
 	protected final StatementType statementType = StatementTypeEnum.Enumeration;
 
 	public EnumerationImpl(final String name, final Module module, final EnumerationStmtContext ctx) {
-		super(module, module, ctx);
+		super(module.getProgram(), module, module, ctx);
 
 		this.ctx = ctx;
 		this.module = module;

@@ -35,7 +35,7 @@ public class EnumerationConstantImpl extends ScopedElementImpl implements Enumer
 
 	public EnumerationConstantImpl(final String name, final int position, final Enumeration enumeration,
 			final EnumerationStmt_ConstantContext ctx) {
-		super(enumeration.getModule(), enumeration.getScope(), ctx);
+		super(enumeration.getModule().getProgram(), enumeration.getModule(), enumeration.getScope(), ctx);
 
 		this.ctx = ctx;
 		this.enumeration = enumeration;

@@ -37,7 +37,7 @@ public class ForNextImpl extends ScopeImpl implements ForNext {
 	protected ValueStmt to;
 
 	public ForNextImpl(final Module module, final Scope scope, final ForNextStmtContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 	}

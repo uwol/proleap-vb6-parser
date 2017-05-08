@@ -36,7 +36,7 @@ public class TypeElementImpl extends ScopedElementImpl implements TypeElement {
 	protected Set<Type> typesOfAssignedValues = new LinkedHashSet<Type>();
 
 	public TypeElementImpl(final String name, final Type type, final Module module, final TypeStmt_ElementContext ctx) {
-		super(module, module, ctx);
+		super(module.getProgram(), module, module, ctx);
 
 		this.name = name;
 		this.ctx = ctx;

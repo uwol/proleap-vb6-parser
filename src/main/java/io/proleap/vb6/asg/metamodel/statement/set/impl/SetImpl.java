@@ -30,7 +30,7 @@ public class SetImpl extends ScopedElementImpl implements Set {
 	protected final StatementType statementType = StatementTypeEnum.Set;
 
 	public SetImpl(final Module module, final Scope scope, final SetStmtContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 	}

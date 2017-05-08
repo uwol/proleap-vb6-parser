@@ -50,7 +50,7 @@ public class ArgImpl extends ScopedElementImpl implements Arg {
 
 	public ArgImpl(final String name, final Type type, final boolean isOptional, final Module module, final Scope scope,
 			final ArgContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 		this.isOptional = isOptional;

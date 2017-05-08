@@ -33,7 +33,7 @@ public class SelectImpl extends ScopeImpl implements Select {
 	protected ValueStmt valueStmt;
 
 	public SelectImpl(final Module module, final Scope scope, final SelectCaseStmtContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 	}

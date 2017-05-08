@@ -24,7 +24,7 @@ public class LiteralImpl extends ScopedElementImpl implements Literal {
 
 	public LiteralImpl(final Type type, final String value, final Module module, final Scope scope,
 			final LiteralContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 		this.type = type;

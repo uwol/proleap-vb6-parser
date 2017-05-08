@@ -102,7 +102,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 	protected Double version;
 
 	public ModuleImpl(final String name, final Program program, final ModuleContext ctx) {
-		super(null, program, ctx);
+		super(program, null, program, ctx);
 
 		this.name = name;
 		this.program = program;

@@ -38,7 +38,7 @@ public class ConstantImpl extends ScopedElementImpl implements Constant {
 
 	public ConstantImpl(final String name, final Type type, final Module module, final Scope scope,
 			final ConstSubStmtContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 		this.name = name;

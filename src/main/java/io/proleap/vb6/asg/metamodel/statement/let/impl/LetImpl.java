@@ -30,7 +30,7 @@ public class LetImpl extends ScopedElementImpl implements Let {
 	protected final StatementType statementType = StatementTypeEnum.Let;
 
 	public LetImpl(final Module module, final Scope scope, final LetStmtContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 	}

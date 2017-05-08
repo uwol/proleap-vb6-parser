@@ -45,7 +45,7 @@ public abstract class ProcedureImpl extends ScopeImpl implements Procedure {
 	protected final String name;
 
 	public ProcedureImpl(final String name, final Module module, final ParserRuleContext ctx) {
-		super(module, module, ctx);
+		super(module.getProgram(), module, module, ctx);
 
 		this.module = module;
 		this.name = name;

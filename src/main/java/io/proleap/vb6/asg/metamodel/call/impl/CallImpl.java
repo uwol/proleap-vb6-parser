@@ -20,7 +20,7 @@ public abstract class CallImpl extends ScopedElementImpl implements Call {
 	protected final String name;
 
 	public CallImpl(final String name, final Module module, final Scope scope, final ParserRuleContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.name = name;
 	}

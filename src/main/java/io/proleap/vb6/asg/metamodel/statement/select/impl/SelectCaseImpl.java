@@ -26,7 +26,7 @@ public class SelectCaseImpl extends ScopedElementImpl implements SelectCase {
 	protected SelectCaseCond selectCaseCond;
 
 	public SelectCaseImpl(final Module module, final Scope scope, final SC_CaseContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 	}

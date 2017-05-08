@@ -45,7 +45,7 @@ public class VariableImpl extends ScopedElementImpl implements Variable {
 
 	public VariableImpl(final String name, final Type type, final Module module, final Scope scope,
 			final VariableSubStmtContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 		this.name = name;

@@ -27,7 +27,7 @@ public class AttributeImpl extends ScopedElementImpl implements Attribute {
 
 	public AttributeImpl(final String name, final Type type, final Module module, final Scope scope,
 			final AttributeStmtContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 		this.name = name;

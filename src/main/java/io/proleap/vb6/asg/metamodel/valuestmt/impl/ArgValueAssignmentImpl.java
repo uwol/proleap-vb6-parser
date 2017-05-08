@@ -26,7 +26,7 @@ public class ArgValueAssignmentImpl extends ScopedElementImpl implements ArgValu
 	protected final ArgCallContext ctx;
 
 	public ArgValueAssignmentImpl(final Module module, final Scope scope, final ArgCallContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 	}

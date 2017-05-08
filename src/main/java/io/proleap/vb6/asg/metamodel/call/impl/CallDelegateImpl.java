@@ -21,7 +21,7 @@ public class CallDelegateImpl extends ScopedElementImpl implements Call {
 	protected final Call delegate;
 
 	public CallDelegateImpl(final Call delegate, final Module module, final Scope scope, final ParserRuleContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.delegate = delegate;
 	}

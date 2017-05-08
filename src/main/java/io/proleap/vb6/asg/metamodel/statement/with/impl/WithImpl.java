@@ -26,7 +26,7 @@ public class WithImpl extends ScopeImpl implements With {
 	protected Call withVariableCall;
 
 	public WithImpl(final Module module, final Scope scope, final WithStmtContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 	}

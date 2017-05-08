@@ -27,7 +27,7 @@ public class ReDimImpl extends ScopedElementImpl implements ReDim {
 	protected final Variable variable;
 
 	public ReDimImpl(final Variable variable, final Module module, final Scope scope, final RedimSubStmtContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 		this.variable = variable;

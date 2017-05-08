@@ -25,7 +25,7 @@ public class ExitImpl extends ScopedElementImpl implements Exit {
 	protected final StatementType statementType = StatementTypeEnum.Exit;
 
 	public ExitImpl(final ExitType exitType, final Module module, final Scope scope, final ExitStmtContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 		this.exitType = exitType;

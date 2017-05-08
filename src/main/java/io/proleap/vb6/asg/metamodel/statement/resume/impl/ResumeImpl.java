@@ -25,7 +25,7 @@ public class ResumeImpl extends ScopedElementImpl implements Resume {
 	protected final StatementType statementType = StatementTypeEnum.Resume;
 
 	public ResumeImpl(final LineLabel lineLabel, final Module module, final Scope scope, final ParserRuleContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.lineLabel = lineLabel;
 	}

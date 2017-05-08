@@ -24,7 +24,7 @@ public abstract class ValueStmtImpl extends ScopedElementImpl implements ValueSt
 	protected final List<ValueStmt> subValueStmts = new ArrayList<ValueStmt>();
 
 	public ValueStmtImpl(final Module module, final Scope scope, final ValueStmtContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 	}

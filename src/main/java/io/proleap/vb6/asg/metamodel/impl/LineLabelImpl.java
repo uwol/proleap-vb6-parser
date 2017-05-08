@@ -28,7 +28,7 @@ public class LineLabelImpl extends ScopedElementImpl implements LineLabel {
 	protected final List<Resume> resumes = new ArrayList<Resume>();
 
 	public LineLabelImpl(final String name, final Module module, final Scope scope, final ParserRuleContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.name = name;
 	}

@@ -25,7 +25,7 @@ public class MembersCallImpl extends ScopedElementImpl implements MembersCall {
 	protected final List<Call> subCalls = new ArrayList<Call>();
 
 	public MembersCallImpl(final Module module, final Scope scope, final ParserRuleContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 	}
 
 	@Override

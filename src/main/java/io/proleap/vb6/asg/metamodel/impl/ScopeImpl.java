@@ -251,8 +251,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	protected Map<String, Variable> variables = new HashMap<String, Variable>();
 
-	public ScopeImpl(final Module module, final Scope scope, final ParserRuleContext ctx) {
-		super(module, scope, ctx);
+	public ScopeImpl(final Program program, final Module module, final Scope scope, final ParserRuleContext ctx) {
+		super(program, module, scope, ctx);
 	}
 
 	@Override

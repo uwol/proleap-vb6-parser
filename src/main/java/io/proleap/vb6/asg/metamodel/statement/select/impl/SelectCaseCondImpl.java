@@ -32,7 +32,7 @@ public class SelectCaseCondImpl extends ScopedElementImpl implements SelectCaseC
 
 	public SelectCaseCondImpl(final SelectCaseCondType selectCaseCondType, final Module module, final Scope scope,
 			final SC_CondContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 		this.selectCaseCondType = selectCaseCondType;

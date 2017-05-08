@@ -52,7 +52,7 @@ public class ProgramImpl extends ScopeImpl implements Program {
 	protected TypeRegistry typeRegistry = new TypeRegistryImpl();
 
 	public ProgramImpl() {
-		super(null, null, null);
+		super(null, null, null, null);
 	}
 
 	@Override

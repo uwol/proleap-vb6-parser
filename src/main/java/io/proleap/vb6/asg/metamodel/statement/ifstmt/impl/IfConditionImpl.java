@@ -22,7 +22,7 @@ public class IfConditionImpl extends ScopedElementImpl implements IfCondition {
 	protected ValueStmt valueStmt;
 
 	public IfConditionImpl(final Module module, final Scope scope, final ParserRuleContext ctx) {
-		super(module, scope, ctx);
+		super(module.getProgram(), module, scope, ctx);
 	}
 
 	@Override

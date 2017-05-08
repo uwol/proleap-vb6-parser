@@ -24,7 +24,7 @@ public class TypeImpl extends ScopedElementImpl implements Type {
 	protected final List<TypeElement> typeElements = new ArrayList<TypeElement>();
 
 	public TypeImpl(final String name, final Module module, final ParserRuleContext ctx) {
-		super(module, module, ctx);
+		super(module.getProgram(), module, module, ctx);
 
 		this.name = name;
 	}
