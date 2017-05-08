@@ -21,7 +21,7 @@ public abstract class ScopedElementImpl extends ASGElementImpl implements Scoped
 	protected final Scope scope;
 
 	public ScopedElementImpl(final Module module, final Scope scope, final ParserRuleContext ctx) {
-		super(ctx);
+		super(module.getProgram(), ctx);
 
 		this.scope = scope;
 		this.module = module;
