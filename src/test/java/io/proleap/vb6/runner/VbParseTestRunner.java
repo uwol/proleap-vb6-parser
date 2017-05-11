@@ -13,7 +13,6 @@ import java.io.IOException;
 
 public interface VbParseTestRunner {
 
-	public void parseDirectory(File inputDirectory) throws IOException;
+	void parseFile(File inputFile) throws IOException;
 
-	public void parseFile(File inputFile) throws IOException;
 }

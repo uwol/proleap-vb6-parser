@@ -11,16 +11,18 @@ package io.proleap.vb6.asg.runner;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.List;
 
 import io.proleap.vb6.asg.metamodel.Program;
 
 public interface VbParserRunner {
 
-	Program analyzeDirectory(File inputDirectory) throws IOException;
-
 	Program analyzeFile(File inputFile) throws IOException;
 
-	Program analyzeDirectory(File inputDirectory, Charset charset) throws IOException;
-
 	Program analyzeFile(File inputFile, Charset charset) throws IOException;
+
+	Program analyzeFiles(List<File> inputFiles) throws IOException;
+
+	Program analyzeFiles(List<File> inputFiles, Charset charset) throws IOException;
+
 }

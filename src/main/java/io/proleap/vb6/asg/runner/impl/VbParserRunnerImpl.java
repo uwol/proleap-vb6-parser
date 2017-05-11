@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.util.List;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -93,24 +94,6 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		return moduleName;
 	}
 
-	@Override
-	public Program analyzeDirectory(final File inputDirectory) throws IOException {
-		return analyzeDirectory(inputDirectory, Charset.defaultCharset());
-	}
-
-	@Override
-	public Program analyzeDirectory(final File inputDirectory, final Charset charset) throws IOException {
-		final Program program = new ProgramImpl();
-
-		for (final File inputFile : inputDirectory.listFiles()) {
-			parseFile(inputFile, charset, program);
-		}
-
-		analyze(program);
-
-		return program;
-	}
-
 	protected void analyzeExpressions(final Program program) {
 		for (final Module module : program.getModules()) {
 			final ParserVisitor visitor = new VbExpressionVisitorImpl(module);
@@ -130,6 +113,24 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		final Program program = new ProgramImpl();
 
 		parseFile(inputFile, charset, program);
+		analyze(program);
+
+		return program;
+	}
+
+	@Override
+	public Program analyzeFiles(final List<File> inputFiles) throws IOException {
+		return analyzeFiles(inputFiles, null);
+	}
+
+	@Override
+	public Program analyzeFiles(final List<File> inputFiles, final Charset charset) throws IOException {
+		final Program program = new ProgramImpl();
+
+		for (final File inputFile : inputFiles) {
+			parseFile(inputFile, charset, program);
+		}
+
 		analyze(program);
 
 		return program;
