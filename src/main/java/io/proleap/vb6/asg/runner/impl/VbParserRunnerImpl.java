@@ -162,10 +162,6 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	protected void parseFile(final File inputFile, final Charset charset, final Program program) throws IOException {
 		if (!inputFile.isFile()) {
 			LOG.warn("Could not find file {}", inputFile.getAbsolutePath());
-		} else if (inputFile.isHidden()) {
-			LOG.warn("Ignoring hidden file {}", inputFile.getAbsolutePath());
-		} else if (!isClazzModule(inputFile) && !isStandardModule(inputFile)) {
-			LOG.info("Ignoring file {} because of file extension.", inputFile.getAbsolutePath());
 		} else {
 			LOG.info("Parsing file {}.", inputFile.getName());
 
