@@ -120,7 +120,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 
 	@Override
 	public Program analyzeFiles(final List<File> inputFiles) throws IOException {
-		return analyzeFiles(inputFiles, null);
+		return analyzeFiles(inputFiles, Charset.defaultCharset());
 	}
 
 	@Override
