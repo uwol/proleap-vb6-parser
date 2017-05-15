@@ -31,7 +31,7 @@ public class PropertyGetImpl extends ProcedureImpl implements PropertyGet {
 
 	protected final List<PropertyGetCall> propertyGetCalls = new ArrayList<PropertyGetCall>();
 
-	protected final StatementType statementType = StatementTypeEnum.PropertyGet;
+	protected final StatementType statementType = StatementTypeEnum.PROPERTY_GET;
 
 	protected final Type type;
 

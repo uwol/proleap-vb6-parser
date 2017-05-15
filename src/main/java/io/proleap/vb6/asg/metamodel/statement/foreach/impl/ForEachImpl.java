@@ -30,7 +30,7 @@ public class ForEachImpl extends ScopeImpl implements ForEach {
 
 	protected ValueStmt in;
 
-	protected final StatementType statementType = StatementTypeEnum.ForEach;
+	protected final StatementType statementType = StatementTypeEnum.FOR_EACH;
 
 	public ForEachImpl(final Module module, final Scope scope, final ForEachStmtContext ctx) {
 		super(module.getProgram(), module, scope, ctx);

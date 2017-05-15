@@ -23,7 +23,7 @@ public class WhileImpl extends ScopeImpl implements While {
 
 	protected final WhileWendStmtContext ctx;
 
-	protected final StatementType statementType = StatementTypeEnum.While;
+	protected final StatementType statementType = StatementTypeEnum.WHILE;
 
 	public WhileImpl(final Module module, final Scope scope, final WhileWendStmtContext ctx) {
 		super(module.getProgram(), module, scope, ctx);

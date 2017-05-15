@@ -22,7 +22,7 @@ public class OnErrorImpl extends ScopedElementImpl implements OnError {
 
 	protected LineLabel lineLabel;
 
-	protected final StatementType statementType = StatementTypeEnum.OnError;
+	protected final StatementType statementType = StatementTypeEnum.ON_ERROR;
 
 	public OnErrorImpl(final LineLabel lineLabel, final Module module, final Scope scope, final ParserRuleContext ctx) {
 		super(module.getProgram(), module, scope, ctx);

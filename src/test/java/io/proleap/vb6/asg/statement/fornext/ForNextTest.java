@@ -27,7 +27,7 @@ public class ForNextTest extends VbTestBase {
 		final ForNext forNext = (ForNext) module.getStatements().get(0);
 
 		assertNotNull(forNext);
-		assertEquals(StatementTypeEnum.ForNext, forNext.getStatementType());
+		assertEquals(StatementTypeEnum.FOR_NEXT, forNext.getStatementType());
 
 		{
 			final ValueStmt from = forNext.getFrom();

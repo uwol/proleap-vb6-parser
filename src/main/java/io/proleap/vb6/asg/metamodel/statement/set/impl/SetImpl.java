@@ -27,7 +27,7 @@ public class SetImpl extends ScopedElementImpl implements Set {
 
 	protected ValueStmt rightHandValueStmt;
 
-	protected final StatementType statementType = StatementTypeEnum.Set;
+	protected final StatementType statementType = StatementTypeEnum.SET;
 
 	public SetImpl(final Module module, final Scope scope, final SetStmtContext ctx) {
 		super(module.getProgram(), module, scope, ctx);

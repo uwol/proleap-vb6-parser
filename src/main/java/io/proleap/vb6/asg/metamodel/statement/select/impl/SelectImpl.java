@@ -28,7 +28,7 @@ public class SelectImpl extends ScopeImpl implements Select {
 
 	protected List<SelectCase> selectCases = new ArrayList<SelectCase>();
 
-	protected final StatementType statementType = StatementTypeEnum.Select;
+	protected final StatementType statementType = StatementTypeEnum.SELECT;
 
 	protected ValueStmt valueStmt;
 

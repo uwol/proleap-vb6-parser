@@ -25,7 +25,7 @@ public class PropertyLetImpl extends ProcedureImpl implements PropertyLet {
 
 	protected final List<PropertyLetCall> propertyLetCalls = new ArrayList<PropertyLetCall>();
 
-	protected final StatementType statementType = StatementTypeEnum.PropertyLet;
+	protected final StatementType statementType = StatementTypeEnum.PROPERTY_LET;
 
 	public PropertyLetImpl(final String name, final Module module, final PropertyLetStmtContext ctx) {
 		super(name, module, ctx);

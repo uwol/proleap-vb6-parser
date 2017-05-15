@@ -26,7 +26,7 @@ public class ConstantTest extends VbTestBase {
 		final Constant constant = (Constant) module.getStatements().get(0);
 
 		assertNotNull(constant);
-		assertEquals(StatementTypeEnum.Constant, constant.getStatementType());
+		assertEquals(StatementTypeEnum.CONSTANT, constant.getStatementType());
 		assertEquals(VbBaseType.STRING, constant.getType());
 	}
 

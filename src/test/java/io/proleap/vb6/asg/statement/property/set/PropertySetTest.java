@@ -27,7 +27,7 @@ public class PropertySetTest extends VbTestBase {
 		final PropertySet propertySet = (PropertySet) module.getStatements().get(0);
 
 		assertNotNull(propertySet);
-		assertEquals(StatementTypeEnum.PropertySet, propertySet.getStatementType());
+		assertEquals(StatementTypeEnum.PROPERTY_SET, propertySet.getStatementType());
 		assertEquals(1, propertySet.getArgs().size());
 
 		{

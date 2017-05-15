@@ -10,11 +10,22 @@ package io.proleap.vb6.asg.metamodel;
 
 import java.util.List;
 
+import io.proleap.vb6.VisualBasic6Parser.AppActivateStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
+import io.proleap.vb6.VisualBasic6Parser.BeepStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.ChDirStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.ChDriveStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.CloseStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.DateStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.DeclareStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.DeftypeStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.DeleteSettingStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DictionaryCallStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.DoLoopStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ECS_MemberProcedureCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ECS_ProcedureCallContext;
+import io.proleap.vb6.VisualBasic6Parser.EventStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ExitStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ExplicitCallStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ForEachStmtContext;
@@ -33,11 +44,14 @@ import io.proleap.vb6.VisualBasic6Parser.LetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.LineLabelContext;
 import io.proleap.vb6.VisualBasic6Parser.LiteralContext;
 import io.proleap.vb6.VisualBasic6Parser.OnErrorStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.OpenStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.PrintStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.RedimSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ResumeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SC_CaseContext;
 import io.proleap.vb6.VisualBasic6Parser.SC_CondContext;
 import io.proleap.vb6.VisualBasic6Parser.SC_CondExprContext;
+import io.proleap.vb6.VisualBasic6Parser.SaveSettingStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SelectCaseStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ValueStmtContext;
@@ -75,18 +89,33 @@ import io.proleap.vb6.VisualBasic6Parser.VsTypeOfContext;
 import io.proleap.vb6.VisualBasic6Parser.VsXorContext;
 import io.proleap.vb6.VisualBasic6Parser.WhileWendStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.WithStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.WriteStmtContext;
 import io.proleap.vb6.asg.metamodel.call.Call;
 import io.proleap.vb6.asg.metamodel.call.Call.CallContext;
 import io.proleap.vb6.asg.metamodel.statement.Statement;
+import io.proleap.vb6.asg.metamodel.statement.appactivate.AppActivate;
+import io.proleap.vb6.asg.metamodel.statement.beep.Beep;
+import io.proleap.vb6.asg.metamodel.statement.chdir.ChDir;
+import io.proleap.vb6.asg.metamodel.statement.chdrive.ChDrive;
+import io.proleap.vb6.asg.metamodel.statement.close.Close;
 import io.proleap.vb6.asg.metamodel.statement.constant.Constant;
+import io.proleap.vb6.asg.metamodel.statement.date.Date;
+import io.proleap.vb6.asg.metamodel.statement.declare.Declare;
+import io.proleap.vb6.asg.metamodel.statement.deftype.Deftype;
+import io.proleap.vb6.asg.metamodel.statement.deletesetting.DeleteSetting;
+import io.proleap.vb6.asg.metamodel.statement.doloop.DoLoop;
+import io.proleap.vb6.asg.metamodel.statement.event.Event;
 import io.proleap.vb6.asg.metamodel.statement.exit.Exit;
 import io.proleap.vb6.asg.metamodel.statement.foreach.ForEach;
 import io.proleap.vb6.asg.metamodel.statement.fornext.ForNext;
 import io.proleap.vb6.asg.metamodel.statement.ifstmt.IfCondition;
 import io.proleap.vb6.asg.metamodel.statement.let.Let;
 import io.proleap.vb6.asg.metamodel.statement.onerror.OnError;
+import io.proleap.vb6.asg.metamodel.statement.open.Open;
+import io.proleap.vb6.asg.metamodel.statement.print.Print;
 import io.proleap.vb6.asg.metamodel.statement.redim.ReDim;
 import io.proleap.vb6.asg.metamodel.statement.resume.Resume;
+import io.proleap.vb6.asg.metamodel.statement.savesetting.SaveSetting;
 import io.proleap.vb6.asg.metamodel.statement.select.Select;
 import io.proleap.vb6.asg.metamodel.statement.select.SelectCase;
 import io.proleap.vb6.asg.metamodel.statement.select.SelectCaseCond;
@@ -94,6 +123,7 @@ import io.proleap.vb6.asg.metamodel.statement.select.SelectCaseCondExpression;
 import io.proleap.vb6.asg.metamodel.statement.set.Set;
 import io.proleap.vb6.asg.metamodel.statement.whilestmt.While;
 import io.proleap.vb6.asg.metamodel.statement.with.With;
+import io.proleap.vb6.asg.metamodel.statement.write.Write;
 import io.proleap.vb6.asg.metamodel.type.ComplexType;
 import io.proleap.vb6.asg.metamodel.valuestmt.ArgValueAssignment;
 import io.proleap.vb6.asg.metamodel.valuestmt.CallValueStmt;
@@ -101,7 +131,11 @@ import io.proleap.vb6.asg.metamodel.valuestmt.ValueStmt;
 
 public interface Scope extends ScopedElement {
 
+	AppActivate addAppActivate(AppActivateStmtContext ctx);
+
 	ArgValueAssignment addArgValueAssignment(ArgCallContext ctx);
+
+	Beep addBeep(BeepStmtContext ctx);
 
 	Call addCall(CallContext callContext, ICS_S_MembersCallContext ctx);
 
@@ -131,7 +165,25 @@ public interface Scope extends ScopedElement {
 
 	Call addCall(ImplicitCallStmt_InBlockContext ctx);
 
+	ChDir addChDir(ChDirStmtContext ctx);
+
+	ChDrive addChDrive(ChDriveStmtContext ctx);
+
+	Close addClose(CloseStmtContext ctx);
+
 	Constant addConstant(ConstSubStmtContext ctx);
+
+	Date addDate(DateStmtContext ctx);
+
+	Declare addDeclare(DeclareStmtContext ctx);
+
+	Deftype addDeftype(DeftypeStmtContext ctx);
+
+	DeleteSetting addDeleteSetting(DeleteSettingStmtContext ctx);
+
+	DoLoop addDoLoop(DoLoopStmtContext ctx);
+
+	Event addEvent(EventStmtContext ctx);
 
 	Exit addExit(ExitStmtContext ctx);
 
@@ -149,9 +201,15 @@ public interface Scope extends ScopedElement {
 
 	OnError addOnError(OnErrorStmtContext ctx);
 
+	Open addOpen(OpenStmtContext ctx);
+
+	Print addPrint(PrintStmtContext ctx);
+
 	ReDim addReDim(RedimSubStmtContext ctx);
 
 	Resume addResume(ResumeStmtContext ctx);
+
+	SaveSetting addSaveSetting(SaveSettingStmtContext ctx);
 
 	Select addSelect(SelectCaseStmtContext ctx);
 
@@ -232,6 +290,8 @@ public interface Scope extends ScopedElement {
 	While addWhile(WhileWendStmtContext ctx);
 
 	With addWith(WithStmtContext ctx);
+
+	Write addWrite(WriteStmtContext ctx);
 
 	Constant getConstant(String name);
 

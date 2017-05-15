@@ -30,7 +30,7 @@ public class ForNextImpl extends ScopeImpl implements ForNext {
 
 	protected Variable iteratorVariable;
 
-	protected final StatementType statementType = StatementTypeEnum.ForNext;
+	protected final StatementType statementType = StatementTypeEnum.FOR_NEXT;
 
 	protected ValueStmt step;
 

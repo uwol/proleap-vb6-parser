@@ -26,7 +26,7 @@ public class PropertyGetTest extends VbTestBase {
 		final PropertyGet propertyGet = (PropertyGet) module.getStatements().get(0);
 
 		assertNotNull(propertyGet);
-		assertEquals(StatementTypeEnum.PropertyGet, propertyGet.getStatementType());
+		assertEquals(StatementTypeEnum.PROPERTY_GET, propertyGet.getStatementType());
 		assertEquals(VbBaseType.INTEGER, propertyGet.getType());
 		assertEquals(0, propertyGet.getArgs().size());
 	}

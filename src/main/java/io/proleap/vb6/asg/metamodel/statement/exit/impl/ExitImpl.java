@@ -22,7 +22,7 @@ public class ExitImpl extends ScopedElementImpl implements Exit {
 
 	protected final ExitType exitType;
 
-	protected final StatementType statementType = StatementTypeEnum.Exit;
+	protected final StatementType statementType = StatementTypeEnum.EXIT;
 
 	public ExitImpl(final ExitType exitType, final Module module, final Scope scope, final ExitStmtContext ctx) {
 		super(module.getProgram(), module, scope, ctx);

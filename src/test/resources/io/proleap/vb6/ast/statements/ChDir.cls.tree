@@ -5,7 +5,7 @@
 				(moduleBlock 
 					(block 
 						(blockStmt 
-							(chdirStmt ChDir   
+							(chDirStmt ChDir   
 								(valueStmt 
 									(literal "D:\TMP")))) \n \n 
 						(blockStmt 
@@ -24,13 +24,13 @@
 								(valueStmt 
 									(literal "C:\Tmp")))) \n 
 						(blockStmt 
-							(chdirStmt ChDir   
+							(chDirStmt ChDir   
 								(valueStmt 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Path)))))) \n \n 
 						(blockStmt 
-							(chdirStmt ChDir   
+							(chDirStmt ChDir   
 								(valueStmt 
 									(valueStmt 
 										(literal "c:\"))   &   

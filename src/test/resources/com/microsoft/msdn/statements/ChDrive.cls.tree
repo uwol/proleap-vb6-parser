@@ -5,6 +5,6 @@
 				(moduleBlock 
 					(block 
 						(blockStmt 
-							(chdriveStmt ChDrive   
+							(chDriveStmt ChDrive   
 								(valueStmt 
 									(literal "D"))))))))) <EOF>)

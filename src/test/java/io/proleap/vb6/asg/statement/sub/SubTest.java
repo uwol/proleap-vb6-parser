@@ -27,7 +27,7 @@ public class SubTest extends VbTestBase {
 		final Sub sub = (Sub) module.getStatements().get(0);
 
 		assertNotNull(sub);
-		assertEquals(StatementTypeEnum.Sub, sub.getStatementType());
+		assertEquals(StatementTypeEnum.SUB, sub.getStatementType());
 		assertEquals("Mult", sub.getName());
 
 		assertEquals(2, sub.getArgs().size());

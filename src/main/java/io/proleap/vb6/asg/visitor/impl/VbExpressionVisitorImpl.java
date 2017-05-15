@@ -22,10 +22,109 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
+	public Boolean visitAppActivateStmt(final VisualBasic6Parser.AppActivateStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addAppActivate(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
 	public Boolean visitArgCall(final VisualBasic6Parser.ArgCallContext ctx) {
 		final Scope scope = findScope(ctx);
 
 		scope.addArgValueAssignment(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitBeepStmt(final VisualBasic6Parser.BeepStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addBeep(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitChDirStmt(final VisualBasic6Parser.ChDirStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addChDir(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitChDriveStmt(final VisualBasic6Parser.ChDriveStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addChDrive(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitCloseStmt(final VisualBasic6Parser.CloseStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addClose(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitDateStmt(final VisualBasic6Parser.DateStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addDate(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitDeclareStmt(final VisualBasic6Parser.DeclareStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addDeclare(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitDeftypeStmt(final VisualBasic6Parser.DeftypeStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addDeftype(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitDeleteSettingStmt(final VisualBasic6Parser.DeleteSettingStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addDeleteSetting(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitDoLoopStmt(final VisualBasic6Parser.DoLoopStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addDoLoop(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitEventStmt(final VisualBasic6Parser.EventStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addEvent(ctx);
 
 		return visitChildren(ctx);
 	}
@@ -149,10 +248,37 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
+	public Boolean visitOpenStmt(final VisualBasic6Parser.OpenStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addOpen(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitPrintStmt(final VisualBasic6Parser.PrintStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addPrint(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
 	public Boolean visitResumeStmt(final VisualBasic6Parser.ResumeStmtContext ctx) {
 		final Scope scope = findScope(ctx);
 
 		scope.addResume(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitSaveSettingStmt(final VisualBasic6Parser.SaveSettingStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addSaveSetting(ctx);
 
 		return visitChildren(ctx);
 	}
@@ -477,6 +603,15 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 		final Scope scope = findScope(ctx);
 
 		scope.addWith(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitWriteStmt(final VisualBasic6Parser.WriteStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addWrite(ctx);
 
 		return visitChildren(ctx);
 	}

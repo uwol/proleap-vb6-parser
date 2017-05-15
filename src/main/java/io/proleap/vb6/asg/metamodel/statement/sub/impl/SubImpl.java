@@ -23,7 +23,7 @@ public class SubImpl extends ProcedureImpl implements Sub {
 
 	protected final SubStmtContext ctx;
 
-	protected final StatementType statementType = StatementTypeEnum.Sub;
+	protected final StatementType statementType = StatementTypeEnum.SUB;
 
 	protected final List<SubCall> subCalls = new ArrayList<SubCall>();
 

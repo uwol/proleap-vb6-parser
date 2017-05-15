@@ -27,7 +27,7 @@ public class FunctionTest extends VbTestBase {
 		final Function function = (Function) module.getStatements().get(0);
 
 		assertNotNull(function);
-		assertEquals(StatementTypeEnum.Function, function.getStatementType());
+		assertEquals(StatementTypeEnum.FUNCTION, function.getStatementType());
 		assertEquals("Mult", function.getName());
 
 		assertEquals(2, function.getArgs().size());

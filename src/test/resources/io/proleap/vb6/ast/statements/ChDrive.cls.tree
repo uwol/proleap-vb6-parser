@@ -5,7 +5,7 @@
 				(moduleBlock 
 					(block 
 						(blockStmt 
-							(chdriveStmt ChDrive   
+							(chDriveStmt ChDrive   
 								(valueStmt 
 									(literal "C")))) \n \n 
 						(blockStmt 
@@ -21,7 +21,7 @@
 								(valueStmt 
 									(literal "D")))) \n 
 						(blockStmt 
-							(chdriveStmt ChDrive   
+							(chDriveStmt ChDrive   
 								(valueStmt 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 

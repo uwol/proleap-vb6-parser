@@ -38,17 +38,28 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import io.proleap.vb6.VisualBasic6Parser;
+import io.proleap.vb6.VisualBasic6Parser.AppActivateStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgsCallContext;
+import io.proleap.vb6.VisualBasic6Parser.BeepStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.CaseCondElseContext;
 import io.proleap.vb6.VisualBasic6Parser.CaseCondExprContext;
 import io.proleap.vb6.VisualBasic6Parser.CaseCondExprIsContext;
 import io.proleap.vb6.VisualBasic6Parser.CaseCondExprToContext;
 import io.proleap.vb6.VisualBasic6Parser.CaseCondExprValueContext;
+import io.proleap.vb6.VisualBasic6Parser.ChDirStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.ChDriveStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.CloseStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.DateStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.DeclareStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.DeftypeStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.DeleteSettingStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DictionaryCallStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.DoLoopStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ECS_MemberProcedureCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ECS_ProcedureCallContext;
+import io.proleap.vb6.VisualBasic6Parser.EventStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ExitStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ExplicitCallStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ForEachStmtContext;
@@ -66,11 +77,14 @@ import io.proleap.vb6.VisualBasic6Parser.LetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.LineLabelContext;
 import io.proleap.vb6.VisualBasic6Parser.LiteralContext;
 import io.proleap.vb6.VisualBasic6Parser.OnErrorStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.OpenStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.PrintStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.RedimSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ResumeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SC_CaseContext;
 import io.proleap.vb6.VisualBasic6Parser.SC_CondContext;
 import io.proleap.vb6.VisualBasic6Parser.SC_CondExprContext;
+import io.proleap.vb6.VisualBasic6Parser.SaveSettingStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SelectCaseStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ValueStmtContext;
@@ -108,6 +122,7 @@ import io.proleap.vb6.VisualBasic6Parser.VsTypeOfContext;
 import io.proleap.vb6.VisualBasic6Parser.VsXorContext;
 import io.proleap.vb6.VisualBasic6Parser.WhileWendStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.WithStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.WriteStmtContext;
 import io.proleap.vb6.asg.inference.impl.TypeAssignmentInferenceImpl;
 import io.proleap.vb6.asg.metamodel.ASGElement;
 import io.proleap.vb6.asg.metamodel.Arg;
@@ -169,10 +184,32 @@ import io.proleap.vb6.asg.metamodel.call.impl.ReturnValueCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.UndefinedCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.VariableCallImpl;
 import io.proleap.vb6.asg.metamodel.statement.Statement;
+import io.proleap.vb6.asg.metamodel.statement.appactivate.AppActivate;
+import io.proleap.vb6.asg.metamodel.statement.appactivate.impl.AppActivateImpl;
+import io.proleap.vb6.asg.metamodel.statement.beep.Beep;
+import io.proleap.vb6.asg.metamodel.statement.beep.impl.BeepImpl;
+import io.proleap.vb6.asg.metamodel.statement.chdir.ChDir;
+import io.proleap.vb6.asg.metamodel.statement.chdir.impl.ChDirImpl;
+import io.proleap.vb6.asg.metamodel.statement.chdrive.ChDrive;
+import io.proleap.vb6.asg.metamodel.statement.chdrive.impl.ChDriveImpl;
+import io.proleap.vb6.asg.metamodel.statement.close.Close;
+import io.proleap.vb6.asg.metamodel.statement.close.impl.CloseImpl;
 import io.proleap.vb6.asg.metamodel.statement.constant.Constant;
 import io.proleap.vb6.asg.metamodel.statement.constant.impl.ConstantImpl;
+import io.proleap.vb6.asg.metamodel.statement.date.Date;
+import io.proleap.vb6.asg.metamodel.statement.date.impl.DateImpl;
+import io.proleap.vb6.asg.metamodel.statement.declare.Declare;
+import io.proleap.vb6.asg.metamodel.statement.declare.impl.DeclareImpl;
+import io.proleap.vb6.asg.metamodel.statement.deftype.Deftype;
+import io.proleap.vb6.asg.metamodel.statement.deftype.impl.DeftypeImpl;
+import io.proleap.vb6.asg.metamodel.statement.deletesetting.DeleteSetting;
+import io.proleap.vb6.asg.metamodel.statement.deletesetting.impl.DeleteSettingImpl;
+import io.proleap.vb6.asg.metamodel.statement.doloop.DoLoop;
+import io.proleap.vb6.asg.metamodel.statement.doloop.impl.DoLoopImpl;
 import io.proleap.vb6.asg.metamodel.statement.enumeration.Enumeration;
 import io.proleap.vb6.asg.metamodel.statement.enumeration.EnumerationConstant;
+import io.proleap.vb6.asg.metamodel.statement.event.Event;
+import io.proleap.vb6.asg.metamodel.statement.event.impl.EventImpl;
 import io.proleap.vb6.asg.metamodel.statement.exit.Exit;
 import io.proleap.vb6.asg.metamodel.statement.exit.Exit.ExitType;
 import io.proleap.vb6.asg.metamodel.statement.exit.impl.ExitImpl;
@@ -187,6 +224,10 @@ import io.proleap.vb6.asg.metamodel.statement.let.Let;
 import io.proleap.vb6.asg.metamodel.statement.let.impl.LetImpl;
 import io.proleap.vb6.asg.metamodel.statement.onerror.OnError;
 import io.proleap.vb6.asg.metamodel.statement.onerror.impl.OnErrorImpl;
+import io.proleap.vb6.asg.metamodel.statement.open.Open;
+import io.proleap.vb6.asg.metamodel.statement.open.impl.OpenImpl;
+import io.proleap.vb6.asg.metamodel.statement.print.Print;
+import io.proleap.vb6.asg.metamodel.statement.print.impl.PrintImpl;
 import io.proleap.vb6.asg.metamodel.statement.property.get.PropertyGet;
 import io.proleap.vb6.asg.metamodel.statement.property.let.PropertyLet;
 import io.proleap.vb6.asg.metamodel.statement.property.set.PropertySet;
@@ -194,6 +235,8 @@ import io.proleap.vb6.asg.metamodel.statement.redim.ReDim;
 import io.proleap.vb6.asg.metamodel.statement.redim.impl.ReDimImpl;
 import io.proleap.vb6.asg.metamodel.statement.resume.Resume;
 import io.proleap.vb6.asg.metamodel.statement.resume.impl.ResumeImpl;
+import io.proleap.vb6.asg.metamodel.statement.savesetting.SaveSetting;
+import io.proleap.vb6.asg.metamodel.statement.savesetting.impl.SaveSettingImpl;
 import io.proleap.vb6.asg.metamodel.statement.select.Select;
 import io.proleap.vb6.asg.metamodel.statement.select.SelectCase;
 import io.proleap.vb6.asg.metamodel.statement.select.SelectCaseCond;
@@ -211,6 +254,8 @@ import io.proleap.vb6.asg.metamodel.statement.whilestmt.While;
 import io.proleap.vb6.asg.metamodel.statement.whilestmt.impl.WhileImpl;
 import io.proleap.vb6.asg.metamodel.statement.with.With;
 import io.proleap.vb6.asg.metamodel.statement.with.impl.WithImpl;
+import io.proleap.vb6.asg.metamodel.statement.write.Write;
+import io.proleap.vb6.asg.metamodel.statement.write.impl.WriteImpl;
 import io.proleap.vb6.asg.metamodel.type.ComplexType;
 import io.proleap.vb6.asg.metamodel.type.Type;
 import io.proleap.vb6.asg.metamodel.valuestmt.ArgValueAssignment;
@@ -256,6 +301,19 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
+	public AppActivate addAppActivate(final AppActivateStmtContext ctx) {
+		AppActivate result = (AppActivate) getASGElement(ctx);
+
+		if (result == null) {
+			result = new AppActivateImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
 	public ArgValueAssignment addArgValueAssignment(final ArgCallContext ctx) {
 		ArgValueAssignment result = (ArgValueAssignment) getASGElement(ctx);
 
@@ -269,6 +327,19 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		}
 
 		new TypeAssignmentInferenceImpl().addTypeAssignment(ctx, module.getProgram());
+
+		return result;
+	}
+
+	@Override
+	public Beep addBeep(final BeepStmtContext ctx) {
+		Beep result = (Beep) getASGElement(ctx);
+
+		if (result == null) {
+			result = new BeepImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
 
 		return result;
 	}
@@ -1001,6 +1072,45 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
+	public ChDir addChDir(final ChDirStmtContext ctx) {
+		ChDir result = (ChDir) getASGElement(ctx);
+
+		if (result == null) {
+			result = new ChDirImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public ChDrive addChDrive(final ChDriveStmtContext ctx) {
+		ChDrive result = (ChDrive) getASGElement(ctx);
+
+		if (result == null) {
+			result = new ChDriveImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public Close addClose(final CloseStmtContext ctx) {
+		Close result = (Close) getASGElement(ctx);
+
+		if (result == null) {
+			result = new CloseImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
 	public Constant addConstant(final ConstSubStmtContext ctx) {
 		Constant result = (Constant) getASGElement(ctx);
 
@@ -1015,6 +1125,84 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 			registerStatement(result);
 			constants.put(name, result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public Date addDate(final DateStmtContext ctx) {
+		Date result = (Date) getASGElement(ctx);
+
+		if (result == null) {
+			result = new DateImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public Declare addDeclare(final DeclareStmtContext ctx) {
+		Declare result = (Declare) getASGElement(ctx);
+
+		if (result == null) {
+			result = new DeclareImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public Deftype addDeftype(final DeftypeStmtContext ctx) {
+		Deftype result = (Deftype) getASGElement(ctx);
+
+		if (result == null) {
+			result = new DeftypeImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public DeleteSetting addDeleteSetting(final DeleteSettingStmtContext ctx) {
+		DeleteSetting result = (DeleteSetting) getASGElement(ctx);
+
+		if (result == null) {
+			result = new DeleteSettingImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public DoLoop addDoLoop(final DoLoopStmtContext ctx) {
+		DoLoop result = (DoLoop) getASGElement(ctx);
+
+		if (result == null) {
+			result = new DoLoopImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public Event addEvent(final EventStmtContext ctx) {
+		Event result = (Event) getASGElement(ctx);
+
+		if (result == null) {
+			result = new EventImpl(module, this, ctx);
+
+			registerStatement(result);
 		}
 
 		return result;
@@ -1209,6 +1397,32 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
+	public Open addOpen(final OpenStmtContext ctx) {
+		Open result = (Open) getASGElement(ctx);
+
+		if (result == null) {
+			result = new OpenImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public Print addPrint(final PrintStmtContext ctx) {
+		Print result = (Print) getASGElement(ctx);
+
+		if (result == null) {
+			result = new PrintImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
 	public ReDim addReDim(final RedimSubStmtContext ctx) {
 		ReDim result = (ReDim) getASGElement(ctx);
 
@@ -1243,6 +1457,19 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			if (lineLabel != null) {
 				lineLabel.addResume(result);
 			}
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public SaveSetting addSaveSetting(final SaveSettingStmtContext ctx) {
+		SaveSetting result = (SaveSetting) getASGElement(ctx);
+
+		if (result == null) {
+			result = new SaveSettingImpl(module, this, ctx);
 
 			registerStatement(result);
 		}
@@ -2019,6 +2246,19 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			// value stmt
 			final Call call = addCall(null, ctx.implicitCallStmt_InStmt());
 			result.setWithVariableCall(call);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public Write addWrite(final WriteStmtContext ctx) {
+		Write result = (Write) getASGElement(ctx);
+
+		if (result == null) {
+			result = new WriteImpl(module, this, ctx);
 
 			registerStatement(result);
 		}

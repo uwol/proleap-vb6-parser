@@ -12,7 +12,7 @@
 									(variableSubStmt 
 										(ambiguousIdentifier ReturnValue))))) \n 
 						(blockStmt 
-							(appactivateStmt AppActivate   
+							(appActivateStmt AppActivate   
 								(valueStmt 
 									(literal "Microsoft Word")))) \n    \n \n \n 
 						(blockStmt 
@@ -32,7 +32,7 @@
 													(valueStmt 
 														(literal 1)))) )))))) \n 
 						(blockStmt 
-							(appactivateStmt AppActivate   
+							(appActivateStmt AppActivate   
 								(valueStmt 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
@@ -54,7 +54,7 @@
 													(valueStmt 
 														(literal 1)))) )))))) \n 
 						(blockStmt 
-							(appactivateStmt AppActivate   
+							(appActivateStmt AppActivate   
 								(valueStmt 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 

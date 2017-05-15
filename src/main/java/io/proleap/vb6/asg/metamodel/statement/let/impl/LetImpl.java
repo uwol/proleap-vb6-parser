@@ -27,7 +27,7 @@ public class LetImpl extends ScopedElementImpl implements Let {
 
 	protected ValueStmt rightHandValueStmt;
 
-	protected final StatementType statementType = StatementTypeEnum.Let;
+	protected final StatementType statementType = StatementTypeEnum.LET;
 
 	public LetImpl(final Module module, final Scope scope, final LetStmtContext ctx) {
 		super(module.getProgram(), module, scope, ctx);

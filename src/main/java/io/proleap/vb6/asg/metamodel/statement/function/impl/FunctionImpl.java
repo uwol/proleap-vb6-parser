@@ -31,7 +31,7 @@ public class FunctionImpl extends ProcedureImpl implements Function {
 
 	protected boolean isDeclaredAsArray;
 
-	protected final StatementType statementType = StatementTypeEnum.Function;
+	protected final StatementType statementType = StatementTypeEnum.FUNCTION;
 
 	protected final Type type;
 

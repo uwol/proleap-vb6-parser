@@ -25,7 +25,7 @@ public class PropertySetImpl extends ProcedureImpl implements PropertySet {
 
 	protected final List<PropertySetCall> propertySetCalls = new ArrayList<PropertySetCall>();
 
-	protected final StatementType statementType = StatementTypeEnum.PropertySet;
+	protected final StatementType statementType = StatementTypeEnum.PROPERTY_SET;
 
 	public PropertySetImpl(final String name, final Module module, final PropertySetStmtContext ctx) {
 		super(name, module, ctx);

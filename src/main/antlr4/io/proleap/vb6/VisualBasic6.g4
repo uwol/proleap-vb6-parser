@@ -96,11 +96,11 @@ block
    ;
 
 blockStmt
-   : appactivateStmt
+   : appActivateStmt
    | attributeStmt
    | beepStmt
-   | chdirStmt
-   | chdriveStmt
+   | chDirStmt
+   | chDriveStmt
    | closeStmt
    | constStmt
    | dateStmt
@@ -166,7 +166,7 @@ blockStmt
    ;
 
 // statements ----------------------------------
-appactivateStmt
+appActivateStmt
    : APPACTIVATE WS valueStmt (WS? COMMA WS? valueStmt)?
    ;
 
@@ -174,11 +174,11 @@ beepStmt
    : BEEP
    ;
 
-chdirStmt
+chDirStmt
    : CHDIR WS valueStmt
    ;
 
-chdriveStmt
+chDriveStmt
    : CHDRIVE WS valueStmt
    ;
 

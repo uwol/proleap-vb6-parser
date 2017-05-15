@@ -30,7 +30,7 @@ public class ConstantImpl extends ScopedElementImpl implements Constant {
 
 	protected final String name;
 
-	protected final StatementType statementType = StatementTypeEnum.Constant;
+	protected final StatementType statementType = StatementTypeEnum.CONSTANT;
 
 	protected final Type type;
 

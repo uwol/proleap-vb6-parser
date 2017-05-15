@@ -22,7 +22,7 @@ public class ReDimImpl extends ScopedElementImpl implements ReDim {
 
 	protected final RedimSubStmtContext ctx;
 
-	protected final StatementType statementType = StatementTypeEnum.ReDim;
+	protected final StatementType statementType = StatementTypeEnum.RE_DIM;
 
 	protected final Variable variable;
 

@@ -5,10 +5,10 @@
 				(moduleBlock 
 					(block 
 						(blockStmt 
-							(chdirStmt ChDir   
+							(chDirStmt ChDir   
 								(valueStmt 
 									(literal "MYDIR")))) \n \n \n \n 
 						(blockStmt 
-							(chdirStmt ChDir   
+							(chDirStmt ChDir   
 								(valueStmt 
 									(literal "D:\WINDOWS\SYSTEM"))))))))) <EOF>)

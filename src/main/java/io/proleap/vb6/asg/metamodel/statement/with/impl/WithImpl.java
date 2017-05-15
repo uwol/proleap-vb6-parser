@@ -21,7 +21,7 @@ public class WithImpl extends ScopeImpl implements With {
 
 	protected final WithStmtContext ctx;
 
-	protected final StatementType statementType = StatementTypeEnum.With;
+	protected final StatementType statementType = StatementTypeEnum.WITH;
 
 	protected Call withVariableCall;
 

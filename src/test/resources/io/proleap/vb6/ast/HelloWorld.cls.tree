@@ -1,21 +1,21 @@
-(startRule
-	(module
-		(moduleBody
-			(moduleBodyElement
-				(subStmt
-					(visibility Private) Sub
-					(ambiguousIdentifier Command1_Click)
-					(argList ( ))
-					(block
-						(blockStmt
-							(letStmt
-								(implicitCallStmt_InStmt
-									(iCS_S_MembersCall
-										(iCS_S_VariableOrProcedureCall
-											(ambiguousIdentifier Text1))
-										(iCS_S_MemberCall .
-											(iCS_S_VariableOrProcedureCall
-												(ambiguousIdentifier
-													(ambiguousKeyword Text)))))) =
-								(valueStmt
-									(literal "Hello, world!"))))) End Sub)))) <EOF>)
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(subStmt 
+					(visibility Private)   Sub   
+					(ambiguousIdentifier Command1_Click)   
+					(argList ( )) \n    
+					(block 
+						(blockStmt 
+							(letStmt 
+								(implicitCallStmt_InStmt 
+									(iCS_S_MembersCall 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier Text1)) 
+										(iCS_S_MemberCall . 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier 
+													(ambiguousKeyword Text))))))   =   
+								(valueStmt 
+									(literal "Hello, world!"))))) \n End Sub)))) <EOF>)
