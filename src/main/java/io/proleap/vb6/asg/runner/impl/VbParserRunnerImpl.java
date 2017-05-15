@@ -13,7 +13,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -21,6 +23,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.codehaus.plexus.util.FileUtils;
 
 import io.proleap.vb6.VisualBasic6Lexer;
 import io.proleap.vb6.VisualBasic6Parser;
@@ -163,6 +166,8 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		if (!inputFile.isFile()) {
 			LOG.warn("Could not find file {}", inputFile.getAbsolutePath());
 		} else {
+			final String input = FileUtils.fileRead(inputFile);
+
 			LOG.info("Parsing file {}.", inputFile.getName());
 
 			final InputStream inputStream = new FileInputStream(inputFile);
@@ -192,7 +197,9 @@ public class VbParserRunnerImpl implements VbParserRunner {
 			final boolean isClazzModule = isClazzModule(inputFile);
 			final boolean isStandardModule = isStandardModule(inputFile);
 
-			final ParserVisitor visitor = new VbTypeVisitorImpl(moduleName, isClazzModule, isStandardModule, program);
+			final List<String> lines = splitLines(input);
+			final ParserVisitor visitor = new VbTypeVisitorImpl(moduleName, lines, isClazzModule, isStandardModule,
+					program);
 
 			LOG.info("Collecting types in file {}.", inputFile.getName());
 			visitor.visit(ctx);
@@ -420,5 +427,17 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		for (final VbBaseType vbType : VbBaseType.values()) {
 			program.getTypeRegistry().registerType(vbType);
 		}
+	}
+
+	public List<String> splitLines(final String input) {
+		final Scanner scanner = new Scanner(input);
+		final List<String> result = new ArrayList<String>();
+
+		while (scanner.hasNextLine()) {
+			result.add(scanner.nextLine());
+		}
+
+		scanner.close();
+		return result;
 	}
 }

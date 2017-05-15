@@ -8,6 +8,8 @@
 
 package io.proleap.vb6.asg.visitor.impl;
 
+import java.util.List;
+
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmtContext;
 import io.proleap.vb6.asg.metamodel.Module;
@@ -25,16 +27,19 @@ public class VbTypeVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	protected final boolean isStandardModule;
 
+	protected final List<String> lines;
+
 	protected final String moduleName;
 
 	protected final Program program;
 
-	public VbTypeVisitorImpl(final String moduleName, final boolean isClazzModule, final boolean isStandardModule,
-			final Program program) {
+	public VbTypeVisitorImpl(final String moduleName, final List<String> lines, final boolean isClazzModule,
+			final boolean isStandardModule, final Program program) {
 		super(null);
 
 		this.program = program;
 		this.moduleName = moduleName;
+		this.lines = lines;
 		this.isClazzModule = isClazzModule;
 		this.isStandardModule = isStandardModule;
 	}
@@ -68,6 +73,7 @@ public class VbTypeVisitorImpl extends AbstractVbParserVisitorImpl {
 			result = null;
 		}
 
+		result.setLines(lines);
 		module = result;
 
 		return visitChildren(ctx);

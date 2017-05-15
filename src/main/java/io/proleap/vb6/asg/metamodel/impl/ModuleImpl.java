@@ -75,6 +75,8 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	protected boolean isCollection;
 
+	protected List<String> lines;
+
 	protected List<ModuleConfigElement> moduleConfigElements = new ArrayList<ModuleConfigElement>();
 
 	protected final String name;
@@ -486,6 +488,11 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 	}
 
 	@Override
+	public List<String> getLines() {
+		return lines;
+	}
+
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -551,6 +558,11 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 	public boolean isModuleWithMetaData() {
 		return version != null || optionExplicit != null || optionPrivateModule != null || optionBase != null
 				|| optionCompare != null;
+	}
+
+	@Override
+	public void setLines(final List<String> lines) {
+		this.lines = lines;
 	}
 
 	@Override

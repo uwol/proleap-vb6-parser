@@ -89,6 +89,9 @@ public interface Module extends Scope, ComplexType {
 
 	Function getFunction(String name);
 
+	List<String> getLines();
+
+	@Override
 	Program getProgram();
 
 	PropertyGet getPropertyGet(String name);
@@ -105,5 +108,7 @@ public interface Module extends Scope, ComplexType {
 	boolean isCollection();
 
 	boolean isModuleWithMetaData();
+
+	void setLines(List<String> lines);
 
 }
