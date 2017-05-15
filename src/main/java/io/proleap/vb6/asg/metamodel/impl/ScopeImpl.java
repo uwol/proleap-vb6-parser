@@ -52,7 +52,6 @@ import io.proleap.vb6.VisualBasic6Parser.ChDriveStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.CloseStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DateStmtContext;
-import io.proleap.vb6.VisualBasic6Parser.DeclareStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DeftypeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DeleteSettingStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DictionaryCallStmtContext;
@@ -198,8 +197,6 @@ import io.proleap.vb6.asg.metamodel.statement.constant.Constant;
 import io.proleap.vb6.asg.metamodel.statement.constant.impl.ConstantImpl;
 import io.proleap.vb6.asg.metamodel.statement.date.Date;
 import io.proleap.vb6.asg.metamodel.statement.date.impl.DateImpl;
-import io.proleap.vb6.asg.metamodel.statement.declare.Declare;
-import io.proleap.vb6.asg.metamodel.statement.declare.impl.DeclareImpl;
 import io.proleap.vb6.asg.metamodel.statement.deftype.Deftype;
 import io.proleap.vb6.asg.metamodel.statement.deftype.impl.DeftypeImpl;
 import io.proleap.vb6.asg.metamodel.statement.deletesetting.DeleteSetting;
@@ -1136,19 +1133,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 		if (result == null) {
 			result = new DateImpl(module, this, ctx);
-
-			registerStatement(result);
-		}
-
-		return result;
-	}
-
-	@Override
-	public Declare addDeclare(final DeclareStmtContext ctx) {
-		Declare result = (Declare) getASGElement(ctx);
-
-		if (result == null) {
-			result = new DeclareImpl(module, this, ctx);
 
 			registerStatement(result);
 		}

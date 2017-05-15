@@ -18,7 +18,6 @@ import io.proleap.vb6.VisualBasic6Parser.ChDriveStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.CloseStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DateStmtContext;
-import io.proleap.vb6.VisualBasic6Parser.DeclareStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DeftypeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DeleteSettingStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DictionaryCallStmtContext;
@@ -100,7 +99,6 @@ import io.proleap.vb6.asg.metamodel.statement.chdrive.ChDrive;
 import io.proleap.vb6.asg.metamodel.statement.close.Close;
 import io.proleap.vb6.asg.metamodel.statement.constant.Constant;
 import io.proleap.vb6.asg.metamodel.statement.date.Date;
-import io.proleap.vb6.asg.metamodel.statement.declare.Declare;
 import io.proleap.vb6.asg.metamodel.statement.deftype.Deftype;
 import io.proleap.vb6.asg.metamodel.statement.deletesetting.DeleteSetting;
 import io.proleap.vb6.asg.metamodel.statement.doloop.DoLoop;
@@ -174,8 +172,6 @@ public interface Scope extends ScopedElement {
 	Constant addConstant(ConstSubStmtContext ctx);
 
 	Date addDate(DateStmtContext ctx);
-
-	Declare addDeclare(DeclareStmtContext ctx);
 
 	Deftype addDeftype(DeftypeStmtContext ctx);
 

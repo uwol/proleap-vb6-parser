@@ -85,15 +85,6 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
-	public Boolean visitDeclareStmt(final VisualBasic6Parser.DeclareStmtContext ctx) {
-		final Scope scope = findScope(ctx);
-
-		scope.addDeclare(ctx);
-
-		return visitChildren(ctx);
-	}
-
-	@Override
 	public Boolean visitDeftypeStmt(final VisualBasic6Parser.DeftypeStmtContext ctx) {
 		final Scope scope = findScope(ctx);
 
