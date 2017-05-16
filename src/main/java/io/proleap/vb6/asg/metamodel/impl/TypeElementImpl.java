@@ -8,13 +8,16 @@
 
 package io.proleap.vb6.asg.metamodel.impl;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import io.proleap.vb6.VisualBasic6Parser.TypeStmt_ElementContext;
 import io.proleap.vb6.asg.inference.impl.TypeInferenceImpl;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.TypeElement;
+import io.proleap.vb6.asg.metamodel.call.TypeElementCall;
 import io.proleap.vb6.asg.metamodel.type.Type;
 
 public class TypeElementImpl extends ScopedElementImpl implements TypeElement {
@@ -29,6 +32,8 @@ public class TypeElementImpl extends ScopedElementImpl implements TypeElement {
 
 	protected final Type type;
 
+	protected List<TypeElementCall> typeElementCalls = new ArrayList<TypeElementCall>();
+
 	/*
 	 * LinkedHashSet, so that entries are ordered by their insertion order,
 	 * giving precedence to types declared near to the assigned variable
@@ -41,6 +46,11 @@ public class TypeElementImpl extends ScopedElementImpl implements TypeElement {
 		this.name = name;
 		this.ctx = ctx;
 		this.type = type;
+	}
+
+	@Override
+	public void addTypeElementCall(final TypeElementCall typeElementCall) {
+		typeElementCalls.add(typeElementCall);
 	}
 
 	@Override
@@ -65,6 +75,11 @@ public class TypeElementImpl extends ScopedElementImpl implements TypeElement {
 		final Type defType = new TypeInferenceImpl().inferTypeFromDefType(module, name);
 		final Type result = new TypeInferenceImpl().inferType(type, defType, typesOfAssignedValues);
 		return result;
+	}
+
+	@Override
+	public List<TypeElementCall> getTypeElementCalls() {
+		return typeElementCalls;
 	}
 
 	@Override

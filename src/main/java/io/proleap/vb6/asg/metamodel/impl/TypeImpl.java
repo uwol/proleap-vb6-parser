@@ -8,8 +8,8 @@
 
 package io.proleap.vb6.asg.metamodel.impl;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 
@@ -21,7 +21,7 @@ public class TypeImpl extends ScopedElementImpl implements Type {
 
 	protected final String name;
 
-	protected final List<TypeElement> typeElements = new ArrayList<TypeElement>();
+	protected final Map<String, TypeElement> typeElements = new HashMap<String, TypeElement>();
 
 	public TypeImpl(final String name, final Module module, final ParserRuleContext ctx) {
 		super(module.getProgram(), module, module, ctx);
@@ -31,7 +31,8 @@ public class TypeImpl extends ScopedElementImpl implements Type {
 
 	@Override
 	public void addTypeElement(final TypeElement typeElement) {
-		typeElements.add(typeElement);
+		final String typeElementName = typeElement.getName();
+		typeElements.put(typeElementName, typeElement);
 	}
 
 	@Override
@@ -40,8 +41,8 @@ public class TypeImpl extends ScopedElementImpl implements Type {
 	}
 
 	@Override
-	public List<TypeElement> getTypeElements() {
-		return typeElements;
+	public TypeElement getTypeElement(final String name) {
+		return typeElements.get(name);
 	}
 
 	@Override

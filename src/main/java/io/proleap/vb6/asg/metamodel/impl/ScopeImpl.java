@@ -25,6 +25,8 @@ import static io.proleap.vb6.asg.util.CastUtils.castPropertyGet;
 import static io.proleap.vb6.asg.util.CastUtils.castPropertyLet;
 import static io.proleap.vb6.asg.util.CastUtils.castPropertySet;
 import static io.proleap.vb6.asg.util.CastUtils.castSub;
+import static io.proleap.vb6.asg.util.CastUtils.castTypeElement;
+import static io.proleap.vb6.asg.util.CastUtils.castTypeStmtType;
 import static io.proleap.vb6.asg.util.CastUtils.castVariable;
 
 import java.util.ArrayList;
@@ -136,6 +138,7 @@ import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.Scope;
 import io.proleap.vb6.asg.metamodel.ScopedElement;
 import io.proleap.vb6.asg.metamodel.StandardModule;
+import io.proleap.vb6.asg.metamodel.TypeElement;
 import io.proleap.vb6.asg.metamodel.Variable;
 import io.proleap.vb6.asg.metamodel.api.ApiEnumeration;
 import io.proleap.vb6.asg.metamodel.api.ApiEnumerationConstant;
@@ -160,6 +163,7 @@ import io.proleap.vb6.asg.metamodel.call.PropertyLetCall;
 import io.proleap.vb6.asg.metamodel.call.PropertySetCall;
 import io.proleap.vb6.asg.metamodel.call.ReturnValueCall;
 import io.proleap.vb6.asg.metamodel.call.SubCall;
+import io.proleap.vb6.asg.metamodel.call.TypeElementCall;
 import io.proleap.vb6.asg.metamodel.call.VariableCall;
 import io.proleap.vb6.asg.metamodel.call.impl.ApiEnumerationCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.ApiEnumerationConstantCallImpl;
@@ -180,6 +184,7 @@ import io.proleap.vb6.asg.metamodel.call.impl.PropertyGetCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.PropertyLetCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.PropertySetCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.ReturnValueCallImpl;
+import io.proleap.vb6.asg.metamodel.call.impl.TypeElementCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.UndefinedCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.VariableCallImpl;
 import io.proleap.vb6.asg.metamodel.statement.Statement;
@@ -475,6 +480,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				final PropertyLet propertyLet = castPropertyLet(referencedProgramElements);
 				final PropertySet propertySet = castPropertySet(referencedProgramElements);
 				final Sub sub = castSub(referencedProgramElements);
+				final TypeElement typeElement = castTypeElement(referencedProgramElements);
 				final Variable variable = castVariable(referencedProgramElements);
 
 				/*
@@ -540,6 +546,13 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 						linkConstantCallWithConstant(constantCall, constant);
 
 						result = constantCall;
+					} else if (typeElement != null) {
+						final TypeElementCall typeElementCall = new TypeElementCallImpl(name, typeElement, module, this,
+								ctx);
+
+						linkTypeElementCallWithTypeElement(typeElementCall, typeElement);
+
+						result = typeElementCall;
 					} else if (enumeration != null) {
 						final EnumerationCall enumerationCall = new EnumerationCallImpl(name, enumeration, module, this,
 								ctx);
@@ -627,6 +640,13 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 						linkConstantCallWithConstant(constantCall, constant);
 
 						result = constantCall;
+					} else if (typeElement != null) {
+						final TypeElementCall typeElementCall = new TypeElementCallImpl(name, typeElement, module, this,
+								ctx);
+
+						linkTypeElementCallWithTypeElement(typeElementCall, typeElement);
+
+						result = typeElementCall;
 					} else if (propertyGet != null) {
 						final PropertyGetCall propertyGetCall = new PropertyGetCallImpl(name, propertyGet, module, this,
 								ctx);
@@ -2276,6 +2296,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	 */
 	protected List<ModelElement> getElements(final ComplexType instanceType, final String name) {
 		final Module instanceModule = castModule(instanceType);
+		final io.proleap.vb6.asg.metamodel.Type instanceTypeStmtType = castTypeStmtType(instanceType);
 		final ApiModule instanceApiModule = castApiModule(instanceType);
 		final ApiEnumeration instanceApiEnumeration = castApiEnumeration(instanceType);
 
@@ -2289,6 +2310,14 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 			if (instanceModuleScopedElements != null) {
 				referencedProgramElements.addAll(instanceModuleScopedElements);
+			}
+		}
+		// if a type stmt type is given
+		else if (instanceTypeStmtType != null) {
+			final TypeElement instanceTypeElement = instanceTypeStmtType.getTypeElement(name);
+
+			if (instanceTypeElement != null) {
+				referencedProgramElements.add(instanceTypeElement);
 			}
 		}
 		// if an api module instance is given
@@ -2514,6 +2543,11 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		sub.addSubCall(subCall);
 
 		linkArgCallsWithArgs(sub, ctx);
+	}
+
+	protected void linkTypeElementCallWithTypeElement(final TypeElementCall typeElementCall,
+			final TypeElement typeElement) {
+		typeElement.addTypeElementCall(typeElementCall);
 	}
 
 	protected void linkVariableCallWithVariable(final VariableCall variableCall, final Variable variable) {

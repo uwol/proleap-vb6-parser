@@ -19,7 +19,7 @@ public interface Call extends ScopedElement, TypedElement, NamedElement {
 	}
 
 	public enum CallType {
-		ApiEnumerationCall, ApiEnumerationConstantCall, ApiProcedureCall, ApiPropertyCall, ArgCall, ArrayElementCall, ConstantCall, DictionaryCall, EnumerationCall, EnumerationConstantCall, FunctionCall, MeCall, ModuleCall, PropertyGetCall, PropertyLetCall, PropertySetCall, ReturnValueCall, SubCall, UndefinedCall, VariableCall;
+		ApiEnumerationCall, ApiEnumerationConstantCall, ApiProcedureCall, ApiPropertyCall, ArgCall, ArrayElementCall, ConstantCall, DictionaryCall, EnumerationCall, EnumerationConstantCall, FunctionCall, MeCall, ModuleCall, PropertyGetCall, PropertyLetCall, PropertySetCall, ReturnValueCall, SubCall, TypeElementCall, UndefinedCall, VariableCall;
 	}
 
 	CallType getCallType();

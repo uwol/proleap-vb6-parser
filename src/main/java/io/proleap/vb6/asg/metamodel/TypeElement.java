@@ -8,13 +8,20 @@
 
 package io.proleap.vb6.asg.metamodel;
 
+import java.util.List;
+
 import io.proleap.vb6.VisualBasic6Parser.TypeStmt_ElementContext;
+import io.proleap.vb6.asg.metamodel.call.TypeElementCall;
 import io.proleap.vb6.asg.metamodel.type.AssignableTypedElement;
 
 public interface TypeElement extends ScopedElement, NamedElement, AssignableTypedElement {
 
+	void addTypeElementCall(TypeElementCall typeElementCall);
+
 	@Override
 	TypeStmt_ElementContext getCtx();
+
+	List<TypeElementCall> getTypeElementCalls();
 
 	boolean isDeclaredAsArray();
 

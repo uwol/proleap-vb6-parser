@@ -99,7 +99,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	protected Map<String, Sub> subs = new HashMap<String, Sub>();
 
-	protected final Map<String, Type> types = new HashMap<String, Type>();
+	protected final Map<String, io.proleap.vb6.asg.metamodel.Type> types = new HashMap<String, io.proleap.vb6.asg.metamodel.Type>();
 
 	protected Double version;
 
@@ -221,8 +221,6 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 			registerStatement(result);
 			enumerations.put(name, result);
-
-			final Program program = module.getProgram();
 			program.getTypeRegistry().registerType(result);
 		}
 
@@ -429,6 +427,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 			registerScopedElement(result);
 			types.put(name, result);
+			program.getTypeRegistry().registerType(result);
 		}
 
 		return result;
@@ -536,6 +535,11 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 	@Override
 	public Sub getSub(final String name) {
 		return subs.get(name);
+	}
+
+	@Override
+	public io.proleap.vb6.asg.metamodel.Type getType(final String name) {
+		return types.get(name);
 	}
 
 	@Override

@@ -8,8 +8,6 @@
 
 package io.proleap.vb6.asg.metamodel;
 
-import java.util.List;
-
 import io.proleap.vb6.asg.metamodel.type.ComplexType;
 
 /**
@@ -20,5 +18,5 @@ public interface Type extends ScopedElement, ComplexType {
 
 	void addTypeElement(TypeElement typeElement);
 
-	List<TypeElement> getTypeElements();
+	TypeElement getTypeElement(String name);
 }

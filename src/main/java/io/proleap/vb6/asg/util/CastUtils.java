@@ -370,6 +370,33 @@ public class CastUtils {
 		return element != null && element instanceof Sub ? (Sub) element : null;
 	}
 
+	public static io.proleap.vb6.asg.metamodel.TypeElement castTypeElement(final Collection<ModelElement> elements) {
+		io.proleap.vb6.asg.metamodel.TypeElement result = null;
+
+		if (elements != null) {
+			for (final ModelElement element : elements) {
+				final io.proleap.vb6.asg.metamodel.TypeElement typeElement = castTypeElement(element);
+
+				if (typeElement != null) {
+					result = typeElement;
+					break;
+				}
+			}
+		}
+
+		return result;
+	}
+
+	public static io.proleap.vb6.asg.metamodel.TypeElement castTypeElement(final ModelElement element) {
+		return element != null && element instanceof io.proleap.vb6.asg.metamodel.TypeElement
+				? (io.proleap.vb6.asg.metamodel.TypeElement) element : null;
+	}
+
+	public static io.proleap.vb6.asg.metamodel.Type castTypeStmtType(final Type type) {
+		return type != null && type instanceof io.proleap.vb6.asg.metamodel.Type
+				? (io.proleap.vb6.asg.metamodel.Type) type : null;
+	}
+
 	public static Variable castVariable(final Collection<ModelElement> elements) {
 		Variable result = null;
 

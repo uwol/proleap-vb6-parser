@@ -102,6 +102,8 @@ public interface Module extends Scope, ComplexType {
 
 	Sub getSub(String name);
 
+	io.proleap.vb6.asg.metamodel.Type getType(String name);
+
 	Double getVersion();
 
 	@Override

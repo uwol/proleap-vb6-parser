@@ -147,20 +147,6 @@ public class VbDeclarationVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
-	public Boolean visitTypeStmt(final VisualBasic6Parser.TypeStmtContext ctx) {
-		module.addType(ctx);
-
-		return visitChildren(ctx);
-	}
-
-	@Override
-	public Boolean visitTypeStmt_Element(final VisualBasic6Parser.TypeStmt_ElementContext ctx) {
-		module.addTypeElement(ctx);
-
-		return visitChildren(ctx);
-	}
-
-	@Override
 	public Boolean visitVariableSubStmt(final VisualBasic6Parser.VariableSubStmtContext ctx) {
 		final Scope scope = findScope(ctx);
 

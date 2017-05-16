@@ -62,8 +62,6 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	protected final int TYPE_ANALYSIS_DEPTH = 4;
 
 	protected void analyze(final Program program) {
-		registerModelElements(program);
-
 		analyzeDeclarations(program);
 		analyzeExpressions(program);
 
@@ -114,6 +112,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	@Override
 	public Program analyzeFile(final File inputFile, final Charset charset) throws IOException {
 		final Program program = new ProgramImpl();
+		registerModelElements(program);
 
 		parseFile(inputFile, charset, program);
 		analyze(program);
@@ -129,6 +128,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	@Override
 	public Program analyzeFiles(final List<File> inputFiles, final Charset charset) throws IOException {
 		final Program program = new ProgramImpl();
+		registerModelElements(program);
 
 		for (final File inputFile : inputFiles) {
 			parseFile(inputFile, charset, program);
