@@ -25,7 +25,7 @@ public class MeCallImpl extends CallImpl implements MeCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.MeCall;
+		return CallType.ME_CALL;
 	}
 
 	@Override

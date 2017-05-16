@@ -29,7 +29,7 @@ public class TypeElementCallImpl extends CallImpl implements TypeElementCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.TypeElementCall;
+		return CallType.TYPE_ELEMENT_CALL;
 	}
 
 	@Override

@@ -34,7 +34,7 @@ public class ModuleCallImpl extends CallImpl implements ModuleCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.ModuleCall;
+		return CallType.MODULE_CALL;
 	}
 
 	@Override

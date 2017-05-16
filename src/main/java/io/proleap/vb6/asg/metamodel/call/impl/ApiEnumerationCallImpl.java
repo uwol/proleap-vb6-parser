@@ -34,7 +34,7 @@ public class ApiEnumerationCallImpl extends CallImpl implements ApiEnumerationCa
 
 	@Override
 	public CallType getCallType() {
-		return CallType.ApiEnumerationCall;
+		return CallType.API_ENUMERATION_CALL;
 	}
 
 	@Override

@@ -34,7 +34,7 @@ public class ApiPropertyCallImpl extends CallImpl implements ApiPropertyCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.ApiPropertyCall;
+		return CallType.API_PROPERTY_CALL;
 	}
 
 	@Override

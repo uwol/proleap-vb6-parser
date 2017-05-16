@@ -57,7 +57,7 @@ public class LetImpl extends ScopedElementImpl implements Let {
 
 	@Override
 	public boolean isSettingReturnVariable() {
-		return CallType.ReturnValueCall.equals(leftHandCall.getCallType());
+		return CallType.RETURN_VALUE_CALL.equals(leftHandCall.getCallType());
 	}
 
 	@Override

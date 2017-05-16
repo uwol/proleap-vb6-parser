@@ -29,7 +29,7 @@ public class VariableCallImpl extends CallImpl implements VariableCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.VariableCall;
+		return CallType.VARIABLE_CALL;
 	}
 
 	@Override

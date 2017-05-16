@@ -29,7 +29,7 @@ public class FunctionCallImpl extends CallImpl implements FunctionCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.FunctionCall;
+		return CallType.FUNCTION_CALL;
 	}
 
 	@Override

@@ -29,7 +29,7 @@ public class PropertyLetCallImpl extends CallImpl implements PropertyLetCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.PropertyLetCall;
+		return CallType.PROPERTY_LET_CALL;
 	}
 
 	@Override

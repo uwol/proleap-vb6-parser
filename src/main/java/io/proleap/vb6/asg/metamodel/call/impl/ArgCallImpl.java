@@ -33,7 +33,7 @@ public class ArgCallImpl extends CallImpl implements ArgCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.ArgCall;
+		return CallType.ARG_CALL;
 	}
 
 	@Override

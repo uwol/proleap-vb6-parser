@@ -29,7 +29,7 @@ public class ConstantCallImpl extends CallImpl implements ConstantCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.ConstantCall;
+		return CallType.CONSTANT_CALL;
 	}
 
 	@Override

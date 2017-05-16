@@ -85,16 +85,16 @@ public class TypeAssignmentInferenceImpl implements TypeAssignmentInference {
 		final Call leftHandCall = let.getLeftHandCall().unwrap();
 		final CallType leftHandCallType = leftHandCall.getCallType();
 
-		if (CallType.VariableCall.equals(leftHandCallType)) {
+		if (CallType.VARIABLE_CALL.equals(leftHandCallType)) {
 			final VariableCall variableCall = (VariableCall) leftHandCall;
 			variableCall.getVariable().addTypeOfAssignedValue(valueType);
-		} else if (CallType.PropertyLetCall.equals(leftHandCallType)) {
+		} else if (CallType.PROPERTY_LET_CALL.equals(leftHandCallType)) {
 			final PropertyLetCall propertyLetCall = (PropertyLetCall) leftHandCall;
 			propertyLetCall.getPropertyLet().getArgsList().get(0).addTypeOfAssignedValue(valueType);
-		} else if (CallType.PropertySetCall.equals(leftHandCallType)) {
+		} else if (CallType.PROPERTY_SET_CALL.equals(leftHandCallType)) {
 			final PropertySetCall propertySetCall = (PropertySetCall) leftHandCall;
 			propertySetCall.getPropertySet().getArgsList().get(0).addTypeOfAssignedValue(valueType);
-		} else if (CallType.ReturnValueCall.equals(leftHandCallType)) {
+		} else if (CallType.RETURN_VALUE_CALL.equals(leftHandCallType)) {
 			final ReturnValueCall returnValueCall = (ReturnValueCall) leftHandCall;
 			final Procedure procedure = returnValueCall.getProcedure();
 
@@ -130,16 +130,16 @@ public class TypeAssignmentInferenceImpl implements TypeAssignmentInference {
 		final Call leftHandCall = set.getLeftHandCall().unwrap();
 		final CallType leftHandCallType = leftHandCall.getCallType();
 
-		if (CallType.VariableCall.equals(leftHandCallType)) {
+		if (CallType.VARIABLE_CALL.equals(leftHandCallType)) {
 			final VariableCall variableCall = (VariableCall) leftHandCall;
 			variableCall.getVariable().addTypeOfAssignedValue(valueType);
-		} else if (CallType.PropertyLetCall.equals(leftHandCallType)) {
+		} else if (CallType.PROPERTY_LET_CALL.equals(leftHandCallType)) {
 			final PropertyLetCall propertyLetCall = (PropertyLetCall) leftHandCall;
 			propertyLetCall.getPropertyLet().getArgsList().get(0).addTypeOfAssignedValue(valueType);
-		} else if (CallType.PropertySetCall.equals(leftHandCallType)) {
+		} else if (CallType.PROPERTY_SET_CALL.equals(leftHandCallType)) {
 			final PropertySetCall propertySetCall = (PropertySetCall) leftHandCall;
 			propertySetCall.getPropertySet().getArgsList().get(0).addTypeOfAssignedValue(valueType);
-		} else if (CallType.ReturnValueCall.equals(leftHandCallType)) {
+		} else if (CallType.RETURN_VALUE_CALL.equals(leftHandCallType)) {
 			final ReturnValueCall returnValueCall = (ReturnValueCall) leftHandCall;
 			final Procedure procedure = returnValueCall.getProcedure();
 

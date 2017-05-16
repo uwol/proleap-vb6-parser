@@ -30,7 +30,7 @@ public class SubCallImpl extends CallImpl implements SubCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.SubCall;
+		return CallType.SUB_CALL;
 	}
 
 	@Override

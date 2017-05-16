@@ -31,7 +31,7 @@ public class EnumerationConstantCallImpl extends CallImpl implements Enumeration
 
 	@Override
 	public CallType getCallType() {
-		return CallType.EnumerationConstantCall;
+		return CallType.ENUMERATION_CONSTANT_CALL;
 	}
 
 	@Override

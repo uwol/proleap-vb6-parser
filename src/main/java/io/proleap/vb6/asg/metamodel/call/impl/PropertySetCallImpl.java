@@ -29,7 +29,7 @@ public class PropertySetCallImpl extends CallImpl implements PropertySetCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.PropertySetCall;
+		return CallType.PROPERTY_SET_CALL;
 	}
 
 	@Override

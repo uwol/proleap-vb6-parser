@@ -34,7 +34,7 @@ public class ApiProcedureCallImpl extends CallImpl implements ApiProcedureCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.ApiProcedureCall;
+		return CallType.API_PROCEDURE_CALL;
 	}
 
 	@Override

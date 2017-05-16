@@ -30,7 +30,7 @@ public class ReturnValueCallImpl extends CallImpl implements ReturnValueCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.ReturnValueCall;
+		return CallType.RETURN_VALUE_CALL;
 	}
 
 	@Override

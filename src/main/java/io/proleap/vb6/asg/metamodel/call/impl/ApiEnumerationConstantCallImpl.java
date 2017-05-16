@@ -36,7 +36,7 @@ public class ApiEnumerationConstantCallImpl extends CallImpl implements ApiEnume
 
 	@Override
 	public CallType getCallType() {
-		return CallType.ApiEnumerationConstantCall;
+		return CallType.API_ENUMERATION_CONSTANT_CALL;
 	}
 
 	@Override

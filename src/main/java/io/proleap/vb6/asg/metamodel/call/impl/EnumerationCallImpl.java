@@ -29,7 +29,7 @@ public class EnumerationCallImpl extends CallImpl implements EnumerationCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.EnumerationCall;
+		return CallType.ENUMERATION_CALL;
 	}
 
 	@Override

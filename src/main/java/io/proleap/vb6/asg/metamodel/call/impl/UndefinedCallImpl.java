@@ -28,7 +28,7 @@ public class UndefinedCallImpl extends CallImpl implements Call {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.UndefinedCall;
+		return CallType.UNDEFINED_CALL;
 	}
 
 	@Override

@@ -23,7 +23,7 @@ public class DictionaryCallImpl extends CallImpl implements DictionaryCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.DictionaryCall;
+		return CallType.DICTIONARY_CALL;
 	}
 
 	@Override

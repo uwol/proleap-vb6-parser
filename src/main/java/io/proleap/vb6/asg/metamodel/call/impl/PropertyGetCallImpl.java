@@ -29,7 +29,7 @@ public class PropertyGetCallImpl extends CallImpl implements PropertyGetCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.PropertyGetCall;
+		return CallType.PROPERTY_GET_CALL;
 	}
 
 	@Override

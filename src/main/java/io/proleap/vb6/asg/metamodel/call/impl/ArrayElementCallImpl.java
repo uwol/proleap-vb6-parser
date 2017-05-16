@@ -29,7 +29,7 @@ public class ArrayElementCallImpl extends CallImpl implements ArrayElementCall {
 
 	@Override
 	public CallType getCallType() {
-		return CallType.ArrayElementCall;
+		return CallType.ARRAY_ELEMENT_CALL;
 	}
 
 	@Override
