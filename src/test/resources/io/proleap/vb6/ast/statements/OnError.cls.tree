@@ -1,0 +1,28 @@
+(startRule 
+	(module 
+		(moduleBody 
+			(moduleBodyElement 
+				(subStmt 
+					(visibility Private)   Sub   
+					(ambiguousIdentifier MyFirstSub) 
+					(argList ( )) \n   
+					(block 
+						(blockStmt 
+							(onErrorStmt On Error   GoTo   
+								(valueStmt 
+									(implicitCallStmt_InStmt 
+										(iCS_S_VariableOrProcedureCall 
+											(ambiguousIdentifier ErrHandler)))))) \n     
+						(blockStmt 
+							(implicitCallStmt_InBlock 
+								(iCS_B_ProcedureCall 
+									(certainIdentifier MsgBox)   
+									(argsCall 
+										(argCall 
+											(valueStmt 
+												(literal "MyFirstSub"))))))) \n     
+						(blockStmt 
+							(exitStmt Exit Sub)) \n \n   
+						(blockStmt 
+							(lineLabel 
+								(ambiguousIdentifier ErrHandler) :))) \n End Sub)))) <EOF>)

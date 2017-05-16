@@ -358,7 +358,7 @@ nameStmt
    ;
 
 onErrorStmt
-   : ON_ERROR WS (GOTO WS valueStmt | RESUME WS NEXT)
+   : (ON_ERROR | ON_LOCAL_ERROR) WS (GOTO WS valueStmt | RESUME WS NEXT)
    ;
 
 onGoToStmt
@@ -1452,6 +1452,11 @@ ON
 
 ON_ERROR
    : O N ' ' E R R O R
+   ;
+
+
+ON_LOCAL_ERROR
+   : O N ' ' L O C A L ' ' E R R O R
    ;
 
 
