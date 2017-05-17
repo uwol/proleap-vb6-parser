@@ -6,9 +6,13 @@ End Type
 Public Sub Test()
     Dim MyTypeInstance As MyType
     
-    MyTypeInstance.MyFunction = "MyModule" ' not detected as a call - fine
-    MsgBox MyTypeInstance.MyFunction ' detected as a call - wrong
+    MyTypeInstance.MyFunction = "MyModule"
+    MsgBox MyTypeInstance.MyFunction
     
-    MyTypeInstance.MySub = "MySub" ' not detected as a call - fine
-    MsgBox MyTypeInstance.MySub ' detected as a call - wrong
+    MyTypeInstance.MySub = "MySub"
+    MsgBox MyTypeInstance.MySub
+    
+    With MyTypeInstance
+        MsgBox .MyFunction
+    End With
 End Sub

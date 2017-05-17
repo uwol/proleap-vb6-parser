@@ -351,9 +351,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
-			/*
-			 * then the delegated call
-			 */
 			final Call delegatedCall;
 
 			if (ctx.iCS_S_VariableOrProcedureCall() != null) {
@@ -396,6 +393,10 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				instanceType = castComplexType(instanceCall.getType());
 
 				result.addSubCall(instanceCall);
+			} else if (this instanceof With) {
+				final With with = (With) this;
+				final Call withVariableCall = with.getWithVariableCall();
+				instanceType = castComplexType(withVariableCall.getType());
 			}
 
 			if (ctx.iCS_S_MemberCall() != null) {
@@ -419,9 +420,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
-			/*
-			 * then the delegated call
-			 */
 			final Call delegatedCall;
 
 			if (ctx.iCS_S_VariableOrProcedureCall() != null) {
@@ -810,7 +808,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
-
 			final String name = determineName(ctx);
 			final Type type = determineType(ctx);
 
