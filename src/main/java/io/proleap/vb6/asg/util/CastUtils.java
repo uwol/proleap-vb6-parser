@@ -198,6 +198,10 @@ public class CastUtils {
 		return element != null && element instanceof Enumeration ? (Enumeration) element : null;
 	}
 
+	public static Enumeration castEnumeration(final Type type) {
+		return type != null && type instanceof Enumeration ? (Enumeration) type : null;
+	}
+
 	public static EnumerationConstant castEnumerationConstant(final Collection<ModelElement> elements) {
 		EnumerationConstant result = null;
 

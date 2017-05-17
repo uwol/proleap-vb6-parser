@@ -362,7 +362,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			} else if (ctx.iCS_S_DictionaryCall() != null) {
 				delegatedCall = addCall(ctx.iCS_S_DictionaryCall());
 			} else {
-				LOG.warn("unknown implicit call {}.", ctx);
+				LOG.warn("Unknown implicit call {}.", ctx);
 				delegatedCall = null;
 			}
 
@@ -602,7 +602,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 						result = apiEnumerationConstantCall;
 					} else {
-						LOG.warn("left hand call to unknown element {}", name);
+						LOG.warn("Left hand call to unknown element {}.", name);
 						result = new UndefinedCallImpl(name, null, module, this, ctx);
 					}
 				} else {
@@ -715,7 +715,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 						result = apiEnumerationConstantCall;
 					} else {
-						LOG.warn("call to unknown element {}", name);
+						LOG.warn("Call to unknown element {}.", name);
 						result = new UndefinedCallImpl(name, null, module, this, ctx);
 					}
 				}
@@ -792,7 +792,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 					result = apiPropertyCall;
 				} else {
-					LOG.warn("call to unknown element {}", name);
+					LOG.warn("Call to unknown element {}.", name);
 					result = new UndefinedCallImpl(name, null, module, this, ctx);
 				}
 			}
@@ -842,12 +842,16 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				sub = instanceModule.getSub(name);
 				function = instanceModule.getFunction(name);
 				apiProcedure = null;
-			} else {
+			} else if (instanceType == null) {
 				final List<ModelElement> referencedProgramElements = getElements(null, name);
 
 				sub = castSub(referencedProgramElements);
 				function = castFunction(referencedProgramElements);
 				apiProcedure = castApiProcedure(referencedProgramElements);
+			} else {
+				sub = null;
+				function = null;
+				apiProcedure = null;
 			}
 
 			if (sub != null) {
@@ -967,12 +971,16 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				sub = instanceModule.getSub(name);
 				function = instanceModule.getFunction(name);
 				apiProcedure = null;
-			} else {
+			} else if (instanceType == null) {
 				final List<ModelElement> referencedProgramElements = getElements(null, name);
 
 				sub = castSub(referencedProgramElements);
 				function = castFunction(referencedProgramElements);
 				apiProcedure = castApiProcedure(referencedProgramElements);
+			} else {
+				sub = null;
+				function = null;
+				apiProcedure = null;
 			}
 
 			if (sub != null) {
@@ -1073,7 +1081,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			} else if (ctx.iCS_B_MemberProcedureCall() != null) {
 				delegatedCall = addCall(ctx.iCS_B_MemberProcedureCall());
 			} else {
-				LOG.warn("unknown implicit call {}.", ctx);
+				LOG.warn("Unknown implicit call {}.", ctx);
 				delegatedCall = null;
 			}
 
@@ -2293,6 +2301,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	 */
 	protected List<ModelElement> getElements(final ComplexType instanceType, final String name) {
 		final Module instanceModule = castModule(instanceType);
+		final Enumeration instanceEnumeration = castEnumeration(instanceType);
 		final io.proleap.vb6.asg.metamodel.Type instanceTypeStmtType = castTypeStmtType(instanceType);
 		final ApiModule instanceApiModule = castApiModule(instanceType);
 		final ApiEnumeration instanceApiEnumeration = castApiEnumeration(instanceType);
@@ -2300,42 +2309,52 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		final List<ModelElement> referencedProgramElements = new ArrayList<ModelElement>();
 
 		if (name == null) {
-		}
-		// if a module instance is given
-		else if (instanceModule != null) {
-			final List<ScopedElement> instanceModuleScopedElements = instanceModule.getScopedElementsInScope(name);
+		} else if (instanceType != null) {
+			// if a module instance is given
+			if (instanceModule != null) {
+				final List<ScopedElement> instanceModuleScopedElements = instanceModule.getScopedElementsInScope(name);
 
-			if (instanceModuleScopedElements != null) {
-				referencedProgramElements.addAll(instanceModuleScopedElements);
+				if (instanceModuleScopedElements != null) {
+					referencedProgramElements.addAll(instanceModuleScopedElements);
+				}
+			}
+			// if a enumeration is given
+			else if (instanceEnumeration != null) {
+				final EnumerationConstant enumerationConstant = instanceEnumeration.getEnumerationConstant(name);
+
+				if (enumerationConstant != null) {
+					referencedProgramElements.add(enumerationConstant);
+				}
+			}
+			// if a type stmt type is given
+			else if (instanceTypeStmtType != null) {
+				final TypeElement instanceTypeElement = instanceTypeStmtType.getTypeElement(name);
+
+				if (instanceTypeElement != null) {
+					referencedProgramElements.add(instanceTypeElement);
+				}
+			}
+			// if an api module instance is given
+			else if (instanceApiModule != null) {
+				final ApiProcedure apiProcedure = instanceApiModule.getApiProcedure(name);
+				final ApiProperty apiProperty = instanceApiModule.getApiProperty(name);
+
+				referencedProgramElements.add(apiProcedure);
+				referencedProgramElements.add(apiProperty);
+			}
+			// if an api enumeration instance is given
+			else if (instanceApiEnumeration != null) {
+				final ApiEnumerationConstant apiEnumerationConstant = instanceApiEnumeration
+						.getApiEnumerationConstant(name);
+
+				referencedProgramElements.add(apiEnumerationConstant);
+			} else {
+				LOG.warn("Could not resolve instance type {}.", instanceType);
 			}
 		}
-		// if a type stmt type is given
-		else if (instanceTypeStmtType != null) {
-			final TypeElement instanceTypeElement = instanceTypeStmtType.getTypeElement(name);
-
-			if (instanceTypeElement != null) {
-				referencedProgramElements.add(instanceTypeElement);
-			}
-		}
-		// if an api module instance is given
-		else if (instanceApiModule != null) {
-			final ApiProcedure apiProcedure = instanceApiModule.getApiProcedure(name);
-			final ApiProperty apiProperty = instanceApiModule.getApiProperty(name);
-
-			referencedProgramElements.add(apiProcedure);
-			referencedProgramElements.add(apiProperty);
-		}
-		// if an api enumeration instance is given
-		else if (instanceApiEnumeration != null) {
-			final ApiEnumerationConstant apiEnumerationConstant = instanceApiEnumeration
-					.getApiEnumerationConstant(name);
-
-			referencedProgramElements.add(apiEnumerationConstant);
-		}
-		// if there is no instance given
+		// if there is no instance type given
 		else {
-			// search globally in the program for elements with that
-			// name
+			// search globally in the program for elements with that name
 			final List<ScopedElement> globalProgramElements = getScopedElementsInHierarchy(name);
 
 			final ApiProcedure apiProcedure = module.getProgram().getApiProcedureRegistry().getApiProcedure(name);
@@ -2476,9 +2495,9 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				final ArgValueAssignment argValueAssignment = addArgValueAssignment(argCallCtx);
 
 				if (argsOfProcedure == null) {
-					LOG.warn("could not identify called procedure for arg call {}", argValueAssignment);
+					LOG.warn("Could not identify called procedure for arg call {}.", argValueAssignment);
 				} else if (argsOfProcedure.size() < argCallIndex + 1) {
-					LOG.warn("{} does not accept surplus arg call {}", procedure, argValueAssignment);
+					LOG.warn("{} does not accept surplus arg call {}.", procedure, argValueAssignment);
 				} else {
 					// determine the corresponding arg
 					final Arg arg = procedure.getArgsList().get(argCallIndex);
