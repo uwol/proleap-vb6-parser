@@ -60,7 +60,7 @@ public class MemberCallTest extends VbTestBase {
 					assertNotNull(myFunction);
 					assertEquals(VbBaseType.STRING, myFunction.getType());
 					// calls in MyModule should hit this type element
-					assertEquals(3, myFunction.getTypeElementCalls().size());
+					assertEquals(4, myFunction.getTypeElementCalls().size());
 				}
 
 				{
