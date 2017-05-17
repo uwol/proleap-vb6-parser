@@ -347,75 +347,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
-	public Call addCall(final CallContext callContext, final ImplicitCallStmt_InStmtContext ctx) {
-		Call result = (Call) getASGElement(ctx);
-
-		if (result == null) {
-			final Call delegatedCall;
-
-			if (ctx.iCS_S_VariableOrProcedureCall() != null) {
-				delegatedCall = addCall(null, callContext, ctx.iCS_S_VariableOrProcedureCall());
-			} else if (ctx.iCS_S_ProcedureOrArrayCall() != null) {
-				delegatedCall = addCall(null, ctx.iCS_S_ProcedureOrArrayCall());
-			} else if (ctx.iCS_S_MembersCall() != null) {
-				delegatedCall = addCall(callContext, ctx.iCS_S_MembersCall());
-			} else if (ctx.iCS_S_DictionaryCall() != null) {
-				delegatedCall = addCall(ctx.iCS_S_DictionaryCall());
-			} else {
-				LOG.warn("Unknown implicit call {}.", ctx);
-				delegatedCall = null;
-			}
-
-			result = new CallDelegateImpl(delegatedCall, module, this, ctx);
-
-			registerASGElement(result);
-		}
-
-		return result;
-	}
-
-	@Override
-	public Call addCall(final CallContext callContext, final VisualBasic6Parser.ICS_S_MembersCallContext ctx) {
-		MembersCall result = (MembersCall) getASGElement(ctx);
-
-		if (result == null) {
-			result = new MembersCallImpl(module, this, ctx);
-
-			ComplexType instanceType = null;
-
-			if (ctx.iCS_S_VariableOrProcedureCall() != null) {
-				final Call instanceCall = addCall(null, callContext, ctx.iCS_S_VariableOrProcedureCall());
-				instanceType = castComplexType(instanceCall.getType());
-
-				result.addSubCall(instanceCall);
-			} else if (ctx.iCS_S_ProcedureOrArrayCall() != null) {
-				final Call instanceCall = addCall(null, ctx.iCS_S_ProcedureOrArrayCall());
-				instanceType = castComplexType(instanceCall.getType());
-
-				result.addSubCall(instanceCall);
-			} else if (this instanceof With) {
-				final With with = (With) this;
-				final Call withVariableCall = with.getWithVariableCall();
-				instanceType = castComplexType(withVariableCall.getType());
-			}
-
-			if (ctx.iCS_S_MemberCall() != null) {
-				for (final ICS_S_MemberCallContext memberCallContext : ctx.iCS_S_MemberCall()) {
-					final Call call = addCall(instanceType, callContext, memberCallContext);
-					instanceType = castComplexType(call.getType());
-
-					result.addSubCall(call);
-				}
-			}
-
-			registerASGElement(result);
-		}
-
-		return result;
-	}
-
-	@Override
-	public Call addCall(final ComplexType instanceType, final CallContext callContext,
+	public Call addCall(final Call instanceCall, final ComplexType instanceType, final CallContext callContext,
 			final ICS_S_MemberCallContext ctx) {
 		Call result = (Call) getASGElement(ctx);
 
@@ -423,9 +355,9 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			final Call delegatedCall;
 
 			if (ctx.iCS_S_VariableOrProcedureCall() != null) {
-				delegatedCall = addCall(instanceType, callContext, ctx.iCS_S_VariableOrProcedureCall());
+				delegatedCall = addCall(instanceCall, instanceType, callContext, ctx.iCS_S_VariableOrProcedureCall());
 			} else if (ctx.iCS_S_ProcedureOrArrayCall() != null) {
-				delegatedCall = addCall(instanceType, ctx.iCS_S_ProcedureOrArrayCall());
+				delegatedCall = addCall(instanceCall, instanceType, ctx.iCS_S_ProcedureOrArrayCall());
 			} else {
 				delegatedCall = null;
 			}
@@ -439,7 +371,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
-	public Call addCall(final ComplexType instanceType, final CallContext callContext,
+	public Call addCall(final Call instanceCall, final ComplexType instanceType, final CallContext callContext,
 			final ICS_S_VariableOrProcedureCallContext ctx) {
 		Call result = (Call) getASGElement(ctx);
 
@@ -462,7 +394,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				 * determine referenced element, i. e. array variable or
 				 * function
 				 */
-				final List<ModelElement> referencedProgramElements = getElements(instanceType, name);
+				final List<ModelElement> referencedProgramElements = getElements(instanceCall, instanceType, name);
 
 				final Arg arg = castArg(referencedProgramElements);
 				final ApiProcedure apiProcedure = castApiProcedure(referencedProgramElements);
@@ -728,7 +660,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
-	public Call addCall(final ComplexType instanceType, final ICS_S_ProcedureOrArrayCallContext ctx) {
+	public Call addCall(final Call instanceCall, final ComplexType instanceType,
+			final ICS_S_ProcedureOrArrayCallContext ctx) {
 		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
@@ -737,7 +670,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			/*
 			 * determine referenced element, i. e. array variable or function
 			 */
-			final List<ModelElement> referencedProgramElements = getElements(instanceType, name);
+			final List<ModelElement> referencedProgramElements = getElements(instanceCall, instanceType, name);
 
 			final ApiProcedure apiProcedure = castApiProcedure(referencedProgramElements);
 			final ApiProperty apiProperty = castApiProperty(referencedProgramElements);
@@ -804,13 +737,80 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
+	public Call addCall(final CallContext callContext, final ImplicitCallStmt_InStmtContext ctx) {
+		Call result = (Call) getASGElement(ctx);
+
+		if (result == null) {
+			final Call delegatedCall;
+
+			if (ctx.iCS_S_VariableOrProcedureCall() != null) {
+				delegatedCall = addCall(null, null, callContext, ctx.iCS_S_VariableOrProcedureCall());
+			} else if (ctx.iCS_S_ProcedureOrArrayCall() != null) {
+				delegatedCall = addCall(null, null, ctx.iCS_S_ProcedureOrArrayCall());
+			} else if (ctx.iCS_S_MembersCall() != null) {
+				delegatedCall = addCall(callContext, ctx.iCS_S_MembersCall());
+			} else if (ctx.iCS_S_DictionaryCall() != null) {
+				delegatedCall = addCall(ctx.iCS_S_DictionaryCall());
+			} else {
+				LOG.warn("Unknown implicit call {}.", ctx);
+				delegatedCall = null;
+			}
+
+			result = new CallDelegateImpl(delegatedCall, module, this, ctx);
+
+			registerASGElement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public Call addCall(final CallContext callContext, final VisualBasic6Parser.ICS_S_MembersCallContext ctx) {
+		MembersCall result = (MembersCall) getASGElement(ctx);
+
+		if (result == null) {
+			result = new MembersCallImpl(module, this, ctx);
+
+			Call instanceCall = null;
+			ComplexType instanceType = null;
+
+			if (ctx.iCS_S_VariableOrProcedureCall() != null) {
+				instanceCall = addCall(null, null, callContext, ctx.iCS_S_VariableOrProcedureCall());
+				instanceType = castComplexType(instanceCall.getType());
+
+				result.addSubCall(instanceCall);
+			} else if (ctx.iCS_S_ProcedureOrArrayCall() != null) {
+				instanceCall = addCall(null, null, ctx.iCS_S_ProcedureOrArrayCall());
+				instanceType = castComplexType(instanceCall.getType());
+
+				result.addSubCall(instanceCall);
+			} else if (this instanceof With) {
+				final With with = (With) this;
+				instanceCall = with.getWithVariableCall();
+				instanceType = castComplexType(instanceCall.getType());
+			}
+
+			if (ctx.iCS_S_MemberCall() != null) {
+				for (final ICS_S_MemberCallContext memberCallContext : ctx.iCS_S_MemberCall()) {
+					instanceCall = addCall(instanceCall, instanceType, callContext, memberCallContext);
+					instanceType = castComplexType(instanceCall.getType());
+
+					result.addSubCall(instanceCall);
+				}
+			}
+
+			registerASGElement(result);
+		}
+
+		return result;
+	}
+
+	@Override
 	public Call addCall(final DictionaryCallStmtContext ctx) {
 		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
-			final Type type = determineType(ctx);
-
 			result = new DictionaryCallImpl(name, module, this, ctx);
 
 			registerASGElement(result);
@@ -826,32 +826,30 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		if (result == null) {
 			final String name = determineName(ctx);
 
-			ComplexType instanceType = null;
-
-			if (ctx.implicitCallStmt_InStmt() != null) {
-				final Call instanceCall = addCall(null, ctx.implicitCallStmt_InStmt());
-				instanceType = castComplexType(instanceCall.getType());
-			}
-
-			final Module instanceModule = castModule(instanceType);
 			final Sub sub;
 			final Function function;
 			final ApiProcedure apiProcedure;
 
-			if (instanceModule != null) {
-				sub = instanceModule.getSub(name);
-				function = instanceModule.getFunction(name);
-				apiProcedure = null;
-			} else if (instanceType == null) {
-				final List<ModelElement> referencedProgramElements = getElements(null, name);
+			if (ctx.implicitCallStmt_InStmt() != null) {
+				final Call instanceCall = addCall(null, ctx.implicitCallStmt_InStmt());
+				final ComplexType instanceType = castComplexType(instanceCall.getType());
+				final Module instanceModule = castModule(instanceType);
+
+				if (instanceModule != null) {
+					sub = instanceModule.getSub(name);
+					function = instanceModule.getFunction(name);
+					apiProcedure = null;
+				} else {
+					sub = null;
+					function = null;
+					apiProcedure = null;
+				}
+			} else {
+				final List<ModelElement> referencedProgramElements = getElements(null, null, name);
 
 				sub = castSub(referencedProgramElements);
 				function = castFunction(referencedProgramElements);
 				apiProcedure = castApiProcedure(referencedProgramElements);
-			} else {
-				sub = null;
-				function = null;
-				apiProcedure = null;
 			}
 
 			if (sub != null) {
@@ -890,7 +888,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		if (result == null) {
 			final String name = determineName(ctx);
 
-			final List<ModelElement> referencedProgramElements = getElements(null, name);
+			final List<ModelElement> referencedProgramElements = getElements(null, null, name);
 
 			final Sub sub = castSub(referencedProgramElements);
 			final Function function = castFunction(referencedProgramElements);
@@ -955,32 +953,30 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		if (result == null) {
 			final String name = determineName(ctx);
 
-			ComplexType instanceType = null;
-
-			if (ctx.implicitCallStmt_InStmt() != null) {
-				final Call instanceCall = addCall(null, ctx.implicitCallStmt_InStmt());
-				instanceType = castComplexType(instanceCall.getType());
-			}
-
-			final Module instanceModule = castModule(instanceType);
 			final Sub sub;
 			final Function function;
 			final ApiProcedure apiProcedure;
 
-			if (instanceModule != null) {
-				sub = instanceModule.getSub(name);
-				function = instanceModule.getFunction(name);
-				apiProcedure = null;
-			} else if (instanceType == null) {
-				final List<ModelElement> referencedProgramElements = getElements(null, name);
+			if (ctx.implicitCallStmt_InStmt() != null) {
+				final Call instanceCall = addCall(null, ctx.implicitCallStmt_InStmt());
+				final ComplexType instanceType = castComplexType(instanceCall.getType());
+				final Module instanceModule = castModule(instanceType);
+
+				if (instanceModule != null) {
+					sub = instanceModule.getSub(name);
+					function = instanceModule.getFunction(name);
+					apiProcedure = null;
+				} else {
+					sub = null;
+					function = null;
+					apiProcedure = null;
+				}
+			} else {
+				final List<ModelElement> referencedProgramElements = getElements(null, null, name);
 
 				sub = castSub(referencedProgramElements);
 				function = castFunction(referencedProgramElements);
 				apiProcedure = castApiProcedure(referencedProgramElements);
-			} else {
-				sub = null;
-				function = null;
-				apiProcedure = null;
 			}
 
 			if (sub != null) {
@@ -1019,7 +1015,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		if (result == null) {
 			final String name = determineName(ctx);
 
-			final List<ModelElement> referencedProgramElements = getElements(null, name);
+			final List<ModelElement> referencedProgramElements = getElements(null, null, name);
 
 			final Sub sub = castSub(referencedProgramElements);
 			final Function function = castFunction(referencedProgramElements);
@@ -1060,7 +1056,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 		if (result == null) {
 			final Call delegatedCall = addCall(ctx.dictionaryCallStmt());
-
 			result = new CallDelegateImpl(delegatedCall, module, this, ctx);
 
 			registerASGElement(result);
@@ -1254,7 +1249,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			result = new ForEachImpl(module, this, ctx);
 
 			final String elementVariableName = determineName(ctx);
-			final List<ModelElement> referencedProgramElements = getElements(null, elementVariableName);
+			final List<ModelElement> referencedProgramElements = getElements(null, null, elementVariableName);
 			final Variable elementVariable = castVariable(referencedProgramElements);
 			result.setElementVariable(elementVariable);
 
@@ -1278,7 +1273,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			result = new ForNextImpl(module, this, ctx);
 
 			final String iteratorVariableName = determineName(ctx);
-			final List<ModelElement> referencedProgramElements = getElements(null, iteratorVariableName);
+			final List<ModelElement> referencedProgramElements = getElements(null, null, iteratorVariableName);
 
 			final Variable iteratorVariable = castVariable(referencedProgramElements);
 			result.setIteratorVariable(iteratorVariable);
@@ -1389,7 +1384,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 		if (result == null) {
 			final String lineLabelName = determineName(ctx);
-			final List<ModelElement> referencedProgramElements = getElements(null, lineLabelName);
+			final List<ModelElement> referencedProgramElements = getElements(null, null, lineLabelName);
 
 			final LineLabel lineLabel = castLineLabel(referencedProgramElements);
 
@@ -1437,7 +1432,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 		if (result == null) {
 			final String name = determineName(ctx);
-			final List<ModelElement> referencedProgramElements = getElements(null, name);
+			final List<ModelElement> referencedProgramElements = getElements(null, null, name);
 			final Variable variable = castVariable(referencedProgramElements);
 
 			result = new ReDimImpl(variable, module, this, ctx);
@@ -1457,7 +1452,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		if (result == null) {
 			final String lineLabelName = determineName(ctx);
 
-			final List<ModelElement> referencedProgramElements = getElements(null, lineLabelName);
+			final List<ModelElement> referencedProgramElements = getElements(null, null, lineLabelName);
 
 			final LineLabel lineLabel = castLineLabel(referencedProgramElements);
 
@@ -1806,7 +1801,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			/*
 			 * identify model element of assigned variable
 			 */
-			final List<ModelElement> referencedProgramElements = getElements(null, assignedVariableName);
+			final List<ModelElement> referencedProgramElements = getElements(null, null, assignedVariableName);
 
 			/*
 			 * identify typed model element of assigned variable
@@ -2299,7 +2294,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	 * searches elements of the program by their name such as functions,
 	 * variables, api procedures etc.
 	 */
-	protected List<ModelElement> getElements(final ComplexType instanceType, final String name) {
+	protected List<ModelElement> getElements(final Call instanceCall, final ComplexType instanceType,
+			final String name) {
 		final Module instanceModule = castModule(instanceType);
 		final Enumeration instanceEnumeration = castEnumeration(instanceType);
 		final io.proleap.vb6.asg.metamodel.Type instanceTypeStmtType = castTypeStmtType(instanceType);
@@ -2351,9 +2347,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			} else {
 				LOG.warn("Could not resolve instance type {}.", instanceType);
 			}
-		}
-		// if there is no instance type given
-		else {
+		} else if (instanceCall == null) {
 			// search globally in the program for elements with that name
 			final List<ScopedElement> globalProgramElements = getScopedElementsInHierarchy(name);
 

@@ -87,7 +87,7 @@ public abstract class ProcedureImpl extends ScopeImpl implements Procedure {
 			final Type defaultValueLiteralType = determineType(ctx);
 
 			final ComplexType complexArgType = castComplexType(argType);
-			final List<ModelElement> referencedElements = getElements(complexArgType, name);
+			final List<ModelElement> referencedElements = getElements(null, complexArgType, name);
 			final ApiEnumerationConstant apiEnumerationConstant = castApiEnumerationConstant(referencedElements);
 
 			/*

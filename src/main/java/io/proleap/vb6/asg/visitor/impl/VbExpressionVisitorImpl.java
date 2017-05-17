@@ -169,7 +169,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 	public Boolean visitICS_S_ProcedureOrArrayCall(final VisualBasic6Parser.ICS_S_ProcedureOrArrayCallContext ctx) {
 		final Scope scope = findScope(ctx);
 
-		scope.addCall(null, ctx);
+		scope.addCall(null, null, ctx);
 
 		return visitChildren(ctx);
 	}
@@ -179,7 +179,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 			final VisualBasic6Parser.ICS_S_VariableOrProcedureCallContext ctx) {
 		final Scope scope = findScope(ctx);
 
-		scope.addCall(null, null, ctx);
+		scope.addCall(null, null, null, ctx);
 
 		return visitChildren(ctx);
 	}

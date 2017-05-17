@@ -135,17 +135,16 @@ public interface Scope extends ScopedElement {
 
 	Beep addBeep(BeepStmtContext ctx);
 
+	Call addCall(Call instanceCall, ComplexType instanceType, CallContext callContext, ICS_S_MemberCallContext ctx);
+
+	Call addCall(Call instanceCall, ComplexType instanceType, CallContext callContext,
+			ICS_S_VariableOrProcedureCallContext ctx);
+
+	Call addCall(Call instanceCall, ComplexType instanceType, ICS_S_ProcedureOrArrayCallContext ctx);
+
 	Call addCall(CallContext callContext, ICS_S_MembersCallContext ctx);
 
 	Call addCall(CallContext callContext, ImplicitCallStmt_InStmtContext ctx);
-
-	Call addCall(ComplexType instanceType, CallContext callContext, ICS_S_MemberCallContext ctx);
-
-	Call addCall(ComplexType instanceType, CallContext callContext,
-
-			ICS_S_VariableOrProcedureCallContext ctx);
-
-	Call addCall(ComplexType instanceType, ICS_S_ProcedureOrArrayCallContext ctx);
 
 	Call addCall(DictionaryCallStmtContext ctx);
 
