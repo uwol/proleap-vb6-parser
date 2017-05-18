@@ -49,6 +49,15 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
+	public Boolean visitBlockIfThenElse(final VisualBasic6Parser.BlockIfThenElseContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addBlockIfThenElse(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
 	public Boolean visitChDirStmt(final VisualBasic6Parser.ChDirStmtContext ctx) {
 		final Scope scope = findScope(ctx);
 
@@ -185,10 +194,37 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
+	public Boolean visitIfBlockStmt(final VisualBasic6Parser.IfBlockStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addIfBlock(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
 	public Boolean visitIfConditionStmt(final VisualBasic6Parser.IfConditionStmtContext ctx) {
 		final Scope scope = findScope(ctx);
 
 		scope.addIfCondition(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitIfElseBlockStmt(final VisualBasic6Parser.IfElseBlockStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addElseBlock(ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitIfElseIfBlockStmt(final VisualBasic6Parser.IfElseIfBlockStmtContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addElseIfBlock(ctx);
 
 		return visitChildren(ctx);
 	}
@@ -207,6 +243,15 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 		final Scope scope = findScope(ctx);
 
 		scope.addCall(null, ctx);
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Boolean visitInlineIfThenElse(final VisualBasic6Parser.InlineIfThenElseContext ctx) {
+		final Scope scope = findScope(ctx);
+
+		scope.addInlineIfThenElse(ctx);
 
 		return visitChildren(ctx);
 	}

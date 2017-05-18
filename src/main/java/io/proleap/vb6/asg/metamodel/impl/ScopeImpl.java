@@ -44,6 +44,7 @@ import io.proleap.vb6.VisualBasic6Parser.AppActivateStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgsCallContext;
 import io.proleap.vb6.VisualBasic6Parser.BeepStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.BlockIfThenElseContext;
 import io.proleap.vb6.VisualBasic6Parser.CaseCondElseContext;
 import io.proleap.vb6.VisualBasic6Parser.CaseCondExprContext;
 import io.proleap.vb6.VisualBasic6Parser.CaseCondExprIsContext;
@@ -71,9 +72,13 @@ import io.proleap.vb6.VisualBasic6Parser.ICS_S_DictionaryCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ICS_S_MemberCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ICS_S_ProcedureOrArrayCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ICS_S_VariableOrProcedureCallContext;
+import io.proleap.vb6.VisualBasic6Parser.IfBlockStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.IfConditionStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.IfElseBlockStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.IfElseIfBlockStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ImplicitCallStmt_InBlockContext;
 import io.proleap.vb6.VisualBasic6Parser.ImplicitCallStmt_InStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.InlineIfThenElseContext;
 import io.proleap.vb6.VisualBasic6Parser.LetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.LineLabelContext;
 import io.proleap.vb6.VisualBasic6Parser.LiteralContext;
@@ -220,8 +225,18 @@ import io.proleap.vb6.asg.metamodel.statement.foreach.impl.ForEachImpl;
 import io.proleap.vb6.asg.metamodel.statement.fornext.ForNext;
 import io.proleap.vb6.asg.metamodel.statement.fornext.impl.ForNextImpl;
 import io.proleap.vb6.asg.metamodel.statement.function.Function;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.BlockIfThenElse;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.ElseBlock;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.ElseIfBlock;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.IfBlock;
 import io.proleap.vb6.asg.metamodel.statement.ifstmt.IfCondition;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.InlineIfThenElse;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.impl.BlockIfThenElseImpl;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.impl.ElseBlockImpl;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.impl.ElseIfBlockImpl;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.impl.IfBlockImpl;
 import io.proleap.vb6.asg.metamodel.statement.ifstmt.impl.IfConditionImpl;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.impl.InlineIfThenElseImpl;
 import io.proleap.vb6.asg.metamodel.statement.let.Let;
 import io.proleap.vb6.asg.metamodel.statement.let.impl.LetImpl;
 import io.proleap.vb6.asg.metamodel.statement.onerror.OnError;
@@ -339,6 +354,34 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 		if (result == null) {
 			result = new BeepImpl(module, this, ctx);
+
+			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public BlockIfThenElse addBlockIfThenElse(final BlockIfThenElseContext ctx) {
+		BlockIfThenElse result = (BlockIfThenElse) getASGElement(ctx);
+
+		if (result == null) {
+			result = new BlockIfThenElseImpl(module, this, ctx);
+
+			if (ctx.ifBlockStmt() != null) {
+				final IfBlock ifBlock = addIfBlock(ctx.ifBlockStmt());
+				result.setIfBlock(ifBlock);
+			}
+
+			for (final IfElseIfBlockStmtContext ifElseIfBlockStmtContext : ctx.ifElseIfBlockStmt()) {
+				final ElseIfBlock elseIfBlock = addElseIfBlock(ifElseIfBlockStmtContext);
+				result.addElseIfBlock(elseIfBlock);
+			}
+
+			if (ctx.ifElseBlockStmt() != null) {
+				final ElseBlock elseBlock = addElseBlock(ctx.ifElseBlockStmt());
+				result.setElseBlock(elseBlock);
+			}
 
 			registerStatement(result);
 		}
@@ -1200,6 +1243,32 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
+	public ElseBlock addElseBlock(final IfElseBlockStmtContext ctx) {
+		ElseBlock result = (ElseBlock) getASGElement(ctx);
+
+		if (result == null) {
+			result = new ElseBlockImpl(module, this, ctx);
+
+			registerASGElement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public ElseIfBlock addElseIfBlock(final IfElseIfBlockStmtContext ctx) {
+		ElseIfBlock result = (ElseIfBlock) getASGElement(ctx);
+
+		if (result == null) {
+			result = new ElseIfBlockImpl(module, this, ctx);
+
+			registerASGElement(result);
+		}
+
+		return result;
+	}
+
+	@Override
 	public Event addEvent(final EventStmtContext ctx) {
 		Event result = (Event) getASGElement(ctx);
 
@@ -1305,6 +1374,19 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
+	public IfBlock addIfBlock(final IfBlockStmtContext ctx) {
+		IfBlock result = (IfBlock) getASGElement(ctx);
+
+		if (result == null) {
+			result = new IfBlockImpl(module, this, ctx);
+
+			registerASGElement(result);
+		}
+
+		return result;
+	}
+
+	@Override
 	public IfCondition addIfCondition(final IfConditionStmtContext ctx) {
 		IfCondition result = (IfCondition) getASGElement(ctx);
 
@@ -1315,6 +1397,19 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			result.setValueStmt(valueStmt);
 
 			registerScopedElement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public InlineIfThenElse addInlineIfThenElse(final InlineIfThenElseContext ctx) {
+		InlineIfThenElse result = (InlineIfThenElse) getASGElement(ctx);
+
+		if (result == null) {
+			result = new InlineIfThenElseImpl(module, this, ctx);
+
+			registerStatement(result);
 		}
 
 		return result;

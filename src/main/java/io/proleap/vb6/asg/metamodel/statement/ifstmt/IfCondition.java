@@ -12,10 +12,6 @@ import io.proleap.vb6.asg.metamodel.ScopedElement;
 import io.proleap.vb6.asg.metamodel.type.TypedElement;
 import io.proleap.vb6.asg.metamodel.valuestmt.ValueStmt;
 
-/**
- * Conditionally executes a group of statements, depending on the value of an
- * expression.
- */
 public interface IfCondition extends TypedElement, ScopedElement {
 
 	ValueStmt getValueStmt();

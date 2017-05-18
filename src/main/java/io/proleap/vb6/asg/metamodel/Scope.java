@@ -13,6 +13,7 @@ import java.util.List;
 import io.proleap.vb6.VisualBasic6Parser.AppActivateStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
 import io.proleap.vb6.VisualBasic6Parser.BeepStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.BlockIfThenElseContext;
 import io.proleap.vb6.VisualBasic6Parser.ChDirStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ChDriveStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.CloseStmtContext;
@@ -36,9 +37,13 @@ import io.proleap.vb6.VisualBasic6Parser.ICS_S_MemberCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ICS_S_MembersCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ICS_S_ProcedureOrArrayCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ICS_S_VariableOrProcedureCallContext;
+import io.proleap.vb6.VisualBasic6Parser.IfBlockStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.IfConditionStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.IfElseBlockStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.IfElseIfBlockStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ImplicitCallStmt_InBlockContext;
 import io.proleap.vb6.VisualBasic6Parser.ImplicitCallStmt_InStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.InlineIfThenElseContext;
 import io.proleap.vb6.VisualBasic6Parser.LetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.LineLabelContext;
 import io.proleap.vb6.VisualBasic6Parser.LiteralContext;
@@ -106,7 +111,12 @@ import io.proleap.vb6.asg.metamodel.statement.event.Event;
 import io.proleap.vb6.asg.metamodel.statement.exit.Exit;
 import io.proleap.vb6.asg.metamodel.statement.foreach.ForEach;
 import io.proleap.vb6.asg.metamodel.statement.fornext.ForNext;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.BlockIfThenElse;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.ElseBlock;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.ElseIfBlock;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.IfBlock;
 import io.proleap.vb6.asg.metamodel.statement.ifstmt.IfCondition;
+import io.proleap.vb6.asg.metamodel.statement.ifstmt.InlineIfThenElse;
 import io.proleap.vb6.asg.metamodel.statement.let.Let;
 import io.proleap.vb6.asg.metamodel.statement.onerror.OnError;
 import io.proleap.vb6.asg.metamodel.statement.open.Open;
@@ -134,6 +144,8 @@ public interface Scope extends ScopedElement {
 	ArgValueAssignment addArgValueAssignment(ArgCallContext ctx);
 
 	Beep addBeep(BeepStmtContext ctx);
+
+	BlockIfThenElse addBlockIfThenElse(BlockIfThenElseContext ctx);
 
 	Call addCall(Call instanceCall, ComplexType instanceType, CallContext callContext, ICS_S_MemberCallContext ctx);
 
@@ -178,6 +190,10 @@ public interface Scope extends ScopedElement {
 
 	DoLoop addDoLoop(DoLoopStmtContext ctx);
 
+	ElseBlock addElseBlock(IfElseBlockStmtContext ctx);
+
+	ElseIfBlock addElseIfBlock(IfElseIfBlockStmtContext ctx);
+
 	Event addEvent(EventStmtContext ctx);
 
 	Exit addExit(ExitStmtContext ctx);
@@ -186,7 +202,11 @@ public interface Scope extends ScopedElement {
 
 	ForNext addForNext(ForNextStmtContext ctx);
 
+	IfBlock addIfBlock(IfBlockStmtContext ctx);
+
 	IfCondition addIfCondition(IfConditionStmtContext ctx);
+
+	InlineIfThenElse addInlineIfThenElse(InlineIfThenElseContext ctx);
 
 	Let addLet(LetStmtContext ctx);
 
