@@ -15,6 +15,7 @@ import io.proleap.vb6.asg.metamodel.StandardModule;
 import io.proleap.vb6.asg.metamodel.TypeElement;
 import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.statement.function.Function;
+import io.proleap.vb6.asg.metamodel.statement.property.get.PropertyGet;
 import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
@@ -35,14 +36,22 @@ public class TypeMemberCallByScalarTest extends VbTestBase {
 			{
 				final Function myFunction = myClass.getFunction("MyFunction");
 				assertNotNull(myFunction);
-				// calls in MyModule should not hit this function
-				assertEquals(0, myFunction.getFunctionCalls().size());
+				// calls from MyModule should not hit this function, only the 1
+				// ME call in the class itself
+				assertEquals(1, myFunction.getFunctionCalls().size());
+			}
+
+			{
+				final PropertyGet myPropertyGet = myClass.getPropertyGet("MyPropertyGet");
+				assertNotNull(myPropertyGet);
+				// calls from MyModule should not hit this function, only the 1
+				// ME call in the class itself
+				assertEquals(1, myPropertyGet.getPropertyGetCalls().size());
 			}
 
 			{
 				final Sub mySub = myClass.getSub("MySub");
 				assertNotNull(mySub);
-				// calls in MyModule should not hit this sub
 				assertEquals(0, mySub.getSubCalls().size());
 			}
 		}

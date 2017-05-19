@@ -17,8 +17,6 @@ import io.proleap.vb6.asg.metamodel.type.Type;
 
 public class MeCallImpl extends CallImpl implements MeCall {
 
-	protected Module module;
-
 	public MeCallImpl(final String name, final Module module, final Scope scope, final ParserRuleContext ctx) {
 		super(name, module, scope, ctx);
 	}
