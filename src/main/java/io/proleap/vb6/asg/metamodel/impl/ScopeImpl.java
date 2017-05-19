@@ -296,6 +296,7 @@ import io.proleap.vb6.asg.metamodel.valuestmt.impl.SubCallImpl;
 import io.proleap.vb6.asg.metamodel.valuestmt.impl.ValueAssignmentImpl;
 import io.proleap.vb6.asg.resolver.impl.NameResolverImpl;
 import io.proleap.vb6.asg.resolver.impl.TypeResolverImpl;
+import io.proleap.vb6.asg.util.ANTLRUtils;
 
 public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
@@ -837,6 +838,13 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				final With with = (With) this;
 				instanceCall = with.getWithVariableCall();
 				instanceType = castComplexType(instanceCall.getType());
+			} else {
+				final With with = (With) ANTLRUtils.findParent(With.class, ctx, program.getASGElementRegistry());
+
+				if (with != null) {
+					instanceCall = with.getWithVariableCall();
+					instanceType = castComplexType(instanceCall.getType());
+				}
 			}
 
 			if (ctx.iCS_S_MemberCall() != null) {
