@@ -1,4 +1,4 @@
-package io.proleap.vb6.asg.call;
+package io.proleap.vb6.asg.call.api;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -17,7 +17,7 @@ public class ApiProcedureCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
-		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/ApiProcedureCall.cls");
+		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/api/ApiProcedureCall.cls");
 		final Program program = new VbParserRunnerImpl().analyzeFile(inputFile);
 
 		final ApiProcedure midApiProcedure = program.getApiProcedureRegistry().getApiProcedure("Mid");

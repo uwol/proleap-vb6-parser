@@ -1,4 +1,4 @@
-package io.proleap.vb6.asg.call;
+package io.proleap.vb6.asg.call.constant;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -20,7 +20,7 @@ public class ConstantCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
-		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/ConstantCall.cls");
+		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/constant/ConstantCall.cls");
 		final Program program = new VbParserRunnerImpl().analyzeFile(inputFile);
 
 		final Module module = program.getClazzModule("ConstantCall");

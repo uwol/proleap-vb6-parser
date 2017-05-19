@@ -1,4 +1,4 @@
-package io.proleap.vb6.asg.call;
+package io.proleap.vb6.asg.call.enumeration;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -19,7 +19,7 @@ public class EnumerationCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
-		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/EnumerationCall.cls");
+		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/enumeration/EnumerationCall.cls");
 		final Program program = new VbParserRunnerImpl().analyzeFile(inputFile);
 
 		final Module module = program.getClazzModule("EnumerationCall");

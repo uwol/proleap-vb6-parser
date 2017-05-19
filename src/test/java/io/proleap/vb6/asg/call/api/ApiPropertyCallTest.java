@@ -1,4 +1,4 @@
-package io.proleap.vb6.asg.call;
+package io.proleap.vb6.asg.call.api;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -17,7 +17,7 @@ public class ApiPropertyCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
-		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/ApiPropertyCall.cls");
+		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/api/ApiPropertyCall.cls");
 		final Program program = new VbParserRunnerImpl().analyzeFile(inputFile);
 
 		final ApiProperty apiProperty = program.getApiPropertyRegistry().getApiProperty("AppMajor");
