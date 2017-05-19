@@ -9,6 +9,5 @@ Private Sub SomeSub(I)
     L = I + 1
 End Sub
 
-
 SomeFunction 1, 2
 SomeSub 1

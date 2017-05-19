@@ -1,4 +1,4 @@
-package io.proleap.vb6.asg.call;
+package io.proleap.vb6.asg.call.arg;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -22,7 +22,7 @@ public class ArgCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
-		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/ArgCall.cls");
+		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/arg/ArgCall.cls");
 		final Program program = new VbParserRunnerImpl().analyzeFile(inputFile);
 
 		final Module module = program.getClazzModule("ArgCall");
@@ -53,7 +53,6 @@ public class ArgCallTest extends VbTestBase {
 		}
 
 		final Sub someSub = module.getSub("SomeSub");
-
 		assertNotNull(someSub);
 
 		{
@@ -71,5 +70,4 @@ public class ArgCallTest extends VbTestBase {
 			assertEquals(1, variableL.getVariableCalls().size());
 		}
 	}
-
 }

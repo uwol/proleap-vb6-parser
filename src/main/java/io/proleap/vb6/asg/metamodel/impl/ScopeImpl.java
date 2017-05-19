@@ -767,6 +767,12 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 					linkApiPropertyCallWithApiProperty(apiPropertyCall, apiProperty);
 
 					result = apiPropertyCall;
+				} else if (arg != null) {
+					final ArgCall argCall = new ArgCallImpl(name, arg, module, this, ctx);
+
+					linkArgCallWithArg(argCall, arg);
+
+					result = argCall;
 				} else {
 					LOG.warn("Call to unknown element {}.", name);
 					result = new UndefinedCallImpl(name, null, module, this, ctx);
