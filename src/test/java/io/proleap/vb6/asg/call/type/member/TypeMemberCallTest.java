@@ -1,4 +1,4 @@
-package io.proleap.vb6.asg.call.member;
+package io.proleap.vb6.asg.call.type.member;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -18,12 +18,12 @@ import io.proleap.vb6.asg.metamodel.statement.function.Function;
 import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
-public class MemberCallTest extends VbTestBase {
+public class TypeMemberCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
-		final File classInputFile = new File("src/test/resources/io/proleap/vb6/asg/call/member/MyClass.cls");
-		final File moduleInputFile = new File("src/test/resources/io/proleap/vb6/asg/call/member/MyModule.bas");
+		final File classInputFile = new File("src/test/resources/io/proleap/vb6/asg/call/type/member/MyClass.cls");
+		final File moduleInputFile = new File("src/test/resources/io/proleap/vb6/asg/call/type/member/MyModule.bas");
 
 		final Program program = new VbParserRunnerImpl().analyzeFiles(Arrays.asList(classInputFile, moduleInputFile));
 

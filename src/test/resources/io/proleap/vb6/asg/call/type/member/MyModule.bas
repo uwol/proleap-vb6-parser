@@ -5,7 +5,7 @@ End Type
 
 Public Sub Test()
     Dim MyTypeInstance As MyType
-    
+
     MyTypeInstance.MyFunction = "MyModule"
     MsgBox MyTypeInstance.MyFunction
     
@@ -16,7 +16,8 @@ Public Sub Test()
         MsgBox .MyFunction
     End With
 
-    Dim MyTypeArray(2) As MyType
+    Dim MyTypeArray(1) As MyType
+
     With MyTypeArray(0)
         MsgBox .MyFunction
     End With
