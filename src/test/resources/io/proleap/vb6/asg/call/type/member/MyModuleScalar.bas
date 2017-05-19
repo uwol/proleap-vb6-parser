@@ -15,10 +15,4 @@ Public Sub Test()
     With MyTypeInstance
         MsgBox .MyFunction
     End With
-
-    Dim MyTypeArray(1) As MyType
-
-    With MyTypeArray(0)
-        MsgBox .MyFunction
-    End With
 End Sub
