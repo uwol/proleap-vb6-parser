@@ -17,14 +17,11 @@ import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.call.ArrayElementCall;
 import io.proleap.vb6.asg.metamodel.type.Type;
 
-public class ArrayElementCallImpl extends CallImpl implements ArrayElementCall {
+public class ArrayElementCallImpl extends VariableCallImpl implements ArrayElementCall {
 
-	protected boolean isSettingCall;
-
-	protected Variable variable;
-
-	public ArrayElementCallImpl(final String name, final Module module, final Scope scope, final ParserRuleContext ctx) {
-		super(name, module, scope, ctx);
+	public ArrayElementCallImpl(final String name, final Variable variable, final Module module, final Scope scope,
+			final ParserRuleContext ctx) {
+		super(name, variable, module, scope, ctx);
 	}
 
 	@Override
@@ -49,20 +46,5 @@ public class ArrayElementCallImpl extends CallImpl implements ArrayElementCall {
 		}
 
 		return result;
-	}
-
-	@Override
-	public Variable getVariable() {
-		return variable;
-	}
-
-	@Override
-	public void setVariable(final Variable variable) {
-		this.variable = variable;
-	}
-
-	@Override
-	public String toString() {
-		return "variable=[" + variable + "]";
 	}
 }

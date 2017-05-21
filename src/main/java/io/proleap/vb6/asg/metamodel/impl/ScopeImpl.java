@@ -737,8 +737,10 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			 * create call model element
 			 */
 			if (isCollection) {
-				final ArrayElementCall arrayElementCall = new ArrayElementCallImpl(name, module, this, ctx);
-				arrayElementCall.setVariable(variable);
+				final ArrayElementCall arrayElementCall = new ArrayElementCallImpl(name, variable, module, this, ctx);
+
+				linkArrayElementCallWithVariable(arrayElementCall, variable);
+
 				result = arrayElementCall;
 			} else {
 				if (function != null) {
@@ -2614,6 +2616,10 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	protected void linkArgCallWithArg(final ArgCall argCall, final Arg arg) {
 		arg.addArgCall(argCall);
+	}
+
+	protected void linkArrayElementCallWithVariable(final ArrayElementCall arrayElementCall, final Variable variable) {
+		variable.addVariableCall(arrayElementCall);
 	}
 
 	protected void linkConstantCallWithConstant(final ConstantCall constantCall, final Constant constant) {

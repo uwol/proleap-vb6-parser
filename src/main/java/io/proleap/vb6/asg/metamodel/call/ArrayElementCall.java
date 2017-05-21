@@ -8,11 +8,6 @@
 
 package io.proleap.vb6.asg.metamodel.call;
 
-import io.proleap.vb6.asg.metamodel.Variable;
+public interface ArrayElementCall extends VariableCall {
 
-public interface ArrayElementCall extends Call {
-
-	Variable getVariable();
-
-	void setVariable(Variable variable);
 }
