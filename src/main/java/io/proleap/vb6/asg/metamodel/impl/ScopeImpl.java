@@ -885,26 +885,37 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		if (result == null) {
 			final String name = determineName(ctx);
 
+			Call instanceCall = null;
+			ComplexType instanceType = null;
+
+			if (ctx.implicitCallStmt_InStmt() != null) {
+				instanceCall = addCall(null, ctx.implicitCallStmt_InStmt());
+				instanceType = castComplexType(instanceCall.getType());
+			} else if (this instanceof With) {
+				final With with = (With) this;
+				instanceCall = with.getWithVariableCall();
+				instanceType = castComplexType(instanceCall.getType());
+			} else {
+				final With with = (With) ANTLRUtils.findParent(With.class, ctx, program.getASGElementRegistry());
+
+				if (with != null) {
+					instanceCall = with.getWithVariableCall();
+					instanceType = castComplexType(instanceCall.getType());
+				}
+			}
+
+			final Module instanceModule = castModule(instanceType);
+
 			final Sub sub;
 			final Function function;
 			final ApiProcedure apiProcedure;
 
-			if (ctx.implicitCallStmt_InStmt() != null) {
-				final Call instanceCall = addCall(null, ctx.implicitCallStmt_InStmt());
-				final ComplexType instanceType = castComplexType(instanceCall.getType());
-				final Module instanceModule = castModule(instanceType);
-
-				if (instanceModule != null) {
-					sub = instanceModule.getSub(name);
-					function = instanceModule.getFunction(name);
-					apiProcedure = null;
-				} else {
-					sub = null;
-					function = null;
-					apiProcedure = null;
-				}
+			if (instanceModule != null) {
+				sub = instanceModule.getSub(name);
+				function = instanceModule.getFunction(name);
+				apiProcedure = null;
 			} else {
-				final List<ModelElement> referencedProgramElements = getElements(null, null, name);
+				final List<ModelElement> referencedProgramElements = getElements(instanceCall, instanceType, name);
 
 				sub = castSub(referencedProgramElements);
 				function = castFunction(referencedProgramElements);
@@ -1012,26 +1023,37 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		if (result == null) {
 			final String name = determineName(ctx);
 
+			Call instanceCall = null;
+			ComplexType instanceType = null;
+
+			if (ctx.implicitCallStmt_InStmt() != null) {
+				instanceCall = addCall(null, ctx.implicitCallStmt_InStmt());
+				instanceType = castComplexType(instanceCall.getType());
+			} else if (this instanceof With) {
+				final With with = (With) this;
+				instanceCall = with.getWithVariableCall();
+				instanceType = castComplexType(instanceCall.getType());
+			} else {
+				final With with = (With) ANTLRUtils.findParent(With.class, ctx, program.getASGElementRegistry());
+
+				if (with != null) {
+					instanceCall = with.getWithVariableCall();
+					instanceType = castComplexType(instanceCall.getType());
+				}
+			}
+
+			final Module instanceModule = castModule(instanceType);
+
 			final Sub sub;
 			final Function function;
 			final ApiProcedure apiProcedure;
 
-			if (ctx.implicitCallStmt_InStmt() != null) {
-				final Call instanceCall = addCall(null, ctx.implicitCallStmt_InStmt());
-				final ComplexType instanceType = castComplexType(instanceCall.getType());
-				final Module instanceModule = castModule(instanceType);
-
-				if (instanceModule != null) {
-					sub = instanceModule.getSub(name);
-					function = instanceModule.getFunction(name);
-					apiProcedure = null;
-				} else {
-					sub = null;
-					function = null;
-					apiProcedure = null;
-				}
+			if (instanceModule != null) {
+				sub = instanceModule.getSub(name);
+				function = instanceModule.getFunction(name);
+				apiProcedure = null;
 			} else {
-				final List<ModelElement> referencedProgramElements = getElements(null, null, name);
+				final List<ModelElement> referencedProgramElements = getElements(instanceCall, instanceType, name);
 
 				sub = castSub(referencedProgramElements);
 				function = castFunction(referencedProgramElements);
