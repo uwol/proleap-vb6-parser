@@ -11,9 +11,9 @@ import io.proleap.vb6.VbTestBase;
 import io.proleap.vb6.asg.metamodel.Arg;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Program;
-import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.statement.StatementTypeEnum;
 import io.proleap.vb6.asg.metamodel.statement.property.set.PropertySet;
+import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
 public class PropertySetTest extends VbTestBase {

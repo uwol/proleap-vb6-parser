@@ -14,9 +14,9 @@ import java.util.Set;
 import io.proleap.vb6.asg.inference.TypeInference;
 import io.proleap.vb6.asg.metamodel.DefType;
 import io.proleap.vb6.asg.metamodel.Module;
-import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.DefType.LetterRange;
 import io.proleap.vb6.asg.metamodel.type.Type;
+import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.util.StringUtils;
 
 public class TypeInferenceImpl implements TypeInference {

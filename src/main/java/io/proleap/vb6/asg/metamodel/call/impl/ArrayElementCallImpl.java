@@ -13,9 +13,9 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
 import io.proleap.vb6.asg.metamodel.Variable;
-import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.call.ArrayElementCall;
 import io.proleap.vb6.asg.metamodel.type.Type;
+import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 
 public class ArrayElementCallImpl extends VariableCallImpl implements ArrayElementCall {
 

@@ -12,13 +12,13 @@ import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.TypeElement;
 import io.proleap.vb6.asg.metamodel.Variable;
-import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.call.Call;
 import io.proleap.vb6.asg.metamodel.call.Call.CallType;
 import io.proleap.vb6.asg.metamodel.statement.Statement;
 import io.proleap.vb6.asg.metamodel.statement.StatementTypeEnum;
 import io.proleap.vb6.asg.metamodel.statement.let.Let;
 import io.proleap.vb6.asg.metamodel.statement.with.With;
+import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
 public class WithTest extends VbTestBase {

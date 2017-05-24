@@ -13,9 +13,9 @@ import io.proleap.vb6.asg.metamodel.Arg;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.Variable;
-import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.statement.function.Function;
 import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
+import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
 public class ArgCallTest extends VbTestBase {

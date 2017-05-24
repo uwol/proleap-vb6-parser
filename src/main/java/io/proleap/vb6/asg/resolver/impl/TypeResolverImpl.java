@@ -38,8 +38,8 @@ import io.proleap.vb6.VisualBasic6Parser.VsNotContext;
 import io.proleap.vb6.VisualBasic6Parser.VsOrContext;
 import io.proleap.vb6.VisualBasic6Parser.VsXorContext;
 import io.proleap.vb6.asg.metamodel.Program;
-import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.type.Type;
+import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.resolver.TypeResolver;
 import io.proleap.vb6.asg.util.StringUtils;
 

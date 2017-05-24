@@ -42,7 +42,6 @@ import io.proleap.vb6.asg.metamodel.ProcedureDeclaration;
 import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.ScopedElement;
 import io.proleap.vb6.asg.metamodel.TypeElement;
-import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.statement.enumeration.Enumeration;
 import io.proleap.vb6.asg.metamodel.statement.enumeration.EnumerationConstant;
 import io.proleap.vb6.asg.metamodel.statement.enumeration.impl.EnumerationImpl;
@@ -57,6 +56,7 @@ import io.proleap.vb6.asg.metamodel.statement.property.set.impl.PropertySetImpl;
 import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 import io.proleap.vb6.asg.metamodel.statement.sub.impl.SubImpl;
 import io.proleap.vb6.asg.metamodel.type.Type;
+import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.util.StringUtils;
 
 public abstract class ModuleImpl extends ScopeImpl implements Module {

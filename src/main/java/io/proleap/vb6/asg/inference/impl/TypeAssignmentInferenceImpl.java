@@ -22,7 +22,6 @@ import io.proleap.vb6.asg.metamodel.Arg;
 import io.proleap.vb6.asg.metamodel.Procedure;
 import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.Variable;
-import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.call.Call;
 import io.proleap.vb6.asg.metamodel.call.Call.CallType;
 import io.proleap.vb6.asg.metamodel.call.PropertyLetCall;
@@ -37,6 +36,7 @@ import io.proleap.vb6.asg.metamodel.type.AssignableTypedElement;
 import io.proleap.vb6.asg.metamodel.type.BaseType;
 import io.proleap.vb6.asg.metamodel.type.Type;
 import io.proleap.vb6.asg.metamodel.type.TypedElement;
+import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.metamodel.valuestmt.ArgValueAssignment;
 import io.proleap.vb6.asg.metamodel.valuestmt.ValueAssignment;
 

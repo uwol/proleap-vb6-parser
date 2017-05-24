@@ -11,8 +11,8 @@ package io.proleap.vb6.asg.metamodel.valuestmt.impl;
 import io.proleap.vb6.VisualBasic6Parser.ValueStmtContext;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
-import io.proleap.vb6.asg.metamodel.VbBaseType;
 import io.proleap.vb6.asg.metamodel.type.Type;
+import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.metamodel.valuestmt.ValueStmt;
 
 public class BooleanValueStmtImpl extends ValueStmtImpl implements ValueStmt {
