@@ -18,14 +18,14 @@ import io.proleap.vb6.asg.metamodel.statement.property.get.PropertyGet;
 import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
-public class MemberScalarCallTest extends VbTestBase {
+public class MemberScalarTypeCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
 		final File classInputFile = new File(
 				"src/test/resources/io/proleap/vb6/asg/call/type/member/scalar/MyClass.cls");
 		final File moduleInputFile = new File(
-				"src/test/resources/io/proleap/vb6/asg/call/type/member/scalar/MemberScalarCall.bas");
+				"src/test/resources/io/proleap/vb6/asg/call/type/member/scalar/MemberScalarTypeCall.bas");
 
 		final Program program = new VbParserRunnerImpl().analyzeFiles(Arrays.asList(classInputFile, moduleInputFile));
 
@@ -47,7 +47,7 @@ public class MemberScalarCallTest extends VbTestBase {
 		}
 
 		{
-			final StandardModule myModuleScalar = program.getStandardModule("MemberScalarCall");
+			final StandardModule myModuleScalar = program.getStandardModule("MemberScalarTypeCall");
 			assertNotNull(myModuleScalar);
 
 			{
