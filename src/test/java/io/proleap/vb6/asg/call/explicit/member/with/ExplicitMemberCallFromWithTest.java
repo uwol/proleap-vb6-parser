@@ -1,4 +1,4 @@
-package io.proleap.vb6.asg.call.explicit.member;
+package io.proleap.vb6.asg.call.explicit.member.with;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -15,17 +15,19 @@ import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
-public class ExplicitMemberCallWithoutOverrideTest extends VbTestBase {
+public class ExplicitMemberCallFromWithTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
-		final File classAInputFile = new File("src/test/resources/io/proleap/vb6/asg/call/explicit/member/ClassA.cls");
-		final File classBInputFile = new File("src/test/resources/io/proleap/vb6/asg/call/explicit/member/ClassB.cls");
-		final File moduleWithoutCommonInputFile = new File(
-				"src/test/resources/io/proleap/vb6/asg/call/explicit/member/ModuleWithoutCommon.bas");
+		final File classAInputFile = new File(
+				"src/test/resources/io/proleap/vb6/asg/call/explicit/member/with/ClassA.cls");
+		final File classBInputFile = new File(
+				"src/test/resources/io/proleap/vb6/asg/call/explicit/member/with/ClassB.cls");
+		final File moduleWithCommonInputFile = new File(
+				"src/test/resources/io/proleap/vb6/asg/call/explicit/member/with/Module.bas");
 
 		final Program program = new VbParserRunnerImpl()
-				.analyzeFiles(Arrays.asList(classAInputFile, classBInputFile, moduleWithoutCommonInputFile));
+				.analyzeFiles(Arrays.asList(classAInputFile, classBInputFile, moduleWithCommonInputFile));
 
 		final ClazzModule classA = program.getClazzModule("ClassA");
 		assertNotNull(classA);
@@ -33,19 +35,25 @@ public class ExplicitMemberCallWithoutOverrideTest extends VbTestBase {
 		final ClazzModule classB = program.getClazzModule("ClassB");
 		assertNotNull(classB);
 
-		final Module moduleWithoutCommon = program.getModule("ModuleWithoutCommon");
-		assertNotNull(moduleWithoutCommon);
+		final Module module = program.getModule("Module");
+		assertNotNull(module);
 
 		{
-			final Sub common = classA.getSub("Common");
+			final Sub common = module.getSub("Common");
 			assertNotNull(common);
 			assertEquals(0, common.getSubCalls().size());
 		}
 
 		{
-			final Sub common = classB.getSub("Common");
+			final Sub common = classA.getSub("Common");
 			assertNotNull(common);
 			assertEquals(1, common.getSubCalls().size());
+		}
+
+		{
+			final Sub common = classB.getSub("Common");
+			assertNotNull(common);
+			assertEquals(0, common.getSubCalls().size());
 		}
 	}
 }
