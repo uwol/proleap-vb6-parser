@@ -59,7 +59,6 @@ public class MemberArrayTypeCallTest extends VbTestBase {
 					final TypeElement myFunction = myType.getTypeElement("MyFunction");
 					assertNotNull(myFunction);
 					assertEquals(VbBaseType.STRING, myFunction.getType());
-					// calls in MyModule should hit this type element
 					assertEquals(4, myFunction.getTypeElementCalls().size());
 				}
 

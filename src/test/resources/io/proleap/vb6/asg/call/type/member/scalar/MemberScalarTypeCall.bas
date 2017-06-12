@@ -9,10 +9,10 @@ Public Sub Test()
     MyTypeInstance.MyFunction = "MyModule"
     MsgBox MyTypeInstance.MyFunction
     
-    MyTypeInstance.MySub = "MySub"
-    MsgBox MyTypeInstance.MySub
-    
     With MyTypeInstance
         MsgBox .MyFunction
     End With
+    
+    MyTypeInstance.MySub = "MySub"
+    MsgBox MyTypeInstance.MySub
 End Sub

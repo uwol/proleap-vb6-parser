@@ -59,7 +59,6 @@ public class MemberScalarTypeCallTest extends VbTestBase {
 					final TypeElement myFunction = myType.getTypeElement("MyFunction");
 					assertNotNull(myFunction);
 					assertEquals(VbBaseType.STRING, myFunction.getType());
-					// calls in MyModule should hit this type element
 					assertEquals(3, myFunction.getTypeElementCalls().size());
 				}
 
@@ -67,7 +66,6 @@ public class MemberScalarTypeCallTest extends VbTestBase {
 					final TypeElement mySub = myType.getTypeElement("MySub");
 					assertNotNull(mySub);
 					assertEquals(VbBaseType.STRING, mySub.getType());
-					// calls in MyModule should hit this type element
 					assertEquals(2, mySub.getTypeElementCalls().size());
 				}
 			}
