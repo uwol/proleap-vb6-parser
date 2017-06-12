@@ -48,6 +48,7 @@ import io.proleap.vb6.asg.visitor.ParserVisitor;
 import io.proleap.vb6.asg.visitor.impl.VbDeclarationVisitorImpl;
 import io.proleap.vb6.asg.visitor.impl.VbExpressionVisitorImpl;
 import io.proleap.vb6.asg.visitor.impl.VbModuleNameAnalyzerVisitorImpl;
+import io.proleap.vb6.asg.visitor.impl.VbModuleVisitorImpl;
 import io.proleap.vb6.asg.visitor.impl.VbTypeAssignmentVisitorImpl;
 import io.proleap.vb6.asg.visitor.impl.VbTypeVisitorImpl;
 
@@ -62,6 +63,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	protected final int TYPE_ANALYSIS_DEPTH = 4;
 
 	protected void analyze(final Program program) {
+		analyzeTypeDefinitions(program);
 		analyzeDeclarations(program);
 		analyzeExpressions(program);
 
@@ -148,6 +150,15 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		}
 	}
 
+	protected void analyzeTypeDefinitions(final Program program) {
+		for (final Module module : program.getModules()) {
+			final ParserVisitor visitor = new VbTypeVisitorImpl(module);
+
+			LOG.info("Analyzing type and enumeration definitions of module {}.", module.getName());
+			visitor.visit(module.getCtx());
+		}
+	}
+
 	protected String getModuleName(final File inputFile) {
 		return StringUtils.capitalize(FilenameUtils.removeExtension(inputFile.getName()));
 	}
@@ -198,7 +209,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 			final boolean isStandardModule = isStandardModule(inputFile);
 
 			final List<String> lines = splitLines(input);
-			final ParserVisitor visitor = new VbTypeVisitorImpl(moduleName, lines, isClazzModule, isStandardModule,
+			final ParserVisitor visitor = new VbModuleVisitorImpl(moduleName, lines, isClazzModule, isStandardModule,
 					program);
 
 			LOG.info("Collecting types in file {}.", inputFile.getName());

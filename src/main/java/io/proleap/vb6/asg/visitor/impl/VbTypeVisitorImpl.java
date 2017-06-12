@@ -8,40 +8,18 @@
 
 package io.proleap.vb6.asg.visitor.impl;
 
-import java.util.List;
-
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmtContext;
 import io.proleap.vb6.asg.metamodel.Module;
-import io.proleap.vb6.asg.metamodel.Program;
-import io.proleap.vb6.asg.metamodel.impl.ClazzModuleImpl;
-import io.proleap.vb6.asg.metamodel.impl.StandardModuleImpl;
 import io.proleap.vb6.asg.metamodel.statement.enumeration.Enumeration;
 
 /**
- * Visitor for collecting type declarations in the AST.
+ * Visitor for collecting type / enumeration declarations in the AST.
  */
 public class VbTypeVisitorImpl extends AbstractVbParserVisitorImpl {
 
-	protected final boolean isClazzModule;
-
-	protected final boolean isStandardModule;
-
-	protected final List<String> lines;
-
-	protected final String moduleName;
-
-	protected final Program program;
-
-	public VbTypeVisitorImpl(final String moduleName, final List<String> lines, final boolean isClazzModule,
-			final boolean isStandardModule, final Program program) {
-		super(null);
-
-		this.program = program;
-		this.moduleName = moduleName;
-		this.lines = lines;
-		this.isClazzModule = isClazzModule;
-		this.isStandardModule = isStandardModule;
+	public VbTypeVisitorImpl(final Module module) {
+		super(module);
 	}
 
 	@Override
@@ -62,24 +40,6 @@ public class VbTypeVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
-	public Boolean visitModule(final VisualBasic6Parser.ModuleContext ctx) {
-		final Module result;
-
-		if (isClazzModule) {
-			result = new ClazzModuleImpl(moduleName, program, ctx);
-		} else if (isStandardModule) {
-			result = new StandardModuleImpl(moduleName, program, ctx);
-		} else {
-			result = null;
-		}
-
-		result.setLines(lines);
-		module = result;
-
-		return visitChildren(ctx);
-	}
-
-	@Override
 	public Boolean visitTypeStmt(final VisualBasic6Parser.TypeStmtContext ctx) {
 		module.addType(ctx);
 
@@ -92,5 +52,4 @@ public class VbTypeVisitorImpl extends AbstractVbParserVisitorImpl {
 
 		return visitChildren(ctx);
 	}
-
 }
