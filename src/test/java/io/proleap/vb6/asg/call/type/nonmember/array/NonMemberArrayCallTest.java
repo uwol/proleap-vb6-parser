@@ -1,4 +1,4 @@
-package io.proleap.vb6.asg.call.type.nonmember;
+package io.proleap.vb6.asg.call.type.nonmember.array;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -15,12 +15,14 @@ import io.proleap.vb6.asg.metamodel.statement.function.Function;
 import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
-public class NonMemberCallTest extends VbTestBase {
+public class NonMemberArrayCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
-		final File classInputFile = new File("src/test/resources/io/proleap/vb6/asg/call/type/nonmember/MyClass.cls");
-		final File moduleInputFile = new File("src/test/resources/io/proleap/vb6/asg/call/type/nonmember/MyModule.bas");
+		final File classInputFile = new File(
+				"src/test/resources/io/proleap/vb6/asg/call/type/nonmember/undefined/MyClass.cls");
+		final File moduleInputFile = new File(
+				"src/test/resources/io/proleap/vb6/asg/call/type/nonmember/undefined/NonMemberArrayCall.bas");
 
 		final Program program = new VbParserRunnerImpl().analyzeFiles(Arrays.asList(classInputFile, moduleInputFile));
 
