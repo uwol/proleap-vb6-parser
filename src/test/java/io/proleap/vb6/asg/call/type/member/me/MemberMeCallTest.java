@@ -1,4 +1,4 @@
-package io.proleap.vb6.asg.call.type.member;
+package io.proleap.vb6.asg.call.type.member.me;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -15,15 +15,16 @@ import io.proleap.vb6.asg.metamodel.statement.property.get.PropertyGet;
 import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
-public class TypeMemberCallTest extends VbTestBase {
+public class MemberMeCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
-		final File classInputFile = new File("src/test/resources/io/proleap/vb6/asg/call/type/member/MyClass.cls");
+		final File classInputFile = new File(
+				"src/test/resources/io/proleap/vb6/asg/call/type/member/me/MemberMeCall.cls");
 		final Program program = new VbParserRunnerImpl().analyzeFile(classInputFile);
 
 		{
-			final ClazzModule myClass = program.getClazzModule("MyClass");
+			final ClazzModule myClass = program.getClazzModule("MemberMeCall");
 			assertNotNull(myClass);
 
 			{
