@@ -16,14 +16,14 @@ import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
-public class ArgCallArrayTest extends VbTestBase {
+public class ArgArrayCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
-		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/arg/ArgCallArray.cls");
+		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/arg/SubArrayArgCall.cls");
 		final Program program = new VbParserRunnerImpl().analyzeFile(inputFile);
 
-		final Module module = program.getClazzModule("ArgCallArray");
+		final Module module = program.getClazzModule("SubArrayArgCall");
 		final Sub someOtherSub = module.getSub("SomeOtherSub");
 		assertNotNull(someOtherSub);
 

@@ -14,18 +14,17 @@ import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.Variable;
 import io.proleap.vb6.asg.metamodel.statement.function.Function;
-import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
-public class ArgCallTest extends VbTestBase {
+public class FunctionArgCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
-		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/arg/ArgCall.cls");
+		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/arg/FunctionArgCall.cls");
 		final Program program = new VbParserRunnerImpl().analyzeFile(inputFile);
 
-		final Module module = program.getClazzModule("ArgCall");
+		final Module module = program.getClazzModule("FunctionArgCall");
 		final Function someFunction = module.getFunction("SomeFunction");
 
 		assertNotNull(someFunction);
@@ -50,24 +49,6 @@ public class ArgCallTest extends VbTestBase {
 			// type has been inferred by value assignment
 			assertEquals(VbBaseType.INTEGER, variableK.getType());
 			assertEquals(1, variableK.getVariableCalls().size());
-		}
-
-		final Sub someSub = module.getSub("SomeSub");
-		assertNotNull(someSub);
-
-		{
-			assertFalse(someSub.getArgsList().isEmpty());
-			assertEquals(1, someSub.getArgsList().size());
-
-			final Arg argI = someSub.getArgs().get("I");
-			// type has been inferred by value assignment
-			assertEquals(VbBaseType.INTEGER, argI.getType());
-			assertEquals(1, argI.getArgCalls().size());
-
-			final Variable variableL = someSub.getVariable("L");
-			// type has been inferred by value assignment
-			assertEquals(VbBaseType.INTEGER, variableL.getType());
-			assertEquals(1, variableL.getVariableCalls().size());
 		}
 	}
 }

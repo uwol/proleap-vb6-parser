@@ -17,23 +17,14 @@ import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
-public class FunctionCallTest extends VbTestBase {
+public class FunctionCallWithArgsTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
-		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/function/FunctionCall.cls");
+		final File inputFile = new File("src/test/resources/io/proleap/vb6/asg/call/function/FunctionCallWithArgs.cls");
 		final Program program = new VbParserRunnerImpl().analyzeFile(inputFile);
 
-		final Module module = program.getClazzModule("FunctionCall");
-		final Function function1 = module.getFunction("Function1");
-
-		assertNotNull(function1);
-		assertFalse(function1.getFunctionCalls().isEmpty());
-		assertEquals(3, function1.getFunctionCalls().size());
-
-		// type has been inferred by value assignment
-		assertEquals(VbBaseType.INTEGER, function1.getType());
-
+		final Module module = program.getClazzModule("FunctionCallWithArgs");
 		final Function function2 = module.getFunction("Function2");
 
 		assertNotNull(function2);
