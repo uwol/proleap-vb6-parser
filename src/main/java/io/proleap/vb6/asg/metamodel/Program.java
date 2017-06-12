@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import io.proleap.vb6.asg.metamodel.registry.ASGElementRegistry;
+import io.proleap.vb6.asg.metamodel.registry.EnumerationRegistry;
 import io.proleap.vb6.asg.metamodel.registry.TypeRegistry;
 import io.proleap.vb6.asg.metamodel.registry.api.ApiEnumerationRegistry;
 import io.proleap.vb6.asg.metamodel.registry.api.ApiProcedureRegistry;
@@ -30,6 +31,8 @@ public interface Program extends Scope {
 	ClazzModule getClazzModule(String name);
 
 	Map<String, ClazzModule> getClazzModules();
+
+	EnumerationRegistry getEnumerationRegistry();
 
 	Module getModule(String name);
 

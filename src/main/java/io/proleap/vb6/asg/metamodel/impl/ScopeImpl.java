@@ -492,14 +492,31 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 						linkVariableCallWithVariable(variableCall, variable);
 
 						result = variableCall;
-					}
-					// arg values can be overwritten
-					else if (arg != null) {
+					} else if (constant != null) {
+						final ConstantCall constantCall = new ConstantCallImpl(name, constant, module, this, ctx);
+
+						linkConstantCallWithConstant(constantCall, constant);
+
+						result = constantCall;
+					} else if (arg != null) {
+						// (sic!, after constants and variables) arg values can
+						// be overwritten by constant and variables
 						final ArgCall argCall = new ArgCallImpl(name, arg, module, this, ctx);
 
 						linkArgCallWithArg(argCall, arg);
 
 						result = argCall;
+					} else if (enumerationConstant != null) {
+						final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
+								enumerationConstant, module, this, ctx);
+
+						linkEnumerationConstantCallWithEnumerationConstant(enumerationConstantCall,
+								enumerationConstant);
+
+						final boolean isStandalone = instanceType == null;
+						enumerationConstantCall.setStandaloneCall(isStandalone);
+
+						result = enumerationConstantCall;
 					} else if (propertyLet != null) {
 						final PropertyLetCall properyLetCall = new PropertyLetCallImpl(name, propertyLet, module, this,
 								ctx);
@@ -514,12 +531,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 						linkPropertySetCallWithPropertySet(propertySetCall, propertySet, null);
 
 						result = propertySetCall;
-					} else if (constant != null) {
-						final ConstantCall constantCall = new ConstantCallImpl(name, constant, module, this, ctx);
-
-						linkConstantCallWithConstant(constantCall, constant);
-
-						result = constantCall;
 					} else if (typeElement != null) {
 						final TypeElementCall typeElementCall = new TypeElementCallImpl(name, typeElement, module, this,
 								ctx);
@@ -534,17 +545,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 						linkEnumerationCallWithEnumeration(enumerationCall, enumeration);
 
 						result = enumerationCall;
-					} else if (enumerationConstant != null) {
-						final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
-								enumerationConstant, module, this, ctx);
-
-						linkEnumerationConstantCallWithEnumerationConstant(enumerationConstantCall,
-								enumerationConstant);
-
-						final boolean isStandalone = instanceType == null;
-						enumerationConstantCall.setStandaloneCall(isStandalone);
-
-						result = enumerationConstantCall;
 					} else if (apiProcedure != null) {
 						final ApiProcedureCall apiProcedureCall = new ApiProcedureCallImpl(name, apiProcedure, module,
 								this, ctx);
@@ -2488,6 +2488,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			final ApiProperty apiProperty = module.getProgram().getApiPropertyRegistry().getApiProperty(name);
 			final ApiEnumerationConstant apiEnumerationConstant = module.getProgram().getApiEnumerationRegistry()
 					.getApiEnumerationConstant(name);
+			final EnumerationConstant enumerationConstant = module.getProgram().getEnumerationRegistry()
+					.getEnumerationConstant(name);
 
 			if (globalProgramElements != null) {
 				referencedProgramElements.addAll(globalProgramElements);
@@ -2496,6 +2498,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			referencedProgramElements.add(apiProcedure);
 			referencedProgramElements.add(apiProperty);
 			referencedProgramElements.add(apiEnumerationConstant);
+			referencedProgramElements.add(enumerationConstant);
 		}
 
 		while (referencedProgramElements.contains(null)) {

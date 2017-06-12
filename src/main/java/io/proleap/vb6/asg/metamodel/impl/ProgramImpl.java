@@ -21,6 +21,7 @@ import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.ScopedElement;
 import io.proleap.vb6.asg.metamodel.StandardModule;
 import io.proleap.vb6.asg.metamodel.registry.ASGElementRegistry;
+import io.proleap.vb6.asg.metamodel.registry.EnumerationRegistry;
 import io.proleap.vb6.asg.metamodel.registry.TypeRegistry;
 import io.proleap.vb6.asg.metamodel.registry.api.ApiEnumerationRegistry;
 import io.proleap.vb6.asg.metamodel.registry.api.ApiProcedureRegistry;
@@ -29,6 +30,7 @@ import io.proleap.vb6.asg.metamodel.registry.api.impl.ApiEnumerationRegistryImpl
 import io.proleap.vb6.asg.metamodel.registry.api.impl.ApiProcedureRegistryImpl;
 import io.proleap.vb6.asg.metamodel.registry.api.impl.ApiPropertyRegistryImpl;
 import io.proleap.vb6.asg.metamodel.registry.impl.ASGElementRegistryImpl;
+import io.proleap.vb6.asg.metamodel.registry.impl.EnumerationRegistryImpl;
 import io.proleap.vb6.asg.metamodel.registry.impl.TypeRegistryImpl;
 import io.proleap.vb6.asg.resolver.NameResolver;
 import io.proleap.vb6.asg.resolver.impl.NameResolverImpl;
@@ -44,6 +46,8 @@ public class ProgramImpl extends ScopeImpl implements Program {
 	protected ASGElementRegistry asgElementRegistry = new ASGElementRegistryImpl();
 
 	protected final Map<String, ClazzModule> clazzModules = new LinkedHashMap<String, ClazzModule>();
+
+	protected EnumerationRegistry enumerationRegistry = new EnumerationRegistryImpl();
 
 	protected final NameResolver nameResolver = new NameResolverImpl();
 
@@ -84,6 +88,11 @@ public class ProgramImpl extends ScopeImpl implements Program {
 	@Override
 	public Map<String, ClazzModule> getClazzModules() {
 		return clazzModules;
+	}
+
+	@Override
+	public EnumerationRegistry getEnumerationRegistry() {
+		return enumerationRegistry;
 	}
 
 	@Override
