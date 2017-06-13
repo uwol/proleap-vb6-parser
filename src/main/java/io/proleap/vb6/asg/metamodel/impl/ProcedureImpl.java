@@ -26,6 +26,7 @@ import io.proleap.vb6.asg.metamodel.ModelElement;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Procedure;
 import io.proleap.vb6.asg.metamodel.ScopedElement;
+import io.proleap.vb6.asg.metamodel.VisibilityEnum;
 import io.proleap.vb6.asg.metamodel.api.ApiEnumerationConstant;
 import io.proleap.vb6.asg.metamodel.call.ApiEnumerationConstantCall;
 import io.proleap.vb6.asg.metamodel.call.Call;
@@ -44,11 +45,15 @@ public abstract class ProcedureImpl extends ScopeImpl implements Procedure {
 
 	protected final String name;
 
-	public ProcedureImpl(final String name, final Module module, final ParserRuleContext ctx) {
+	protected final VisibilityEnum visibility;
+
+	public ProcedureImpl(final String name, final VisibilityEnum visibility, final Module module,
+			final ParserRuleContext ctx) {
 		super(module.getProgram(), module, module, ctx);
 
 		this.module = module;
 		this.name = name;
+		this.visibility = visibility;
 	}
 
 	@Override
@@ -183,6 +188,11 @@ public abstract class ProcedureImpl extends ScopeImpl implements Procedure {
 		}
 
 		return result;
+	}
+
+	@Override
+	public VisibilityEnum getVisibility() {
+		return visibility;
 	}
 
 	@Override

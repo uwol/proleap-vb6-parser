@@ -29,10 +29,10 @@ public class VbDeclarationVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
-	public Boolean visitConstSubStmt(final VisualBasic6Parser.ConstSubStmtContext ctx) {
+	public Boolean visitConstStmt(final VisualBasic6Parser.ConstStmtContext ctx) {
 		final Scope scope = findScope(ctx);
 
-		scope.addConstant(ctx);
+		scope.addConstants(ctx);
 
 		return visitChildren(ctx);
 	}
@@ -147,10 +147,10 @@ public class VbDeclarationVisitorImpl extends AbstractVbParserVisitorImpl {
 	}
 
 	@Override
-	public Boolean visitVariableSubStmt(final VisualBasic6Parser.VariableSubStmtContext ctx) {
+	public Boolean visitVariableStmt(final VisualBasic6Parser.VariableStmtContext ctx) {
 		final Scope scope = findScope(ctx);
 
-		scope.addVariable(ctx);
+		scope.addVariables(ctx);
 
 		return visitChildren(ctx);
 	}

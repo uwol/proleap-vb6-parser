@@ -8,18 +8,19 @@
 
 package io.proleap.vb6.asg.metamodel.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import io.proleap.vb6.asg.metamodel.ClazzModule;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.ScopedElement;
 import io.proleap.vb6.asg.metamodel.StandardModule;
+import io.proleap.vb6.asg.metamodel.VisibilityElement;
+import io.proleap.vb6.asg.metamodel.VisibilityEnum;
 import io.proleap.vb6.asg.metamodel.registry.ASGElementRegistry;
 import io.proleap.vb6.asg.metamodel.registry.EnumerationRegistry;
 import io.proleap.vb6.asg.metamodel.registry.TypeRegistry;
@@ -57,6 +58,31 @@ public class ProgramImpl extends ScopeImpl implements Program {
 
 	public ProgramImpl() {
 		super(null, null, null, null);
+	}
+
+	private List<ScopedElement> filterPrivateScopedElements(final List<ScopedElement> scopedElements) {
+		final List<ScopedElement> result = new ArrayList<ScopedElement>();
+
+		for (final ScopedElement scopedElement : scopedElements) {
+			final boolean isVisibilityElement = scopedElement instanceof VisibilityElement;
+
+			if (!isVisibilityElement) {
+				result.add(scopedElement);
+			} else {
+				final VisibilityElement visibilityElement = (VisibilityElement) scopedElement;
+				final VisibilityEnum visibility = visibilityElement.getVisibility();
+
+				switch (visibility) {
+				case PRIVATE:
+					break;
+				default:
+					result.add(scopedElement);
+					break;
+				}
+			}
+		}
+
+		return result;
 	}
 
 	@Override
@@ -119,7 +145,7 @@ public class ProgramImpl extends ScopeImpl implements Program {
 
 	@Override
 	public Collection<Module> getModules() {
-		final Set<Module> modules = new HashSet<Module>();
+		final List<Module> modules = new ArrayList<Module>();
 
 		modules.addAll(clazzModules.values());
 		modules.addAll(standardModules.values());
@@ -139,17 +165,20 @@ public class ProgramImpl extends ScopeImpl implements Program {
 			// search in modules ...
 			for (final Module module : getModules()) {
 				// ... for scoped elements with name
-				final List<ScopedElement> scopedElement = module.getScopedElementsInScope(name);
+				final List<ScopedElement> scopedElements = module.getScopedElementsInScope(name);
 
 				// ... until there are scoped elements found
-				if (scopedElement != null) {
-					scopedElementsInStandardModule = scopedElement;
-					break;
+				if (scopedElements != null && !scopedElements.isEmpty()) {
+					scopedElementsInStandardModule = filterPrivateScopedElements(scopedElements);
+
+					if (scopedElementsInStandardModule != null && !scopedElementsInStandardModule.isEmpty()) {
+						break;
+					}
 				}
 			}
 
 			// if elements have been found
-			if (scopedElementsInStandardModule != null) {
+			if (scopedElementsInStandardModule != null && !scopedElementsInStandardModule.isEmpty()) {
 				result = scopedElementsInStandardModule;
 			} else {
 				result = super.getScopedElementsInScope(name);

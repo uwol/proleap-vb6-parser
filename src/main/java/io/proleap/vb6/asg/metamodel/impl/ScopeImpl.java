@@ -53,6 +53,7 @@ import io.proleap.vb6.VisualBasic6Parser.CaseCondExprValueContext;
 import io.proleap.vb6.VisualBasic6Parser.ChDirStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ChDriveStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.CloseStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.ConstStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DateStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DeftypeStmtContext;
@@ -94,7 +95,10 @@ import io.proleap.vb6.VisualBasic6Parser.SaveSettingStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SelectCaseStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ValueStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.VariableListStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.VariableStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.VariableSubStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.VisibilityContext;
 import io.proleap.vb6.VisualBasic6Parser.VsAddContext;
 import io.proleap.vb6.VisualBasic6Parser.VsAddressOfContext;
 import io.proleap.vb6.VisualBasic6Parser.VsAmpContext;
@@ -145,6 +149,7 @@ import io.proleap.vb6.asg.metamodel.ScopedElement;
 import io.proleap.vb6.asg.metamodel.StandardModule;
 import io.proleap.vb6.asg.metamodel.TypeElement;
 import io.proleap.vb6.asg.metamodel.Variable;
+import io.proleap.vb6.asg.metamodel.VisibilityEnum;
 import io.proleap.vb6.asg.metamodel.api.ApiEnumeration;
 import io.proleap.vb6.asg.metamodel.api.ApiEnumerationConstant;
 import io.proleap.vb6.asg.metamodel.api.ApiModule;
@@ -486,6 +491,17 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 							result = returnValueCall;
 						}
+					} else if (enumerationConstant != null) {
+						final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
+								enumerationConstant, module, this, ctx);
+
+						linkEnumerationConstantCallWithEnumerationConstant(enumerationConstantCall,
+								enumerationConstant);
+
+						final boolean isStandalone = instanceType == null;
+						enumerationConstantCall.setStandaloneCall(isStandalone);
+
+						result = enumerationConstantCall;
 					} else if (variable != null) {
 						final VariableCall variableCall = new VariableCallImpl(name, variable, module, this, ctx);
 
@@ -506,17 +522,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 						linkArgCallWithArg(argCall, arg);
 
 						result = argCall;
-					} else if (enumerationConstant != null) {
-						final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
-								enumerationConstant, module, this, ctx);
-
-						linkEnumerationConstantCallWithEnumerationConstant(enumerationConstantCall,
-								enumerationConstant);
-
-						final boolean isStandalone = instanceType == null;
-						enumerationConstantCall.setStandaloneCall(isStandalone);
-
-						result = enumerationConstantCall;
 					} else if (propertyLet != null) {
 						final PropertyLetCall properyLetCall = new PropertyLetCallImpl(name, propertyLet, module, this,
 								ctx);
@@ -596,6 +601,17 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 							result = returnValueCall;
 						}
+					} else if (enumerationConstant != null) {
+						final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
+								enumerationConstant, module, this, ctx);
+
+						linkEnumerationConstantCallWithEnumerationConstant(enumerationConstantCall,
+								enumerationConstant);
+
+						final boolean isStandalone = instanceType == null;
+						enumerationConstantCall.setStandaloneCall(isStandalone);
+
+						result = enumerationConstantCall;
 					} else if (variable != null) {
 						final VariableCall variableCall = new VariableCallImpl(name, variable, module, this, ctx);
 
@@ -616,17 +632,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 						linkArgCallWithArg(argCall, arg);
 
 						result = argCall;
-					} else if (enumerationConstant != null) {
-						final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
-								enumerationConstant, module, this, ctx);
-
-						linkEnumerationConstantCallWithEnumerationConstant(enumerationConstantCall,
-								enumerationConstant);
-
-						final boolean isStandalone = instanceType == null;
-						enumerationConstantCall.setStandaloneCall(isStandalone);
-
-						result = enumerationConstantCall;
 					} else if (typeElement != null) {
 						final TypeElementCall typeElementCall = new TypeElementCallImpl(name, typeElement, module, this,
 								ctx);
@@ -1211,14 +1216,14 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
-	public Constant addConstant(final ConstSubStmtContext ctx) {
+	public Constant addConstant(final VisibilityEnum visibility, final ConstSubStmtContext ctx) {
 		Constant result = (Constant) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
 			final Type type = determineType(ctx);
 
-			result = new ConstantImpl(name, type, module, this, ctx);
+			result = new ConstantImpl(name, visibility, type, module, this, ctx);
 
 			final ValueStmt valueStmt = addValueStmt(ctx.valueStmt());
 			result.setValueStmt(valueStmt);
@@ -1228,6 +1233,15 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		}
 
 		return result;
+	}
+
+	@Override
+	public void addConstants(final ConstStmtContext ctx) {
+		final VisibilityEnum visibility = determineVisibility(ctx.visibility());
+
+		for (final ConstSubStmtContext constSubStmtContext : ctx.constSubStmt()) {
+			addConstant(visibility, constSubStmtContext);
+		}
 	}
 
 	@Override
@@ -1313,7 +1327,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		Event result = (Event) getASGElement(ctx);
 
 		if (result == null) {
-			result = new EventImpl(module, this, ctx);
+			final VisibilityEnum visibility = determineVisibility(ctx.visibility());
+			result = new EventImpl(visibility, module, this, ctx);
 
 			registerStatement(result);
 		}
@@ -2337,14 +2352,14 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
-	public Variable addVariable(final VariableSubStmtContext ctx) {
+	public Variable addVariable(final VisibilityEnum visibility, final VariableSubStmtContext ctx) {
 		Variable result = (Variable) getASGElement(ctx);
 
 		if (result == null) {
 			final String name = determineName(ctx);
 			final Type type = determineType(ctx);
 
-			result = new VariableImpl(name, type, module, this, ctx);
+			result = new VariableImpl(name, visibility, type, module, this, ctx);
 
 			final boolean isArray = ctx.LPAREN() != null && ctx.RPAREN() != null;
 			final boolean isStaticArray = isArray && ctx.subscripts() != null;
@@ -2357,6 +2372,19 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		}
 
 		return result;
+	}
+
+	@Override
+	public void addVariables(final VariableStmtContext ctx) {
+		final VisibilityEnum visibility = determineVisibility(ctx.visibility());
+		addVariables(visibility, ctx.variableListStmt());
+	}
+
+	@Override
+	public void addVariables(final VisibilityEnum visibility, final VariableListStmtContext ctx) {
+		for (final VariableSubStmtContext variableSubStmtContext : ctx.variableSubStmt()) {
+			addVariable(visibility, variableSubStmtContext);
+		}
 	}
 
 	@Override
@@ -2412,6 +2440,24 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	protected Type determineType(final ParserRuleContext ctx) {
 		final Program program = module.getProgram();
 		return new TypeResolverImpl().determineType(ctx, program);
+	}
+
+	protected VisibilityEnum determineVisibility(final VisibilityContext visibility) {
+		final VisibilityEnum result;
+
+		if (visibility == null) {
+			result = VisibilityEnum.PUBLIC;
+		} else if (visibility.PRIVATE() != null) {
+			result = VisibilityEnum.PRIVATE;
+		} else if (visibility.FRIEND() != null) {
+			result = VisibilityEnum.FRIEND;
+		} else if (visibility.GLOBAL() != null) {
+			result = VisibilityEnum.GLOBAL;
+		} else {
+			result = VisibilityEnum.PUBLIC;
+		}
+
+		return result;
 	}
 
 	protected ASGElement getASGElement(final ParserRuleContext ctx) {

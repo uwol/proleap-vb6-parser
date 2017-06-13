@@ -14,7 +14,7 @@ import io.proleap.vb6.asg.metamodel.type.ComplexType;
  * Used at module level to define a user-defined data type containing one or
  * more elements.
  */
-public interface Type extends ScopedElement, ComplexType {
+public interface Type extends ScopedElement, ComplexType, VisibilityElement {
 
 	void addTypeElement(TypeElement typeElement);
 

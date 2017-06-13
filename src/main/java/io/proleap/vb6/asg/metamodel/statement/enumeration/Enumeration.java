@@ -13,6 +13,7 @@ import java.util.Map;
 
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.EnumerationStmt_ConstantContext;
+import io.proleap.vb6.asg.metamodel.VisibilityElement;
 import io.proleap.vb6.asg.metamodel.call.EnumerationCall;
 import io.proleap.vb6.asg.metamodel.statement.Statement;
 import io.proleap.vb6.asg.metamodel.type.ComplexType;
@@ -20,7 +21,7 @@ import io.proleap.vb6.asg.metamodel.type.ComplexType;
 /**
  * Declares a type for an enumeration.
  */
-public interface Enumeration extends ComplexType, Statement {
+public interface Enumeration extends ComplexType, VisibilityElement, Statement {
 
 	void addEnumerationCall(EnumerationCall enumerationCall);
 

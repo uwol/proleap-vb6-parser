@@ -16,6 +16,7 @@ import java.util.Set;
 import io.proleap.vb6.VisualBasic6Parser.PropertyGetStmtContext;
 import io.proleap.vb6.asg.inference.impl.TypeInferenceImpl;
 import io.proleap.vb6.asg.metamodel.Module;
+import io.proleap.vb6.asg.metamodel.VisibilityEnum;
 import io.proleap.vb6.asg.metamodel.call.PropertyGetCall;
 import io.proleap.vb6.asg.metamodel.impl.ProcedureImpl;
 import io.proleap.vb6.asg.metamodel.statement.StatementType;
@@ -41,8 +42,9 @@ public class PropertyGetImpl extends ProcedureImpl implements PropertyGet {
 	 */
 	protected Set<Type> typesOfAssignedValues = new LinkedHashSet<Type>();
 
-	public PropertyGetImpl(final String name, final Type type, final Module module, final PropertyGetStmtContext ctx) {
-		super(name, module, ctx);
+	public PropertyGetImpl(final String name, final VisibilityEnum visibility, final Type type, final Module module,
+			final PropertyGetStmtContext ctx) {
+		super(name, visibility, module, ctx);
 
 		this.ctx = ctx;
 		this.type = type;

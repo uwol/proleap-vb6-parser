@@ -9,12 +9,13 @@
 package io.proleap.vb6.asg.metamodel.statement.event;
 
 import io.proleap.vb6.VisualBasic6Parser.EventStmtContext;
+import io.proleap.vb6.asg.metamodel.VisibilityElement;
 import io.proleap.vb6.asg.metamodel.statement.Statement;
 
 /**
  * Declares a user-defined event.
  */
-public interface Event extends Statement {
+public interface Event extends VisibilityElement, Statement {
 
 	@Override
 	EventStmtContext getCtx();

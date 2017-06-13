@@ -14,6 +14,7 @@ import java.util.List;
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
+import io.proleap.vb6.asg.metamodel.VisibilityEnum;
 import io.proleap.vb6.asg.metamodel.call.ConstantCall;
 import io.proleap.vb6.asg.metamodel.impl.ScopedElementImpl;
 import io.proleap.vb6.asg.metamodel.statement.StatementType;
@@ -36,13 +37,16 @@ public class ConstantImpl extends ScopedElementImpl implements Constant {
 
 	protected ValueStmt valueStmt;
 
-	public ConstantImpl(final String name, final Type type, final Module module, final Scope scope,
-			final ConstSubStmtContext ctx) {
+	protected final VisibilityEnum visibility;
+
+	public ConstantImpl(final String name, final VisibilityEnum visibility, final Type type, final Module module,
+			final Scope scope, final ConstSubStmtContext ctx) {
 		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
 		this.name = name;
 		this.type = type;
+		this.visibility = visibility;
 	}
 
 	@Override
@@ -78,6 +82,11 @@ public class ConstantImpl extends ScopedElementImpl implements Constant {
 	@Override
 	public ValueStmt getValueStmt() {
 		return valueStmt;
+	}
+
+	@Override
+	public VisibilityEnum getVisibility() {
+		return visibility;
 	}
 
 	@Override

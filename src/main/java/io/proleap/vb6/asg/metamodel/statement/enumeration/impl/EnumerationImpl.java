@@ -20,6 +20,7 @@ import io.proleap.vb6.VisualBasic6Parser.EnumerationStmt_ConstantContext;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.Scope;
+import io.proleap.vb6.asg.metamodel.VisibilityEnum;
 import io.proleap.vb6.asg.metamodel.call.EnumerationCall;
 import io.proleap.vb6.asg.metamodel.impl.ScopedElementImpl;
 import io.proleap.vb6.asg.metamodel.statement.StatementType;
@@ -47,12 +48,16 @@ public class EnumerationImpl extends ScopedElementImpl implements Enumeration {
 
 	protected final StatementType statementType = StatementTypeEnum.ENUMERATION;
 
-	public EnumerationImpl(final String name, final Module module, final EnumerationStmtContext ctx) {
+	protected final VisibilityEnum visibility;
+
+	public EnumerationImpl(final String name, final VisibilityEnum visibility, final Module module,
+			final EnumerationStmtContext ctx) {
 		super(module.getProgram(), module, module, ctx);
 
 		this.ctx = ctx;
 		this.module = module;
 		this.name = name;
+		this.visibility = visibility;
 	}
 
 	@Override
@@ -137,6 +142,11 @@ public class EnumerationImpl extends ScopedElementImpl implements Enumeration {
 	@Override
 	public StatementType getStatementType() {
 		return statementType;
+	}
+
+	@Override
+	public VisibilityEnum getVisibility() {
+		return visibility;
 	}
 
 	@Override

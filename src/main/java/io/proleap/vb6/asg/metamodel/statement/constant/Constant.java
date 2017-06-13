@@ -12,6 +12,7 @@ import java.util.List;
 
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
 import io.proleap.vb6.asg.metamodel.Declaration;
+import io.proleap.vb6.asg.metamodel.VisibilityElement;
 import io.proleap.vb6.asg.metamodel.call.ConstantCall;
 import io.proleap.vb6.asg.metamodel.statement.Statement;
 import io.proleap.vb6.asg.metamodel.type.TypedElement;
@@ -20,7 +21,7 @@ import io.proleap.vb6.asg.metamodel.valuestmt.ValueStmt;
 /**
  * Declares constants for use in place of literal values.
  */
-public interface Constant extends TypedElement, Declaration, Statement {
+public interface Constant extends TypedElement, Declaration, VisibilityElement, Statement {
 
 	void addConstantCall(ConstantCall constantCall);
 

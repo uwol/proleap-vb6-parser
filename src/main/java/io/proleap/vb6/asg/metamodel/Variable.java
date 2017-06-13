@@ -14,7 +14,7 @@ import io.proleap.vb6.VisualBasic6Parser.VariableSubStmtContext;
 import io.proleap.vb6.asg.metamodel.call.VariableCall;
 import io.proleap.vb6.asg.metamodel.type.AssignableTypedElement;
 
-public interface Variable extends AssignableTypedElement, Declaration, ScopedElement {
+public interface Variable extends AssignableTypedElement, Declaration, VisibilityElement, ScopedElement {
 
 	void addVariableCall(VariableCall variableCall);
 

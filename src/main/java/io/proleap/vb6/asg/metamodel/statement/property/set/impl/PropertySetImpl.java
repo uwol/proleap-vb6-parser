@@ -13,6 +13,7 @@ import java.util.List;
 
 import io.proleap.vb6.VisualBasic6Parser.PropertySetStmtContext;
 import io.proleap.vb6.asg.metamodel.Module;
+import io.proleap.vb6.asg.metamodel.VisibilityEnum;
 import io.proleap.vb6.asg.metamodel.call.PropertySetCall;
 import io.proleap.vb6.asg.metamodel.impl.ProcedureImpl;
 import io.proleap.vb6.asg.metamodel.statement.StatementType;
@@ -27,8 +28,9 @@ public class PropertySetImpl extends ProcedureImpl implements PropertySet {
 
 	protected final StatementType statementType = StatementTypeEnum.PROPERTY_SET;
 
-	public PropertySetImpl(final String name, final Module module, final PropertySetStmtContext ctx) {
-		super(name, module, ctx);
+	public PropertySetImpl(final String name, final VisibilityEnum visibility, final Module module,
+			final PropertySetStmtContext ctx) {
+		super(name, visibility, module, ctx);
 
 		this.ctx = ctx;
 	}

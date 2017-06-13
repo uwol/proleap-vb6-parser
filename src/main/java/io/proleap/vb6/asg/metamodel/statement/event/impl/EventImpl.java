@@ -11,6 +11,7 @@ package io.proleap.vb6.asg.metamodel.statement.event.impl;
 import io.proleap.vb6.VisualBasic6Parser.EventStmtContext;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
+import io.proleap.vb6.asg.metamodel.VisibilityEnum;
 import io.proleap.vb6.asg.metamodel.impl.ScopedElementImpl;
 import io.proleap.vb6.asg.metamodel.statement.StatementType;
 import io.proleap.vb6.asg.metamodel.statement.StatementTypeEnum;
@@ -22,10 +23,14 @@ public class EventImpl extends ScopedElementImpl implements Event {
 
 	protected final StatementType statementType = StatementTypeEnum.EVENT;
 
-	public EventImpl(final Module module, final Scope scope, final EventStmtContext ctx) {
+	protected final VisibilityEnum visibility;
+
+	public EventImpl(final VisibilityEnum visibility, final Module module, final Scope scope,
+			final EventStmtContext ctx) {
 		super(module.getProgram(), module, scope, ctx);
 
 		this.ctx = ctx;
+		this.visibility = visibility;
 	}
 
 	@Override
@@ -36,6 +41,11 @@ public class EventImpl extends ScopedElementImpl implements Event {
 	@Override
 	public StatementType getStatementType() {
 		return statementType;
+	}
+
+	@Override
+	public VisibilityEnum getVisibility() {
+		return visibility;
 	}
 
 }

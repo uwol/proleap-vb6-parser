@@ -13,6 +13,7 @@ import java.util.List;
 
 import io.proleap.vb6.VisualBasic6Parser.PropertyLetStmtContext;
 import io.proleap.vb6.asg.metamodel.Module;
+import io.proleap.vb6.asg.metamodel.VisibilityEnum;
 import io.proleap.vb6.asg.metamodel.call.PropertyLetCall;
 import io.proleap.vb6.asg.metamodel.impl.ProcedureImpl;
 import io.proleap.vb6.asg.metamodel.statement.StatementType;
@@ -27,8 +28,9 @@ public class PropertyLetImpl extends ProcedureImpl implements PropertyLet {
 
 	protected final StatementType statementType = StatementTypeEnum.PROPERTY_LET;
 
-	public PropertyLetImpl(final String name, final Module module, final PropertyLetStmtContext ctx) {
-		super(name, module, ctx);
+	public PropertyLetImpl(final String name, final VisibilityEnum visibility, final Module module,
+			final PropertyLetStmtContext ctx) {
+		super(name, visibility, module, ctx);
 
 		this.ctx = ctx;
 	}

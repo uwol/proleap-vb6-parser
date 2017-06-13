@@ -17,6 +17,7 @@ import io.proleap.vb6.VisualBasic6Parser.BlockIfThenElseContext;
 import io.proleap.vb6.VisualBasic6Parser.ChDirStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ChDriveStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.CloseStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.ConstStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ConstSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DateStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DeftypeStmtContext;
@@ -59,6 +60,8 @@ import io.proleap.vb6.VisualBasic6Parser.SaveSettingStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SelectCaseStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ValueStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.VariableListStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.VariableStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.VariableSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.VsAddContext;
 import io.proleap.vb6.VisualBasic6Parser.VsAddressOfContext;
@@ -180,7 +183,9 @@ public interface Scope extends ScopedElement {
 
 	Close addClose(CloseStmtContext ctx);
 
-	Constant addConstant(ConstSubStmtContext ctx);
+	Constant addConstant(VisibilityEnum visibility, ConstSubStmtContext ctx);
+
+	void addConstants(ConstStmtContext ctx);
 
 	Date addDate(DateStmtContext ctx);
 
@@ -300,7 +305,11 @@ public interface Scope extends ScopedElement {
 
 	ValueStmt addValueStmt(VsXorContext ctx);
 
-	Variable addVariable(VariableSubStmtContext ctx);
+	Variable addVariable(VisibilityEnum visibility, VariableSubStmtContext ctx);
+
+	void addVariables(VariableStmtContext ctx);
+
+	void addVariables(VisibilityEnum visibility, VariableListStmtContext ctx);
 
 	While addWhile(WhileWendStmtContext ctx);
 

@@ -42,6 +42,7 @@ import io.proleap.vb6.asg.metamodel.ProcedureDeclaration;
 import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.ScopedElement;
 import io.proleap.vb6.asg.metamodel.TypeElement;
+import io.proleap.vb6.asg.metamodel.VisibilityEnum;
 import io.proleap.vb6.asg.metamodel.statement.enumeration.Enumeration;
 import io.proleap.vb6.asg.metamodel.statement.enumeration.EnumerationConstant;
 import io.proleap.vb6.asg.metamodel.statement.enumeration.impl.EnumerationImpl;
@@ -217,7 +218,8 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 		if (result == null) {
 			final String name = determineName(ctx);
-			result = new EnumerationImpl(name, this, ctx);
+			final VisibilityEnum visibility = determineVisibility(ctx.visibility());
+			result = new EnumerationImpl(name, visibility, this, ctx);
 
 			registerStatement(result);
 			enumerations.put(name, result);
@@ -235,7 +237,9 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 		if (result == null) {
 			final String name = determineName(ctx);
 			final Type type = determineType(ctx.asTypeClause());
-			result = new FunctionImpl(name, type, this, ctx);
+			final VisibilityEnum visibility = determineVisibility(ctx.visibility());
+
+			result = new FunctionImpl(name, visibility, type, this, ctx);
 
 			registerStatement(result);
 			functions.put(name, result);
@@ -323,7 +327,9 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 		if (result == null) {
 			final String name = determineName(ctx);
 			final Type type = determineType(ctx.asTypeClause());
-			result = new PropertyGetImpl(name, type, this, ctx);
+			final VisibilityEnum visibility = determineVisibility(ctx.visibility());
+
+			result = new PropertyGetImpl(name, visibility, type, this, ctx);
 
 			registerStatement(result);
 			propertyGets.put(name, result);
@@ -356,7 +362,9 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 		if (result == null) {
 			final String name = determineName(ctx);
-			result = new PropertyLetImpl(name, this, ctx);
+			final VisibilityEnum visibility = determineVisibility(ctx.visibility());
+
+			result = new PropertyLetImpl(name, visibility, this, ctx);
 
 			registerStatement(result);
 			propertyLets.put(name, result);
@@ -377,7 +385,9 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 		if (result == null) {
 			final String name = determineName(ctx);
-			result = new PropertySetImpl(name, this, ctx);
+			final VisibilityEnum visibility = determineVisibility(ctx.visibility());
+
+			result = new PropertySetImpl(name, visibility, this, ctx);
 
 			registerStatement(result);
 			propertySets.put(name, result);
@@ -398,7 +408,9 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 		if (result == null) {
 			final String name = determineName(ctx);
-			result = new SubImpl(name, this, ctx);
+			final VisibilityEnum visibility = determineVisibility(ctx.visibility());
+
+			result = new SubImpl(name, visibility, this, ctx);
 
 			registerStatement(result);
 			subs.put(name, result);
@@ -419,7 +431,9 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 		if (result == null) {
 			final String name = determineName(ctx);
-			result = new TypeImpl(name, this, ctx);
+			final VisibilityEnum visibility = determineVisibility(ctx.visibility());
+
+			result = new TypeImpl(name, visibility, this, ctx);
 
 			for (final TypeStmt_ElementContext typeElementCtx : ctx.typeStmt_Element()) {
 				final TypeElement typeElement = addTypeElement(typeElementCtx);
