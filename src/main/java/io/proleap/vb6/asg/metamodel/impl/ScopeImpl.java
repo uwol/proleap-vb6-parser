@@ -514,14 +514,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 						linkConstantCallWithConstant(constantCall, constant);
 
 						result = constantCall;
-					} else if (arg != null) {
-						// (sic!, after constants and variables) arg values can
-						// be overwritten by constant and variables
-						final ArgCall argCall = new ArgCallImpl(name, arg, module, this, ctx);
-
-						linkArgCallWithArg(argCall, arg);
-
-						result = argCall;
 					} else if (propertyLet != null) {
 						final PropertyLetCall properyLetCall = new PropertyLetCallImpl(name, propertyLet, module, this,
 								ctx);
@@ -536,6 +528,14 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 						linkPropertySetCallWithPropertySet(propertySetCall, propertySet, null);
 
 						result = propertySetCall;
+					} else if (arg != null) {
+						// (sic!, after constants and variables) arg values can
+						// be overwritten by constant and variables
+						final ArgCall argCall = new ArgCallImpl(name, arg, module, this, ctx);
+
+						linkArgCallWithArg(argCall, arg);
+
+						result = argCall;
 					} else if (typeElement != null) {
 						final TypeElementCall typeElementCall = new TypeElementCallImpl(name, typeElement, module, this,
 								ctx);
@@ -624,6 +624,13 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 						linkConstantCallWithConstant(constantCall, constant);
 
 						result = constantCall;
+					} else if (propertyGet != null) {
+						final PropertyGetCall propertyGetCall = new PropertyGetCallImpl(name, propertyGet, module, this,
+								ctx);
+
+						linkPropertyGetCallWithPropertyGet(propertyGetCall, propertyGet, null);
+
+						result = propertyGetCall;
 					} else if (arg != null) {
 						// (sic!, after constants and variables) arg values can
 						// be overwritten by constant and variables
@@ -639,13 +646,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 						linkTypeElementCallWithTypeElement(typeElementCall, typeElement);
 
 						result = typeElementCall;
-					} else if (propertyGet != null) {
-						final PropertyGetCall propertyGetCall = new PropertyGetCallImpl(name, propertyGet, module, this,
-								ctx);
-
-						linkPropertyGetCallWithPropertyGet(propertyGetCall, propertyGet, null);
-
-						result = propertyGetCall;
 					} else if (function != null) {
 						final FunctionCall functionCall = new FunctionCallImpl(name, function, module, this, ctx);
 
@@ -857,11 +857,19 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			}
 
 			if (ctx.iCS_S_MemberCall() != null) {
+				final int numberOfMemberCalls = ctx.iCS_S_MemberCall().size();
+				int currentMemberCall = 0;
+
 				for (final ICS_S_MemberCallContext memberCallContext : ctx.iCS_S_MemberCall()) {
-					instanceCall = addCall(instanceCall, instanceType, callContext, memberCallContext);
+					final boolean isLastMemberCall = currentMemberCall == numberOfMemberCalls - 1;
+					final CallContext currentCallContext = isLastMemberCall ? callContext : null;
+
+					instanceCall = addCall(instanceCall, instanceType, currentCallContext, memberCallContext);
 					instanceType = castComplexType(instanceCall.getType());
 
 					result.addSubCall(instanceCall);
+
+					currentMemberCall++;
 				}
 			}
 
