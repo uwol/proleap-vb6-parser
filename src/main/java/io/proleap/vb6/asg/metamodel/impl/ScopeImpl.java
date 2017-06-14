@@ -397,14 +397,15 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	@Override
 	public Call addCall(final Call instanceCall, final ComplexType instanceType, final CallContext callContext,
-			final ICS_S_MemberCallContext ctx) {
+			final boolean isIntermediaMemberCall, final ICS_S_MemberCallContext ctx) {
 		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final Call delegatedCall;
 
 			if (ctx.iCS_S_VariableOrProcedureCall() != null) {
-				delegatedCall = addCall(instanceCall, instanceType, callContext, ctx.iCS_S_VariableOrProcedureCall());
+				delegatedCall = addCall(instanceCall, instanceType, callContext, isIntermediaMemberCall,
+						ctx.iCS_S_VariableOrProcedureCall());
 			} else if (ctx.iCS_S_ProcedureOrArrayCall() != null) {
 				delegatedCall = addCall(instanceCall, instanceType, ctx.iCS_S_ProcedureOrArrayCall());
 			} else {
@@ -421,7 +422,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	@Override
 	public Call addCall(final Call instanceCall, final ComplexType instanceType, final CallContext callContext,
-			final ICS_S_VariableOrProcedureCallContext ctx) {
+			final boolean isIntermediaMemberCall, final ICS_S_VariableOrProcedureCallContext ctx) {
 		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
@@ -509,21 +510,21 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 					linkConstantCallWithConstant(constantCall, constant);
 
 					result = constantCall;
-				} else if (propertyGet != null && !isLeftHandSideCall) {
+				} else if (propertyGet != null && (!isLeftHandSideCall || isIntermediaMemberCall)) {
 					final PropertyGetCall propertyGetCall = new PropertyGetCallImpl(name, propertyGet, module, this,
 							ctx);
 
 					linkPropertyGetCallWithPropertyGet(propertyGetCall, propertyGet, null);
 
 					result = propertyGetCall;
-				} else if (propertyLet != null && isLeftHandSideCall) {
+				} else if (propertyLet != null && isLeftHandSideCall && !isIntermediaMemberCall) {
 					final PropertyLetCall properyLetCall = new PropertyLetCallImpl(name, propertyLet, module, this,
 							ctx);
 
 					linkPropertyLetCallWithPropertySet(properyLetCall, propertyLet, null);
 
 					result = properyLetCall;
-				} else if (propertySet != null && isLeftHandSideCall) {
+				} else if (propertySet != null && isLeftHandSideCall && !isIntermediaMemberCall) {
 					final PropertySetCall propertySetCall = new PropertySetCallImpl(name, propertySet, module, this,
 							ctx);
 
@@ -545,13 +546,13 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 					linkTypeElementCallWithTypeElement(typeElementCall, typeElement);
 
 					result = typeElementCall;
-				} else if (function != null && !isLeftHandSideCall) {
+				} else if (function != null && (!isLeftHandSideCall || isIntermediaMemberCall)) {
 					final FunctionCall functionCall = new FunctionCallImpl(name, function, module, this, ctx);
 
 					linkFunctionCallWithFunction(functionCall, function, null);
 
 					result = functionCall;
-				} else if (sub != null && !isLeftHandSideCall) {
+				} else if (sub != null && (!isLeftHandSideCall || isIntermediaMemberCall)) {
 					final SubCall subCall = new SubCallImpl(name, sub, module, this, ctx);
 
 					linkSubCallWithSub(subCall, sub, null);
@@ -701,7 +702,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			final Call delegatedCall;
 
 			if (ctx.iCS_S_VariableOrProcedureCall() != null) {
-				delegatedCall = addCall(null, null, callContext, ctx.iCS_S_VariableOrProcedureCall());
+				delegatedCall = addCall(null, null, callContext, false, ctx.iCS_S_VariableOrProcedureCall());
 			} else if (ctx.iCS_S_ProcedureOrArrayCall() != null) {
 				delegatedCall = addCall(null, null, ctx.iCS_S_ProcedureOrArrayCall());
 			} else if (ctx.iCS_S_MembersCall() != null) {
@@ -732,7 +733,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			ComplexType instanceType = null;
 
 			if (ctx.iCS_S_VariableOrProcedureCall() != null) {
-				instanceCall = addCall(null, null, callContext, ctx.iCS_S_VariableOrProcedureCall());
+				instanceCall = addCall(null, null, callContext, true, ctx.iCS_S_VariableOrProcedureCall());
 				instanceType = castComplexType(instanceCall.getType());
 
 				result.addSubCall(instanceCall);
@@ -754,21 +755,19 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				}
 			}
 
-			if (ctx.iCS_S_MemberCall() != null) {
-				final int numberOfMemberCalls = ctx.iCS_S_MemberCall().size();
-				int currentMemberCall = 0;
+			final int numberOfMemberCalls = ctx.iCS_S_MemberCall().size();
+			int currentMemberCall = 0;
 
-				for (final ICS_S_MemberCallContext memberCallContext : ctx.iCS_S_MemberCall()) {
-					final boolean isLastMemberCall = currentMemberCall == numberOfMemberCalls - 1;
-					final CallContext currentCallContext = isLastMemberCall ? callContext : null;
+			for (final ICS_S_MemberCallContext memberCallContext : ctx.iCS_S_MemberCall()) {
+				final boolean isIntermediateMemberCall = currentMemberCall < numberOfMemberCalls - 1;
 
-					instanceCall = addCall(instanceCall, instanceType, currentCallContext, memberCallContext);
-					instanceType = castComplexType(instanceCall.getType());
+				instanceCall = addCall(instanceCall, instanceType, callContext, isIntermediateMemberCall,
+						memberCallContext);
+				instanceType = castComplexType(instanceCall.getType());
 
-					result.addSubCall(instanceCall);
+				result.addSubCall(instanceCall);
 
-					currentMemberCall++;
-				}
+				currentMemberCall++;
 			}
 
 			registerASGElement(result);

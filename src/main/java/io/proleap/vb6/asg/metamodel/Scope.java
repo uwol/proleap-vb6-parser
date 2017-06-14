@@ -150,9 +150,10 @@ public interface Scope extends ScopedElement {
 
 	BlockIfThenElse addBlockIfThenElse(BlockIfThenElseContext ctx);
 
-	Call addCall(Call instanceCall, ComplexType instanceType, CallContext callContext, ICS_S_MemberCallContext ctx);
+	Call addCall(Call instanceCall, ComplexType instanceType, CallContext callContext, boolean isIntermediaMemberCall,
+			ICS_S_MemberCallContext ctx);
 
-	Call addCall(Call instanceCall, ComplexType instanceType, CallContext callContext,
+	Call addCall(Call instanceCall, ComplexType instanceType, CallContext callContext, boolean isIntermediaMemberCall,
 			ICS_S_VariableOrProcedureCallContext ctx);
 
 	Call addCall(Call instanceCall, ComplexType instanceType, ICS_S_ProcedureOrArrayCallContext ctx);

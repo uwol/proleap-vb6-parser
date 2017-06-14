@@ -188,7 +188,7 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 			final VisualBasic6Parser.ICS_S_VariableOrProcedureCallContext ctx) {
 		final Scope scope = findScope(ctx);
 
-		scope.addCall(null, null, null, ctx);
+		scope.addCall(null, null, null, false, ctx);
 
 		return visitChildren(ctx);
 	}
