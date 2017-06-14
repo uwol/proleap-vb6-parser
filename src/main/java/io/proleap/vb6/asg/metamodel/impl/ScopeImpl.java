@@ -467,240 +467,138 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				 * property get
 				 */
 				final Procedure procedure = this.findScope(Procedure.class);
-				final boolean hasProcedureName;
+				final boolean hasProcedureName = procedure == null ? false : procedure.getName().equals(name);
 
-				if (procedure != null) {
-					hasProcedureName = procedure.getName().equals(name);
-				} else {
-					hasProcedureName = false;
-				}
+				final boolean isLeftHandSideCall = CallContext.LET_LEFT_HAND_SIDE.equals(callContext);
 
-				/*
-				 * create call model element
-				 */
-				if (CallContext.LET_LEFT_HAND_SIDE.equals(callContext)) {
-					if (instanceType == null && hasProcedureName) {
-						if (propertyGet != null) {
-							final ReturnValueCall returnValueCall = new ReturnValueCallImpl(name, propertyGet, module,
-									this, ctx);
-
-							result = returnValueCall;
-						} else {
-							final ReturnValueCall returnValueCall = new ReturnValueCallImpl(name, function, module,
-									this, ctx);
-
-							result = returnValueCall;
-						}
-					} else if (enumerationConstant != null) {
-						final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
-								enumerationConstant, module, this, ctx);
-
-						linkEnumerationConstantCallWithEnumerationConstant(enumerationConstantCall,
-								enumerationConstant);
-
-						final boolean isStandalone = instanceType == null;
-						enumerationConstantCall.setStandaloneCall(isStandalone);
-
-						result = enumerationConstantCall;
-					} else if (variable != null) {
-						final VariableCall variableCall = new VariableCallImpl(name, variable, module, this, ctx);
-
-						linkVariableCallWithVariable(variableCall, variable);
-
-						result = variableCall;
-					} else if (constant != null) {
-						final ConstantCall constantCall = new ConstantCallImpl(name, constant, module, this, ctx);
-
-						linkConstantCallWithConstant(constantCall, constant);
-
-						result = constantCall;
-					} else if (propertyLet != null) {
-						final PropertyLetCall properyLetCall = new PropertyLetCallImpl(name, propertyLet, module, this,
+				if (instanceType == null && hasProcedureName) {
+					/*
+					 * return values can be read inside of functions or property
+					 * gets
+					 */
+					if (propertyGet != null) {
+						final ReturnValueCall returnValueCall = new ReturnValueCallImpl(name, propertyGet, module, this,
 								ctx);
 
-						linkPropertyLetCallWithPropertySet(properyLetCall, propertyLet, null);
-
-						result = properyLetCall;
-					} else if (propertySet != null) {
-						final PropertySetCall propertySetCall = new PropertySetCallImpl(name, propertySet, module, this,
-								ctx);
-
-						linkPropertySetCallWithPropertySet(propertySetCall, propertySet, null);
-
-						result = propertySetCall;
-					} else if (arg != null) {
-						// (sic!, after constants and variables) arg values can
-						// be overwritten by constant and variables
-						final ArgCall argCall = new ArgCallImpl(name, arg, module, this, ctx);
-
-						linkArgCallWithArg(argCall, arg);
-
-						result = argCall;
-					} else if (typeElement != null) {
-						final TypeElementCall typeElementCall = new TypeElementCallImpl(name, typeElement, module, this,
-								ctx);
-
-						linkTypeElementCallWithTypeElement(typeElementCall, typeElement);
-
-						result = typeElementCall;
-					} else if (enumeration != null) {
-						final EnumerationCall enumerationCall = new EnumerationCallImpl(name, enumeration, module, this,
-								ctx);
-
-						linkEnumerationCallWithEnumeration(enumerationCall, enumeration);
-
-						result = enumerationCall;
-					} else if (apiProcedure != null) {
-						final ApiProcedureCall apiProcedureCall = new ApiProcedureCallImpl(name, apiProcedure, module,
-								this, ctx);
-
-						linkApiProcedureCallWithApiProcedure(apiProcedureCall, apiProcedure);
-
-						result = apiProcedureCall;
-					} else if (apiProperty != null) {
-						final ApiPropertyCall apiPropertyCall = new ApiPropertyCallImpl(name, apiProperty, module, this,
-								ctx);
-
-						linkApiPropertyCallWithApiProperty(apiPropertyCall, apiProperty);
-
-						result = apiPropertyCall;
-					} else if (apiEnumeration != null) {
-						final ApiEnumerationCall apiEnumerationCall = new ApiEnumerationCallImpl(name, apiEnumeration,
-								module, this, ctx);
-
-						linkApiEnumerationCallWithApiEnumeration(apiEnumerationCall, apiEnumeration);
-
-						result = apiEnumerationCall;
-					} else if (apiEnumerationConstant != null) {
-						final ApiEnumerationConstantCall apiEnumerationConstantCall = new ApiEnumerationConstantCallImpl(
-								name, apiEnumerationConstant, module, this, ctx);
-
-						linkApiEnumerationConstantCallWithApiEnumerationConstant(apiEnumerationConstantCall,
-								apiEnumerationConstant);
-
-						final boolean isStandalone = instanceType == null;
-						apiEnumerationConstantCall.setStandaloneCall(isStandalone);
-
-						result = apiEnumerationConstantCall;
+						result = returnValueCall;
 					} else {
-						LOG.warn("Left hand call to unknown element {}.", name);
-						result = new UndefinedCallImpl(name, null, module, this, ctx);
+						final ReturnValueCall returnValueCall = new ReturnValueCallImpl(name, function, module, this,
+								ctx);
+
+						result = returnValueCall;
 					}
+				} else if (enumerationConstant != null) {
+					final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
+							enumerationConstant, module, this, ctx);
+
+					linkEnumerationConstantCallWithEnumerationConstant(enumerationConstantCall, enumerationConstant);
+
+					final boolean isStandalone = instanceType == null;
+					enumerationConstantCall.setStandaloneCall(isStandalone);
+
+					result = enumerationConstantCall;
+				} else if (variable != null) {
+					final VariableCall variableCall = new VariableCallImpl(name, variable, module, this, ctx);
+
+					linkVariableCallWithVariable(variableCall, variable);
+
+					result = variableCall;
+				} else if (constant != null) {
+					final ConstantCall constantCall = new ConstantCallImpl(name, constant, module, this, ctx);
+
+					linkConstantCallWithConstant(constantCall, constant);
+
+					result = constantCall;
+				} else if (propertyGet != null && !isLeftHandSideCall) {
+					final PropertyGetCall propertyGetCall = new PropertyGetCallImpl(name, propertyGet, module, this,
+							ctx);
+
+					linkPropertyGetCallWithPropertyGet(propertyGetCall, propertyGet, null);
+
+					result = propertyGetCall;
+				} else if (propertyLet != null && isLeftHandSideCall) {
+					final PropertyLetCall properyLetCall = new PropertyLetCallImpl(name, propertyLet, module, this,
+							ctx);
+
+					linkPropertyLetCallWithPropertySet(properyLetCall, propertyLet, null);
+
+					result = properyLetCall;
+				} else if (propertySet != null && isLeftHandSideCall) {
+					final PropertySetCall propertySetCall = new PropertySetCallImpl(name, propertySet, module, this,
+							ctx);
+
+					linkPropertySetCallWithPropertySet(propertySetCall, propertySet, null);
+
+					result = propertySetCall;
+				} else if (arg != null) {
+					// sic!, precedence is after constants and variables: arg
+					// values can be overwritten by constant and variables
+					final ArgCall argCall = new ArgCallImpl(name, arg, module, this, ctx);
+
+					linkArgCallWithArg(argCall, arg);
+
+					result = argCall;
+				} else if (typeElement != null) {
+					final TypeElementCall typeElementCall = new TypeElementCallImpl(name, typeElement, module, this,
+							ctx);
+
+					linkTypeElementCallWithTypeElement(typeElementCall, typeElement);
+
+					result = typeElementCall;
+				} else if (function != null && !isLeftHandSideCall) {
+					final FunctionCall functionCall = new FunctionCallImpl(name, function, module, this, ctx);
+
+					linkFunctionCallWithFunction(functionCall, function, null);
+
+					result = functionCall;
+				} else if (sub != null && !isLeftHandSideCall) {
+					final SubCall subCall = new SubCallImpl(name, sub, module, this, ctx);
+
+					linkSubCallWithSub(subCall, sub, null);
+
+					result = subCall;
+				} else if (enumeration != null) {
+					final EnumerationCall enumerationCall = new EnumerationCallImpl(name, enumeration, module, this,
+							ctx);
+
+					linkEnumerationCallWithEnumeration(enumerationCall, enumeration);
+
+					result = enumerationCall;
+				} else if (apiProcedure != null) {
+					final ApiProcedureCall apiProcedureCall = new ApiProcedureCallImpl(name, apiProcedure, module, this,
+							ctx);
+
+					linkApiProcedureCallWithApiProcedure(apiProcedureCall, apiProcedure);
+
+					result = apiProcedureCall;
+				} else if (apiProperty != null) {
+					final ApiPropertyCall apiPropertyCall = new ApiPropertyCallImpl(name, apiProperty, module, this,
+							ctx);
+
+					linkApiPropertyCallWithApiProperty(apiPropertyCall, apiProperty);
+
+					result = apiPropertyCall;
+				} else if (apiEnumeration != null) {
+					final ApiEnumerationCall apiEnumerationCall = new ApiEnumerationCallImpl(name, apiEnumeration,
+							module, this, ctx);
+
+					linkApiEnumerationCallWithApiEnumeration(apiEnumerationCall, apiEnumeration);
+
+					result = apiEnumerationCall;
+				} else if (apiEnumerationConstant != null) {
+					final ApiEnumerationConstantCall apiEnumerationConstantCall = new ApiEnumerationConstantCallImpl(
+							name, apiEnumerationConstant, module, this, ctx);
+
+					linkApiEnumerationConstantCallWithApiEnumerationConstant(apiEnumerationConstantCall,
+							apiEnumerationConstant);
+
+					final boolean isStandalone = instanceType == null;
+					apiEnumerationConstantCall.setStandaloneCall(isStandalone);
+
+					result = apiEnumerationConstantCall;
 				} else {
-					// return values can be read inside of functions or property
-					// gets
-					if (instanceType == null && hasProcedureName) {
-						if (propertyGet != null) {
-							final ReturnValueCall returnValueCall = new ReturnValueCallImpl(name, propertyGet, module,
-									this, ctx);
-
-							result = returnValueCall;
-						} else {
-							final ReturnValueCall returnValueCall = new ReturnValueCallImpl(name, function, module,
-									this, ctx);
-
-							result = returnValueCall;
-						}
-					} else if (enumerationConstant != null) {
-						final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
-								enumerationConstant, module, this, ctx);
-
-						linkEnumerationConstantCallWithEnumerationConstant(enumerationConstantCall,
-								enumerationConstant);
-
-						final boolean isStandalone = instanceType == null;
-						enumerationConstantCall.setStandaloneCall(isStandalone);
-
-						result = enumerationConstantCall;
-					} else if (variable != null) {
-						final VariableCall variableCall = new VariableCallImpl(name, variable, module, this, ctx);
-
-						linkVariableCallWithVariable(variableCall, variable);
-
-						result = variableCall;
-					} else if (constant != null) {
-						final ConstantCall constantCall = new ConstantCallImpl(name, constant, module, this, ctx);
-
-						linkConstantCallWithConstant(constantCall, constant);
-
-						result = constantCall;
-					} else if (propertyGet != null) {
-						final PropertyGetCall propertyGetCall = new PropertyGetCallImpl(name, propertyGet, module, this,
-								ctx);
-
-						linkPropertyGetCallWithPropertyGet(propertyGetCall, propertyGet, null);
-
-						result = propertyGetCall;
-					} else if (arg != null) {
-						// (sic!, after constants and variables) arg values can
-						// be overwritten by constant and variables
-						final ArgCall argCall = new ArgCallImpl(name, arg, module, this, ctx);
-
-						linkArgCallWithArg(argCall, arg);
-
-						result = argCall;
-					} else if (typeElement != null) {
-						final TypeElementCall typeElementCall = new TypeElementCallImpl(name, typeElement, module, this,
-								ctx);
-
-						linkTypeElementCallWithTypeElement(typeElementCall, typeElement);
-
-						result = typeElementCall;
-					} else if (function != null) {
-						final FunctionCall functionCall = new FunctionCallImpl(name, function, module, this, ctx);
-
-						linkFunctionCallWithFunction(functionCall, function, null);
-
-						result = functionCall;
-					} else if (sub != null) {
-						final SubCall subCall = new SubCallImpl(name, sub, module, this, ctx);
-
-						linkSubCallWithSub(subCall, sub, null);
-
-						result = subCall;
-					} else if (enumeration != null) {
-						final EnumerationCall enumerationCall = new EnumerationCallImpl(name, enumeration, module, this,
-								ctx);
-
-						linkEnumerationCallWithEnumeration(enumerationCall, enumeration);
-
-						result = enumerationCall;
-					} else if (apiProcedure != null) {
-						final ApiProcedureCall apiProcedureCall = new ApiProcedureCallImpl(name, apiProcedure, module,
-								this, ctx);
-
-						linkApiProcedureCallWithApiProcedure(apiProcedureCall, apiProcedure);
-
-						result = apiProcedureCall;
-					} else if (apiProperty != null) {
-						final ApiPropertyCall apiPropertyCall = new ApiPropertyCallImpl(name, apiProperty, module, this,
-								ctx);
-
-						linkApiPropertyCallWithApiProperty(apiPropertyCall, apiProperty);
-
-						result = apiPropertyCall;
-					} else if (apiEnumeration != null) {
-						final ApiEnumerationCall apiEnumerationCall = new ApiEnumerationCallImpl(name, apiEnumeration,
-								module, this, ctx);
-
-						linkApiEnumerationCallWithApiEnumeration(apiEnumerationCall, apiEnumeration);
-
-						result = apiEnumerationCall;
-					} else if (apiEnumerationConstant != null) {
-						final ApiEnumerationConstantCall apiEnumerationConstantCall = new ApiEnumerationConstantCallImpl(
-								name, apiEnumerationConstant, module, this, ctx);
-
-						linkApiEnumerationConstantCallWithApiEnumerationConstant(apiEnumerationConstantCall,
-								apiEnumerationConstant);
-
-						final boolean isStandalone = instanceType == null;
-						apiEnumerationConstantCall.setStandaloneCall(isStandalone);
-
-						result = apiEnumerationConstantCall;
-					} else {
-						LOG.warn("Call to unknown element {}.", name);
-						result = new UndefinedCallImpl(name, null, module, this, ctx);
-					}
+					LOG.warn("Call to unknown element {}.", name);
+					result = new UndefinedCallImpl(name, null, module, this, ctx);
 				}
 			}
 
