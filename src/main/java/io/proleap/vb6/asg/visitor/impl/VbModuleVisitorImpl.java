@@ -54,8 +54,10 @@ public class VbModuleVisitorImpl extends AbstractVbParserVisitorImpl {
 			result = null;
 		}
 
-		result.setLines(lines);
-		module = result;
+		if (result != null) {
+			result.setLines(lines);
+			module = result;
+		}
 
 		return visitChildren(ctx);
 	}
