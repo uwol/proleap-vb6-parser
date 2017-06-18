@@ -2353,7 +2353,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		final VisibilityEnum result;
 
 		if (visibility == null) {
-			result = VisibilityEnum.PUBLIC;
+			result = null;
 		} else if (visibility.PRIVATE() != null) {
 			result = VisibilityEnum.PRIVATE;
 		} else if (visibility.GLOBAL() != null) {
@@ -2369,7 +2369,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		final VisibilityEnum result;
 
 		if (visibility == null) {
-			result = VisibilityEnum.PUBLIC;
+			result = null;
 		} else if (visibility.PRIVATE() != null) {
 			result = VisibilityEnum.PRIVATE;
 		} else {
@@ -2383,7 +2383,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		final VisibilityEnum result;
 
 		if (visibility == null) {
-			result = VisibilityEnum.PUBLIC;
+			result = null;
 		} else if (visibility.PRIVATE() != null) {
 			result = VisibilityEnum.PRIVATE;
 		} else if (visibility.FRIEND() != null) {

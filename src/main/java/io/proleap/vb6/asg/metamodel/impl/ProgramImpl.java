@@ -72,12 +72,15 @@ public class ProgramImpl extends ScopeImpl implements Program {
 				final VisibilityElement visibilityElement = (VisibilityElement) scopedElement;
 				final VisibilityEnum visibility = visibilityElement.getVisibility();
 
-				switch (visibility) {
-				case PRIVATE:
-					break;
-				default:
-					result.add(scopedElement);
-					break;
+				if (visibility == null) {
+				} else {
+					switch (visibility) {
+					case PRIVATE:
+						break;
+					default:
+						result.add(scopedElement);
+						break;
+					}
 				}
 			}
 		}
