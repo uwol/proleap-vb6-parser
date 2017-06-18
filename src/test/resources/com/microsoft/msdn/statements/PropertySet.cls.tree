@@ -9,8 +9,7 @@
 							(ambiguousIdentifier P)   
 							(asTypeClause As   
 								(type 
-									(complexType 
-										(ambiguousIdentifier Object))))) )) \n    
+									(baseType Object)))) )) \n    
 					(block 
 						(blockStmt 
 							(setStmt Set   

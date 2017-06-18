@@ -218,7 +218,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 		if (result == null) {
 			final String name = determineName(ctx);
-			final VisibilityEnum visibility = determineVisibility(ctx.visibility());
+			final VisibilityEnum visibility = determineVisibility(ctx.publicPrivateVisibility());
 			result = new EnumerationImpl(name, visibility, this, ctx);
 
 			registerStatement(result);

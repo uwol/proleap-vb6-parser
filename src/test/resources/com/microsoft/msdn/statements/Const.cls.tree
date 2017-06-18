@@ -12,14 +12,14 @@
 										(literal 459))))) \n \n \n 
 						(blockStmt 
 							(constStmt 
-								(visibility Public)   Const   
+								(publicPrivateGlobalVisibility Public)   Const   
 								(constSubStmt 
 									(ambiguousIdentifier MyString)   =   
 									(valueStmt 
 										(literal "HELP"))))) \n \n \n 
 						(blockStmt 
 							(constStmt 
-								(visibility Private)   Const   
+								(publicPrivateGlobalVisibility Private)   Const   
 								(constSubStmt 
 									(ambiguousIdentifier MyInt)   
 									(asTypeClause As   

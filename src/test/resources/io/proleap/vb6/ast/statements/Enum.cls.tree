@@ -4,7 +4,7 @@
 		(moduleBody 
 			(moduleBodyElement 
 				(enumerationStmt 
-					(visibility Public)   Enum   
+					(publicPrivateVisibility Public)   Enum   
 					(ambiguousIdentifier Enum1) \n\t 
 					(enumerationStmt_Constant 
 						(ambiguousIdentifier EnumConst1) = 
@@ -24,7 +24,7 @@
 							(literal &H123ABC&)) \n) End Enum)) \n \n \n 
 			(moduleBodyElement 
 				(enumerationStmt 
-					(visibility Private)   Enum   
+					(publicPrivateVisibility Private)   Enum   
 					(ambiguousIdentifier Enum2) \n\t 
 					(enumerationStmt_Constant 
 						(ambiguousIdentifier EC1) \n\t) 
@@ -34,7 +34,7 @@
 						(ambiguousIdentifier EC3) \n) End Enum)) \n \n 
 			(moduleBodyElement 
 				(enumerationStmt 
-					(visibility Public)   Enum   
+					(publicPrivateVisibility Public)   Enum   
 					(ambiguousIdentifier Days) \n   
 					(enumerationStmt_Constant 
 						(ambiguousIdentifier Monday) \n  ) 

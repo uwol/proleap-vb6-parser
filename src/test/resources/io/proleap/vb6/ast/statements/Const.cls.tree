@@ -12,14 +12,14 @@
 										(literal "test"))))) \n 
 						(blockStmt 
 							(constStmt 
-								(visibility Private)   Const   
+								(publicPrivateGlobalVisibility Private)   Const   
 								(constSubStmt 
 									(ambiguousIdentifier Var2)   =   
 									(valueStmt 
 										(literal 345))))) \n 
 						(blockStmt 
 							(constStmt 
-								(visibility Public)   Const   
+								(publicPrivateGlobalVisibility Public)   Const   
 								(constSubStmt 
 									(ambiguousIdentifier Var3)   
 									(asTypeClause As   

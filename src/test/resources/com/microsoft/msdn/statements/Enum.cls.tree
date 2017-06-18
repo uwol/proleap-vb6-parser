@@ -3,7 +3,7 @@
 		(moduleBody 
 			(moduleBodyElement 
 				(enumerationStmt 
-					(visibility Public)   Enum   
+					(publicPrivateVisibility Public)   Enum   
 					(ambiguousIdentifier InterfaceColors) \n    
 					(enumerationStmt_Constant 
 						(ambiguousIdentifier icMistyRose)   =   

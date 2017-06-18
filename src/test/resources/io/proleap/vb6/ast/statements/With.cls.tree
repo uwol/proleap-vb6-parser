@@ -8,7 +8,8 @@
 							(variableStmt Dim   
 								(variableListStmt 
 									(variableSubStmt 
-										(ambiguousIdentifier Object)   
+										(ambiguousIdentifier 
+											(ambiguousKeyword Object))   
 										(asTypeClause As   
 											(type 
 												(baseType Variant))))))) \n \n 
@@ -16,7 +17,8 @@
 							(withStmt With   
 								(implicitCallStmt_InStmt 
 									(iCS_S_VariableOrProcedureCall 
-										(ambiguousIdentifier Object))) \n\t 
+										(ambiguousIdentifier 
+											(ambiguousKeyword Object)))) \n\t 
 								(block 
 									(blockStmt 
 										(letStmt 

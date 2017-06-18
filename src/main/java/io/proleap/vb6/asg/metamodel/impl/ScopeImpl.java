@@ -86,6 +86,8 @@ import io.proleap.vb6.VisualBasic6Parser.LiteralContext;
 import io.proleap.vb6.VisualBasic6Parser.OnErrorStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.OpenStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.PrintStmtContext;
+import io.proleap.vb6.VisualBasic6Parser.PublicPrivateGlobalVisibilityContext;
+import io.proleap.vb6.VisualBasic6Parser.PublicPrivateVisibilityContext;
 import io.proleap.vb6.VisualBasic6Parser.RedimSubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ResumeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SC_CaseContext;
@@ -1142,7 +1144,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	@Override
 	public void addConstants(final ConstStmtContext ctx) {
-		final VisibilityEnum visibility = determineVisibility(ctx.visibility());
+		final VisibilityEnum visibility = determineVisibility(ctx.publicPrivateGlobalVisibility());
 
 		for (final ConstSubStmtContext constSubStmtContext : ctx.constSubStmt()) {
 			addConstant(visibility, constSubStmtContext);
@@ -2345,6 +2347,36 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	protected Type determineType(final ParserRuleContext ctx) {
 		final Program program = module.getProgram();
 		return new TypeResolverImpl().determineType(ctx, program);
+	}
+
+	protected VisibilityEnum determineVisibility(final PublicPrivateGlobalVisibilityContext visibility) {
+		final VisibilityEnum result;
+
+		if (visibility == null) {
+			result = VisibilityEnum.PUBLIC;
+		} else if (visibility.PRIVATE() != null) {
+			result = VisibilityEnum.PRIVATE;
+		} else if (visibility.GLOBAL() != null) {
+			result = VisibilityEnum.GLOBAL;
+		} else {
+			result = VisibilityEnum.PUBLIC;
+		}
+
+		return result;
+	}
+
+	protected VisibilityEnum determineVisibility(final PublicPrivateVisibilityContext visibility) {
+		final VisibilityEnum result;
+
+		if (visibility == null) {
+			result = VisibilityEnum.PUBLIC;
+		} else if (visibility.PRIVATE() != null) {
+			result = VisibilityEnum.PRIVATE;
+		} else {
+			result = VisibilityEnum.PUBLIC;
+		}
+
+		return result;
 	}
 
 	protected VisibilityEnum determineVisibility(final VisibilityContext visibility) {

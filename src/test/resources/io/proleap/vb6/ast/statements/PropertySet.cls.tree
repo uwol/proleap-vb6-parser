@@ -19,8 +19,7 @@
 										(ambiguousIdentifier CurrentObj)   
 										(asTypeClause As   
 											(type 
-												(complexType 
-													(ambiguousIdentifier Object))))))))))) \n \n 
+												(baseType Object)))))))))) \n \n 
 			(moduleBodyElement 
 				(propertySetStmt Property Set   
 					(ambiguousIdentifier CurrentI) 
@@ -48,8 +47,7 @@
 							(ambiguousIdentifier J)   
 							(asTypeClause AS   
 								(type 
-									(complexType 
-										(ambiguousIdentifier Object))))) )) \n\t 
+									(baseType Object)))) )) \n\t 
 					(block 
 						(blockStmt 
 							(setStmt Set   
