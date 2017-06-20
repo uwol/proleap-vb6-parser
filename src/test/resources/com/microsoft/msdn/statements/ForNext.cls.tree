@@ -261,14 +261,14 @@
 												(ifConditionStmt 
 													(valueStmt 
 														(valueStmt 
-															(implicitCallStmt_InStmt 
-																(iCS_S_VariableOrProcedureCall 
-																	(ambiguousIdentifier i))))   Mod   
+															(valueStmt 
+																(implicitCallStmt_InStmt 
+																	(iCS_S_VariableOrProcedureCall 
+																		(ambiguousIdentifier i))))   Mod   
 														(valueStmt 
-															(valueStmt 
-																(literal 2))   =   
-															(valueStmt 
-																(literal 1)))))   Then \n         
+															(literal 2)))   =   
+														(valueStmt 
+															(literal 1))))   Then \n         
 												(block 
 													(blockStmt 
 														(letStmt 
