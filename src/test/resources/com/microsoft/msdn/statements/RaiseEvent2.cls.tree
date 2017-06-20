@@ -75,18 +75,18 @@
 							(doLoopStmt Do   While   
 								(valueStmt 
 									(valueStmt 
-										(valueStmt 
-											(implicitCallStmt_InStmt 
-												(iCS_S_VariableOrProcedureCall 
-													(ambiguousIdentifier Timer))))   <   
-										(valueStmt 
-											(implicitCallStmt_InStmt 
-												(iCS_S_VariableOrProcedureCall 
-													(ambiguousIdentifier dblStart)))))   +   
-									(valueStmt 
 										(implicitCallStmt_InStmt 
 											(iCS_S_VariableOrProcedureCall 
-												(ambiguousIdentifier Duration))))) \n         
+												(ambiguousIdentifier Timer))))   <   
+									(valueStmt 
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier dblStart))))   +   
+										(valueStmt 
+											(implicitCallStmt_InStmt 
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier Duration)))))) \n         
 								(block 
 									(blockStmt 
 										(ifThenElseStmt 
@@ -94,16 +94,14 @@
 												(ifConditionStmt 
 													(valueStmt 
 														(valueStmt 
-															(implicitCallStmt_InStmt 
-																(iCS_S_VariableOrProcedureCall 
-																	(ambiguousIdentifier Timer))))   -   
-														(valueStmt 
 															(valueStmt 
 																(implicitCallStmt_InStmt 
 																	(iCS_S_VariableOrProcedureCall 
-																		(ambiguousIdentifier dblSoFar))))   >=   
-															(valueStmt 
-																(literal 1)))))   Then \n             
+																		(ambiguousIdentifier Timer))))   -   
+															(valueStmt (implicitCallStmt_InStmt 
+																(iCS_S_VariableOrProcedureCall 
+																	(ambiguousIdentifier dblSoFar)))))   >=   
+														(valueStmt (literal 1))))   Then \n             
 												(block 
 													(blockStmt 
 														(letStmt 

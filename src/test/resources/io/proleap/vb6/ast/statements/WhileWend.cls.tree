@@ -68,14 +68,14 @@
 										(whileWendStmt While   
 											(valueStmt 
 												(valueStmt 
-													(implicitCallStmt_InStmt 
-														(iCS_S_VariableOrProcedureCall 
-															(ambiguousIdentifier I))))   Mod   
+												  (valueStmt 
+														(implicitCallStmt_InStmt 
+															(iCS_S_VariableOrProcedureCall 
+																(ambiguousIdentifier I))))   Mod   
+													(valueStmt 
+														(literal 15)))   <>   
 												(valueStmt 
-													(valueStmt 
-														(literal 15))   <>   
-													(valueStmt 
-														(literal 0)))) \n\t\t 
+													(literal 0))) \n\t\t 
 											(block 
 												(blockStmt 
 													(letStmt 
