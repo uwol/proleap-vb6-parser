@@ -29,6 +29,7 @@
 grammar VisualBasic6;
 
 // module ----------------------------------
+
 startRule
    : module EOF
    ;
@@ -38,20 +39,20 @@ module
    ;
 
  moduleReferences
-	: moduleReference+
-	;
+   : moduleReference+
+   ;
 	
 moduleReference 
-	: OBJECT WS? EQ WS? moduleReferenceGUID SEMICOLON WS? moduleReferenceComponent NEWLINE*
-	;
+   : OBJECT WS? EQ WS? moduleReferenceGUID SEMICOLON WS? moduleReferenceComponent NEWLINE*
+   ;
 	 
 moduleReferenceGUID
-	: STRINGLITERAL
-	;
+   : STRINGLITERAL
+   ;
 
 moduleReferenceComponent
-	: STRINGLITERAL
-	;
+   : STRINGLITERAL
+   ;
 
 moduleHeader
    : VERSION WS DOUBLELITERAL (WS CLASS)?
@@ -99,7 +100,7 @@ moduleBodyElement
    | typeStmt
    ;
 
-// Controls ----------------------------------
+// controls ----------------------------------
 
 controlProperties 
 	: WS? BEGIN WS cp_ControlType WS cp_ControlIdentifier WS? NEWLINE+ cp_Properties+ END NEWLINE*
@@ -131,6 +132,7 @@ cp_ControlIdentifier
 	;
 
 // block ----------------------------------
+
 moduleBlock
    : block
    ;
@@ -214,6 +216,7 @@ blockStmt
    ;
 
 // statements ----------------------------------
+
 appActivateStmt
    : APPACTIVATE WS valueStmt (WS? COMMA WS? valueStmt)?
    ;
@@ -565,37 +568,37 @@ unlockStmt
 
 // operator precedence is represented by rule order
 valueStmt
-   : literal # vsLiteral
-   | implicitCallStmt_InStmt # vsICS
-   | LPAREN WS? valueStmt (WS? COMMA WS? valueStmt)* WS? RPAREN # vsStruct
-   | NEW WS valueStmt # vsNew
-   | typeOfStmt # vsTypeOf
-   | midStmt # vsMid
-   | ADDRESSOF WS valueStmt # vsAddressOf
-   | implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt # vsAssign
-   | valueStmt WS? POW WS? valueStmt # vsPow
-   | MINUS WS? valueStmt # vsNegation
-   | PLUS WS? valueStmt # vsPlus
-   | valueStmt WS? DIV WS? valueStmt # vsDiv
-   | valueStmt WS? MULT WS? valueStmt # vsMult
-   | valueStmt WS? MOD WS? valueStmt # vsMod
-   | valueStmt WS? PLUS WS? valueStmt # vsAdd
-   | valueStmt WS? MINUS WS? valueStmt # vsMinus
-   | valueStmt WS AMPERSAND WS valueStmt # vsAmp
-   | valueStmt WS IS WS valueStmt # vsIs
-   | valueStmt WS LIKE WS valueStmt # vsLike
-   | valueStmt WS? GEQ WS? valueStmt # vsGeq
-   | valueStmt WS? LEQ WS? valueStmt # vsLeq
-   | valueStmt WS? GT WS? valueStmt # vsGt
-   | valueStmt WS? LT WS? valueStmt # vsLt
-   | valueStmt WS? NEQ WS? valueStmt # vsNeq
-   | valueStmt WS? EQ WS? valueStmt # vsEq
-   | valueStmt WS IMP WS valueStmt # vsImp
-   | valueStmt WS EQV WS valueStmt # vsEqv
-   | NOT WS valueStmt # vsNot
-   | valueStmt WS AND WS valueStmt # vsAnd
-   | valueStmt WS? OR WS? valueStmt # vsOr
-   | valueStmt WS? XOR WS? valueStmt # vsXor
+   : literal                                                         # vsLiteral
+   | implicitCallStmt_InStmt                                         # vsICS
+   | LPAREN WS? valueStmt (WS? COMMA WS? valueStmt)* WS? RPAREN      # vsStruct
+   | NEW WS valueStmt                                                # vsNew
+   | typeOfStmt                                                      # vsTypeOf
+   | midStmt                                                         # vsMid
+   | ADDRESSOF WS valueStmt                                          # vsAddressOf
+   | implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt                # vsAssign
+   | valueStmt WS? POW WS? valueStmt                                 # vsPow
+   | MINUS WS? valueStmt                                             # vsNegation
+   | PLUS WS? valueStmt                                              # vsPlus
+   | valueStmt WS? DIV WS? valueStmt                                 # vsDiv
+   | valueStmt WS? MULT WS? valueStmt                                # vsMult
+   | valueStmt WS? MOD WS? valueStmt                                 # vsMod
+   | valueStmt WS? PLUS WS? valueStmt                                # vsAdd
+   | valueStmt WS? MINUS WS? valueStmt                               # vsMinus
+   | valueStmt WS AMPERSAND WS valueStmt                             # vsAmp
+   | valueStmt WS? EQ WS? valueStmt                                  # vsEq
+   | valueStmt WS? NEQ WS? valueStmt                                 # vsNeq
+   | valueStmt WS? LT WS? valueStmt                                  # vsLt
+   | valueStmt WS? GT WS? valueStmt                                  # vsGt
+   | valueStmt WS? LEQ WS? valueStmt                                 # vsLeq
+   | valueStmt WS? GEQ WS? valueStmt                                 # vsGeq
+   | valueStmt WS LIKE WS valueStmt                                  # vsLike
+   | valueStmt WS IS WS valueStmt                                    # vsIs
+   | NOT WS valueStmt                                                # vsNot
+   | valueStmt WS? AND WS? valueStmt                                 # vsAnd
+   | valueStmt WS? OR WS? valueStmt                                  # vsOr
+   | valueStmt WS? XOR WS? valueStmt                                 # vsXor
+   | valueStmt WS? EQV WS? valueStmt                                 # vsEqv
+   | valueStmt WS? IMP WS? valueStmt                                 # vsImp
    ;
 
 variableStmt
@@ -627,6 +630,7 @@ writeStmt
    ;
 
 // complex call statements ----------------------------------
+
 explicitCallStmt
    : eCS_ProcedureCall
    | eCS_MemberProcedureCall
@@ -687,6 +691,7 @@ iCS_S_DictionaryCall
    ;
 
 // atomic call statements ----------------------------------
+
 argsCall
    : (argCall? WS? (COMMA | SEMICOLON) WS?)* argCall (WS? (COMMA | SEMICOLON) WS? argCall?)*
    ;
@@ -721,6 +726,7 @@ subscript
    ;
 
 // atomic rules ----------------------------------
+
 ambiguousIdentifier
    : (IDENTIFIER | ambiguousKeyword) +
    | L_SQUARE_BRACKET (IDENTIFIER | ambiguousKeyword) + R_SQUARE_BRACKET
@@ -969,6 +975,7 @@ ambiguousKeyword
    ;
 
 // lexer rules --------------------------------------------------------------------------------
+
 // keywords
 
 ACCESS

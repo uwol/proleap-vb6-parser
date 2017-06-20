@@ -98,10 +98,12 @@
 																(implicitCallStmt_InStmt 
 																	(iCS_S_VariableOrProcedureCall 
 																		(ambiguousIdentifier Timer))))   -   
-															(valueStmt (implicitCallStmt_InStmt 
-																(iCS_S_VariableOrProcedureCall 
-																	(ambiguousIdentifier dblSoFar)))))   >=   
-														(valueStmt (literal 1))))   Then \n             
+															(valueStmt 
+																(implicitCallStmt_InStmt 
+																	(iCS_S_VariableOrProcedureCall 
+																		(ambiguousIdentifier dblSoFar)))))   >=   
+														(valueStmt 
+															(literal 1))))   Then \n             
 												(block 
 													(blockStmt 
 														(letStmt 
