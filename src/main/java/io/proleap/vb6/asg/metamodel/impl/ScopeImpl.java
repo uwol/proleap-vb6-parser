@@ -490,6 +490,18 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 						result = returnValueCall;
 					}
+				} else if (variable != null && getModule().equals(variable.getModule())) {
+					final VariableCall variableCall = new VariableCallImpl(name, variable, module, this, ctx);
+
+					linkVariableCallWithVariable(variableCall, variable);
+
+					result = variableCall;
+				} else if (constant != null && getModule().equals(constant.getModule())) {
+					final ConstantCall constantCall = new ConstantCallImpl(name, constant, module, this, ctx);
+
+					linkConstantCallWithConstant(constantCall, constant);
+
+					result = constantCall;
 				} else if (enumerationConstant != null) {
 					final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
 							enumerationConstant, module, this, ctx);
