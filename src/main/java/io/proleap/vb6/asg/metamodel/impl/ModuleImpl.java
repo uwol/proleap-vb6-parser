@@ -223,8 +223,9 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 			registerStatement(result);
 			enumerations.put(name, result);
-			program.getTypeRegistry().registerType(result);
-			program.getEnumerationRegistry().registerEnumeration(result);
+
+			getProgram().getTypeRegistry().registerType(result);
+			getProgram().getEnumerationRegistry().registerEnumeration(result);
 		}
 
 		return result;
