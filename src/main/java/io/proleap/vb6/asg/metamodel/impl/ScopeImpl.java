@@ -502,6 +502,14 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 					linkConstantCallWithConstant(constantCall, constant);
 
 					result = constantCall;
+				} else if (arg != null) {
+					// sic!, precedence is after constants and variables: arg
+					// values can be overwritten by constant and variables
+					final ArgCall argCall = new ArgCallImpl(name, arg, module, this, ctx);
+
+					linkArgCallWithArg(argCall, arg);
+
+					result = argCall;
 				} else if (enumerationConstant != null) {
 					final EnumerationConstantCall enumerationConstantCall = new EnumerationConstantCallImpl(name,
 							enumerationConstant, module, this, ctx);
@@ -545,14 +553,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 					linkPropertySetCallWithPropertySet(propertySetCall, propertySet, null);
 
 					result = propertySetCall;
-				} else if (arg != null) {
-					// sic!, precedence is after constants and variables: arg
-					// values can be overwritten by constant and variables
-					final ArgCall argCall = new ArgCallImpl(name, arg, module, this, ctx);
-
-					linkArgCallWithArg(argCall, arg);
-
-					result = argCall;
 				} else if (typeElement != null) {
 					final TypeElementCall typeElementCall = new TypeElementCallImpl(name, typeElement, module, this,
 							ctx);
