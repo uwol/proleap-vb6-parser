@@ -63,7 +63,7 @@ public class NameResolverImpl implements NameResolver {
 	}
 
 	public String determineName(final ArgDefaultValueContext ctx) {
-		final String result = determineName(ctx.ambiguousIdentifier());
+		final String result = determineName(ctx.valueStmt());
 		return result;
 	}
 

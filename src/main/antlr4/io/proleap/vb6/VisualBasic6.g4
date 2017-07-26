@@ -675,7 +675,7 @@ iCS_S_VariableOrProcedureCall
    ;
 
 iCS_S_ProcedureOrArrayCall
-   : (ambiguousIdentifier | baseType) typeHint? WS? LPAREN WS? (argsCall WS?)? RPAREN dictionaryCallStmt?
+   : (ambiguousIdentifier | baseType) typeHint? WS? (LPAREN WS? (argsCall WS?)? RPAREN)+ dictionaryCallStmt?
    ;
 
 iCS_S_MembersCall
@@ -714,7 +714,7 @@ arg
    ;
 
 argDefaultValue
-   : EQ WS? (literal | ambiguousIdentifier)
+   : EQ WS? valueStmt
    ;
 
 subscripts
@@ -2080,12 +2080,12 @@ WS
 // letters
 
 fragment LETTER
-   : [a-zA-Z_äöüÄÖÜ]
+   : [a-zA-Z_äöüÄÖÜáéíóúÁÉÍÓÚâêîôûÂÊÎÔÛàèìòùÀÈÌÒÙãẽĩõũÃẼĨÕŨçÇ]
    ;
 
 
 fragment LETTERORDIGIT
-   : [a-zA-Z0-9_äöüÄÖÜ]
+   : [a-zA-Z0-9_äöüÄÖÜáéíóúÁÉÍÓÚâêîôûÂÊÎÔÛàèìòùÀÈÌÒÙãẽĩõũÃẼĨÕŨçÇ]
    ;
 
 // case insensitive chars

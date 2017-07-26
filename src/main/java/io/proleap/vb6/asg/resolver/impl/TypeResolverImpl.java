@@ -234,8 +234,8 @@ public class TypeResolverImpl implements TypeResolver {
 	public Type determineType(final VisualBasic6Parser.ArgDefaultValueContext ctx, final Program program) {
 		Type result;
 
-		if (ctx.literal() != null) {
-			result = determineType(ctx.literal(), program);
+		if (ctx.valueStmt() != null) {
+			result = determineType(ctx.valueStmt(), program);
 		} else {
 			result = null;
 		}

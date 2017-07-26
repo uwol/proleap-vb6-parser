@@ -536,7 +536,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 					final PropertyGetCall propertyGetCall = new PropertyGetCallImpl(name, propertyGet, module, this,
 							ctx);
 
-					linkPropertyGetCallWithPropertyGet(propertyGetCall, propertyGet, null);
+					linkPropertyGetCallWithPropertyGet(propertyGetCall, propertyGet, (ArgsCallContext) null);
 
 					result = propertyGetCall;
 				} else if (propertyLet != null && isLeftHandSideCall && !isIntermediaMemberCall) {
@@ -563,7 +563,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				} else if (function != null && (!isLeftHandSideCall || isIntermediaMemberCall)) {
 					final FunctionCall functionCall = new FunctionCallImpl(name, function, module, this, ctx);
 
-					linkFunctionCallWithFunction(functionCall, function, null);
+					linkFunctionCallWithFunction(functionCall, function, (ArgsCallContext) null);
 
 					result = functionCall;
 				} else if (sub != null && (!isLeftHandSideCall || isIntermediaMemberCall)) {
@@ -2665,11 +2665,37 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		linkArgCallsWithArgs(function, ctx);
 	}
 
+	protected void linkFunctionCallWithFunction(final FunctionCall functionCall, final Function function,
+			final List<ArgsCallContext> ctxs) {
+		final ArgsCallContext ctx;
+
+		if (ctxs == null || ctxs.isEmpty()) {
+			ctx = null;
+		} else {
+			ctx = ctxs.get(0);
+		}
+
+		linkFunctionCallWithFunction(functionCall, function, ctx);
+	}
+
 	protected void linkPropertyGetCallWithPropertyGet(final PropertyGetCall propertyGetCall,
 			final PropertyGet propertyGet, final ArgsCallContext ctx) {
 		propertyGet.addPropertyGetCall(propertyGetCall);
 
 		linkArgCallsWithArgs(propertyGet, ctx);
+	}
+
+	protected void linkPropertyGetCallWithPropertyGet(final PropertyGetCall propertyGetCall,
+			final PropertyGet propertyGet, final List<ArgsCallContext> ctxs) {
+		final ArgsCallContext ctx;
+
+		if (ctxs == null || ctxs.isEmpty()) {
+			ctx = null;
+		} else {
+			ctx = ctxs.get(0);
+		}
+
+		linkPropertyGetCallWithPropertyGet(propertyGetCall, propertyGet, ctx);
 	}
 
 	protected void linkPropertyLetCallWithPropertySet(final PropertyLetCall propertyLetCall,
