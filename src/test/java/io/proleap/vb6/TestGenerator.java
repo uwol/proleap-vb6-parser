@@ -90,8 +90,8 @@ public class TestGenerator {
 			// for each of the files in the directory
 			for (final File inputDirectoryFile : inputDirectory.listFiles()) {
 				// if the file is a VB6 relevant file
-				if (inputDirectoryFile.isFile() && !inputDirectoryFile.isHidden()
-						&& (isClazzModule(inputDirectoryFile) || isStandardModule(inputDirectoryFile))) {
+				if (inputDirectoryFile.isFile() && !inputDirectoryFile.isHidden() && (isClazzModule(inputDirectoryFile)
+						|| isStandardModule(inputDirectoryFile) || isForm(inputDirectoryFile))) {
 					generateTestClass(inputDirectoryFile, outputDirectory, packageName);
 					generateTreeFile(inputDirectoryFile, inputDirectory);
 				}
@@ -155,6 +155,11 @@ public class TestGenerator {
 	protected static boolean isDirectoryExcluded(final File directory) {
 		final String directoryName = directory.getName();
 		return Arrays.asList(DIRECTORIES_EXCLUDED).contains(directoryName);
+	}
+
+	protected static boolean isForm(final File inputFile) {
+		final String extension = FilenameUtils.getExtension(inputFile.getName()).toLowerCase();
+		return "frm".equals(extension);
 	}
 
 	protected static boolean isStandardModule(final File inputFile) {

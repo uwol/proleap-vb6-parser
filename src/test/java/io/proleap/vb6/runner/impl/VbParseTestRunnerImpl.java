@@ -39,6 +39,11 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 
 	public final static String TREE_SUFFIX = ".tree";
 
+	protected static boolean isForm(final File inputFile) {
+		final String extension = FilenameUtils.getExtension(inputFile.getName()).toLowerCase();
+		return "frm".equals(extension);
+	}
+
 	protected void doCompareParseTree(final File treeFile, final StartRuleContext startRule,
 			final VisualBasic6Parser parser) throws IOException {
 
@@ -92,7 +97,7 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 
 	@Override
 	public void parseFile(final File inputFile) throws IOException {
-		if (!isClazzModule(inputFile) && !isStandardModule(inputFile)) {
+		if (!isClazzModule(inputFile) && !isStandardModule(inputFile) && !isForm(inputFile)) {
 			LOG.info("Ignoring file {}.", inputFile.getName());
 		} else {
 			doParse(inputFile);

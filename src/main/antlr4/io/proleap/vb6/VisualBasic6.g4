@@ -38,7 +38,7 @@ module
    : WS? NEWLINE* (moduleHeader NEWLINE +)? moduleReferences? NEWLINE* controlProperties? NEWLINE* moduleConfig? NEWLINE* moduleAttributes? NEWLINE* moduleOptions? NEWLINE* moduleBody? NEWLINE* WS?
    ;
 
- moduleReferences
+moduleReferences
    : moduleReference+
    ;
 	
@@ -112,7 +112,7 @@ cp_Properties
 	| controlProperties;
 
 cp_SingleProperty 
-	: WS? cp_PropertyName WS? EQ WS? '$'? literal FRX_OFFSET? NEWLINE+
+	: WS? implicitCallStmt_InStmt WS? EQ WS? '$'? literal FRX_OFFSET? NEWLINE+
 	;
 
 cp_PropertyName 
