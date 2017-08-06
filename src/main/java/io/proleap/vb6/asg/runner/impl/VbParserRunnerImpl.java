@@ -19,11 +19,11 @@ import java.util.Scanner;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.codehaus.plexus.util.FileUtils;
 
 import io.proleap.vb6.VisualBasic6Lexer;
 import io.proleap.vb6.VisualBasic6Parser;
@@ -177,7 +177,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		if (!inputFile.isFile()) {
 			LOG.warn("Could not find file {}", inputFile.getAbsolutePath());
 		} else {
-			final String input = FileUtils.fileRead(inputFile);
+			final String input = FileUtils.readFileToString(inputFile, charset);
 
 			LOG.info("Parsing file {}.", inputFile.getName());
 
