@@ -58,10 +58,10 @@ To include the parser in your Maven project edit your `pom.xml` file as follows
 
 ```
 <repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
+	<repository>
+		<id>maven.proleap.io</id>
+		<url>http://maven.proleap.io</url>
+	</repository>
 </repositories>
 ```
 
@@ -69,9 +69,9 @@ and add the dependency
 
 ```
 <dependency>
-    <groupId>com.github.uwol</groupId>
-    <artifactId>vb6parser</artifactId>
-    <version>-SNAPSHOT</version>
+	<groupId>io.github.uwol</groupId>
+	<artifactId>vb6parser</artifactId>
+	<version>2.0.0</version>
 </dependency>
 ```
 
