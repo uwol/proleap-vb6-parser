@@ -22,7 +22,7 @@
 	</properties>
 	<distributionManagement>
 		<repository>
-			<id>maven.nitroventures.de</id>
+			<id>maven.proleap.io</id>
 			<url>ftps://wp12684198.server-he.de</url>
 		</repository>
 	</distributionManagement>
