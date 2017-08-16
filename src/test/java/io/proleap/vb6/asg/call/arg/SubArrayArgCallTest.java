@@ -16,7 +16,7 @@ import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.runner.impl.VbParserRunnerImpl;
 
-public class ArgArrayCallTest extends VbTestBase {
+public class SubArrayArgCallTest extends VbTestBase {
 
 	@Test
 	public void test() throws Exception {
@@ -31,10 +31,11 @@ public class ArgArrayCallTest extends VbTestBase {
 			assertFalse(someOtherSub.getArgsList().isEmpty());
 			assertEquals(1, someOtherSub.getArgsList().size());
 
-			final Arg argArrData = someOtherSub.getArgs().get("arrData");
-			assertEquals(VbBaseType.BYTE, argArrData.getType());
-			assertEquals(2, argArrData.getArgCalls().size());
+			{
+				final Arg argArrData = someOtherSub.getArgs().get("arrData");
+				assertEquals(VbBaseType.BYTE, argArrData.getType());
+				assertEquals(2, argArrData.getArgCalls().size());
+			}
 		}
 	}
-
 }

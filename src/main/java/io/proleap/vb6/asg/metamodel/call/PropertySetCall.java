@@ -10,7 +10,7 @@ package io.proleap.vb6.asg.metamodel.call;
 
 import io.proleap.vb6.asg.metamodel.statement.property.set.PropertySet;
 
-public interface PropertySetCall extends Call {
+public interface PropertySetCall extends Call, ArgValueAssignmentsContainer {
 
 	PropertySet getPropertySet();
 

@@ -8,6 +8,9 @@
 
 package io.proleap.vb6.asg.metamodel.call.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.Module;
@@ -15,8 +18,11 @@ import io.proleap.vb6.asg.metamodel.Scope;
 import io.proleap.vb6.asg.metamodel.call.FunctionCall;
 import io.proleap.vb6.asg.metamodel.statement.function.Function;
 import io.proleap.vb6.asg.metamodel.type.Type;
+import io.proleap.vb6.asg.metamodel.valuestmt.ArgValueAssignment;
 
 public class FunctionCallImpl extends CallImpl implements FunctionCall {
+
+	protected List<ArgValueAssignment> argValueAssignments = new ArrayList<ArgValueAssignment>();
 
 	protected Function function;
 
@@ -25,6 +31,16 @@ public class FunctionCallImpl extends CallImpl implements FunctionCall {
 		super(name, module, scope, ctx);
 
 		this.function = function;
+	}
+
+	@Override
+	public void addArgValueAssignment(final ArgValueAssignment argValueAssignment) {
+		argValueAssignments.add(argValueAssignment);
+	}
+
+	@Override
+	public List<ArgValueAssignment> getArgValueAssignments() {
+		return argValueAssignments;
 	}
 
 	@Override

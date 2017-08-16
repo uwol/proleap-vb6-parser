@@ -10,7 +10,7 @@ package io.proleap.vb6.asg.metamodel.call;
 
 import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 
-public interface SubCall extends Call {
+public interface SubCall extends Call, ArgValueAssignmentsContainer {
 
 	Sub getSub();
 }

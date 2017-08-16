@@ -10,7 +10,7 @@ package io.proleap.vb6.asg.metamodel.call;
 
 import io.proleap.vb6.asg.metamodel.statement.function.Function;
 
-public interface FunctionCall extends Call {
+public interface FunctionCall extends Call, ArgValueAssignmentsContainer {
 
 	Function getFunction();
 

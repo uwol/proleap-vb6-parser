@@ -8,6 +8,9 @@
 
 package io.proleap.vb6.asg.metamodel.call.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.Module;
@@ -15,16 +18,29 @@ import io.proleap.vb6.asg.metamodel.Scope;
 import io.proleap.vb6.asg.metamodel.call.PropertySetCall;
 import io.proleap.vb6.asg.metamodel.statement.property.set.PropertySet;
 import io.proleap.vb6.asg.metamodel.type.Type;
+import io.proleap.vb6.asg.metamodel.valuestmt.ArgValueAssignment;
 
 public class PropertySetCallImpl extends CallImpl implements PropertySetCall {
 
+	protected List<ArgValueAssignment> argValueAssignments = new ArrayList<ArgValueAssignment>();
+
 	protected PropertySet propertySet;
 
-	public PropertySetCallImpl(final String name, final PropertySet propertySet, final Module module,
-			final Scope scope, final ParserRuleContext ctx) {
+	public PropertySetCallImpl(final String name, final PropertySet propertySet, final Module module, final Scope scope,
+			final ParserRuleContext ctx) {
 		super(name, module, scope, ctx);
 
 		this.propertySet = propertySet;
+	}
+
+	@Override
+	public void addArgValueAssignment(final ArgValueAssignment argValueAssignment) {
+		argValueAssignments.add(argValueAssignment);
+	}
+
+	@Override
+	public List<ArgValueAssignment> getArgValueAssignments() {
+		return argValueAssignments;
 	}
 
 	@Override

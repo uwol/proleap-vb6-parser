@@ -6,18 +6,23 @@
  * of the BSD 3-clause license. See the LICENSE file for details.
  */
 
-package io.proleap.vb6.asg.metamodel.valuestmt.impl;
+package io.proleap.vb6.asg.metamodel.call.impl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
 import io.proleap.vb6.asg.metamodel.call.SubCall;
-import io.proleap.vb6.asg.metamodel.call.impl.CallImpl;
 import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 import io.proleap.vb6.asg.metamodel.type.Type;
+import io.proleap.vb6.asg.metamodel.valuestmt.ArgValueAssignment;
 
 public class SubCallImpl extends CallImpl implements SubCall {
+
+	protected List<ArgValueAssignment> argValueAssignments = new ArrayList<ArgValueAssignment>();
 
 	protected Sub sub;
 
@@ -26,6 +31,16 @@ public class SubCallImpl extends CallImpl implements SubCall {
 		super(name, module, scope, ctx);
 
 		this.sub = sub;
+	}
+
+	@Override
+	public void addArgValueAssignment(final ArgValueAssignment argValueAssignment) {
+		argValueAssignments.add(argValueAssignment);
+	}
+
+	@Override
+	public List<ArgValueAssignment> getArgValueAssignments() {
+		return argValueAssignments;
 	}
 
 	@Override

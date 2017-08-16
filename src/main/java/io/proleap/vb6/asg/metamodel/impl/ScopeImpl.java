@@ -162,6 +162,7 @@ import io.proleap.vb6.asg.metamodel.call.ApiEnumerationConstantCall;
 import io.proleap.vb6.asg.metamodel.call.ApiProcedureCall;
 import io.proleap.vb6.asg.metamodel.call.ApiPropertyCall;
 import io.proleap.vb6.asg.metamodel.call.ArgCall;
+import io.proleap.vb6.asg.metamodel.call.ArgValueAssignmentsContainer;
 import io.proleap.vb6.asg.metamodel.call.ArrayElementCall;
 import io.proleap.vb6.asg.metamodel.call.Call;
 import io.proleap.vb6.asg.metamodel.call.Call.CallContext;
@@ -196,6 +197,7 @@ import io.proleap.vb6.asg.metamodel.call.impl.PropertyGetCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.PropertyLetCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.PropertySetCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.ReturnValueCallImpl;
+import io.proleap.vb6.asg.metamodel.call.impl.SubCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.TypeElementCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.UndefinedCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.VariableCallImpl;
@@ -204,6 +206,8 @@ import io.proleap.vb6.asg.metamodel.statement.appactivate.AppActivate;
 import io.proleap.vb6.asg.metamodel.statement.appactivate.impl.AppActivateImpl;
 import io.proleap.vb6.asg.metamodel.statement.beep.Beep;
 import io.proleap.vb6.asg.metamodel.statement.beep.impl.BeepImpl;
+import io.proleap.vb6.asg.metamodel.statement.callstmt.CallStmt;
+import io.proleap.vb6.asg.metamodel.statement.callstmt.impl.CallStmtImpl;
 import io.proleap.vb6.asg.metamodel.statement.chdir.ChDir;
 import io.proleap.vb6.asg.metamodel.statement.chdir.impl.ChDirImpl;
 import io.proleap.vb6.asg.metamodel.statement.chdrive.ChDrive;
@@ -227,6 +231,8 @@ import io.proleap.vb6.asg.metamodel.statement.event.impl.EventImpl;
 import io.proleap.vb6.asg.metamodel.statement.exit.Exit;
 import io.proleap.vb6.asg.metamodel.statement.exit.Exit.ExitType;
 import io.proleap.vb6.asg.metamodel.statement.exit.impl.ExitImpl;
+import io.proleap.vb6.asg.metamodel.statement.explicitcallstmt.ExplicitCallStmt;
+import io.proleap.vb6.asg.metamodel.statement.explicitcallstmt.impl.ExplicitCallStmtImpl;
 import io.proleap.vb6.asg.metamodel.statement.foreach.ForEach;
 import io.proleap.vb6.asg.metamodel.statement.foreach.impl.ForEachImpl;
 import io.proleap.vb6.asg.metamodel.statement.fornext.ForNext;
@@ -299,7 +305,6 @@ import io.proleap.vb6.asg.metamodel.valuestmt.impl.NewValueStmtImpl;
 import io.proleap.vb6.asg.metamodel.valuestmt.impl.NotValueStmtImpl;
 import io.proleap.vb6.asg.metamodel.valuestmt.impl.StringValueStmtImpl;
 import io.proleap.vb6.asg.metamodel.valuestmt.impl.StructValueStmtImpl;
-import io.proleap.vb6.asg.metamodel.valuestmt.impl.SubCallImpl;
 import io.proleap.vb6.asg.metamodel.valuestmt.impl.ValueAssignmentImpl;
 import io.proleap.vb6.asg.resolver.impl.NameResolverImpl;
 import io.proleap.vb6.asg.resolver.impl.TypeResolverImpl;
@@ -431,9 +436,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			final String name = determineName(ctx);
 
 			/*
-			 * instead of regular variables, standard modules can be called for
-			 * calling further members on them -> check for calls on standard
-			 * modules
+			 * instead of regular variables, standard modules can be called for calling
+			 * further members on them -> check for calls on standard modules
 			 */
 			final StandardModule calledModule = module.getProgram().getStandardModule(name);
 
@@ -443,8 +447,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				result = new MeCallImpl(name, module, this, ctx);
 			} else {
 				/*
-				 * determine referenced element, i. e. array variable or
-				 * function
+				 * determine referenced element, i. e. array variable or function
 				 */
 				final List<ModelElement> referencedProgramElements = getElements(instanceCall, instanceType, name);
 
@@ -466,8 +469,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				final Variable variable = castVariable(referencedProgramElements);
 
 				/*
-				 * potentially, this let sets a return variable of a function or
-				 * property get
+				 * potentially, this let sets a return variable of a function or property get
 				 */
 				final Procedure procedure = this.findScope(Procedure.class);
 				final boolean hasProcedureName = procedure == null ? false : procedure.getName().equals(name);
@@ -476,8 +478,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 				if (instanceType == null && hasProcedureName) {
 					/*
-					 * return values can be read inside of functions or property
-					 * gets
+					 * return values can be read inside of functions or property gets
 					 */
 					if (propertyGet != null) {
 						final ReturnValueCall returnValueCall = new ReturnValueCallImpl(name, propertyGet, module, this,
@@ -921,7 +922,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	@Override
 	public Call addCall(final ExplicitCallStmtContext ctx) {
-		Call result = (Call) getASGElement(ctx);
+		ExplicitCallStmt result = (ExplicitCallStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final Call delegatedCall;
@@ -934,9 +935,9 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				delegatedCall = null;
 			}
 
-			result = new CallDelegateImpl(delegatedCall, module, this, ctx);
+			result = new ExplicitCallStmtImpl(delegatedCall, module, this, ctx);
 
-			registerASGElement(result);
+			registerStatement(result);
 		}
 
 		return result;
@@ -1073,7 +1074,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	@Override
 	public Call addCall(final ImplicitCallStmt_InBlockContext ctx) {
-		Call result = (Call) getASGElement(ctx);
+		CallStmt result = (CallStmt) getASGElement(ctx);
 
 		if (result == null) {
 			final Call delegatedCall;
@@ -1087,9 +1088,9 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				delegatedCall = null;
 			}
 
-			result = new CallDelegateImpl(delegatedCall, module, this, ctx);
+			result = new CallStmtImpl(delegatedCall, module, this, ctx);
 
-			registerASGElement(result);
+			registerStatement(result);
 		}
 
 		return result;
@@ -1892,8 +1893,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			final Call assignedVariableCall = addCall(null, ctx.implicitCallStmt_InStmt());
 
 			/*
-			 * associate value assignment model element with variable call model
-			 * element
+			 * associate value assignment model element with variable call model element
 			 */
 			result.setAssignedVariableCall(assignedVariableCall);
 
@@ -2421,8 +2421,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	/**
-	 * searches elements of the program by their name such as functions,
-	 * variables, api procedures etc.
+	 * searches elements of the program by their name such as functions, variables,
+	 * api procedures etc.
 	 */
 	protected List<ModelElement> getElements(final Call instanceCall, final ComplexType instanceType,
 			final String name) {
@@ -2601,7 +2601,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		apiProperty.addApiPropertyCall(apiPropertyCall);
 	}
 
-	protected void linkArgCallsWithArgs(final Procedure procedure, final ArgsCallContext ctx) {
+	protected void linkArgCallsWithArgs(final Procedure procedure,
+			final ArgValueAssignmentsContainer argValueAssignmentsContainer, final ArgsCallContext ctx) {
 		// if there are args
 		if (ctx != null) {
 			/*
@@ -2620,6 +2621,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			// for each arg call
 			for (final ArgCallContext argCallCtx : ctx.argCall()) {
 				final ArgValueAssignment argValueAssignment = addArgValueAssignment(argCallCtx);
+				argValueAssignmentsContainer.addArgValueAssignment(argValueAssignment);
 
 				if (argsOfProcedure == null) {
 					LOG.warn("Could not identify called procedure for arg call {}.", argValueAssignment);
@@ -2662,7 +2664,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			final ArgsCallContext ctx) {
 		function.addFunctionCall(functionCall);
 
-		linkArgCallsWithArgs(function, ctx);
+		linkArgCallsWithArgs(function, functionCall, ctx);
 	}
 
 	protected void linkFunctionCallWithFunction(final FunctionCall functionCall, final Function function,
@@ -2682,7 +2684,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			final PropertyGet propertyGet, final ArgsCallContext ctx) {
 		propertyGet.addPropertyGetCall(propertyGetCall);
 
-		linkArgCallsWithArgs(propertyGet, ctx);
+		linkArgCallsWithArgs(propertyGet, propertyGetCall, ctx);
 	}
 
 	protected void linkPropertyGetCallWithPropertyGet(final PropertyGetCall propertyGetCall,
@@ -2702,20 +2704,20 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			final PropertyLet propertyLet, final ArgsCallContext ctx) {
 		propertyLet.addPropertyLetCall(propertyLetCall);
 
-		linkArgCallsWithArgs(propertyLet, ctx);
+		linkArgCallsWithArgs(propertyLet, propertyLetCall, ctx);
 	}
 
 	protected void linkPropertySetCallWithPropertySet(final PropertySetCall propertySetCall,
 			final PropertySet propertySet, final ArgsCallContext ctx) {
 		propertySet.addPropertySetCall(propertySetCall);
 
-		linkArgCallsWithArgs(propertySet, ctx);
+		linkArgCallsWithArgs(propertySet, propertySetCall, ctx);
 	}
 
 	protected void linkSubCallWithSub(final SubCall subCall, final Sub sub, final ArgsCallContext ctx) {
 		sub.addSubCall(subCall);
 
-		linkArgCallsWithArgs(sub, ctx);
+		linkArgCallsWithArgs(sub, subCall, ctx);
 	}
 
 	protected void linkTypeElementCallWithTypeElement(final TypeElementCall typeElementCall,
@@ -2739,8 +2741,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		scopedElements.add(scopedElement);
 
 		/*
-		 * expressions should not be stored under their name, as they collide
-		 * with declarations under the same name -> only declarations
+		 * expressions should not be stored under their name, as they collide with
+		 * declarations under the same name -> only declarations
 		 */
 		if (scopedElement instanceof Declaration) {
 			final NamedElement namedElement = (NamedElement) scopedElement;
