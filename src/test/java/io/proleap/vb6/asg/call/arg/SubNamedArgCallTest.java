@@ -87,19 +87,19 @@ public class SubNamedArgCallTest extends VbTestBase {
 			{
 				final ArgValueAssignment argValueAssignment = subCall.getArgValueAssignments().get(0);
 				final Arg arg = argValueAssignment.getArg();
-				assertEquals("name", arg.getName());
+				assertEquals("age", arg.getName());
 			}
 
 			{
 				final ArgValueAssignment argValueAssignment = subCall.getArgValueAssignments().get(1);
 				final Arg arg = argValueAssignment.getArg();
-				assertEquals("age", arg.getName());
+				assertEquals("birth", arg.getName());
 			}
 
 			{
 				final ArgValueAssignment argValueAssignment = subCall.getArgValueAssignments().get(2);
 				final Arg arg = argValueAssignment.getArg();
-				assertEquals("birth", arg.getName());
+				assertEquals("name", arg.getName());
 			}
 		}
 	}

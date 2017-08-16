@@ -2625,15 +2625,32 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 				if (argsOfProcedure == null) {
 					LOG.warn("Could not identify called procedure for arg call {}.", argValueAssignment);
-				} else if (argsOfProcedure.size() < argCallIndex + 1) {
-					LOG.warn("{} does not accept surplus arg call {}.", procedure, argValueAssignment);
 				} else {
-					// determine the corresponding arg
-					final Arg arg = procedure.getArgsList().get(argCallIndex);
-					argValueAssignment.setArg(arg);
-				}
+					final ValueStmt assignedValueStmt = argValueAssignment.getAssignedValueStmt();
+					final Arg arg;
 
-				argCallIndex++;
+					// in case of a named arg call
+					if (assignedValueStmt != null && assignedValueStmt instanceof ValueAssignment) {
+						final ValueAssignment valueAssignment = (ValueAssignment) assignedValueStmt;
+						final Call assignedVariableCall = valueAssignment.getAssignedVariableCall();
+						final String name = assignedVariableCall.getName();
+						final Arg argWithSameName = procedure.getArgs().get(name);
+
+						if (argWithSameName == null) {
+							LOG.warn("{} does not have arg {}.", procedure, name);
+						}
+
+						arg = argWithSameName;
+					} else if (argsOfProcedure.size() < argCallIndex + 1) {
+						LOG.warn("{} does not accept surplus arg call {}.", procedure, argValueAssignment);
+						arg = null;
+					} else {
+						arg = procedure.getArgsList().get(argCallIndex);
+					}
+
+					argValueAssignment.setArg(arg);
+					argCallIndex++;
+				}
 			}
 		}
 	}
