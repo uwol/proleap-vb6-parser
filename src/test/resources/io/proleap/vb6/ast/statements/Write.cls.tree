@@ -78,16 +78,11 @@
 											(implicitCallStmt_InStmt 
 												(iCS_S_VariableOrProcedureCall 
 													(ambiguousIdentifier MovieTitle))))) ;   
-									(outputList_Expression 
-										(valueStmt 
-											(implicitCallStmt_InStmt 
-												(iCS_S_ProcedureOrArrayCall 
-													(ambiguousIdentifier 
-														(ambiguousKeyword Tab)) ( 
-													(argsCall 
-														(argCall 
-															(valueStmt 
-																(literal 20)))) ))))) ;   
+									(outputList_Expression Tab ( 
+										(argsCall 
+											(argCall 
+												(valueStmt 
+													(literal 20)))) )) ;   
 									(outputList_Expression 
 										(valueStmt 
 											(implicitCallStmt_InStmt 
@@ -103,31 +98,21 @@
 														(argCall 
 															(valueStmt 
 																(literal "@@@@")))) ))))) ; \t 
-									(outputList_Expression 
-										(valueStmt 
-											(implicitCallStmt_InStmt 
-												(iCS_S_ProcedureOrArrayCall 
-													(ambiguousIdentifier 
-														(ambiguousKeyword Tab)) ( 
-													(argsCall 
-														(argCall 
-															(valueStmt 
-																(literal 40)))) ))))) ;   
+									(outputList_Expression Tab ( 
+										(argsCall 
+											(argCall 
+												(valueStmt 
+													(literal 40)))) )) ;   
 									(outputList_Expression 
 										(valueStmt 
 											(implicitCallStmt_InStmt 
 												(iCS_S_VariableOrProcedureCall 
 													(ambiguousIdentifier MovieSubTitle))))) ; \t 
-									(outputList_Expression 
-										(valueStmt 
-											(implicitCallStmt_InStmt 
-												(iCS_S_ProcedureOrArrayCall 
-													(ambiguousIdentifier 
-														(ambiguousKeyword Tab)) ( 
-													(argsCall 
-														(argCall 
-															(valueStmt 
-																(literal 60)))) ))))) ;   
+									(outputList_Expression Tab ( 
+										(argsCall 
+											(argCall 
+												(valueStmt 
+													(literal 60)))) )) ;   
 									(outputList_Expression 
 										(valueStmt 
 											(implicitCallStmt_InStmt 
@@ -144,16 +129,11 @@
 														(argCall 
 															(valueStmt 
 																(literal "m/d/yyyy")))) ))))) ; \t 
-									(outputList_Expression 
-										(valueStmt 
-											(implicitCallStmt_InStmt 
-												(iCS_S_ProcedureOrArrayCall 
-													(ambiguousIdentifier 
-														(ambiguousKeyword Tab)) ( 
-													(argsCall 
-														(argCall 
-															(valueStmt 
-																(literal 80)))) ))))) ;   
+									(outputList_Expression Tab ( 
+										(argsCall 
+											(argCall 
+												(valueStmt 
+													(literal 80)))) )) ;   
 									(outputList_Expression 
 										(valueStmt 
 											(implicitCallStmt_InStmt 

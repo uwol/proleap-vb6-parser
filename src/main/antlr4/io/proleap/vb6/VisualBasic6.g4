@@ -430,8 +430,8 @@ outputList
    ;
 
 outputList_Expression
-   : valueStmt
-   | (SPC | TAB) (WS? LPAREN WS? argsCall WS? RPAREN)?
+   : (SPC | TAB) (WS? LPAREN WS? argsCall WS? RPAREN)?
+   | valueStmt
    ;
 
 printStmt

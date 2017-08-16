@@ -30,12 +30,7 @@
 									(outputList_Expression 
 										(valueStmt 
 											(literal "Zone 1"))) ;   
-									(outputList_Expression 
-										(valueStmt 
-											(implicitCallStmt_InStmt 
-												(iCS_S_VariableOrProcedureCall 
-													(ambiguousIdentifier 
-														(ambiguousKeyword Tab))))))   ;   
+									(outputList_Expression Tab)   ;   
 									(outputList_Expression 
 										(valueStmt 
 											(literal "Zone 2")))))) \n 
@@ -58,16 +53,11 @@
 								(valueStmt 
 									(literal #1)) ,   
 								(outputList 
-									(outputList_Expression 
-										(valueStmt 
-											(implicitCallStmt_InStmt 
-												(iCS_S_ProcedureOrArrayCall 
-													(ambiguousIdentifier 
-														(ambiguousKeyword Spc)) ( 
-													(argsCall 
-														(argCall 
-															(valueStmt 
-																(literal 5)))) )))))   ;   
+									(outputList_Expression Spc ( 
+										(argsCall 
+											(argCall 
+												(valueStmt 
+													(literal 5)))) ))   ;   
 									(outputList_Expression 
 										(valueStmt 
 											(literal "5 leading spaces ")))))) \n 
@@ -76,16 +66,11 @@
 								(valueStmt 
 									(literal #1)) ,   
 								(outputList 
-									(outputList_Expression 
-										(valueStmt 
-											(implicitCallStmt_InStmt 
-												(iCS_S_ProcedureOrArrayCall 
-													(ambiguousIdentifier 
-														(ambiguousKeyword Tab)) ( 
-													(argsCall 
-														(argCall 
-															(valueStmt 
-																(literal 10)))) )))))   ;   
+									(outputList_Expression Tab ( 
+										(argsCall 
+											(argCall 
+												(valueStmt 
+													(literal 10)))) ))   ;   
 									(outputList_Expression 
 										(valueStmt 
 											(literal "Hello")))))) \n \n \n 
