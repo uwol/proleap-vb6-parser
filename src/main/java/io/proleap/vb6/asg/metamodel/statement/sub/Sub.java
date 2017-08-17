@@ -13,12 +13,11 @@ import java.util.List;
 import io.proleap.vb6.VisualBasic6Parser.SubStmtContext;
 import io.proleap.vb6.asg.metamodel.Procedure;
 import io.proleap.vb6.asg.metamodel.call.SubCall;
-import io.proleap.vb6.asg.metamodel.statement.Statement;
 
 /**
  * Declares the name, arguments, and code that form the body of a Sub procedure.
  */
-public interface Sub extends Procedure, Statement {
+public interface Sub extends Procedure {
 
 	void addSubCall(SubCall subCall);
 

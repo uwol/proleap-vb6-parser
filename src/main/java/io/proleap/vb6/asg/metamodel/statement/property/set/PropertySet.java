@@ -13,13 +13,12 @@ import java.util.List;
 import io.proleap.vb6.VisualBasic6Parser.PropertySetStmtContext;
 import io.proleap.vb6.asg.metamodel.Procedure;
 import io.proleap.vb6.asg.metamodel.call.PropertySetCall;
-import io.proleap.vb6.asg.metamodel.statement.Statement;
 
 /**
  * Declares the name, arguments, and code that form the body of a Property
  * procedure, which sets a reference to an object.
  */
-public interface PropertySet extends Procedure, Statement {
+public interface PropertySet extends Procedure {
 
 	void addPropertySetCall(PropertySetCall propertySetCall);
 

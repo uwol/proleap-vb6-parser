@@ -14,9 +14,10 @@ import java.util.Map;
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgDefaultValueContext;
 import io.proleap.vb6.asg.metamodel.call.Call;
+import io.proleap.vb6.asg.metamodel.statement.Statement;
 import io.proleap.vb6.asg.metamodel.type.Type;
 
-public interface Procedure extends Scope, Declaration, VisibilityElement {
+public interface Procedure extends Scope, Declaration, Statement, VisibilityElement {
 
 	Arg addArg(ArgContext ctx);
 

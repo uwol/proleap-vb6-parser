@@ -13,14 +13,13 @@ import java.util.List;
 import io.proleap.vb6.VisualBasic6Parser.FunctionStmtContext;
 import io.proleap.vb6.asg.metamodel.Procedure;
 import io.proleap.vb6.asg.metamodel.call.FunctionCall;
-import io.proleap.vb6.asg.metamodel.statement.Statement;
 import io.proleap.vb6.asg.metamodel.type.AssignableTypedElement;
 
 /**
  * Declares the name, arguments, and code that form the body of a Function
  * procedure.
  */
-public interface Function extends Procedure, Statement, AssignableTypedElement {
+public interface Function extends Procedure, AssignableTypedElement {
 
 	void addFunctionCall(FunctionCall functionCall);
 

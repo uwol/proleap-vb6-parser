@@ -89,18 +89,30 @@ public interface Module extends Scope, ComplexType {
 
 	Function getFunction(String name);
 
+	List<Function> getFunctions();
+
 	List<String> getLines();
+
+	List<Procedure> getProcedures();
 
 	@Override
 	Program getProgram();
 
 	PropertyGet getPropertyGet(String name);
 
+	List<PropertyGet> getPropertyGets();
+
 	PropertyLet getPropertyLet(String name);
+
+	List<PropertyLet> getPropertyLets();
 
 	PropertySet getPropertySet(String name);
 
+	List<PropertySet> getPropertySets();
+
 	Sub getSub(String name);
+
+	List<Sub> getSubs();
 
 	io.proleap.vb6.asg.metamodel.Type getType(String name);
 
