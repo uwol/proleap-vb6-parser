@@ -8,14 +8,17 @@
 
 package io.proleap.vb6.asg.metamodel.impl;
 
+import org.antlr.v4.runtime.CommonTokenStream;
+
 import io.proleap.vb6.VisualBasic6Parser.ModuleContext;
 import io.proleap.vb6.asg.metamodel.ClazzModule;
 import io.proleap.vb6.asg.metamodel.Program;
 
 public class ClazzModuleImpl extends ModuleImpl implements ClazzModule {
 
-	public ClazzModuleImpl(final String name, final Program program, final ModuleContext ctx) {
-		super(name, program, ctx);
+	public ClazzModuleImpl(final String name, final Program program, final CommonTokenStream tokens,
+			final ModuleContext ctx) {
+		super(name, program, tokens, ctx);
 
 		program.registerClazzModule(this);
 		program.getTypeRegistry().registerType(this);

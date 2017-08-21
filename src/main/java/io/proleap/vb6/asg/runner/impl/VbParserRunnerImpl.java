@@ -82,9 +82,9 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	}
 
 	/**
-	 * VB modules can have their module name declared by an attribute named
-	 * VB_NAME, hat can deviate from the module file name. The value of
-	 * attribute VB_NAME is returned by this method.
+	 * VB modules can have their module name declared by an attribute named VB_NAME,
+	 * hat can deviate from the module file name. The value of attribute VB_NAME is
+	 * returned by this method.
 	 */
 	protected String analyzeDeclaredModuleName(final StartRuleContext ctx) {
 		final VbModuleNameAnalyzerVisitorImpl visitor = new VbModuleNameAnalyzerVisitorImpl();
@@ -210,7 +210,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 
 			final List<String> lines = splitLines(input);
 			final ParserVisitor visitor = new VbModuleVisitorImpl(moduleName, lines, isClazzModule, isStandardModule,
-					program);
+					tokens, program);
 
 			LOG.info("Collecting types in file {}.", inputFile.getName());
 			visitor.visit(ctx);

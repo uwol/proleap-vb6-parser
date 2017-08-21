@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.antlr.v4.runtime.CommonTokenStream;
+
 import com.google.common.collect.Lists;
 
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
@@ -105,16 +107,20 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	protected Map<String, Sub> subs = new HashMap<String, Sub>();
 
+	protected CommonTokenStream tokens;
+
 	protected final Map<String, io.proleap.vb6.asg.metamodel.Type> types = new HashMap<String, io.proleap.vb6.asg.metamodel.Type>();
 
 	protected Double version;
 
-	public ModuleImpl(final String name, final Program program, final ModuleContext ctx) {
+	public ModuleImpl(final String name, final Program program, final CommonTokenStream tokens,
+			final ModuleContext ctx) {
 		super(program, null, program, ctx);
 
 		this.name = name;
 		this.program = program;
 		this.ctx = ctx;
+		this.tokens = tokens;
 		module = this;
 
 		registerASGElement(this);
@@ -591,6 +597,11 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 	@Override
 	public List<Sub> getSubs() {
 		return Lists.newArrayList(subs.values());
+	}
+
+	@Override
+	public CommonTokenStream getTokens() {
+		return tokens;
 	}
 
 	@Override

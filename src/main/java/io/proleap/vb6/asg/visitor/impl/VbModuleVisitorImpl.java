@@ -10,6 +10,8 @@ package io.proleap.vb6.asg.visitor.impl;
 
 import java.util.List;
 
+import org.antlr.v4.runtime.CommonTokenStream;
+
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Program;
@@ -31,13 +33,16 @@ public class VbModuleVisitorImpl extends AbstractVbParserVisitorImpl {
 
 	protected final Program program;
 
+	protected CommonTokenStream tokens;
+
 	public VbModuleVisitorImpl(final String moduleName, final List<String> lines, final boolean isClazzModule,
-			final boolean isStandardModule, final Program program) {
+			final boolean isStandardModule, final CommonTokenStream tokens, final Program program) {
 		super(null);
 
 		this.program = program;
 		this.moduleName = moduleName;
 		this.lines = lines;
+		this.tokens = tokens;
 		this.isClazzModule = isClazzModule;
 		this.isStandardModule = isStandardModule;
 	}
@@ -47,9 +52,9 @@ public class VbModuleVisitorImpl extends AbstractVbParserVisitorImpl {
 		final Module result;
 
 		if (isClazzModule) {
-			result = new ClazzModuleImpl(moduleName, program, ctx);
+			result = new ClazzModuleImpl(moduleName, program, tokens, ctx);
 		} else if (isStandardModule) {
-			result = new StandardModuleImpl(moduleName, program, ctx);
+			result = new StandardModuleImpl(moduleName, program, tokens, ctx);
 		} else {
 			result = null;
 		}
