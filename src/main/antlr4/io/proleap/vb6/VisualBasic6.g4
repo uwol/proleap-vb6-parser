@@ -569,11 +569,9 @@ unlockStmt
 // operator precedence is represented by rule order
 valueStmt
    : literal                                                         # vsLiteral
-   | implicitCallStmt_InStmt                                         # vsICS
    | LPAREN WS? valueStmt (WS? COMMA WS? valueStmt)* WS? RPAREN      # vsStruct
    | NEW WS valueStmt                                                # vsNew
    | typeOfStmt                                                      # vsTypeOf
-   | midStmt                                                         # vsMid
    | ADDRESSOF WS valueStmt                                          # vsAddressOf
    | implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt                # vsAssign
    | valueStmt WS? POW WS? valueStmt                                 # vsPow
@@ -593,12 +591,14 @@ valueStmt
    | valueStmt WS? GEQ WS? valueStmt                                 # vsGeq
    | valueStmt WS LIKE WS valueStmt                                  # vsLike
    | valueStmt WS IS WS valueStmt                                    # vsIs
-   | NOT WS valueStmt                                                # vsNot
+   | NOT (WS valueStmt | LPAREN WS? valueStmt WS? RPAREN)            # vsNot
    | valueStmt WS? AND WS? valueStmt                                 # vsAnd
    | valueStmt WS? OR WS? valueStmt                                  # vsOr
    | valueStmt WS? XOR WS? valueStmt                                 # vsXor
    | valueStmt WS? EQV WS? valueStmt                                 # vsEqv
    | valueStmt WS? IMP WS? valueStmt                                 # vsImp
+   | implicitCallStmt_InStmt                                         # vsICS
+   | midStmt                                                         # vsMid
    ;
 
 variableStmt
