@@ -2059,7 +2059,7 @@ IDENTIFIER
 // whitespace, line breaks, comments, ...
 
 LINE_CONTINUATION
-   : ' ' '_' '\r'? '\n' -> skip
+   : ' ' '_' '\r'? '\n' -> channel(HIDDEN)
    ;
 
 
@@ -2069,7 +2069,7 @@ NEWLINE
 
 
 COMMENT
-   : WS? ('\'' | COLON? REM ' ') (LINE_CONTINUATION | ~ ('\n' | '\r'))* -> skip
+   : WS? ('\'' | COLON? REM ' ') (LINE_CONTINUATION | ~ ('\n' | '\r'))* -> channel(HIDDEN)
    ;
 
 
