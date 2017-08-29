@@ -16,6 +16,7 @@ import static io.proleap.vb6.asg.util.CastUtils.castApiProperty;
 import static io.proleap.vb6.asg.util.CastUtils.castArg;
 import static io.proleap.vb6.asg.util.CastUtils.castComplexType;
 import static io.proleap.vb6.asg.util.CastUtils.castConst;
+import static io.proleap.vb6.asg.util.CastUtils.castElementVariable;
 import static io.proleap.vb6.asg.util.CastUtils.castEnumeration;
 import static io.proleap.vb6.asg.util.CastUtils.castEnumerationConstant;
 import static io.proleap.vb6.asg.util.CastUtils.castFunction;
@@ -168,6 +169,7 @@ import io.proleap.vb6.asg.metamodel.call.ArrayElementCall;
 import io.proleap.vb6.asg.metamodel.call.Call;
 import io.proleap.vb6.asg.metamodel.call.Call.CallContext;
 import io.proleap.vb6.asg.metamodel.call.ConstantCall;
+import io.proleap.vb6.asg.metamodel.call.ElementVariableCall;
 import io.proleap.vb6.asg.metamodel.call.EnumerationCall;
 import io.proleap.vb6.asg.metamodel.call.EnumerationConstantCall;
 import io.proleap.vb6.asg.metamodel.call.FunctionCall;
@@ -188,6 +190,7 @@ import io.proleap.vb6.asg.metamodel.call.impl.ArrayElementCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.CallDelegateImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.ConstantCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.DictionaryCallImpl;
+import io.proleap.vb6.asg.metamodel.call.impl.ElementVariableCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.EnumerationCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.EnumerationConstantCallImpl;
 import io.proleap.vb6.asg.metamodel.call.impl.FunctionCallImpl;
@@ -234,7 +237,9 @@ import io.proleap.vb6.asg.metamodel.statement.exit.Exit.ExitType;
 import io.proleap.vb6.asg.metamodel.statement.exit.impl.ExitImpl;
 import io.proleap.vb6.asg.metamodel.statement.explicitcallstmt.ExplicitCallStmt;
 import io.proleap.vb6.asg.metamodel.statement.explicitcallstmt.impl.ExplicitCallStmtImpl;
+import io.proleap.vb6.asg.metamodel.statement.foreach.ElementVariable;
 import io.proleap.vb6.asg.metamodel.statement.foreach.ForEach;
+import io.proleap.vb6.asg.metamodel.statement.foreach.impl.ElementVariableImpl;
 import io.proleap.vb6.asg.metamodel.statement.foreach.impl.ForEachImpl;
 import io.proleap.vb6.asg.metamodel.statement.fornext.ForNext;
 import io.proleap.vb6.asg.metamodel.statement.fornext.impl.ForNextImpl;
@@ -485,6 +490,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				final ApiEnumerationConstant apiEnumerationConstant = castApiEnumerationConstant(
 						referencedProgramElements);
 				final Constant constant = castConst(referencedProgramElements);
+				final ElementVariable elementVariable = castElementVariable(referencedProgramElements);
 				final Enumeration enumeration = castEnumeration(referencedProgramElements);
 				final EnumerationConstant enumerationConstant = castEnumerationConstant(referencedProgramElements);
 				final Function function = castFunction(referencedProgramElements);
@@ -518,6 +524,13 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 						result = returnValueCall;
 					}
+				} else if (elementVariable != null) {
+					final ElementVariableCall elementVariableCall = new ElementVariableCallImpl(name, elementVariable,
+							module, this, ctx);
+
+					linkElementVariableCallWithElementVariable(elementVariableCall, elementVariable);
+
+					result = elementVariableCall;
 				} else if (variable != null && getModule().equals(variable.getModule())) {
 					final VariableCall variableCall = new VariableCallImpl(name, variable, module, this, ctx);
 
@@ -1244,6 +1257,22 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
+	public ElementVariable addElementVariable(final AmbiguousIdentifierContext ctx) {
+		ElementVariable result = (ElementVariable) getASGElement(ctx);
+
+		if (result == null) {
+			final String name = determineName(ctx);
+			final Type type = determineType(ctx);
+
+			result = new ElementVariableImpl(name, type, module, this, ctx);
+
+			registerScopedElement(result);
+		}
+
+		return result;
+	}
+
+	@Override
 	public ElseBlock addElseBlock(final IfElseBlockStmtContext ctx) {
 		ElseBlock result = (ElseBlock) getASGElement(ctx);
 
@@ -1319,8 +1348,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		if (result == null) {
 			result = new ForEachImpl(module, this, ctx);
 
-			final Call elementCall = addCall(ctx.ambiguousIdentifier(0));
-			result.setElementCall(elementCall);
+			final ElementVariable elementVariable = addElementVariable(ctx.ambiguousIdentifier(0));
+			result.setElementVariable(elementVariable);
 
 			// in
 			if (ctx.valueStmt() != null) {
@@ -2687,6 +2716,11 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	protected void linkConstantCallWithConstant(final ConstantCall constantCall, final Constant constant) {
 		constant.addConstantCall(constantCall);
+	}
+
+	protected void linkElementVariableCallWithElementVariable(final ElementVariableCall elementVariableCall,
+			final ElementVariable elementVariable) {
+		elementVariable.addElementVariableCall(elementVariableCall);
 	}
 
 	protected void linkEnumerationCallWithEnumeration(final EnumerationCall enumerationCall,

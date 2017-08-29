@@ -113,6 +113,7 @@ import io.proleap.vb6.asg.metamodel.statement.deletesetting.DeleteSetting;
 import io.proleap.vb6.asg.metamodel.statement.doloop.DoLoop;
 import io.proleap.vb6.asg.metamodel.statement.event.Event;
 import io.proleap.vb6.asg.metamodel.statement.exit.Exit;
+import io.proleap.vb6.asg.metamodel.statement.foreach.ElementVariable;
 import io.proleap.vb6.asg.metamodel.statement.foreach.ForEach;
 import io.proleap.vb6.asg.metamodel.statement.fornext.ForNext;
 import io.proleap.vb6.asg.metamodel.statement.ifstmt.BlockIfThenElse;
@@ -198,6 +199,8 @@ public interface Scope extends ScopedElement {
 	DeleteSetting addDeleteSetting(DeleteSettingStmtContext ctx);
 
 	DoLoop addDoLoop(DoLoopStmtContext ctx);
+
+	ElementVariable addElementVariable(AmbiguousIdentifierContext ctx);
 
 	ElseBlock addElseBlock(IfElseBlockStmtContext ctx);
 

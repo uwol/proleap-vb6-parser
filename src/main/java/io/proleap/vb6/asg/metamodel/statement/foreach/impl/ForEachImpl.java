@@ -15,13 +15,10 @@ import io.proleap.vb6.VisualBasic6Parser.ForEachStmtContext;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Scope;
 import io.proleap.vb6.asg.metamodel.ScopedElement;
-import io.proleap.vb6.asg.metamodel.Variable;
-import io.proleap.vb6.asg.metamodel.call.Call;
-import io.proleap.vb6.asg.metamodel.call.Call.CallType;
-import io.proleap.vb6.asg.metamodel.call.VariableCall;
 import io.proleap.vb6.asg.metamodel.impl.ScopeImpl;
 import io.proleap.vb6.asg.metamodel.statement.StatementType;
 import io.proleap.vb6.asg.metamodel.statement.StatementTypeEnum;
+import io.proleap.vb6.asg.metamodel.statement.foreach.ElementVariable;
 import io.proleap.vb6.asg.metamodel.statement.foreach.ForEach;
 import io.proleap.vb6.asg.metamodel.valuestmt.ValueStmt;
 
@@ -29,7 +26,7 @@ public class ForEachImpl extends ScopeImpl implements ForEach {
 
 	protected final ForEachStmtContext ctx;
 
-	protected Call elementCall;
+	protected ElementVariable elementVariable;
 
 	protected ValueStmt in;
 
@@ -47,8 +44,8 @@ public class ForEachImpl extends ScopeImpl implements ForEach {
 	}
 
 	@Override
-	public Call getElementCall() {
-		return elementCall;
+	public ElementVariable getElementVariable() {
+		return elementVariable;
 	}
 
 	@Override
@@ -62,25 +59,16 @@ public class ForEachImpl extends ScopeImpl implements ForEach {
 
 		if (name == null) {
 			result = null;
-		} else if (elementCall == null) {
+		} else if (elementVariable == null) {
 			result = super.getScopedElementsInScope(name);
 		} else {
-			final Call unwrappedCall = elementCall.unwrap();
-			final CallType callType = unwrappedCall.getCallType();
+			final boolean sameName = elementVariable.getName().toLowerCase().equals(name.toLowerCase());
 
-			if (!CallType.VARIABLE_CALL.equals(callType)) {
+			if (!sameName) {
 				result = super.getScopedElementsInScope(name);
 			} else {
-				final VariableCall variableCall = (VariableCall) unwrappedCall;
-				final Variable variable = variableCall.getVariable();
-				final boolean sameName = variable.getName().toLowerCase().equals(name.toLowerCase());
-
-				if (!sameName) {
-					result = super.getScopedElementsInScope(name);
-				} else {
-					result = new ArrayList<ScopedElement>();
-					result.add(variable);
-				}
+				result = new ArrayList<ScopedElement>();
+				result.add(elementVariable);
 			}
 		}
 
@@ -93,8 +81,8 @@ public class ForEachImpl extends ScopeImpl implements ForEach {
 	}
 
 	@Override
-	public void setElementCall(final Call elementCall) {
-		this.elementCall = elementCall;
+	public void setElementVariable(final ElementVariable elementVariable) {
+		this.elementVariable = elementVariable;
 	}
 
 	@Override

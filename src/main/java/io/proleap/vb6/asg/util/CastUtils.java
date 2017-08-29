@@ -24,6 +24,7 @@ import io.proleap.vb6.asg.metamodel.api.ApiProperty;
 import io.proleap.vb6.asg.metamodel.statement.constant.Constant;
 import io.proleap.vb6.asg.metamodel.statement.enumeration.Enumeration;
 import io.proleap.vb6.asg.metamodel.statement.enumeration.EnumerationConstant;
+import io.proleap.vb6.asg.metamodel.statement.foreach.ElementVariable;
 import io.proleap.vb6.asg.metamodel.statement.function.Function;
 import io.proleap.vb6.asg.metamodel.statement.property.get.PropertyGet;
 import io.proleap.vb6.asg.metamodel.statement.property.let.PropertyLet;
@@ -175,6 +176,27 @@ public class CastUtils {
 
 	public static Constant castConst(final ModelElement element) {
 		return element != null && element instanceof Constant ? (Constant) element : null;
+	}
+
+	public static ElementVariable castElementVariable(final Collection<ModelElement> elements) {
+		ElementVariable result = null;
+
+		if (elements != null) {
+			for (final ModelElement element : elements) {
+				final ElementVariable elementVariable = castElementVariable(element);
+
+				if (elementVariable != null) {
+					result = elementVariable;
+					break;
+				}
+			}
+		}
+
+		return result;
+	}
+
+	public static ElementVariable castElementVariable(final ModelElement element) {
+		return element != null && element instanceof ElementVariable ? (ElementVariable) element : null;
 	}
 
 	public static Enumeration castEnumeration(final Collection<ModelElement> elements) {
@@ -393,12 +415,14 @@ public class CastUtils {
 
 	public static io.proleap.vb6.asg.metamodel.TypeElement castTypeElement(final ModelElement element) {
 		return element != null && element instanceof io.proleap.vb6.asg.metamodel.TypeElement
-				? (io.proleap.vb6.asg.metamodel.TypeElement) element : null;
+				? (io.proleap.vb6.asg.metamodel.TypeElement) element
+				: null;
 	}
 
 	public static io.proleap.vb6.asg.metamodel.Type castTypeStmtType(final Type type) {
 		return type != null && type instanceof io.proleap.vb6.asg.metamodel.Type
-				? (io.proleap.vb6.asg.metamodel.Type) type : null;
+				? (io.proleap.vb6.asg.metamodel.Type) type
+				: null;
 	}
 
 	public static Variable castVariable(final Collection<ModelElement> elements) {

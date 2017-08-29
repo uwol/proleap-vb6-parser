@@ -10,7 +10,6 @@ package io.proleap.vb6.asg.metamodel.statement.foreach;
 
 import io.proleap.vb6.VisualBasic6Parser.ForEachStmtContext;
 import io.proleap.vb6.asg.metamodel.Scope;
-import io.proleap.vb6.asg.metamodel.call.Call;
 import io.proleap.vb6.asg.metamodel.statement.Statement;
 import io.proleap.vb6.asg.metamodel.valuestmt.ValueStmt;
 
@@ -22,11 +21,11 @@ public interface ForEach extends Scope, Statement {
 	@Override
 	ForEachStmtContext getCtx();
 
-	Call getElementCall();
+	ElementVariable getElementVariable();
 
 	ValueStmt getIn();
 
-	void setElementCall(Call elementCall);
+	void setElementVariable(ElementVariable elementVariable);
 
 	void setIn(ValueStmt in);
 }
