@@ -10,6 +10,7 @@ package io.proleap.vb6.asg.metamodel;
 
 import java.util.List;
 
+import io.proleap.vb6.VisualBasic6Parser.AmbiguousIdentifierContext;
 import io.proleap.vb6.VisualBasic6Parser.AppActivateStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
 import io.proleap.vb6.VisualBasic6Parser.BeepStmtContext;
@@ -149,6 +150,8 @@ public interface Scope extends ScopedElement {
 	Beep addBeep(BeepStmtContext ctx);
 
 	BlockIfThenElse addBlockIfThenElse(BlockIfThenElseContext ctx);
+
+	Call addCall(AmbiguousIdentifierContext ctx);
 
 	Call addCall(Call instanceCall, ComplexType instanceType, CallContext callContext, boolean isIntermediaMemberCall,
 			ICS_S_MemberCallContext ctx);

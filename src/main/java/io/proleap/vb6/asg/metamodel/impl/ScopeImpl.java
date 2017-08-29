@@ -40,6 +40,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import io.proleap.vb6.VisualBasic6Parser;
+import io.proleap.vb6.VisualBasic6Parser.AmbiguousIdentifierContext;
 import io.proleap.vb6.VisualBasic6Parser.AppActivateStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgsCallContext;
@@ -397,6 +398,32 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			}
 
 			registerStatement(result);
+		}
+
+		return result;
+	}
+
+	@Override
+	public Call addCall(final AmbiguousIdentifierContext ctx) {
+		Call result = (Call) getASGElement(ctx);
+
+		if (result == null) {
+			final String name = determineName(ctx);
+
+			final List<ModelElement> referencedProgramElements = getElements(null, null, name);
+			final Variable variable = castVariable(referencedProgramElements);
+
+			if (variable != null) {
+				final VariableCall variableCall = new VariableCallImpl(name, variable, module, this, ctx);
+
+				linkVariableCallWithVariable(variableCall, variable);
+
+				result = variableCall;
+			} else {
+				result = new UndefinedCallImpl(name, null, module, this, ctx);
+			}
+
+			registerASGElement(result);
 		}
 
 		return result;
@@ -1292,10 +1319,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		if (result == null) {
 			result = new ForEachImpl(module, this, ctx);
 
-			final String elementVariableName = determineName(ctx);
-			final List<ModelElement> referencedProgramElements = getElements(null, null, elementVariableName);
-			final Variable elementVariable = castVariable(referencedProgramElements);
-			result.setElementVariable(elementVariable);
+			final Call elementCall = addCall(ctx.ambiguousIdentifier(0));
+			result.setElementCall(elementCall);
 
 			// in
 			if (ctx.valueStmt() != null) {
@@ -1316,11 +1341,8 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		if (result == null) {
 			result = new ForNextImpl(module, this, ctx);
 
-			final String iteratorVariableName = determineName(ctx);
-			final List<ModelElement> referencedProgramElements = getElements(null, null, iteratorVariableName);
-
-			final Variable iteratorVariable = castVariable(referencedProgramElements);
-			result.setIteratorVariable(iteratorVariable);
+			final Call counterCall = addCall(ctx.ambiguousIdentifier(0));
+			result.setCounterCall(counterCall);
 
 			// from
 			if (!ctx.valueStmt().isEmpty()) {

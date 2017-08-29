@@ -10,7 +10,7 @@ package io.proleap.vb6.asg.metamodel.statement.fornext;
 
 import io.proleap.vb6.VisualBasic6Parser.ForNextStmtContext;
 import io.proleap.vb6.asg.metamodel.Scope;
-import io.proleap.vb6.asg.metamodel.Variable;
+import io.proleap.vb6.asg.metamodel.call.Call;
 import io.proleap.vb6.asg.metamodel.statement.Statement;
 import io.proleap.vb6.asg.metamodel.valuestmt.ValueStmt;
 
@@ -19,20 +19,20 @@ import io.proleap.vb6.asg.metamodel.valuestmt.ValueStmt;
  */
 public interface ForNext extends Scope, Statement {
 
+	Call getCounterCall();
+
 	@Override
 	ForNextStmtContext getCtx();
 
 	ValueStmt getFrom();
 
-	Variable getIteratorVariable();
-
 	ValueStmt getStep();
 
 	ValueStmt getTo();
 
-	void setFrom(ValueStmt from);
+	void setCounterCall(Call counterCall);
 
-	void setIteratorVariable(Variable variable);
+	void setFrom(ValueStmt from);
 
 	void setStep(ValueStmt step);
 

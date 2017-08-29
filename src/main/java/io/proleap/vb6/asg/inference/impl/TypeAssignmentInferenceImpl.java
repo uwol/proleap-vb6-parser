@@ -62,12 +62,17 @@ public class TypeAssignmentInferenceImpl implements TypeAssignmentInference {
 
 		assert (forNext != null);
 
-		if (forNext.getIteratorVariable() != null) {
+		if (forNext.getCounterCall() != null) {
 			final BaseType integerType = VbBaseType.INTEGER;
+			final Call counterCall = forNext.getCounterCall();
+			final Call unwrappedCall = counterCall.unwrap();
+			final CallType callType = unwrappedCall.getCallType();
 
-			assert (integerType != null);
-
-			forNext.getIteratorVariable().addTypeOfAssignedValue(integerType);
+			if (CallType.VARIABLE_CALL.equals(callType)) {
+				final VariableCall variableCall = (VariableCall) unwrappedCall;
+				final Variable variable = variableCall.getVariable();
+				variable.addTypeOfAssignedValue(integerType);
+			}
 		}
 	}
 
