@@ -70,7 +70,8 @@
 									(block 
 										(blockStmt 
 											(forNextStmt For   
-												(ambiguousIdentifier i)   =   
+												(iCS_S_VariableOrProcedureCall 
+													(ambiguousIdentifier i))   =   
 												(valueStmt 
 													(literal 1))   To   
 												(valueStmt 
@@ -145,7 +146,8 @@
 																			(ambiguousIdentifier xlWorksheet))))))) )))))))) \n 
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier i)   =   
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier i))   =   
 								(valueStmt 
 									(literal 1))   To   
 								(valueStmt 
@@ -243,7 +245,8 @@
 																(ambiguousIdentifier ListCount)))))))) )))) \n 
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier i)   =   
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier i))   =   
 								(valueStmt 
 									(literal 1))   To   
 								(valueStmt 

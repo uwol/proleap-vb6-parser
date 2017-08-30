@@ -49,7 +49,8 @@
 																(ambiguousIdentifier MyRecord)))))) )))))) \n 
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier RecordNumber)   =   
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier RecordNumber))   =   
 								(valueStmt 
 									(literal 1))   To   
 								(valueStmt 

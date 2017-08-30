@@ -91,7 +91,8 @@
 									(literal "=A12*A13")))) \n 
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier i)   =   
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier i))   =   
 								(valueStmt 
 									(literal 2))   To   
 								(valueStmt 

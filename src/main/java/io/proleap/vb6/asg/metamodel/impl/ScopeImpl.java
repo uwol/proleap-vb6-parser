@@ -409,41 +409,15 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	}
 
 	@Override
-	public Call addCall(final AmbiguousIdentifierContext ctx) {
-		Call result = (Call) getASGElement(ctx);
-
-		if (result == null) {
-			final String name = determineName(ctx);
-
-			final List<ModelElement> referencedProgramElements = getElements(null, null, name);
-			final Variable variable = castVariable(referencedProgramElements);
-
-			if (variable != null) {
-				final VariableCall variableCall = new VariableCallImpl(name, variable, module, this, ctx);
-
-				linkVariableCallWithVariable(variableCall, variable);
-
-				result = variableCall;
-			} else {
-				result = new UndefinedCallImpl(name, null, module, this, ctx);
-			}
-
-			registerASGElement(result);
-		}
-
-		return result;
-	}
-
-	@Override
 	public Call addCall(final Call instanceCall, final ComplexType instanceType, final CallContext callContext,
-			final boolean isIntermediaMemberCall, final ICS_S_MemberCallContext ctx) {
+			final boolean isIntermediateMemberCall, final ICS_S_MemberCallContext ctx) {
 		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
 			final Call delegatedCall;
 
 			if (ctx.iCS_S_VariableOrProcedureCall() != null) {
-				delegatedCall = addCall(instanceCall, instanceType, callContext, isIntermediaMemberCall,
+				delegatedCall = addCall(instanceCall, instanceType, callContext, isIntermediateMemberCall,
 						ctx.iCS_S_VariableOrProcedureCall());
 			} else if (ctx.iCS_S_ProcedureOrArrayCall() != null) {
 				delegatedCall = addCall(instanceCall, instanceType, ctx.iCS_S_ProcedureOrArrayCall());
@@ -461,7 +435,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	@Override
 	public Call addCall(final Call instanceCall, final ComplexType instanceType, final CallContext callContext,
-			final boolean isIntermediaMemberCall, final ICS_S_VariableOrProcedureCallContext ctx) {
+			final boolean isIntermediateMemberCall, final ICS_S_VariableOrProcedureCallContext ctx) {
 		Call result = (Call) getASGElement(ctx);
 
 		if (result == null) {
@@ -573,21 +547,21 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 					linkConstantCallWithConstant(constantCall, constant);
 
 					result = constantCall;
-				} else if (propertyGet != null && (!isLeftHandSideCall || isIntermediaMemberCall)) {
+				} else if (propertyGet != null && (!isLeftHandSideCall || isIntermediateMemberCall)) {
 					final PropertyGetCall propertyGetCall = new PropertyGetCallImpl(name, propertyGet, module, this,
 							ctx);
 
 					linkPropertyGetCallWithPropertyGet(propertyGetCall, propertyGet, (ArgsCallContext) null);
 
 					result = propertyGetCall;
-				} else if (propertyLet != null && isLeftHandSideCall && !isIntermediaMemberCall) {
+				} else if (propertyLet != null && isLeftHandSideCall && !isIntermediateMemberCall) {
 					final PropertyLetCall properyLetCall = new PropertyLetCallImpl(name, propertyLet, module, this,
 							ctx);
 
 					linkPropertyLetCallWithPropertySet(properyLetCall, propertyLet, null);
 
 					result = properyLetCall;
-				} else if (propertySet != null && isLeftHandSideCall && !isIntermediaMemberCall) {
+				} else if (propertySet != null && isLeftHandSideCall && !isIntermediateMemberCall) {
 					final PropertySetCall propertySetCall = new PropertySetCallImpl(name, propertySet, module, this,
 							ctx);
 
@@ -601,13 +575,13 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 					linkTypeElementCallWithTypeElement(typeElementCall, typeElement);
 
 					result = typeElementCall;
-				} else if (function != null && (!isLeftHandSideCall || isIntermediaMemberCall)) {
+				} else if (function != null && (!isLeftHandSideCall || isIntermediateMemberCall)) {
 					final FunctionCall functionCall = new FunctionCallImpl(name, function, module, this, ctx);
 
 					linkFunctionCallWithFunction(functionCall, function, (ArgsCallContext) null);
 
 					result = functionCall;
-				} else if (sub != null && (!isLeftHandSideCall || isIntermediaMemberCall)) {
+				} else if (sub != null && (!isLeftHandSideCall || isIntermediateMemberCall)) {
 					final SubCall subCall = new SubCallImpl(name, sub, module, this, ctx);
 
 					linkSubCallWithSub(subCall, sub, null);
@@ -1370,7 +1344,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		if (result == null) {
 			result = new ForNextImpl(module, this, ctx);
 
-			final Call counterCall = addCall(ctx.ambiguousIdentifier(0));
+			final Call counterCall = addCall(null, null, null, false, ctx.iCS_S_VariableOrProcedureCall());
 			result.setCounterCall(counterCall);
 
 			// from

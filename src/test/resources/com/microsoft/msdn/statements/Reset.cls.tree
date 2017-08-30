@@ -11,7 +11,8 @@
 										(ambiguousIdentifier FileNumber))))) \n 
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier FileNumber)   =   
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier FileNumber))   =   
 								(valueStmt 
 									(literal 1))   To   
 								(valueStmt 

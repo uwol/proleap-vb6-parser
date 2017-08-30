@@ -102,8 +102,7 @@ public class TestGenerator {
 
 					if (!".".equals(subInputDirectoryName) && !"..".equals(subInputDirectoryName)) {
 						/*
-						 * determine the output directory, where test classes
-						 * should be placed
+						 * determine the output directory, where test classes should be placed
 						 */
 						final File subOutputDirectory = new File(outputDirectoryPath + "/" + subInputDirectoryName);
 						subOutputDirectory.mkdirs();

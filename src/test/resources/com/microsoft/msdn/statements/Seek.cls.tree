@@ -76,7 +76,8 @@
 																	(ambiguousIdentifier MyRecord)))))) ))))))) \n \n 
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier RecordNumber)   =   
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier RecordNumber))   =   
 								(valueStmt 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
@@ -138,7 +139,8 @@
 														(literal 1)))) )))))) \n \n 
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier NextChar)   =   
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier NextChar))   =   
 								(valueStmt 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 

@@ -34,7 +34,8 @@
 										(literal 10))))) \n \n \n 
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier I)   =   
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier I))   =   
 								(valueStmt 
 									(literal 1))   TO   
 								(valueStmt 
@@ -44,7 +45,8 @@
 										(beepStmt Beep))) \n Next)) \n \n \n 
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier J) = 
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier J)) = 
 								(valueStmt 
 									(literal 0))   TO   
 								(valueStmt 
@@ -57,7 +59,8 @@
 								(ambiguousIdentifier J))) \n \n \n 
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier I) = 
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier I)) = 
 								(valueStmt 
 									(literal 0))   To   
 								(valueStmt 
@@ -71,7 +74,8 @@
 								(block 
 									(blockStmt 
 										(forNextStmt For   
-											(ambiguousIdentifier J) = 
+											(iCS_S_VariableOrProcedureCall 
+												(ambiguousIdentifier J)) = 
 											(valueStmt 
 												(literal 1))   To   
 											(valueStmt 
@@ -83,7 +87,8 @@
 													(beepStmt Beep))) \n\t Next))) \n Next)) \n \n \n 
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier i)   =   
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier i))   =   
 								(valueStmt 
 									(literal 1))   To   
 								(valueStmt 

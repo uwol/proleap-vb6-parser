@@ -13,7 +13,8 @@
 										(ambiguousIdentifier J))))) \n 
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier J)   =   
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier J))   =   
 								(valueStmt 
 									(literal 1))   To   
 								(valueStmt 

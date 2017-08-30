@@ -87,7 +87,8 @@
 											(ambiguousIdentifier CX)))))) \n    
 						(blockStmt 
 							(forNextStmt For   
-								(ambiguousIdentifier Radius)   =   
+								(iCS_S_VariableOrProcedureCall 
+									(ambiguousIdentifier Radius))   =   
 								(valueStmt 
 									(literal 0))   To   
 								(valueStmt 
