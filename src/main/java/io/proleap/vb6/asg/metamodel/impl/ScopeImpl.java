@@ -627,7 +627,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 					result = apiEnumerationConstantCall;
 				} else {
-					LOG.warn("Call to unknown element {}.", name);
+					LOG.debug("Call to unknown element {}.", name);
 					result = new UndefinedCallImpl(name, null, module, this, ctx);
 				}
 			}
@@ -712,7 +712,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 					result = argCall;
 				} else {
-					LOG.warn("Call to unknown element {}.", name);
+					LOG.debug("Call to unknown element {}.", name);
 					result = new UndefinedCallImpl(name, null, module, this, ctx);
 				}
 			}
