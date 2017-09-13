@@ -478,26 +478,26 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 				/*
 				 * potentially, this let sets a return variable of a function or property get
 				 */
-				final Procedure procedure = this.findScope(Procedure.class);
-				final boolean hasProcedureName = procedure == null ? false : procedure.getName().equals(name);
+				final Function scopeFunction = this.findScope(Function.class);
+				final boolean hasScopeFunctionName = scopeFunction == null ? false
+						: scopeFunction.getName().equals(name);
+
+				final PropertyGet scopePropertyGet = this.findScope(PropertyGet.class);
+				final boolean hasScopePropertyGetName = scopePropertyGet == null ? false
+						: scopePropertyGet.getName().equals(name);
 
 				final boolean isLeftHandSideCall = CallContext.LET_LEFT_HAND_SIDE.equals(callContext);
 
-				if (instanceType == null && hasProcedureName) {
-					/*
-					 * return values can be read inside of functions or property gets
-					 */
-					if (propertyGet != null) {
-						final ReturnValueCall returnValueCall = new ReturnValueCallImpl(name, propertyGet, module, this,
-								ctx);
+				if (instanceType == null && hasScopeFunctionName) {
+					final ReturnValueCall returnValueCall = new ReturnValueCallImpl(name, scopeFunction, module, this,
+							ctx);
 
-						result = returnValueCall;
-					} else {
-						final ReturnValueCall returnValueCall = new ReturnValueCallImpl(name, function, module, this,
-								ctx);
+					result = returnValueCall;
+				} else if (instanceType == null && hasScopePropertyGetName) {
+					final ReturnValueCall returnValueCall = new ReturnValueCallImpl(name, scopePropertyGet, module,
+							this, ctx);
 
-						result = returnValueCall;
-					}
+					result = returnValueCall;
 				} else if (elementVariable != null) {
 					final ElementVariableCall elementVariableCall = new ElementVariableCallImpl(name, elementVariable,
 							module, this, ctx);

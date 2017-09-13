@@ -34,7 +34,6 @@ public class SubTest extends VbTestBase {
 		assertEquals(2, sub.getArgsList().size());
 
 		{
-
 			final Arg arg = sub.getArgsList().get(0);
 			assertEquals("Factor1", arg.getName());
 			assertEquals(arg, sub.getArgs().get("Factor1"));
