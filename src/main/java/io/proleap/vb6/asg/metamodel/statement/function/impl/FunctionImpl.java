@@ -13,10 +13,13 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.google.common.collect.Lists;
+
 import io.proleap.vb6.VisualBasic6Parser.FunctionStmtContext;
 import io.proleap.vb6.asg.inference.impl.TypeInferenceImpl;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.VisibilityEnum;
+import io.proleap.vb6.asg.metamodel.call.Call;
 import io.proleap.vb6.asg.metamodel.call.FunctionCall;
 import io.proleap.vb6.asg.metamodel.impl.ProcedureImpl;
 import io.proleap.vb6.asg.metamodel.statement.StatementType;
@@ -37,8 +40,8 @@ public class FunctionImpl extends ProcedureImpl implements Function {
 	protected final Type type;
 
 	/*
-	 * LinkedHashSet, so that entries are ordered by their insertion order,
-	 * giving precedence to types declared near to the assigned variable
+	 * LinkedHashSet, so that entries are ordered by their insertion order, giving
+	 * precedence to types declared near to the assigned variable
 	 */
 	protected Set<Type> typesOfAssignedValues = new LinkedHashSet<Type>();
 
@@ -60,6 +63,11 @@ public class FunctionImpl extends ProcedureImpl implements Function {
 		if (type != null) {
 			typesOfAssignedValues.add(type);
 		}
+	}
+
+	@Override
+	public List<Call> getCalls() {
+		return Lists.newArrayList(getFunctionCalls());
 	}
 
 	@Override
@@ -103,5 +111,4 @@ public class FunctionImpl extends ProcedureImpl implements Function {
 	public void setDeclaredAsArray(final boolean isDeclaredAsArray) {
 		this.isDeclaredAsArray = isDeclaredAsArray;
 	}
-
 }

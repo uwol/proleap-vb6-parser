@@ -33,6 +33,8 @@ public interface Procedure extends Scope, Declaration, Statement, VisibilityElem
 
 	List<Arg> getArgsList(Arg excluding);
 
+	List<Call> getCalls();
+
 	Map<String, Arg> getOptionalArgs();
 
 	List<Arg> getOptionalArgsList();
@@ -42,5 +44,4 @@ public interface Procedure extends Scope, Declaration, Statement, VisibilityElem
 	boolean hasReturnType();
 
 	boolean isLastArg(String argName);
-
 }

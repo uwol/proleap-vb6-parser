@@ -11,9 +11,12 @@ package io.proleap.vb6.asg.metamodel.statement.property.let.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.collect.Lists;
+
 import io.proleap.vb6.VisualBasic6Parser.PropertyLetStmtContext;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.VisibilityEnum;
+import io.proleap.vb6.asg.metamodel.call.Call;
 import io.proleap.vb6.asg.metamodel.call.PropertyLetCall;
 import io.proleap.vb6.asg.metamodel.impl.ProcedureImpl;
 import io.proleap.vb6.asg.metamodel.statement.StatementType;
@@ -38,6 +41,11 @@ public class PropertyLetImpl extends ProcedureImpl implements PropertyLet {
 	@Override
 	public void addPropertyLetCall(final PropertyLetCall propertyLetCall) {
 		propertyLetCalls.add(propertyLetCall);
+	}
+
+	@Override
+	public List<Call> getCalls() {
+		return Lists.newArrayList(getPropertyLetCalls());
 	}
 
 	@Override
