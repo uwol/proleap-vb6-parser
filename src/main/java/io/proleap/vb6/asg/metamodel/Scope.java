@@ -324,6 +324,8 @@ public interface Scope extends ScopedElement {
 
 	Constant getConstant(String name);
 
+	List<Constant> getConstants();
+
 	List<ScopedElement> getScopedElements();
 
 	List<ScopedElement> getScopedElementsInHierarchy(String name);
@@ -335,5 +337,7 @@ public interface Scope extends ScopedElement {
 	List<Scope> getSubScopes();
 
 	Variable getVariable(String name);
+
+	List<Variable> getVariables();
 
 }

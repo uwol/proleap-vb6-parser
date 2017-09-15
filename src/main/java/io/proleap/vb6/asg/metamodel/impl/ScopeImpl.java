@@ -40,6 +40,8 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.google.common.collect.Lists;
+
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.AmbiguousIdentifierContext;
 import io.proleap.vb6.VisualBasic6Parser.AppActivateStmtContext;
@@ -2445,6 +2447,11 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		return constants.get(name);
 	}
 
+	@Override
+	public List<Constant> getConstants() {
+		return Lists.newArrayList(constants.values());
+	}
+
 	/**
 	 * searches elements of the program by their name such as functions, variables,
 	 * api procedures etc.
@@ -2603,6 +2610,11 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 	@Override
 	public Variable getVariable(final String name) {
 		return variables.get(name);
+	}
+
+	@Override
+	public List<Variable> getVariables() {
+		return Lists.newArrayList(variables.values());
 	}
 
 	protected void linkApiEnumerationCallWithApiEnumeration(final ApiEnumerationCall apiEnumerationCall,
