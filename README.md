@@ -130,7 +130,7 @@ Characteristics
    and tested against MSDN VB6 statement examples as well as several Visual
    Basic 6.0 code repositories.
 
-4. For parsing large Cobol source code files, following VM args have to be set: `-Xmx2048m -XX:MaxPermSize=256m`.
+4. For parsing large VB6 source code files, following VM args have to be set: `-Xmx2048m -XX:MaxPermSize=256m`.
    Intellij Plugin for ANTLR 4 has to be provided with those VM args in file `idea.vmoptions`.
 
 
