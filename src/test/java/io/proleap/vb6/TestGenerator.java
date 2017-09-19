@@ -40,6 +40,8 @@ public class TestGenerator {
 
 	private final static String OUTPUT_FILE_SUFFIX = "Test";
 
+	private final static boolean RENEW_TREE_FILE = false;
+
 	private static final String TREE_EXTENSION = ".tree";
 
 	public static String firstToUpper(final String str) {
@@ -123,7 +125,7 @@ public class TestGenerator {
 
 		final boolean createdNewFile = outputFile.createNewFile();
 
-		if (createdNewFile) {
+		if (createdNewFile || RENEW_TREE_FILE) {
 			LOG.info("Creating tree file {}.", outputFile);
 
 			final InputStream inputStream = new FileInputStream(vb6InputFile);
