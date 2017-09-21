@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.asg.metamodel;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import io.proleap.vb6.asg.metamodel.registry.ASGElementRegistry;
@@ -36,7 +36,7 @@ public interface Program extends Scope {
 
 	Module getModule(String name);
 
-	Collection<Module> getModules();
+	List<Module> getModules();
 
 	StandardModule getStandardModule(String name);
 

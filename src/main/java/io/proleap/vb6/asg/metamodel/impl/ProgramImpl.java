@@ -9,7 +9,6 @@
 package io.proleap.vb6.asg.metamodel.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -147,7 +146,7 @@ public class ProgramImpl extends ScopeImpl implements Program {
 	}
 
 	@Override
-	public Collection<Module> getModules() {
+	public List<Module> getModules() {
 		final List<Module> modules = new ArrayList<Module>();
 
 		modules.addAll(clazzModules.values());
