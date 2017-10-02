@@ -18,7 +18,6 @@ import io.proleap.vb6.VisualBasic6Parser.ArgContext;
 import io.proleap.vb6.asg.metamodel.Arg;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.ProcedureDeclaration;
-import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.Scope;
 import io.proleap.vb6.asg.metamodel.type.Type;
 import io.proleap.vb6.asg.resolver.impl.NameResolverImpl;
@@ -41,26 +40,27 @@ public class ProcedureDeclarationImpl extends ScopedElementImpl implements Proce
 
 	@Override
 	public Arg addArg(final ArgContext ctx) {
-		final Program program = module.getProgram();
+		Arg result = (Arg) program.getASGElementRegistry().getASGElement(ctx);
 
-		final String name = new NameResolverImpl().determineName(ctx);
-		final boolean isOptional = ctx.OPTIONAL() != null;
-		final Type type = new TypeResolverImpl().determineType(ctx, program);
+		if (result == null) {
+			final String name = new NameResolverImpl().determineName(ctx);
+			final boolean isOptional = ctx.OPTIONAL() != null;
+			final Type type = new TypeResolverImpl().determineType(ctx, program);
 
-		final Arg arg = new ArgImpl(name, type, isOptional, module, module, ctx);
-		arg.setProcedureDeclaration(this);
+			result = new ArgImpl(name, type, isOptional, module, module, ctx);
+			result.setProcedureDeclaration(this);
 
-		args.put(name, arg);
-		argsList.add(arg);
+			args.put(name, result);
+			argsList.add(result);
 
-		program.getASGElementRegistry().addASGElement(arg);
+			program.getASGElementRegistry().addASGElement(result);
+		}
 
-		return arg;
+		return result;
 	}
 
 	@Override
 	public String getName() {
 		return name;
 	}
-
 }
