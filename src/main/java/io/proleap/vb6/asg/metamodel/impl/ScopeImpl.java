@@ -46,6 +46,7 @@ import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.AmbiguousIdentifierContext;
 import io.proleap.vb6.VisualBasic6Parser.AppActivateStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgCallContext;
+import io.proleap.vb6.VisualBasic6Parser.ArgContext;
 import io.proleap.vb6.VisualBasic6Parser.ArgsCallContext;
 import io.proleap.vb6.VisualBasic6Parser.BeepStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.BlockIfThenElseContext;
@@ -1283,6 +1284,12 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			result = new EventImpl(visibility, module, this, ctx);
 
 			registerStatement(result);
+
+			if (ctx.argList() != null) {
+				for (final ArgContext argCtx : ctx.argList().arg()) {
+					result.addArg(argCtx);
+				}
+			}
 		}
 
 		return result;

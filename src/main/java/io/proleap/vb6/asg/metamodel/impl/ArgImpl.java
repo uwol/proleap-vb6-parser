@@ -22,6 +22,7 @@ import io.proleap.vb6.asg.metamodel.ProcedureDeclaration;
 import io.proleap.vb6.asg.metamodel.Scope;
 import io.proleap.vb6.asg.metamodel.call.ArgCall;
 import io.proleap.vb6.asg.metamodel.call.Call;
+import io.proleap.vb6.asg.metamodel.statement.event.Event;
 import io.proleap.vb6.asg.metamodel.type.Type;
 
 public class ArgImpl extends ScopedElementImpl implements Arg {
@@ -31,6 +32,8 @@ public class ArgImpl extends ScopedElementImpl implements Arg {
 	protected final ArgContext ctx;
 
 	protected Call defaultValueCall;
+
+	protected Event event;
 
 	protected final boolean isOptional;
 
@@ -43,8 +46,8 @@ public class ArgImpl extends ScopedElementImpl implements Arg {
 	protected final Type type;
 
 	/*
-	 * LinkedHashSet, so that entries are ordered by their insertion order,
-	 * giving precedence to types declared near to the assigned variable
+	 * LinkedHashSet, so that entries are ordered by their insertion order, giving
+	 * precedence to types declared near to the assigned variable
 	 */
 	protected Set<Type> typesOfAssignedValues = new LinkedHashSet<Type>();
 
@@ -83,6 +86,11 @@ public class ArgImpl extends ScopedElementImpl implements Arg {
 	@Override
 	public Call getDefaultValueCall() {
 		return defaultValueCall;
+	}
+
+	@Override
+	public Event getEvent() {
+		return event;
 	}
 
 	@Override
@@ -140,6 +148,11 @@ public class ArgImpl extends ScopedElementImpl implements Arg {
 	@Override
 	public void setDefaultValueCall(final Call defaultValueCall) {
 		this.defaultValueCall = defaultValueCall;
+	}
+
+	@Override
+	public void setEvent(final Event event) {
+		this.event = event;
 	}
 
 	@Override

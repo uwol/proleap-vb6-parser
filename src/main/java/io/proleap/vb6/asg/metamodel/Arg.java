@@ -13,6 +13,7 @@ import java.util.List;
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
 import io.proleap.vb6.asg.metamodel.call.ArgCall;
 import io.proleap.vb6.asg.metamodel.call.Call;
+import io.proleap.vb6.asg.metamodel.statement.event.Event;
 import io.proleap.vb6.asg.metamodel.type.AssignableTypedElement;
 
 public interface Arg extends AssignableTypedElement, NamedElement, ScopedElement {
@@ -26,6 +27,8 @@ public interface Arg extends AssignableTypedElement, NamedElement, ScopedElement
 
 	Call getDefaultValueCall();
 
+	Event getEvent();
+
 	Procedure getProcedure();
 
 	ProcedureDeclaration getProcedureDeclaration();
@@ -35,6 +38,8 @@ public interface Arg extends AssignableTypedElement, NamedElement, ScopedElement
 	boolean isOptional();
 
 	void setDefaultValueCall(Call defaultValueCall);
+
+	void setEvent(Event event);
 
 	void setProcedure(Procedure procedure);
 
