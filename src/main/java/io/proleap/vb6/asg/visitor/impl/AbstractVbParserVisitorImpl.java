@@ -35,5 +35,4 @@ public abstract class AbstractVbParserVisitorImpl extends VisualBasic6BaseVisito
 		final ASGElement result = module.getProgram().getASGElementRegistry().getASGElement(ctx);
 		return result;
 	}
-
 }

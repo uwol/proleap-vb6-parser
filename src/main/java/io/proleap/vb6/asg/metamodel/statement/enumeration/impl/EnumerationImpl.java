@@ -82,7 +82,7 @@ public class EnumerationImpl extends ScopedElementImpl implements Enumeration {
 		final EnumerationConstant enumerationConstant = new EnumerationConstantImpl(name, position, this, ctx);
 
 		enumerationConstantsByCtx.put(ctx, enumerationConstant);
-		enumerationConstantsSymbolTable.put(name, enumerationConstant);
+		enumerationConstantsSymbolTable.put(getSymbol(name), enumerationConstant);
 
 		module.getProgram().getASGElementRegistry().addASGElement(enumerationConstant);
 
@@ -116,7 +116,7 @@ public class EnumerationImpl extends ScopedElementImpl implements Enumeration {
 
 	@Override
 	public EnumerationConstant getEnumerationConstant(final String name) {
-		return enumerationConstantsSymbolTable.get(name);
+		return enumerationConstantsSymbolTable.get(getSymbol(name));
 	}
 
 	@Override

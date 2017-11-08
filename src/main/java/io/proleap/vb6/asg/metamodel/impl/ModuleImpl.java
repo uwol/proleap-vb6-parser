@@ -137,7 +137,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 			result = new AttributeImpl(name, type, this, this, ctx);
 
 			registerScopedElement(result);
-			attributes.put(name, result);
+			attributes.put(getSymbol(name), result);
 
 			final Literal literal = addLiteral(ctx.literal(0));
 			result.setValue(literal);
@@ -233,7 +233,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 			result = new EnumerationImpl(name, visibility, this, ctx);
 
 			registerStatement(result);
-			enumerations.put(name, result);
+			enumerations.put(getSymbol(name), result);
 
 			getProgram().getTypeRegistry().registerType(result);
 			getProgram().getEnumerationRegistry().registerEnumeration(result);
@@ -254,7 +254,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 			result = new FunctionImpl(name, visibility, type, this, ctx);
 
 			registerStatement(result);
-			functions.put(name, result);
+			functions.put(getSymbol(name), result);
 			procedures.add(result);
 
 			if (ctx.argList() != null) {
@@ -345,7 +345,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 			result = new PropertyGetImpl(name, visibility, type, this, ctx);
 
 			registerStatement(result);
-			propertyGets.put(name, result);
+			propertyGets.put(getSymbol(name), result);
 			procedures.add(result);
 
 			if (ctx.argList() != null) {
@@ -381,7 +381,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 			result = new PropertyLetImpl(name, visibility, this, ctx);
 
 			registerStatement(result);
-			propertyLets.put(name, result);
+			propertyLets.put(getSymbol(name), result);
 			procedures.add(result);
 
 			if (ctx.argList() != null) {
@@ -405,7 +405,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 			result = new PropertySetImpl(name, visibility, this, ctx);
 
 			registerStatement(result);
-			propertySets.put(name, result);
+			propertySets.put(getSymbol(name), result);
 			procedures.add(result);
 
 			if (ctx.argList() != null) {
@@ -429,7 +429,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 			result = new SubImpl(name, visibility, this, ctx);
 
 			registerStatement(result);
-			subs.put(name, result);
+			subs.put(getSymbol(name), result);
 			procedures.add(result);
 
 			if (ctx.argList() != null) {
@@ -458,7 +458,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 			}
 
 			registerScopedElement(result);
-			types.put(name, result);
+			types.put(getSymbol(name), result);
 			program.getTypeRegistry().registerType(result);
 		}
 
@@ -498,6 +498,11 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 	}
 
 	@Override
+	public Enumeration getEnumeration(final String name) {
+		return enumerations.get(getSymbol(name));
+	}
+
+	@Override
 	public EnumerationConstant getEnumerationConstant(final String name) {
 		for (final Enumeration enumeration : enumerations.values()) {
 			if (enumeration.getEnumerationConstant(name) != null) {
@@ -515,7 +520,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	@Override
 	public Function getFunction(final String name) {
-		return functions.get(name);
+		return functions.get(getSymbol(name));
 	}
 
 	@Override
@@ -545,7 +550,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	@Override
 	public PropertyGet getPropertyGet(final String name) {
-		return propertyGets.get(name);
+		return propertyGets.get(getSymbol(name));
 	}
 
 	@Override
@@ -555,7 +560,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	@Override
 	public PropertyLet getPropertyLet(final String name) {
-		return propertyLets.get(name);
+		return propertyLets.get(getSymbol(name));
 	}
 
 	@Override
@@ -565,7 +570,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	@Override
 	public PropertySet getPropertySet(final String name) {
-		return propertySets.get(name);
+		return propertySets.get(getSymbol(name));
 	}
 
 	@Override
@@ -591,7 +596,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	@Override
 	public Sub getSub(final String name) {
-		return subs.get(name);
+		return subs.get(getSymbol(name));
 	}
 
 	@Override
@@ -606,7 +611,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	@Override
 	public io.proleap.vb6.asg.metamodel.Type getType(final String name) {
-		return types.get(name);
+		return types.get(getSymbol(name));
 	}
 
 	@Override

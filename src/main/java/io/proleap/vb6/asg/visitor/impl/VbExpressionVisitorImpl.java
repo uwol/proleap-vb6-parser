@@ -651,5 +651,4 @@ public class VbExpressionVisitorImpl extends AbstractVbParserVisitorImpl {
 
 		return visitChildren(ctx);
 	}
-
 }

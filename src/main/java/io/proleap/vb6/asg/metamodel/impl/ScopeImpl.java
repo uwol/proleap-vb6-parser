@@ -1166,7 +1166,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			result.setValueStmt(valueStmt);
 
 			registerStatement(result);
-			constants.put(name, result);
+			constants.put(getSymbol(name), result);
 		}
 
 		return result;
@@ -2321,7 +2321,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 			result.setDeclaredAsStaticArray(isStaticArray);
 
 			registerScopedElement(result);
-			variables.put(name, result);
+			variables.put(getSymbol(name), result);
 		}
 
 		return result;
@@ -2451,7 +2451,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	@Override
 	public Constant getConstant(final String name) {
-		return constants.get(name);
+		return constants.get(getSymbol(name));
 	}
 
 	@Override
@@ -2549,10 +2549,6 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		return module;
 	}
 
-	private String getScopedElementKey(final String name) {
-		return name.toLowerCase();
-	}
-
 	@Override
 	public List<ScopedElement> getScopedElements() {
 		return scopedElements;
@@ -2586,8 +2582,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		if (name == null) {
 			result = null;
 		} else {
-			final String scopedElementKey = getScopedElementKey(name);
-			final List<ScopedElement> scopedElementInScope = scopedElementsSymbolTable.get(scopedElementKey);
+			final List<ScopedElement> scopedElementInScope = scopedElementsSymbolTable.get(getSymbol(name));
 
 			result = scopedElementInScope;
 		}
@@ -2616,7 +2611,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	@Override
 	public Variable getVariable(final String name) {
-		return variables.get(name);
+		return variables.get(getSymbol(name));
 	}
 
 	@Override
@@ -2812,13 +2807,13 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 		 */
 		if (scopedElement instanceof Declaration) {
 			final NamedElement namedElement = (NamedElement) scopedElement;
-			final String scopedElementKey = getScopedElementKey(namedElement.getName());
+			final String symbol = getSymbol(namedElement.getName());
 
-			if (scopedElementsSymbolTable.get(scopedElementKey) == null) {
-				scopedElementsSymbolTable.put(scopedElementKey, new ArrayList<ScopedElement>());
+			if (scopedElementsSymbolTable.get(symbol) == null) {
+				scopedElementsSymbolTable.put(symbol, new ArrayList<ScopedElement>());
 			}
 
-			scopedElementsSymbolTable.get(scopedElementKey).add(scopedElement);
+			scopedElementsSymbolTable.get(symbol).add(scopedElement);
 		}
 	}
 

@@ -23,7 +23,7 @@ public class EnumerationCallTest extends VbTestBase {
 		final Program program = new VbParserRunnerImpl().analyzeFile(inputFile);
 
 		final Module module = program.getClazzModule("EnumerationCall");
-		final Enumeration days = module.getEnumerations().get("Days");
+		final Enumeration days = module.getEnumeration("Days");
 
 		assertNotNull(days);
 		assertEquals(3, days.getEnumerationCalls().size());

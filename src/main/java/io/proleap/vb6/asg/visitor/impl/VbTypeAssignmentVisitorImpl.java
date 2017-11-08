@@ -66,5 +66,4 @@ public class VbTypeAssignmentVisitorImpl extends AbstractVbParserVisitorImpl {
 
 		return visitChildren(ctx);
 	}
-
 }

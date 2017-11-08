@@ -60,7 +60,7 @@ public class EnumConstantCollision2Test extends VbTestBase {
 			assertNotNull(modGeneral);
 
 			{
-				final Enumeration eSoundAction = modGeneral.getEnumerations().get("eSoundAction");
+				final Enumeration eSoundAction = modGeneral.getEnumeration("eSoundAction");
 				assertNotNull(eSoundAction);
 
 				{

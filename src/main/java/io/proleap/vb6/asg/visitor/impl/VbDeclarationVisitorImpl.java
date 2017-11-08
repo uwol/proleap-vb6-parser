@@ -154,5 +154,4 @@ public class VbDeclarationVisitorImpl extends AbstractVbParserVisitorImpl {
 
 		return visitChildren(ctx);
 	}
-
 }

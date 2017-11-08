@@ -85,6 +85,8 @@ public interface Module extends Scope, ComplexType {
 
 	List<DefType> getDefTypes();
 
+	Enumeration getEnumeration(String name);
+
 	EnumerationConstant getEnumerationConstant(String name);
 
 	Map<String, Enumeration> getEnumerations();
