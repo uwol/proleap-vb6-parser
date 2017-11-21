@@ -5,11 +5,13 @@ ProLeap ANTLR4-based parser for Visual Basic 6.0
 [![Coverage](https://coveralls.io/repos/github/uwol/vb6parser/badge.svg?branch=master)](https://coveralls.io/github/uwol/vb6parser?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-This is a parser and grammar for Visual Basic 6.0, which generates an
+This is an ANTLR4-based parser for Visual Basic 6.0, which generates an
 Abstract Syntax Tree (AST) and Abstract Semantic Graph (ASG) for Visual Basic 6.0 code.
 The AST represents plain Visual Basic 6.0 source code in a syntax tree structure.
 The ASG is generated from the AST by semantic analysis and provides data and control
 flow information (e. g. variable access).
+
+The parser is developed test-driven and has successfully been applied to large Visual Basic 6.0 projects.
 
 
 Example
@@ -177,16 +179,6 @@ Tests run: 215, Failures: 0, Errors: 0, Skipped: 0
 $ mvn clean install
 ```
 
-* To use the JAR in your Maven project, add following dependency to the pom.xml of your project:
-
-```
-<dependency>
-  <groupId>io.github.uwol</groupId>
-  <artifactId>vb6parser</artifactId>
-  <version>2.0.0</version>
-</dependency>
-```
-
 * To only run the tests:
 
 ```
@@ -197,7 +189,7 @@ $ mvn clean test
 Release process
 ---------------
 
-* Milestones are published in the [ANTLR grammars repo](https://github.com/antlr/grammars-v4).
+* Milestones of the grammar are published in the [ANTLR grammars repo](https://github.com/antlr/grammars-v4).
 
 
 License
