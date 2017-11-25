@@ -1,6 +1,8 @@
 ProLeap ANTLR4-based parser for Visual Basic 6.0
 ================================================
 
+💫 **Please star**, if you like our work.
+
 This is an ANTLR4-based **Visual Basic 6.0 parser**, which generates an
 **Abstract Syntax Tree** (AST) and **Abstract Semantic Graph** (ASG) for Visual Basic 6.0 code.
 The AST represents plain Visual Basic 6.0 source code in a syntax tree structure.
@@ -12,6 +14,7 @@ The parser is developed test-driven and has successfully been **applied to large
 [![Build](https://img.shields.io/travis/uwol/vb6parser.svg)](https://travis-ci.org/uwol/vb6parser)
 [![Coverage](https://coveralls.io/repos/github/uwol/vb6parser/badge.svg?branch=master)](https://coveralls.io/github/uwol/vb6parser?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![ProLeap on Twitter](https://img.shields.io/twitter/follow/proleap_io.svg?style=social&label=Follow)](https://twitter.com/proleap_io)
 
 
 Example
@@ -117,23 +120,13 @@ for (final io.proleap.vb6.asg.metamodel.Module module : program.getModules()) {
 ```
 
 
-Characteristics
----------------
+Features
+--------
 
-1. The grammar is line-based and takes into account whitespace, so that
-   member calls (e.g. "A.B") are distinguished from contextual object calls
-   in WITH statements (e.g. "A .B").
-
-2. Keywords can be used as identifiers depending on the context, enabling
-   e.g. "A.Type", but not "Type.B".
-
-3. The ANTLR4 grammar is derived from the Visual Basic 6.0 language reference
-   http://msdn.microsoft.com/en-us/library/aa338033%28v=vs.60%29.aspx
-   and tested against MSDN VB6 statement examples as well as several Visual
-   Basic 6.0 code repositories.
-
-4. For parsing large VB6 source code files, following VM args have to be set: `-Xmx2048m -XX:MaxPermSize=256m`.
-   Intellij Plugin for ANTLR 4 has to be provided with those VM args in file `idea.vmoptions`.
+* The grammar is line-based and takes into account whitespace, so that member calls (e.g. `A.B`) are distinguished from contextual object calls in WITH statements (e.g. `A .B`).
+* Keywords can be used as identifiers depending on the context, enabling e.g. `A.Type`, but not `Type.B`.
+* The ANTLR4 grammar is derived from the [Visual Basic 6.0 language reference](http://msdn.microsoft.com/en-us/library/aa338033%28v=vs.60%29.aspx) and tested against MSDN VB6 statement examples as well as several Visual Basic 6.0 code repositories.
+* Rigorous test-driven development.
 
 
 Build process
@@ -189,6 +182,7 @@ $ mvn clean test
 Release process
 ---------------
 
+* Releases and snapshots are published in the MAVEN repository `maven.proleap.io`.
 * Milestones of the grammar are published in the [ANTLR grammars repo](https://github.com/antlr/grammars-v4).
 
 
@@ -196,8 +190,3 @@ License
 -------
 
 Licensed under the BSD 3-Clause License. See LICENSE for details.
-
-### And finally...
-
-Patches accepted, or create an issue!
-I'd love, if you could send me a note in which context you're using the parser. Thank you!
