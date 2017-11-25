@@ -1,7 +1,7 @@
 ProLeap ANTLR4-based parser for Visual Basic 6.0
 ================================================
 
-💫 **Please star**, if you like our work.
+💫 **Star** if you like our work.
 
 This is an ANTLR4-based **Visual Basic 6.0 parser**, which generates an
 **Abstract Syntax Tree** (AST) and **Abstract Semantic Graph** (ASG) for Visual Basic 6.0 code.
