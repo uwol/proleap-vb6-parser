@@ -24,10 +24,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.util.Strings;
 
-import io.proleap.vb6.ThrowingErrorListener;
 import io.proleap.vb6.VisualBasic6Lexer;
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.StartRuleContext;
+import io.proleap.vb6.asg.runner.ThrowingErrorListener;
 import io.proleap.vb6.runner.VbParseTestRunner;
 
 /**
@@ -69,13 +69,13 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 		final VisualBasic6Lexer lexer = new VisualBasic6Lexer(new ANTLRInputStream(inputStream));
 
 		lexer.removeErrorListeners();
-		lexer.addErrorListener(ThrowingErrorListener.INSTANCE);
+		lexer.addErrorListener(new ThrowingErrorListener());
 
 		final CommonTokenStream tokens = new CommonTokenStream(lexer);
 		final VisualBasic6Parser parser = new VisualBasic6Parser(tokens);
 
 		parser.removeErrorListeners();
-		parser.addErrorListener(ThrowingErrorListener.INSTANCE);
+		parser.addErrorListener(new ThrowingErrorListener());
 
 		final StartRuleContext startRule = parser.startRule();
 		final File treeFile = new File(inputFile.getAbsolutePath() + TREE_SUFFIX);
