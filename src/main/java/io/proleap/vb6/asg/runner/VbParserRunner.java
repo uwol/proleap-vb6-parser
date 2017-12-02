@@ -10,19 +10,19 @@ package io.proleap.vb6.asg.runner;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.List;
 
 import io.proleap.vb6.asg.metamodel.Program;
+import io.proleap.vb6.asg.params.VbParserParams;
 
 public interface VbParserRunner {
 
 	Program analyzeFile(File inputFile) throws IOException;
 
-	Program analyzeFile(File inputFile, Charset charset) throws IOException;
+	Program analyzeFile(File inputFile, VbParserParams params) throws IOException;
 
 	Program analyzeFiles(List<File> inputFiles) throws IOException;
 
-	Program analyzeFiles(List<File> inputFiles, Charset charset) throws IOException;
+	Program analyzeFiles(List<File> inputFiles, VbParserParams params) throws IOException;
 
 }

@@ -43,6 +43,8 @@ import io.proleap.vb6.asg.metamodel.impl.ProgramImpl;
 import io.proleap.vb6.asg.metamodel.registry.TypeRegistry;
 import io.proleap.vb6.asg.metamodel.registry.api.ApiProcedureRegistry;
 import io.proleap.vb6.asg.metamodel.type.VbBaseType;
+import io.proleap.vb6.asg.params.VbParserParams;
+import io.proleap.vb6.asg.params.impl.VbParserParamsImpl;
 import io.proleap.vb6.asg.runner.ThrowingErrorListener;
 import io.proleap.vb6.asg.runner.VbParserRunner;
 import io.proleap.vb6.asg.visitor.ParserVisitor;
@@ -109,15 +111,15 @@ public class VbParserRunnerImpl implements VbParserRunner {
 
 	@Override
 	public Program analyzeFile(final File inputFile) throws IOException {
-		return analyzeFile(inputFile, Charset.defaultCharset());
+		return analyzeFile(inputFile, createDefaultParams());
 	}
 
 	@Override
-	public Program analyzeFile(final File inputFile, final Charset charset) throws IOException {
+	public Program analyzeFile(final File inputFile, final VbParserParams params) throws IOException {
 		final Program program = new ProgramImpl();
 		registerModelElements(program);
 
-		parseFile(inputFile, charset, program);
+		parseFile(inputFile, program, params);
 		analyze(program);
 
 		return program;
@@ -125,16 +127,16 @@ public class VbParserRunnerImpl implements VbParserRunner {
 
 	@Override
 	public Program analyzeFiles(final List<File> inputFiles) throws IOException {
-		return analyzeFiles(inputFiles, Charset.defaultCharset());
+		return analyzeFiles(inputFiles, createDefaultParams());
 	}
 
 	@Override
-	public Program analyzeFiles(final List<File> inputFiles, final Charset charset) throws IOException {
+	public Program analyzeFiles(final List<File> inputFiles, final VbParserParams params) throws IOException {
 		final Program program = new ProgramImpl();
 		registerModelElements(program);
 
 		for (final File inputFile : inputFiles) {
-			parseFile(inputFile, charset, program);
+			parseFile(inputFile, program, params);
 		}
 
 		analyze(program);
@@ -160,6 +162,11 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		}
 	}
 
+	protected VbParserParams createDefaultParams() {
+		final VbParserParams result = new VbParserParamsImpl();
+		return result;
+	}
+
 	protected String getModuleName(final File inputFile) {
 		return StringUtils.capitalize(FilenameUtils.removeExtension(inputFile.getName()));
 	}
@@ -174,13 +181,14 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		return "bas".equals(extension);
 	}
 
-	protected void parseFile(final File inputFile, final Charset charset, final Program program) throws IOException {
+	protected void parseFile(final File inputFile, final Program program, final VbParserParams params)
+			throws IOException {
 		if (!inputFile.isFile()) {
 			LOG.warn("Could not find file {}", inputFile.getAbsolutePath());
 		} else {
-			final String input = FileUtils.readFileToString(inputFile, charset);
+			final Charset charset = params.getCharset();
 
-			LOG.info("Parsing file {}.", inputFile.getName());
+			LOG.info("Parsing file {} with charset {}.", inputFile.getName(), charset);
 
 			final InputStream inputStream = new FileInputStream(inputFile);
 			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(CharStreams.fromStream(inputStream, charset));
@@ -216,7 +224,9 @@ public class VbParserRunnerImpl implements VbParserRunner {
 			final boolean isClazzModule = isClazzModule(inputFile);
 			final boolean isStandardModule = isStandardModule(inputFile);
 
+			final String input = FileUtils.readFileToString(inputFile, charset);
 			final List<String> lines = splitLines(input);
+
 			final ParserVisitor visitor = new VbModuleVisitorImpl(moduleName, lines, isClazzModule, isStandardModule,
 					tokens, program);
 

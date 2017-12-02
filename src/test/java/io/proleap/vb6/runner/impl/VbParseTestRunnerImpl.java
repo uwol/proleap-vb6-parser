@@ -14,8 +14,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 
-import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.Trees;
 import org.apache.commons.io.FileUtils;
@@ -27,6 +28,8 @@ import org.apache.logging.log4j.util.Strings;
 import io.proleap.vb6.VisualBasic6Lexer;
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.StartRuleContext;
+import io.proleap.vb6.asg.params.VbParserParams;
+import io.proleap.vb6.asg.params.impl.VbParserParamsImpl;
 import io.proleap.vb6.asg.runner.ThrowingErrorListener;
 import io.proleap.vb6.runner.VbParseTestRunner;
 
@@ -42,6 +45,11 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 	protected static boolean isForm(final File inputFile) {
 		final String extension = FilenameUtils.getExtension(inputFile.getName()).toLowerCase();
 		return "frm".equals(extension);
+	}
+
+	protected VbParserParams createDefaultParams() {
+		final VbParserParams result = new VbParserParamsImpl();
+		return result;
 	}
 
 	protected void doCompareParseTree(final File treeFile, final StartRuleContext startRule,
@@ -62,11 +70,13 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 		}
 	}
 
-	protected void doParse(final File inputFile) throws IOException {
-		LOG.info("Parsing file {}.", inputFile.getName());
+	protected void doParse(final File inputFile, final VbParserParams params) throws IOException {
+		final Charset charset = params.getCharset();
+
+		LOG.info("Parsing file {} with charset {}.", inputFile.getName(), charset);
 
 		final InputStream inputStream = new FileInputStream(inputFile);
-		final VisualBasic6Lexer lexer = new VisualBasic6Lexer(new ANTLRInputStream(inputStream));
+		final VisualBasic6Lexer lexer = new VisualBasic6Lexer(CharStreams.fromStream(inputStream, charset));
 
 		lexer.removeErrorListeners();
 		lexer.addErrorListener(new ThrowingErrorListener());
@@ -100,7 +110,7 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 		if (!isClazzModule(inputFile) && !isStandardModule(inputFile) && !isForm(inputFile)) {
 			LOG.info("Ignoring file {}.", inputFile.getName());
 		} else {
-			doParse(inputFile);
+			doParse(inputFile, createDefaultParams());
 		}
 	}
 }
