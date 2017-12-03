@@ -16,13 +16,25 @@ public class VbParserParamsImpl implements VbParserParams {
 
 	protected Charset charset = Charset.defaultCharset();
 
+	protected boolean ignoreSyntaxErrors;
+
 	@Override
 	public Charset getCharset() {
 		return charset;
 	}
 
 	@Override
+	public boolean getIgnoreSyntaxErrors() {
+		return ignoreSyntaxErrors;
+	}
+
+	@Override
 	public void setCharset(final Charset charset) {
 		this.charset = charset;
+	}
+
+	@Override
+	public void setIgnoreSyntaxErrors(final boolean ignoreSyntaxErrors) {
+		this.ignoreSyntaxErrors = ignoreSyntaxErrors;
 	}
 }

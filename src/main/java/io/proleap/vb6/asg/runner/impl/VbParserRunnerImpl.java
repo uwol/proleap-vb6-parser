@@ -193,9 +193,11 @@ public class VbParserRunnerImpl implements VbParserRunner {
 			final InputStream inputStream = new FileInputStream(inputFile);
 			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(CharStreams.fromStream(inputStream, charset));
 
-			// register an error listener, so that preprocessing stops on errors
-			lexer.removeErrorListeners();
-			lexer.addErrorListener(new ThrowingErrorListener());
+			if (!params.getIgnoreSyntaxErrors()) {
+				// register an error listener, so that preprocessing stops on errors
+				lexer.removeErrorListeners();
+				lexer.addErrorListener(new ThrowingErrorListener());
+			}
 
 			// get a list of matched tokens
 			final CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -203,9 +205,11 @@ public class VbParserRunnerImpl implements VbParserRunner {
 			// pass the tokens to the parser
 			final VisualBasic6Parser parser = new VisualBasic6Parser(tokens);
 
-			// register an error listener, so that preprocessing stops on errors
-			parser.removeErrorListeners();
-			parser.addErrorListener(new ThrowingErrorListener());
+			if (!params.getIgnoreSyntaxErrors()) {
+				// register an error listener, so that preprocessing stops on errors
+				parser.removeErrorListeners();
+				parser.addErrorListener(new ThrowingErrorListener());
+			}
 
 			// specify our entry point
 			final StartRuleContext ctx = parser.startRule();

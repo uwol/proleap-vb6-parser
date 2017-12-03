@@ -78,14 +78,18 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 		final InputStream inputStream = new FileInputStream(inputFile);
 		final VisualBasic6Lexer lexer = new VisualBasic6Lexer(CharStreams.fromStream(inputStream, charset));
 
-		lexer.removeErrorListeners();
-		lexer.addErrorListener(new ThrowingErrorListener());
+		if (!params.getIgnoreSyntaxErrors()) {
+			lexer.removeErrorListeners();
+			lexer.addErrorListener(new ThrowingErrorListener());
+		}
 
 		final CommonTokenStream tokens = new CommonTokenStream(lexer);
 		final VisualBasic6Parser parser = new VisualBasic6Parser(tokens);
 
-		parser.removeErrorListeners();
-		parser.addErrorListener(new ThrowingErrorListener());
+		if (!params.getIgnoreSyntaxErrors()) {
+			parser.removeErrorListeners();
+			parser.addErrorListener(new ThrowingErrorListener());
+		}
 
 		final StartRuleContext startRule = parser.startRule();
 		final File treeFile = new File(inputFile.getAbsolutePath() + TREE_SUFFIX);
@@ -95,12 +99,12 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 		}
 	}
 
-	private boolean isClazzModule(final File inputFile) {
+	protected boolean isClazzModule(final File inputFile) {
 		final String extension = FilenameUtils.getExtension(inputFile.getName());
 		return "cls".equals(extension);
 	}
 
-	private boolean isStandardModule(final File inputFile) {
+	protected boolean isStandardModule(final File inputFile) {
 		final String extension = FilenameUtils.getExtension(inputFile.getName());
 		return "bas".equals(extension);
 	}

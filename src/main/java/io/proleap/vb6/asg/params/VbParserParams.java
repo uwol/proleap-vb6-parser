@@ -17,5 +17,9 @@ public interface VbParserParams {
 	 */
 	Charset getCharset();
 
+	boolean getIgnoreSyntaxErrors();
+
 	void setCharset(Charset charset);
+
+	void setIgnoreSyntaxErrors(boolean ignoreSyntaxErrors);
 }
