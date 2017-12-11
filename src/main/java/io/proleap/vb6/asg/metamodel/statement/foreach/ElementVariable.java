@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018, Ulrich Wolffgang <u.wol@wwu.de>
+ * Copyright (C) 2017, Ulrich Wolffgang <ulrich.wolffgang@proleap.io>
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
