@@ -1,6 +1,6 @@
 # Contribute to ProLeap Visual Basic 6.0 parser
 
-First of all thank you for your interest in contributing to the ProLeap Visual Basic 6.0 parser!
+First of all, thank you for your interest in contributing to the ProLeap Visual Basic 6.0 parser!
 This open source repository is maintained by [@uwol](https://github.com/uwol).
 
 
@@ -16,7 +16,7 @@ We will review the PR for:
 - Clean code, code quality.
 - Contributor agreement in [`.github/contributors/`](/.github/contributors).
 
-In review, we support you with code and suggestions. Finally, PR is merged.
+In review, we support you with code and suggestions. Finally, PR is merged 🎉.
 
 
 ## Contributor agreement
