@@ -19,11 +19,11 @@ public class AttributeImpl extends ScopedElementImpl implements Attribute {
 
 	protected final AttributeStmtContext ctx;
 
+	protected Literal literal;
+
 	protected final String name;
 
 	protected final Type type;
-
-	protected Literal value;
 
 	public AttributeImpl(final String name, final Type type, final Module module, final Scope scope,
 			final AttributeStmtContext ctx) {
@@ -40,6 +40,11 @@ public class AttributeImpl extends ScopedElementImpl implements Attribute {
 	}
 
 	@Override
+	public Literal getLiteral() {
+		return literal;
+	}
+
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -50,13 +55,8 @@ public class AttributeImpl extends ScopedElementImpl implements Attribute {
 	}
 
 	@Override
-	public Literal getValue() {
-		return value;
-	}
-
-	@Override
-	public void setValue(final Literal value) {
-		this.value = value;
+	public void setLiteral(final Literal literal) {
+		this.literal = literal;
 	}
 
 	@Override

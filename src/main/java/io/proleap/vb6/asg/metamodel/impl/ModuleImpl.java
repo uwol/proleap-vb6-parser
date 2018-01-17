@@ -140,7 +140,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 			attributes.put(getSymbol(name), result);
 
 			final Literal literal = addLiteral(ctx.literal(0));
-			result.setValue(literal);
+			result.setLiteral(literal);
 		}
 
 		return result;

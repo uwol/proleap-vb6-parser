@@ -16,7 +16,7 @@ public interface Attribute extends TypedElement, Declaration, ScopedElement {
 	@Override
 	AttributeStmtContext getCtx();
 
-	Literal getValue();
+	Literal getLiteral();
 
-	void setValue(Literal value);
+	void setLiteral(Literal literal);
 }
