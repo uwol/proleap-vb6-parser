@@ -3,7 +3,7 @@
 		(moduleHeader VERSION   5.00) \r\n 
 		(moduleReferences 
 			(moduleReference Object   =   
-				(moduleReferenceGUID "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0") ;   
+				(moduleReferenceValue "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0") ;   
 				(moduleReferenceComponent "TABCTL32.OCX") \r\n)) 
 		(controlProperties Begin   
 			(cp_ControlType 
@@ -17,55 +17,64 @@
 					(implicitCallStmt_InStmt 
 						(iCS_S_VariableOrProcedureCall 
 							(ambiguousIdentifier Caption)))           =     
-					(literal "Form1") \r\n   )) 
+					(cp_PropertyValue 
+						(literal "Form1")) \r\n   )) 
 			(cp_Properties 
 				(cp_SingleProperty 
 					(implicitCallStmt_InStmt 
 						(iCS_S_VariableOrProcedureCall 
 							(ambiguousIdentifier ClientHeight)))      =     
-					(literal 4170) \r\n   )) 
+					(cp_PropertyValue 
+						(literal 4170)) \r\n   )) 
 			(cp_Properties 
 				(cp_SingleProperty 
 					(implicitCallStmt_InStmt 
 						(iCS_S_VariableOrProcedureCall 
 							(ambiguousIdentifier ClientLeft)))        =     
-					(literal 60) \r\n   )) 
+					(cp_PropertyValue 
+						(literal 60)) \r\n   )) 
 			(cp_Properties 
 				(cp_SingleProperty 
 					(implicitCallStmt_InStmt 
 						(iCS_S_VariableOrProcedureCall 
 							(ambiguousIdentifier ClientTop)))         =     
-					(literal 420) \r\n   )) 
+					(cp_PropertyValue 
+						(literal 420)) \r\n   )) 
 			(cp_Properties 
 				(cp_SingleProperty 
 					(implicitCallStmt_InStmt 
 						(iCS_S_VariableOrProcedureCall 
 							(ambiguousIdentifier ClientWidth)))       =     
-					(literal 5580) \r\n   )) 
+					(cp_PropertyValue 
+						(literal 5580)) \r\n   )) 
 			(cp_Properties 
 				(cp_SingleProperty 
 					(implicitCallStmt_InStmt 
 						(iCS_S_VariableOrProcedureCall 
 							(ambiguousIdentifier LinkTopic)))         =     
-					(literal "Form1") \r\n   )) 
+					(cp_PropertyValue 
+						(literal "Form1")) \r\n   )) 
 			(cp_Properties 
 				(cp_SingleProperty 
 					(implicitCallStmt_InStmt 
 						(iCS_S_VariableOrProcedureCall 
 							(ambiguousIdentifier ScaleHeight)))       =     
-					(literal 4170) \r\n   )) 
+					(cp_PropertyValue 
+						(literal 4170)) \r\n   )) 
 			(cp_Properties 
 				(cp_SingleProperty 
 					(implicitCallStmt_InStmt 
 						(iCS_S_VariableOrProcedureCall 
 							(ambiguousIdentifier ScaleWidth)))        =     
-					(literal 5580) \r\n   )) 
+					(cp_PropertyValue 
+						(literal 5580)) \r\n   )) 
 			(cp_Properties 
 				(cp_SingleProperty 
 					(implicitCallStmt_InStmt 
 						(iCS_S_VariableOrProcedureCall 
 							(ambiguousIdentifier StartUpPosition)))   =     
-					(literal 3) \r\n   )) 
+					(cp_PropertyValue 
+						(literal 3)) \r\n   )) 
 			(cp_Properties 
 				(controlProperties Begin   
 					(cp_ControlType 
@@ -79,38 +88,44 @@
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier Caption)))           =     
-							(literal "Command5") \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Command5")) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier Height)))            =     
-							(literal 375) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 375)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier Left)))              =     
-							(literal 2400) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 2400)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier TabIndex)))          =     
-							(literal 8) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 8)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier Top)))               =     
-							(literal 3600) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 3600)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier 
 										(ambiguousKeyword Width))))             =     
-							(literal 1455) \r\n   )) End \r\n   )) 
+							(cp_PropertyValue 
+								(literal 1455)) \r\n   )) End \r\n   )) 
 			(cp_Properties 
 				(controlProperties Begin   
 					(cp_ControlType 
@@ -124,38 +139,44 @@
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier Caption)))           =     
-							(literal "Command4") \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Command4")) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier Height)))            =     
-							(literal 375) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 375)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier Left)))              =     
-							(literal 240) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 240)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier TabIndex)))          =     
-							(literal 7) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 7)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier Top)))               =     
-							(literal 3600) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 3600)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier 
 										(ambiguousKeyword Width))))             =     
-							(literal 1575) \r\n   )) End \r\n   )) 
+							(cp_PropertyValue 
+								(literal 1575)) \r\n   )) End \r\n   )) 
 			(cp_Properties 
 				(controlProperties Begin   
 					(cp_ControlType 
@@ -169,56 +190,65 @@
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier Height)))            =     
-							(literal 2655) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 2655)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier Left)))              =     
-							(literal 240) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 240)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier TabIndex)))          =     
-							(literal 0) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 0)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier Top)))               =     
-							(literal 240) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 240)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier 
 										(ambiguousKeyword Width))))             =     
-							(literal 4095) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 4095)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier _ExtentX)))          =     
-							(literal 7223) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 7223)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier _ExtentY)))          =     
-							(literal 4683) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 4683)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier _Version)))          =     
-							(literal 393216) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 393216)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
 								(iCS_S_VariableOrProcedureCall 
 									(ambiguousIdentifier TabHeight)))         =     
-							(literal 520) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 520)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -228,7 +258,8 @@
 										(argCall 
 											(valueStmt 
 												(literal 0)))) )))     =     
-							(literal "Tab 0") \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Tab 0")) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -238,7 +269,8 @@
 										(argCall 
 											(valueStmt 
 												(literal 0)))) )))     =     
-							(literal "Form1.frx") :0000 \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Form1.frx")) :0000 \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -253,7 +285,8 @@
 									(iCS_S_MemberCall . 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier ControlEnabled))))) =     
-							(literal -1) \r\n      )) 
+							(cp_PropertyValue 
+								(literal -1)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -272,7 +305,8 @@
 												(argCall 
 													(valueStmt 
 														(literal 0)))) ))))) =     
-							(literal "Text1") \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Text1")) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -294,7 +328,8 @@
 									(iCS_S_MemberCall . 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Enabled))))) =     
-							(literal 0) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 0)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -313,7 +348,8 @@
 												(argCall 
 													(valueStmt 
 														(literal 1)))) ))))) =     
-							(literal "Command1") \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Command1")) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -335,7 +371,8 @@
 									(iCS_S_MemberCall . 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Enabled))))) =     
-							(literal 0) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 0)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -350,7 +387,8 @@
 									(iCS_S_MemberCall . 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier ControlCount))))) =     
-							(literal 2) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 2)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -360,7 +398,8 @@
 										(argCall 
 											(valueStmt 
 												(literal 1)))) )))     =     
-							(literal "Tab 1") \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Tab 1")) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -370,7 +409,8 @@
 										(argCall 
 											(valueStmt 
 												(literal 1)))) )))     =     
-							(literal "Form1.frx") :001C \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Form1.frx")) :001C \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -385,7 +425,8 @@
 									(iCS_S_MemberCall . 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier ControlEnabled))))) =     
-							(literal 0) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 0)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -404,7 +445,8 @@
 												(argCall 
 													(valueStmt 
 														(literal 0)))) ))))) =     
-							(literal "Text2") \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Text2")) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -426,7 +468,8 @@
 									(iCS_S_MemberCall . 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Enabled))))) =     
-							(literal 0) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 0)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -445,7 +488,8 @@
 												(argCall 
 													(valueStmt 
 														(literal 1)))) ))))) =     
-							(literal "Command2") \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Command2")) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -467,7 +511,8 @@
 									(iCS_S_MemberCall . 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Enabled))))) =     
-							(literal 0) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 0)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -482,7 +527,8 @@
 									(iCS_S_MemberCall . 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier ControlCount))))) =     
-							(literal 2) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 2)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -492,7 +538,8 @@
 										(argCall 
 											(valueStmt 
 												(literal 2)))) )))     =     
-							(literal "Tab 2") \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Tab 2")) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -502,7 +549,8 @@
 										(argCall 
 											(valueStmt 
 												(literal 2)))) )))     =     
-							(literal "Form1.frx") :0038 \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Form1.frx")) :0038 \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -517,7 +565,8 @@
 									(iCS_S_MemberCall . 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier ControlEnabled))))) =     
-							(literal 0) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 0)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -536,7 +585,8 @@
 												(argCall 
 													(valueStmt 
 														(literal 0)))) ))))) =     
-							(literal "Text3") \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Text3")) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -558,7 +608,8 @@
 									(iCS_S_MemberCall . 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Enabled))))) =     
-							(literal 0) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 0)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -577,7 +628,8 @@
 												(argCall 
 													(valueStmt 
 														(literal 1)))) ))))) =     
-							(literal "Command3") \r\n      )) 
+							(cp_PropertyValue 
+								(literal "Command3")) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -599,7 +651,8 @@
 									(iCS_S_MemberCall . 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Enabled))))) =     
-							(literal 0) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 0)) \r\n      )) 
 					(cp_Properties 
 						(cp_SingleProperty 
 							(implicitCallStmt_InStmt 
@@ -614,7 +667,8 @@
 									(iCS_S_MemberCall . 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier ControlCount))))) =     
-							(literal 2) \r\n      )) 
+							(cp_PropertyValue 
+								(literal 2)) \r\n      )) 
 					(cp_Properties 
 						(controlProperties Begin   
 							(cp_ControlType 
@@ -628,38 +682,44 @@
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Caption)))           =     
-									(literal "Command3") \r\n         )) 
+									(cp_PropertyValue 
+										(literal "Command3")) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Height)))            =     
-									(literal 255) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 255)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Left)))              =     
-									(literal -74040) \r\n         )) 
+									(cp_PropertyValue 
+										(literal -74040)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier TabIndex)))          =     
-									(literal 6) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 6)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Top)))               =     
-									(literal 1920) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 1920)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier 
 												(ambiguousKeyword Width))))             =     
-									(literal 1575) \r\n      )) End \r\n      )) 
+									(cp_PropertyValue 
+										(literal 1575)) \r\n      )) End \r\n      )) 
 					(cp_Properties 
 						(controlProperties Begin   
 							(cp_ControlType 
@@ -673,39 +733,45 @@
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Height)))            =     
-									(literal 375) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 375)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Left)))              =     
-									(literal -74760) \r\n         )) 
+									(cp_PropertyValue 
+										(literal -74760)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier TabIndex)))          =     
-									(literal 5) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 5)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier 
 												(ambiguousKeyword Text))))              =     
-									(literal "Text3") \r\n         )) 
+									(cp_PropertyValue 
+										(literal "Text3")) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Top)))               =     
-									(literal 600) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 600)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier 
 												(ambiguousKeyword Width))))             =     
-									(literal 1335) \r\n      )) End \r\n      )) 
+									(cp_PropertyValue 
+										(literal 1335)) \r\n      )) End \r\n      )) 
 					(cp_Properties 
 						(controlProperties Begin   
 							(cp_ControlType 
@@ -719,38 +785,44 @@
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Caption)))           =     
-									(literal "Command2") \r\n         )) 
+									(cp_PropertyValue 
+										(literal "Command2")) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Height)))            =     
-									(literal 375) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 375)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Left)))              =     
-									(literal -74520) \r\n         )) 
+									(cp_PropertyValue 
+										(literal -74520)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier TabIndex)))          =     
-									(literal 4) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 4)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Top)))               =     
-									(literal 1680) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 1680)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier 
 												(ambiguousKeyword Width))))             =     
-									(literal 1095) \r\n      )) End \r\n      )) 
+									(cp_PropertyValue 
+										(literal 1095)) \r\n      )) End \r\n      )) 
 					(cp_Properties 
 						(controlProperties Begin   
 							(cp_ControlType 
@@ -764,39 +836,45 @@
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Height)))            =     
-									(literal 285) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 285)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Left)))              =     
-									(literal -74520) \r\n         )) 
+									(cp_PropertyValue 
+										(literal -74520)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier TabIndex)))          =     
-									(literal 3) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 3)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier 
 												(ambiguousKeyword Text))))              =     
-									(literal "Text2") \r\n         )) 
+									(cp_PropertyValue 
+										(literal "Text2")) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Top)))               =     
-									(literal 600) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 600)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier 
 												(ambiguousKeyword Width))))             =     
-									(literal 1695) \r\n      )) End \r\n      )) 
+									(cp_PropertyValue 
+										(literal 1695)) \r\n      )) End \r\n      )) 
 					(cp_Properties 
 						(controlProperties Begin   
 							(cp_ControlType 
@@ -810,38 +888,44 @@
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Caption)))           =     
-									(literal "Command1") \r\n         )) 
+									(cp_PropertyValue 
+										(literal "Command1")) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Height)))            =     
-									(literal 375) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 375)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Left)))              =     
-									(literal 1560) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 1560)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier TabIndex)))          =     
-									(literal 2) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 2)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Top)))               =     
-									(literal 1800) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 1800)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier 
 												(ambiguousKeyword Width))))             =     
-									(literal 1215) \r\n      )) End \r\n      )) 
+									(cp_PropertyValue 
+										(literal 1215)) \r\n      )) End \r\n      )) 
 					(cp_Properties 
 						(controlProperties Begin   
 							(cp_ControlType 
@@ -855,39 +939,45 @@
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Height)))            =     
-									(literal 375) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 375)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Left)))              =     
-									(literal 480) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 480)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier TabIndex)))          =     
-									(literal 1) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 1)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier 
 												(ambiguousKeyword Text))))              =     
-									(literal "Text1") \r\n         )) 
+									(cp_PropertyValue 
+										(literal "Text1")) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier Top)))               =     
-									(literal 720) \r\n         )) 
+									(cp_PropertyValue 
+										(literal 720)) \r\n         )) 
 							(cp_Properties 
 								(cp_SingleProperty 
 									(implicitCallStmt_InStmt 
 										(iCS_S_VariableOrProcedureCall 
 											(ambiguousIdentifier 
 												(ambiguousKeyword Width))))             =     
-									(literal 1455) \r\n      )) End \r\n   )) End \r\n)) End \r\n) 
+									(cp_PropertyValue 
+										(literal 1455)) \r\n      )) End \r\n   )) End \r\n)) End \r\n) 
 		(moduleAttributes 
 			(attributeStmt Attribute   
 				(implicitCallStmt_InStmt 
