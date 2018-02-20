@@ -22,8 +22,8 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.proleap.vb6.VisualBasic6Lexer;
 import io.proleap.vb6.VisualBasic6Parser;
@@ -57,7 +57,7 @@ import io.proleap.vb6.asg.visitor.impl.VbTypeVisitorImpl;
 
 public class VbParserRunnerImpl implements VbParserRunner {
 
-	protected final static Logger LOG = LogManager.getLogger(VbParserRunnerImpl.class);
+	private final static Logger LOG = LoggerFactory.getLogger(VbParserRunnerImpl.class);
 
 	/**
 	 * determines, how deep expressions and their type assignments should be

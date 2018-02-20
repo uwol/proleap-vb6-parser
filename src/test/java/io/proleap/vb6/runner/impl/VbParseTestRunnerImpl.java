@@ -21,9 +21,9 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.Trees;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.proleap.vb6.VisualBasic6Lexer;
 import io.proleap.vb6.VisualBasic6Parser;
@@ -38,7 +38,7 @@ import io.proleap.vb6.runner.VbParseTestRunner;
  */
 public class VbParseTestRunnerImpl implements VbParseTestRunner {
 
-	private final static Logger LOG = LogManager.getLogger(VbParseTestRunnerImpl.class);
+	private final static Logger LOG = LoggerFactory.getLogger(VbParseTestRunnerImpl.class);
 
 	public final static String TREE_SUFFIX = ".tree";
 
@@ -57,12 +57,12 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 
 		final String treeFileData = FileUtils.readFileToString(treeFile);
 
-		if (!Strings.isBlank(treeFileData)) {
+		if (!StringUtils.isBlank(treeFileData)) {
 			LOG.info("Comparing parse tree with file {}.", treeFile.getName());
 
 			final String inputFileTree = Trees.toStringTree(startRule, parser);
-			final String cleanedInputFileTree = io.proleap.vb6.util.StringUtils.cleanFileTree(inputFileTree);
-			final String cleanedTreeFileData = io.proleap.vb6.util.StringUtils.cleanFileTree(treeFileData);
+			final String cleanedInputFileTree = io.proleap.vb6.util.VbTestStringUtils.cleanFileTree(inputFileTree);
+			final String cleanedTreeFileData = io.proleap.vb6.util.VbTestStringUtils.cleanFileTree(treeFileData);
 
 			assertEquals(cleanedTreeFileData, cleanedInputFileTree);
 		} else {

@@ -63,7 +63,7 @@ import io.proleap.vb6.asg.metamodel.statement.sub.Sub;
 import io.proleap.vb6.asg.metamodel.statement.sub.impl.SubImpl;
 import io.proleap.vb6.asg.metamodel.type.Type;
 import io.proleap.vb6.asg.metamodel.type.VbBaseType;
-import io.proleap.vb6.asg.util.StringUtils;
+import io.proleap.vb6.asg.util.AsgStringUtils;
 
 public abstract class ModuleImpl extends ScopeImpl implements Module {
 
@@ -299,13 +299,13 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 	@Override
 	public void addModuleHeader(final ModuleHeaderContext ctx) {
 		final String versionString = ctx.DOUBLELITERAL().getText();
-		version = StringUtils.parseDouble(versionString);
+		version = AsgStringUtils.parseDouble(versionString);
 	}
 
 	@Override
 	public void addOptionBase(final OptionBaseStmtContext ctx) {
 		final String optionBaseString = ctx.INTEGERLITERAL().getText();
-		optionBase = StringUtils.parseInteger(optionBaseString);
+		optionBase = AsgStringUtils.parseInteger(optionBaseString);
 	}
 
 	@Override

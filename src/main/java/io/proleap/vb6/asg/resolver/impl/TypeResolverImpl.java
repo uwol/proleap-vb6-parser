@@ -41,7 +41,7 @@ import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.type.Type;
 import io.proleap.vb6.asg.metamodel.type.VbBaseType;
 import io.proleap.vb6.asg.resolver.TypeResolver;
-import io.proleap.vb6.asg.util.StringUtils;
+import io.proleap.vb6.asg.util.AsgStringUtils;
 
 /**
  * Resolves and returns types of AST elements on a syntactic declarative level
@@ -374,9 +374,9 @@ public class TypeResolverImpl implements TypeResolver {
 
 		if (value.toLowerCase().equals("true") || value.toLowerCase().equals("false")) {
 			result = VbBaseType.BOOLEAN;
-		} else if (StringUtils.isInteger(value)) {
+		} else if (AsgStringUtils.isInteger(value)) {
 			result = VbBaseType.LONG;
-		} else if (StringUtils.isDouble(value)) {
+		} else if (AsgStringUtils.isDouble(value)) {
 			result = VbBaseType.DOUBLE;
 		} else if (value.length() > 1 && value.startsWith("\"") && value.endsWith("\"")) {
 			result = VbBaseType.STRING;

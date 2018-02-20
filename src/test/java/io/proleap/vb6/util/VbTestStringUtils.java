@@ -1,6 +1,6 @@
 package io.proleap.vb6.util;
 
-public class StringUtils {
+public class VbTestStringUtils {
 
 	/**
 	 * To be removed, as soon as the grammar does not require NEWLINEs and WS

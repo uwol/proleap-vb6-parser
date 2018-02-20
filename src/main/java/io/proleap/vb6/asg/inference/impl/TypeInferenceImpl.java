@@ -17,7 +17,7 @@ import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.DefType.LetterRange;
 import io.proleap.vb6.asg.metamodel.type.Type;
 import io.proleap.vb6.asg.metamodel.type.VbBaseType;
-import io.proleap.vb6.asg.util.StringUtils;
+import io.proleap.vb6.asg.util.AsgStringUtils;
 
 public class TypeInferenceImpl implements TypeInference {
 
@@ -110,8 +110,8 @@ public class TypeInferenceImpl implements TypeInference {
 						upper = null;
 					}
 
-					final boolean geq = StringUtils.geq(firstLetter, lower);
-					final boolean leq = StringUtils.leq(firstLetter, upper);
+					final boolean geq = AsgStringUtils.geq(firstLetter, lower);
+					final boolean leq = AsgStringUtils.leq(firstLetter, upper);
 
 					if (geq && leq) {
 						typeFromDefType = defType.getBaseType();

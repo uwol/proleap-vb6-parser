@@ -8,7 +8,7 @@
 
 package io.proleap.vb6.asg.util;
 
-public class StringUtils {
+public class AsgStringUtils {
 
 	public static boolean geq(final Character ch1, final Character ch2) {
 		return Character.toLowerCase(ch1) >= Character.toLowerCase(ch2);

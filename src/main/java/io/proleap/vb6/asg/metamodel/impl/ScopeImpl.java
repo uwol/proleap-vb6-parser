@@ -37,8 +37,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
@@ -321,7 +321,7 @@ import io.proleap.vb6.asg.util.ANTLRUtils;
 
 public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
-	private final static Logger LOG = LogManager.getLogger(ScopeImpl.class);
+	private final static Logger LOG = LoggerFactory.getLogger(ScopeImpl.class);
 
 	public final static String ME = "ME";
 
