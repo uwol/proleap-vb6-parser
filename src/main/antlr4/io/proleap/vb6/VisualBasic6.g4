@@ -10,7 +10,7 @@
 * Visual Basic 6.0 Grammar for ANTLR4
 *
 * This is a Visual Basic 6.0 grammar, which is part of the Visual Basic 6.0
-* parser at https://github.com/uwol/vb6parser.
+* parser at https://github.com/uwol/proleap-vb6-parser.
 *
 * The grammar is derived from the Visual Basic 6.0 language reference
 * http://msdn.microsoft.com/en-us/library/aa338033%28v=vs.60%29.aspx
