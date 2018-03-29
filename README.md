@@ -75,7 +75,7 @@ and add the dependency
 ```
 <dependency>
 	<groupId>io.github.uwol</groupId>
-	<artifactId>vb6parser</artifactId>
+	<artifactId>proleap-vb6-parser</artifactId>
 	<version>2.3.0</version>
 </dependency>
 ```

@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<name>vb6parser</name>
+	<name>proleap-vb6-parser</name>
 	<description>An ANTLR4-based parser and grammar for Visual Basic 6.0</description>
 	<groupId>io.github.uwol</groupId>
-	<artifactId>vb6parser</artifactId>
+	<artifactId>proleap-vb6-parser</artifactId>
 	<version>2.3.0</version>
 	<packaging>jar</packaging>
 	<licenses>
