@@ -116,6 +116,21 @@ Where to look next
 - [Unit test code examples](src/test/java/io/proleap/vb6/asg/statement)
 
 
+How to cite
+-----------
+
+Please cite ProLeap Visual Basic 6.0 parser in your publications, if it helps your research. Here is an example BibTeX entry:
+
+```
+@misc{wolffgang2018vb6,
+  title={ProLeap Visual Basic 6.0 parser},
+  author={Wolffgang, Ulrich and others},
+  year={2018},
+  howpublished={\url{https://github.com/uwol/proleap-vb6-parser}},
+}
+```
+
+
 Features
 --------
 
