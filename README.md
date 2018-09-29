@@ -33,26 +33,26 @@ End Sub
 
 ```
 (startRule
-	(module
-		(moduleBody
-			(moduleBodyElement
-				(subStmt
-					(visibility Private) Sub
-					(ambiguousIdentifier Command1_Click)
-					(argList ( ))
-					(block
-						(blockStmt
-							(letStmt
-								(implicitCallStmt_InStmt
-									(iCS_S_MembersCall
-										(iCS_S_VariableOrProcedureCall
-											(ambiguousIdentifier Text1))
-										(iCS_S_MemberCall .
-											(iCS_S_VariableOrProcedureCall
-												(ambiguousIdentifier
-													(ambiguousKeyword Text)))))) =
-								(valueStmt
-									(literal "Hello, world!"))))) End Sub)))) <EOF>)
+  (module
+    (moduleBody
+      (moduleBodyElement
+        (subStmt
+          (visibility Private) Sub
+          (ambiguousIdentifier Command1_Click)
+          (argList ( ))
+          (block
+            (blockStmt
+              (letStmt
+                (implicitCallStmt_InStmt
+                  (iCS_S_MembersCall
+                    (iCS_S_VariableOrProcedureCall
+                      (ambiguousIdentifier Text1))
+                    (iCS_S_MemberCall .
+                      (iCS_S_VariableOrProcedureCall
+                        (ambiguousIdentifier
+                          (ambiguousKeyword Text)))))) =
+                (valueStmt
+                  (literal "Hello, world!"))))) End Sub)))) <EOF>)
 ```
 
 
@@ -63,9 +63,9 @@ To include the parser in your Maven project build it and add the dependency:
 
 ```
 <dependency>
-	<groupId>io.github.uwol</groupId>
-	<artifactId>proleap-vb6-parser</artifactId>
-	<version>2.3.0</version>
+  <groupId>io.github.uwol</groupId>
+  <artifactId>proleap-vb6-parser</artifactId>
+  <version>2.3.0</version>
 </dependency>
 ```
 
