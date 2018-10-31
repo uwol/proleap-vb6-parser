@@ -21,7 +21,6 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -162,13 +161,17 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		}
 	}
 
+	protected String capitalize(final String line) {
+		return Character.toUpperCase(line.charAt(0)) + line.substring(1);
+	}
+
 	protected VbParserParams createDefaultParams() {
 		final VbParserParams result = new VbParserParamsImpl();
 		return result;
 	}
 
 	protected String getModuleName(final File inputFile) {
-		return StringUtils.capitalize(FilenameUtils.removeExtension(inputFile.getName()));
+		return capitalize(FilenameUtils.removeExtension(inputFile.getName()));
 	}
 
 	protected boolean isClazzModule(final File inputFile) {
