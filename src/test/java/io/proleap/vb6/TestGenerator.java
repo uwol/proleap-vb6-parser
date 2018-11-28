@@ -16,7 +16,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
-import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
@@ -130,7 +130,7 @@ public class TestGenerator {
 			LOG.info("Creating tree file {}.", outputFile);
 
 			final InputStream inputStream = new FileInputStream(vb6InputFile);
-			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(new ANTLRInputStream(inputStream));
+			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(CharStreams.fromStream(inputStream));
 			final CommonTokenStream tokens = new CommonTokenStream(lexer);
 			final VisualBasic6Parser parser = new VisualBasic6Parser(tokens);
 			final StartRuleContext startRule = parser.startRule();

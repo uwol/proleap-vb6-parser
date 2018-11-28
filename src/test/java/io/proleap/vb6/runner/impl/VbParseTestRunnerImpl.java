@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -56,7 +57,7 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 	protected void doCompareParseTree(final File treeFile, final StartRuleContext startRule,
 			final VisualBasic6Parser parser) throws IOException {
 
-		final String treeFileData = FileUtils.readFileToString(treeFile);
+		final String treeFileData = FileUtils.readFileToString(treeFile, StandardCharsets.UTF_8);
 
 		if (!Strings.isNullOrEmpty(treeFileData)) {
 			LOG.info("Comparing parse tree with file {}.", treeFile.getName());
