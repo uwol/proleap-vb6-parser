@@ -21,9 +21,9 @@ public class ApiModuleImpl implements ApiModule {
 
 	protected final String name;
 
-	protected final Map<String, ApiProcedure> procedures = new HashMap<String, ApiProcedure>();
+	protected final Map<String, ApiProcedure> procedures = new HashMap<>();
 
-	protected final Map<String, ApiProperty> properties = new HashMap<String, ApiProperty>();
+	protected final Map<String, ApiProperty> properties = new HashMap<>();
 
 	public ApiModuleImpl(final String name, final boolean isCollection) {
 		this.name = name;
@@ -72,5 +72,4 @@ public class ApiModuleImpl implements ApiModule {
 	public String toString() {
 		return "name=[" + name + "]";
 	}
-
 }
