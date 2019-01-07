@@ -15,8 +15,6 @@ import java.util.Map;
 
 import org.antlr.v4.runtime.CommonTokenStream;
 
-import com.google.common.collect.Lists;
-
 import io.proleap.vb6.VisualBasic6Parser.ArgContext;
 import io.proleap.vb6.VisualBasic6Parser.AttributeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.DeclareStmtContext;
@@ -525,7 +523,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	@Override
 	public List<Function> getFunctions() {
-		return Lists.newArrayList(functions.values());
+		return new ArrayList<>(functions.values());
 	}
 
 	@Override
@@ -555,7 +553,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	@Override
 	public List<PropertyGet> getPropertyGets() {
-		return Lists.newArrayList(propertyGets.values());
+		return new ArrayList<>(propertyGets.values());
 	}
 
 	@Override
@@ -565,7 +563,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	@Override
 	public List<PropertyLet> getPropertyLets() {
-		return Lists.newArrayList(propertyLets.values());
+		return new ArrayList<>(propertyLets.values());
 	}
 
 	@Override
@@ -575,7 +573,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	@Override
 	public List<PropertySet> getPropertySets() {
-		return Lists.newArrayList(propertySets.values());
+		return new ArrayList<>(propertySets.values());
 	}
 
 	@Override
@@ -585,7 +583,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 		final EnumerationConstant enumerationConstant = getEnumerationConstant(name);
 
 		if (enumerationConstant != null) {
-			result = new ArrayList<ScopedElement>();
+			result = new ArrayList<>();
 			result.add(enumerationConstant);
 		} else {
 			result = super.getScopedElementsInScope(name);
@@ -601,7 +599,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 
 	@Override
 	public List<Sub> getSubs() {
-		return Lists.newArrayList(subs.values());
+		return new ArrayList<Sub>(subs.values());
 	}
 
 	@Override

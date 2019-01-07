@@ -22,10 +22,9 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.Trees;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.base.Strings;
 
 import io.proleap.vb6.VisualBasic6Lexer;
 import io.proleap.vb6.VisualBasic6Parser;
@@ -59,7 +58,7 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 
 		final String treeFileData = FileUtils.readFileToString(treeFile, StandardCharsets.UTF_8);
 
-		if (!Strings.isNullOrEmpty(treeFileData)) {
+		if (!StringUtils.isEmpty(treeFileData)) {
 			LOG.info("Comparing parse tree with file {}.", treeFile.getName());
 
 			final String inputFileTree = Trees.toStringTree(startRule, parser);

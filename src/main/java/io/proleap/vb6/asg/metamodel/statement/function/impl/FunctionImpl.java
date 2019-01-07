@@ -13,8 +13,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.google.common.collect.Lists;
-
 import io.proleap.vb6.VisualBasic6Parser.FunctionStmtContext;
 import io.proleap.vb6.asg.inference.impl.TypeInferenceImpl;
 import io.proleap.vb6.asg.metamodel.Module;
@@ -67,7 +65,7 @@ public class FunctionImpl extends ProcedureImpl implements Function {
 
 	@Override
 	public List<Call> getCalls() {
-		return Lists.newArrayList(getFunctionCalls());
+		return new ArrayList<>(getFunctionCalls());
 	}
 
 	@Override

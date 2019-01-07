@@ -13,8 +13,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.google.common.collect.Lists;
-
 import io.proleap.vb6.VisualBasic6Parser.PropertyGetStmtContext;
 import io.proleap.vb6.asg.inference.impl.TypeInferenceImpl;
 import io.proleap.vb6.asg.metamodel.Module;
@@ -67,7 +65,7 @@ public class PropertyGetImpl extends ProcedureImpl implements PropertyGet {
 
 	@Override
 	public List<Call> getCalls() {
-		return Lists.newArrayList(getPropertyGetCalls());
+		return new ArrayList<>(getPropertyGetCalls());
 	}
 
 	@Override

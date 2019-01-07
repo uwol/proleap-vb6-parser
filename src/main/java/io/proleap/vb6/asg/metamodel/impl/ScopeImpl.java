@@ -40,8 +40,6 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.Lists;
-
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.AmbiguousIdentifierContext;
 import io.proleap.vb6.VisualBasic6Parser.AppActivateStmtContext;
@@ -2456,7 +2454,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	@Override
 	public List<Constant> getConstants() {
-		return Lists.newArrayList(constants.values());
+		return new ArrayList<>(constants.values());
 	}
 
 	/**
@@ -2616,7 +2614,7 @@ public abstract class ScopeImpl extends ScopedElementImpl implements Scope {
 
 	@Override
 	public List<Variable> getVariables() {
-		return Lists.newArrayList(variables.values());
+		return new ArrayList<Variable>(variables.values());
 	}
 
 	protected void linkApiEnumerationCallWithApiEnumeration(final ApiEnumerationCall apiEnumerationCall,

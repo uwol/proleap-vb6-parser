@@ -11,8 +11,6 @@ package io.proleap.vb6.asg.metamodel.statement.property.set.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.collect.Lists;
-
 import io.proleap.vb6.VisualBasic6Parser.PropertySetStmtContext;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.VisibilityEnum;
@@ -45,7 +43,7 @@ public class PropertySetImpl extends ProcedureImpl implements PropertySet {
 
 	@Override
 	public List<Call> getCalls() {
-		return Lists.newArrayList(getPropertySetCalls());
+		return new ArrayList<>(getPropertySetCalls());
 	}
 
 	@Override

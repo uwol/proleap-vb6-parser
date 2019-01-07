@@ -19,10 +19,9 @@ import java.util.Arrays;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.base.Strings;
 
 import io.proleap.vb6.VisualBasic6Parser.StartRuleContext;
 import io.proleap.vb6.util.TreeUtils;
@@ -111,7 +110,7 @@ public class TestGenerator {
 						subOutputDirectory.mkdirs();
 
 						// determine the package name of test classes
-						final String subPackageName = Strings.isNullOrEmpty(packageName) ? subInputDirectoryName
+						final String subPackageName = StringUtils.isEmpty(packageName) ? subInputDirectoryName
 								: packageName + "." + subInputDirectoryName;
 
 						generateTestClasses(subInputDirectory, subOutputDirectory, subPackageName);

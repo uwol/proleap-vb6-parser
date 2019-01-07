@@ -11,8 +11,6 @@ package io.proleap.vb6.asg.metamodel.statement.sub.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.collect.Lists;
-
 import io.proleap.vb6.VisualBasic6Parser.SubStmtContext;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.VisibilityEnum;
@@ -44,7 +42,7 @@ public class SubImpl extends ProcedureImpl implements Sub {
 
 	@Override
 	public List<Call> getCalls() {
-		return Lists.newArrayList(getSubCalls());
+		return new ArrayList<>(getSubCalls());
 	}
 
 	@Override
