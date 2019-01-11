@@ -17,12 +17,13 @@ import io.proleap.vb6.asg.params.VbParserParams;
 
 public interface VbParserRunner {
 
-	Program analyzeFile(File inputFile) throws IOException;
+	Program analyzeCode(String vbCode, String moduleName, VbParserParams params) throws IOException;
 
-	Program analyzeFile(File inputFile, VbParserParams params) throws IOException;
+	Program analyzeFile(File vbFile) throws IOException;
 
-	Program analyzeFiles(List<File> inputFiles) throws IOException;
+	Program analyzeFile(File vbFile, VbParserParams params) throws IOException;
 
-	Program analyzeFiles(List<File> inputFiles, VbParserParams params) throws IOException;
+	Program analyzeFiles(List<File> vbFiles) throws IOException;
 
+	Program analyzeFiles(List<File> vbFiles, VbParserParams params) throws IOException;
 }

@@ -9,9 +9,7 @@
 package io.proleap.vb6.asg.runner.impl;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +72,18 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		}
 	}
 
+	@Override
+	public Program analyzeCode(final String vbCode, final String moduleName, final VbParserParams params)
+			throws IOException {
+		final Program program = new ProgramImpl();
+		registerModelElements(program);
+
+		parseCode(vbCode, moduleName, program, params);
+		analyze(program);
+
+		return program;
+	}
+
 	protected void analyzeDeclarations(final Program program) {
 		for (final Module module : program.getModules()) {
 			final ParserVisitor visitor = new VbDeclarationVisitorImpl(module);
@@ -109,33 +119,33 @@ public class VbParserRunnerImpl implements VbParserRunner {
 	}
 
 	@Override
-	public Program analyzeFile(final File inputFile) throws IOException {
-		return analyzeFile(inputFile, createDefaultParams());
+	public Program analyzeFile(final File vbFile) throws IOException {
+		return analyzeFile(vbFile, createDefaultParams());
 	}
 
 	@Override
-	public Program analyzeFile(final File inputFile, final VbParserParams params) throws IOException {
+	public Program analyzeFile(final File vbFile, final VbParserParams params) throws IOException {
 		final Program program = new ProgramImpl();
 		registerModelElements(program);
 
-		parseFile(inputFile, program, params);
+		parseFile(vbFile, program, params);
 		analyze(program);
 
 		return program;
 	}
 
 	@Override
-	public Program analyzeFiles(final List<File> inputFiles) throws IOException {
-		return analyzeFiles(inputFiles, createDefaultParams());
+	public Program analyzeFiles(final List<File> vbFiles) throws IOException {
+		return analyzeFiles(vbFiles, createDefaultParams());
 	}
 
 	@Override
-	public Program analyzeFiles(final List<File> inputFiles, final VbParserParams params) throws IOException {
+	public Program analyzeFiles(final List<File> vbFiles, final VbParserParams params) throws IOException {
 		final Program program = new ProgramImpl();
 		registerModelElements(program);
 
-		for (final File inputFile : inputFiles) {
-			parseFile(inputFile, program, params);
+		for (final File vbFile : vbFiles) {
+			parseFile(vbFile, program, params);
 		}
 
 		analyze(program);
@@ -184,65 +194,78 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		return "bas".equals(extension);
 	}
 
-	protected void parseFile(final File inputFile, final Program program, final VbParserParams params)
-			throws IOException {
-		if (!inputFile.isFile()) {
-			LOG.warn("Could not find file {}", inputFile.getAbsolutePath());
+	protected void parseCode(final String vbCode, final String moduleName, final boolean isClazzModule,
+			final boolean isStandardModule, final Program program, final VbParserParams params) throws IOException {
+		// run the lexer
+		final VisualBasic6Lexer lexer = new VisualBasic6Lexer(CharStreams.fromString(vbCode));
+
+		if (!params.getIgnoreSyntaxErrors()) {
+			// register an error listener, so that preprocessing stops on errors
+			lexer.removeErrorListeners();
+			lexer.addErrorListener(new ThrowingErrorListener());
+		}
+
+		// get a list of matched tokens
+		final CommonTokenStream tokens = new CommonTokenStream(lexer);
+
+		// pass the tokens to the parser
+		final VisualBasic6Parser parser = new VisualBasic6Parser(tokens);
+
+		if (!params.getIgnoreSyntaxErrors()) {
+			// register an error listener, so that preprocessing stops on errors
+			parser.removeErrorListeners();
+			parser.addErrorListener(new ThrowingErrorListener());
+		}
+
+		// specify our entry point
+		final StartRuleContext ctx = parser.startRule();
+
+		// determine the effective module name
+		final String declaredModuleName = analyzeDeclaredModuleName(ctx);
+		final String effectiveModuleName;
+
+		if (declaredModuleName != null && !declaredModuleName.isEmpty()) {
+			effectiveModuleName = declaredModuleName;
+		} else {
+			effectiveModuleName = moduleName;
+		}
+
+		final List<String> lines = splitLines(vbCode);
+		final ParserVisitor visitor = new VbModuleVisitorImpl(effectiveModuleName, lines, isClazzModule,
+				isStandardModule, tokens, program);
+
+		visitor.visit(ctx);
+	}
+
+	protected void parseCode(final String vbCode, final String moduleName, final Program program,
+			final VbParserParams params) throws IOException {
+		LOG.info("Parsing module {}.", moduleName);
+
+		parseCode(vbCode, moduleName, true, false, program, params);
+	}
+
+	protected void parseFile(final File vbFile, final Program program, final VbParserParams params) throws IOException {
+		if (!vbFile.isFile()) {
+			LOG.warn("Could not find file {}", vbFile.getAbsolutePath());
 		} else {
 			final Charset charset = params.getCharset();
 
-			LOG.info("Parsing file {} with charset {}.", inputFile.getName(), charset);
+			LOG.info("Parsing file {} with charset {}.", vbFile.getName(), charset);
 
-			final InputStream inputStream = new FileInputStream(inputFile);
-			final VisualBasic6Lexer lexer = new VisualBasic6Lexer(CharStreams.fromStream(inputStream, charset));
-
-			if (!params.getIgnoreSyntaxErrors()) {
-				// register an error listener, so that preprocessing stops on errors
-				lexer.removeErrorListeners();
-				lexer.addErrorListener(new ThrowingErrorListener());
-			}
-
-			// get a list of matched tokens
-			final CommonTokenStream tokens = new CommonTokenStream(lexer);
-
-			// pass the tokens to the parser
-			final VisualBasic6Parser parser = new VisualBasic6Parser(tokens);
-
-			if (!params.getIgnoreSyntaxErrors()) {
-				// register an error listener, so that preprocessing stops on errors
-				parser.removeErrorListeners();
-				parser.addErrorListener(new ThrowingErrorListener());
-			}
-
-			// specify our entry point
-			final StartRuleContext ctx = parser.startRule();
+			final String vbCode = FileUtils.readFileToString(vbFile, charset);
 
 			// determine the module name
-			final String declaredModuleName = analyzeDeclaredModuleName(ctx);
-			final String moduleName;
-
-			if (declaredModuleName != null && !declaredModuleName.isEmpty()) {
-				moduleName = declaredModuleName;
-			} else {
-				moduleName = getModuleName(inputFile);
-			}
+			final String moduleName = getModuleName(vbFile);
 
 			// analyze contained modules and types
-			final boolean isClazzModule = isClazzModule(inputFile);
-			final boolean isStandardModule = isStandardModule(inputFile);
+			final boolean isClazzModule = isClazzModule(vbFile);
+			final boolean isStandardModule = isStandardModule(vbFile);
 
-			final String input = FileUtils.readFileToString(inputFile, charset);
-			final List<String> lines = splitLines(input);
-
-			final ParserVisitor visitor = new VbModuleVisitorImpl(moduleName, lines, isClazzModule, isStandardModule,
-					tokens, program);
-
-			LOG.info("Collecting types in file {}.", inputFile.getName());
-			visitor.visit(ctx);
+			parseCode(vbCode, moduleName, isClazzModule, isStandardModule, program, params);
 		}
 	}
 
-	private void registerApiEnumeration(final Program program, final ApiEnumeration apiEnumeration) {
+	protected void registerApiEnumeration(final Program program, final ApiEnumeration apiEnumeration) {
 		program.getTypeRegistry().registerType(apiEnumeration);
 		program.getApiEnumerationRegistry().registerApiEnumeration(apiEnumeration);
 	}
@@ -465,7 +488,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 		}
 	}
 
-	public List<String> splitLines(final String input) {
+	protected List<String> splitLines(final String input) {
 		final Scanner scanner = new Scanner(input);
 		final List<String> result = new ArrayList<String>();
 
