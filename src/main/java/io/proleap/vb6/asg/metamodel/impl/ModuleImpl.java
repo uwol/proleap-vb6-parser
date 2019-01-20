@@ -35,6 +35,7 @@ import io.proleap.vb6.VisualBasic6Parser.PropertySetStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.SubStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.TypeStmtContext;
 import io.proleap.vb6.VisualBasic6Parser.TypeStmt_ElementContext;
+import io.proleap.vb6.asg.exception.VbParserException;
 import io.proleap.vb6.asg.metamodel.Attribute;
 import io.proleap.vb6.asg.metamodel.DefType;
 import io.proleap.vb6.asg.metamodel.Literal;
@@ -196,7 +197,7 @@ public abstract class ModuleImpl extends ScopeImpl implements Module {
 			} else if (ctx.DEFVAR() != null) {
 				vbType = VbBaseType.VARIANT;
 			} else {
-				throw new RuntimeException("unknown deftype " + ctx);
+				throw new VbParserException("unknown deftype " + ctx);
 			}
 
 			result = new DefTypeImpl(vbType);

@@ -37,6 +37,7 @@ import io.proleap.vb6.VisualBasic6Parser.VsNewContext;
 import io.proleap.vb6.VisualBasic6Parser.VsNotContext;
 import io.proleap.vb6.VisualBasic6Parser.VsOrContext;
 import io.proleap.vb6.VisualBasic6Parser.VsXorContext;
+import io.proleap.vb6.asg.exception.VbParserException;
 import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.type.Type;
 import io.proleap.vb6.asg.metamodel.type.VbBaseType;
@@ -90,7 +91,7 @@ public class TypeResolverImpl implements TypeResolver {
 		} else if (literal.NOTHING() != null) {
 			result = null;
 		} else {
-			throw new RuntimeException("unknown literal " + literal);
+			throw new VbParserException("unknown literal " + literal);
 		}
 
 		return result;

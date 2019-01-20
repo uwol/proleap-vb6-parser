@@ -12,11 +12,13 @@ import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
 
+import io.proleap.vb6.asg.exception.VbParserException;
+
 public class ThrowingErrorListener extends BaseErrorListener {
 
 	@Override
 	public void syntaxError(final Recognizer<?, ?> recognizer, final Object offendingSymbol, final int line,
 			final int charPositionInLine, final String msg, final RecognitionException e) {
-		throw new RuntimeException("syntax error in line " + line + ":" + charPositionInLine + " " + msg);
+		throw new VbParserException("syntax error in line " + line + ":" + charPositionInLine + " " + msg);
 	}
 }

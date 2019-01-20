@@ -13,6 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.proleap.vb6.asg.exception.VbParserException;
 import io.proleap.vb6.asg.metamodel.ClazzModule;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Program;
@@ -219,7 +220,7 @@ public class ProgramImpl extends ScopeImpl implements Program {
 		} else if (module instanceof StandardModule) {
 			registerStandardModule((StandardModule) module);
 		} else {
-			throw new RuntimeException("unknown module type " + module);
+			throw new VbParserException("unknown module type " + module);
 		}
 	}
 
