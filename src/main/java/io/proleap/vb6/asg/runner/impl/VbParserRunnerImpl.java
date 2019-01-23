@@ -25,6 +25,7 @@ import org.slf4j.LoggerFactory;
 import io.proleap.vb6.VisualBasic6Lexer;
 import io.proleap.vb6.VisualBasic6Parser;
 import io.proleap.vb6.VisualBasic6Parser.StartRuleContext;
+import io.proleap.vb6.asg.exception.VbParserException;
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Program;
 import io.proleap.vb6.asg.metamodel.api.ApiEnumeration;
@@ -246,7 +247,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 
 	protected void parseFile(final File vbFile, final Program program, final VbParserParams params) throws IOException {
 		if (!vbFile.isFile()) {
-			LOG.warn("Could not find file {}", vbFile.getAbsolutePath());
+			throw new VbParserException("Could not find file " + vbFile.getAbsolutePath());
 		} else {
 			final Charset charset = params.getCharset();
 
