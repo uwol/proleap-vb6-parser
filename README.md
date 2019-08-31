@@ -11,8 +11,6 @@ The parser is developed test-driven and has successfully been **applied to large
 
 💫 **Star** if you like our work.
 
-[![Build](https://img.shields.io/travis/uwol/proleap-vb6-parser.svg)](https://travis-ci.org/uwol/proleap-vb6-parser)
-[![Coverage](https://coveralls.io/repos/github/uwol/proleap-vb6-parser/badge.svg?branch=master)](https://coveralls.io/github/uwol/proleap-vb6-parser?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![ProLeap on Twitter](https://img.shields.io/twitter/follow/proleap_io.svg?style=social&label=Follow)](https://twitter.com/proleap_io)
 
