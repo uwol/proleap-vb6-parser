@@ -11,13 +11,13 @@ package io.proleap.vb6.asg.runner.impl;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -253,7 +253,7 @@ public class VbParserRunnerImpl implements VbParserRunner {
 
 			LOG.info("Parsing file {} with charset {}.", vbFile.getName(), charset);
 
-			final String vbCode = FileUtils.readFileToString(vbFile, charset);
+			final String vbCode = Files.readString(vbFile.toPath(), charset);
 
 			// determine the module name
 			final String moduleName = getModuleName(vbFile);

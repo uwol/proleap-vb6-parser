@@ -7,7 +7,7 @@
 	<description>An ANTLR4-based parser and grammar for Visual Basic 6.0</description>
 	<groupId>io.github.uwol</groupId>
 	<artifactId>proleap-vb6-parser</artifactId>
-	<version>2.3.0</version>
+	<version>3.0.0</version>
 	<packaging>jar</packaging>
 	<licenses>
 		<license>
@@ -19,8 +19,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 		<antlr.version>4.7.2</antlr.version>
 		<slf4j.version>1.7.28</slf4j.version>
 	</properties>
