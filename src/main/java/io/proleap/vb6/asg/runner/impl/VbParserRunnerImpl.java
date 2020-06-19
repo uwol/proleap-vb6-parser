@@ -18,7 +18,6 @@ import java.util.Scanner;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,6 +44,7 @@ import io.proleap.vb6.asg.params.VbParserParams;
 import io.proleap.vb6.asg.params.impl.VbParserParamsImpl;
 import io.proleap.vb6.asg.runner.ThrowingErrorListener;
 import io.proleap.vb6.asg.runner.VbParserRunner;
+import io.proleap.vb6.asg.util.FilenameUtils;
 import io.proleap.vb6.asg.visitor.ParserVisitor;
 import io.proleap.vb6.asg.visitor.impl.VbDeclarationVisitorImpl;
 import io.proleap.vb6.asg.visitor.impl.VbExpressionVisitorImpl;
