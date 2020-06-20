@@ -9,7 +9,6 @@
 package io.proleap.vb6.asg.metamodel.impl;
 
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.apache.commons.lang.StringUtils;
 
 import io.proleap.vb6.asg.metamodel.Module;
 import io.proleap.vb6.asg.metamodel.Program;
@@ -59,6 +58,6 @@ public abstract class ScopedElementImpl extends ASGElementImpl implements Scoped
 	}
 
 	protected String getSymbol(final String name) {
-		return StringUtils.isEmpty(name) ? name : name.toLowerCase();
+		return name == null || name.isEmpty() ? name : name.toLowerCase();
 	}
 }

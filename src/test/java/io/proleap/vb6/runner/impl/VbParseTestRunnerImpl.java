@@ -21,7 +21,6 @@ import java.nio.file.Files;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.Trees;
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +57,7 @@ public class VbParseTestRunnerImpl implements VbParseTestRunner {
 
 		final String treeFileData = Files.readString(treeFile.toPath(), StandardCharsets.UTF_8);
 
-		if (!StringUtils.isEmpty(treeFileData)) {
+		if (treeFileData != null && !treeFileData.isEmpty()) {
 			LOG.info("Comparing parse tree with file {}.", treeFile.getName());
 
 			final String inputFileTree = Trees.toStringTree(startRule, parser);
