@@ -9,12 +9,13 @@
 package io.proleap.vb6.asg.params.impl;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import io.proleap.vb6.asg.params.VbParserParams;
 
 public class VbParserParamsImpl implements VbParserParams {
 
-	protected Charset charset = Charset.defaultCharset();
+	protected Charset charset = StandardCharsets.UTF_8;
 
 	protected boolean ignoreSyntaxErrors;
 
