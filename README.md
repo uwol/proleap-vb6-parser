@@ -7,7 +7,7 @@ The AST represents plain Visual Basic 6.0 source code in a syntax tree structure
 The ASG is generated from the AST by **semantic analysis** and provides data and control
 flow information (e. g. variable access).
 
-The parser is developed test-driven and has successfully been **applied to large Visual Basic 6.0 projects**.
+The parser is developed test-driven and has successfully been **applied to large Visual Basic 6.0 projects**. It is used by the [ProLeap analyzer & transformer for Visual Basic 6.0](https://github.com/proleap/proleap-vb6).
 
 💫 **Star** if you like our work.
 
@@ -112,6 +112,7 @@ Where to look next
 
 - [ANTLR4 Visual Basic 6.0 grammar](src/main/antlr4/io/proleap/vb6/VisualBasic6.g4)
 - [Unit test code examples](src/test/java/io/proleap/vb6/asg/statement)
+- [ProLeap analyzer & transformer for Visual Basic 6.0](https://github.com/proleap/proleap-vb6)
 
 
 How to cite
